@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linnaeus&rsquo;s Apostles &mdash; Gould&rsquo;s Bibliography Hub</title>
+<style>
+  :root {
+    --bg: #f6f0e2; --fg: #3a2f22; --accent: #7a5230; --accent-2: #8a6d3b;
+    --border: #d8c9a8; --card-bg: #fffdf8; --gould-teal: #1f7a6e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  }
+  header { text-align: center; padding: 40px 20px 24px; border-bottom: 1px solid var(--border); background: var(--card-bg); }
+  header .kicker { letter-spacing: 0.25em; text-transform: uppercase; font-size: 12px; color: var(--accent); margin-bottom: 10px; }
+  header h1 { margin: 0 0 10px; font-size: 30px; font-weight: 400; }
+  header .sub { font-size: 14px; color: var(--accent-2); max-width: 700px; margin: 0 auto; line-height: 1.6; }
+  header .stats { margin-top: 14px; font-size: 12.5px; color: var(--accent-2); }
+  .back-link { display: inline-block; margin-top: 14px; font-size: 12.5px; color: var(--gould-teal); text-decoration: none; font-weight: 600; }
+  .back-link:hover { text-decoration: underline; }
+  .controls { text-align: center; padding: 18px 20px; }
+  #search {
+    width: 100%; max-width: 420px; padding: 9px 16px;
+    border: 1px solid var(--border); border-radius: 999px; font-family: inherit; font-size: 14.5px;
+    background: var(--card-bg); color: var(--fg);
+  }
+  #search:focus { outline: none; border-color: var(--accent-2); }
+  .grid {
+    max-width: 1100px; margin: 0 auto; padding: 10px 20px 60px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 22px;
+  }
+  .ap-card {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .ap-map { background: #fff; border-bottom: 1px solid var(--border); padding: 10px; }
+  .ap-map img { width: 100%; display: block; }
+  .ap-map-missing {
+    padding: 30px; text-align: center; font-size: 12px; color: var(--accent-2); font-style: italic;
+  }
+  .ap-body { padding: 16px 18px 20px; }
+  .ap-name { font-size: 18px; margin-bottom: 2px; }
+  .ap-years { font-size: 12px; color: var(--accent-2); margin-bottom: 8px; }
+  .ap-route { font-size: 12.5px; color: var(--accent); font-style: italic; margin-bottom: 10px; line-height: 1.5; }
+  .ap-badge {
+    display: inline-block; font-family: -apple-system, Helvetica, Arial, sans-serif; font-size: 10.5px;
+    letter-spacing: 0.02em; padding: 3px 9px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .ap-badge-cited { background: rgba(31,122,110,0.12); color: var(--gould-teal); }
+  .ap-badge-uncited { background: rgba(122,82,48,0.08); color: var(--accent-2); }
+  .ap-vignette { font-size: 13.5px; line-height: 1.65; margin-bottom: 10px; }
+  .ap-sources { font-size: 10.5px; color: var(--accent-2); line-height: 1.5; }
+  #empty-msg { display: none; text-align: center; padding: 60px; color: var(--accent-2); grid-column: 1 / -1; }
+  footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">Gould&rsquo;s Bibliography Hub</div>
+  <h1>Linnaeus&rsquo;s Apostles</h1>
+  <div class="sub">
+    Between the 1740s and 1770s, Carl Linnaeus sent students &mdash; his &ldquo;apostles&rdquo;
+    &mdash; to every corner of the known world to collect specimens for his growing catalogue of
+    nature. Some returned with collections that shaped natural history for a century; several
+    never came home at all. Three of the seventeen (Hasselquist, Falck, and Sparrman) are directly
+    cited in Gould&rsquo;s own bird books and have their own fuller entries in the main Library;
+    the other fourteen are shown here for the first time, as the scene-setting cast around
+    Linnaeus&rsquo;s own entry.
+  </div>
+  <div class="stats">17 apostles &middot; 3 cited by Gould &middot; 17 route maps built</div>
+  <div><a class="back-link" href="tales_from_goulds_bibliography.html">&larr; Back to Gould&rsquo;s Library</a></div>
+</header>
+<div class="controls">
+  <input type="search" id="search" placeholder="Search by name&hellip;">
+</div>
+<div class="grid" id="grid">
+
+  <div class="ap-card" id="apostle-christopher-t-rnstr-m" data-search="christopher tärnström">
+    <div class="ap-map"><img src="images/apostle_maps/christopher_tarnstrom.svg" alt="Route map for Christopher Tärnström" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Christopher Tärnström</div>
+      <div class="ap-years">1703-1746</div>
+      <div class="ap-route">Sweden to China, via the Dutch East Indies -- got only as far as Côn Sơn Island off Vietnam</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Tärnström was the first apostle Linnaeus ever sent out, and the expedition that should have proven the whole method worked instead became its first cautionary tale. Bound for China aboard a Swedish East India Company ship, he never got past Côn Sơn Island, off the Vietnamese coast, where a tropical fever killed him before a single specimen made it home. He&#x27;d left a wife and children behind; when Linnaeus heard, guilt reportedly stayed with him, and from then on he refused to send out any apostle who was married. The &#x27;apostle&#x27; idea nearly ended with its very first attempt.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-pehr-kalm" data-search="pehr kalm">
+    <div class="ap-map"><img src="images/apostle_maps/pehr_kalm.svg" alt="Route map for Pehr Kalm" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Pehr Kalm</div>
+      <div class="ap-years">1715-1779</div>
+      <div class="ap-route">Sweden to North America -- Pennsylvania, New Jersey, New York, and southern Canada</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Kalm is the apostle whose trip actually went the way Linnaeus hoped every trip would: three and a half years touring the American colonies, a genuine friendship struck up with Benjamin Franklin, and a triumphant return with pressed plants and seeds by the crate-load. His own travel account, En Resa til Norra America, became a minor bestseller in its own right and is still read today as an outsider&#x27;s snapshot of pre-Revolutionary America -- proof the apostle system could work exactly as intended, when nothing went wrong.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-fredrik-hasselquist" data-search="fredrik hasselquist">
+    <div class="ap-map"><img src="images/apostle_maps/fredrik_hasselquist.svg" alt="Route map for Fredrik Hasselquist" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Fredrik Hasselquist</div>
+      <div class="ap-years">1722-1752</div>
+      <div class="ap-route">Eastern Mediterranean -- Turkey, Egypt, Syria, Cyprus, Rhodes, Chios, Smyrna</div>
+      <span class="ap-badge ap-badge-cited">Cited by Gould &mdash; see &ldquo;Hasselq. Iter Falsest&rdquo; in the main Library</span>
+      <div class="ap-vignette">See the full entry under Hasselq. Iter Falsest -- died in Smyrna weeks before his planned voyage home, his debts and his collection both rescued only by Queen Louisa Ulrika&#x27;s direct intervention.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-olof-tor-n" data-search="olof torén">
+    <div class="ap-map"><img src="images/apostle_maps/olof_toren.svg" alt="Route map for Olof Torén" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Olof Torén</div>
+      <div class="ap-years">1718-1753</div>
+      <div class="ap-route">India (Surat) and China (Canton/Guangzhou), as a Swedish East India Company chaplain</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Torén sailed as a ship&#x27;s chaplain rather than a dedicated naturalist, collecting on the side during Swedish East India Company voyages to Surat and Canton -- and he actually made it home with a substantial haul intact. The cruelty of his story is in the timing: he died in 1753, only shortly after returning, with barely any time to enjoy what he&#x27;d achieved or see what Linnaeus made of it.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-pehr-osbeck" data-search="pehr osbeck">
+    <div class="ap-map"><img src="images/apostle_maps/pehr_osbeck.svg" alt="Route map for Pehr Osbeck" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Pehr Osbeck</div>
+      <div class="ap-years">1723-1805</div>
+      <div class="ap-route">China (Canton/Guangzhou), aboard a Swedish East India Company vessel</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Osbeck is one of the apostle programme&#x27;s clean successes -- out to Canton and back on a Swedish East India Company run, home safe in June 1752 with his collections intact, and he lived to a genuinely old age (82) by the standards of the era, long enough to see the whole Linnaean project mature. His journal, Dagbok öfwer en Ostindisk Resa, became one of the more widely read apostle travelogues.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-pehr-l-fling" data-search="pehr löfling">
+    <div class="ap-map"><img src="images/apostle_maps/pehr_lofling.svg" alt="Route map for Pehr Löfling" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Pehr Löfling</div>
+      <div class="ap-years">1729-1756</div>
+      <div class="ap-route">Spain (Madrid, the Canary Islands) and then South America -- Venezuela and Guyana, on a Spanish crown boundary expedition</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Löfling was Linnaeus&#x27;s own favourite student, sent first to Spain and then recruited onto a Spanish crown expedition mapping the Venezuela-Brazil border -- exactly the kind of prestigious, well-resourced posting an apostle could hope for. It ended in the Guyanese rainforest in February 1756, most likely of a fever, one more name added to the list of apostles who never came home. Linnaeus was reportedly devastated -- of all seventeen, Löfling&#x27;s death seems to have hit hardest.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-daniel-rolander" data-search="daniel rolander">
+    <div class="ap-map"><img src="images/apostle_maps/daniel_rolander.svg" alt="Route map for Daniel Rolander" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Daniel Rolander</div>
+      <div class="ap-years">1725-1793</div>
+      <div class="ap-route">Suriname, collecting through the rainforest interior</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Rolander actually survived Suriname and came home -- and then, in the apostle programme&#x27;s strangest twist, simply refused to hand his collection over to Linnaeus, souring what should have been a triumphant return into a bitter falling-out. It&#x27;s a reminder that not every apostle&#x27;s story is one of heroism or tragedy in the field; sometimes the real drama started only after the ship docked.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-anton-rolandsson-martin" data-search="anton rolandsson martin">
+    <div class="ap-map"><img src="images/apostle_maps/anton_rolandsson_martin.svg" alt="Route map for Anton Rolandsson Martin" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Anton Rolandsson Martin</div>
+      <div class="ap-years">1729-1785</div>
+      <div class="ap-route">Spitsbergen, in the Arctic archipelago of Svalbard</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Martin&#x27;s trip was the shortest and coldest of the seventeen -- a brief landing on Spitsbergen, deep in the Arctic, with barely any time ashore before the ship moved on. He still managed to bring back mosses and lichens worth Linnaeus&#x27;s praise, proof that even a glancing brush with a place could count, if the apostle knew what to grab and how fast to grab it.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-carl-fredrik-adler" data-search="carl fredrik adler">
+    <div class="ap-map"><img src="images/apostle_maps/carl_fredrik_adler.svg" alt="Route map for Carl Fredrik Adler" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Carl Fredrik Adler</div>
+      <div class="ap-years">1720-1761</div>
+      <div class="ap-route">The East Indies -- Surat, China, and finally Java</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Adler managed to send some material home before the East Indies claimed him too -- he died in Java in 1761, one more entry on the apostle programme&#x27;s long casualty list from that part of the world (Tärnström and Adler both lost to Southeast Asia, a reminder of just how lethal the tropics were to Europeans with no acquired immunity, whatever their scientific ambitions).</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-pehr-forssk-l" data-search="pehr forsskål">
+    <div class="ap-map"><img src="images/apostle_maps/pehr_forsskal.svg" alt="Route map for Pehr Forsskål" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Pehr Forsskål</div>
+      <div class="ap-years">1732-1763</div>
+      <div class="ap-route">The Middle East -- Egypt, Suez, the Red Sea, Yemen, on the Danish-funded Arabia expedition</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Forsskål joined the famous Danish Arabia expedition -- a rare case of an apostle travelling under someone else&#x27;s flag and funding rather than Sweden&#x27;s own. He died of malaria in Yemen in July 1763, before he could personally deliver what may have been the richest haul of the entire apostle programme; it fell to the expedition&#x27;s sole survivor, Carsten Niebuhr, to bring the specimens and notes home instead, a story of loss softened only by another man&#x27;s determination to finish what Forsskål started.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-g-ran-rothman" data-search="göran rothman">
+    <div class="ap-map"><img src="images/apostle_maps/goran_rothman.svg" alt="Route map for Göran Rothman" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Göran Rothman</div>
+      <div class="ap-years">1739-1778</div>
+      <div class="ap-route">North Africa -- Libya and Tunisia</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Rothman is the apostle programme&#x27;s quiet disappointment rather than its tragedy -- he came home safely from North Africa in 1776, but with very little to show for the years away. Not every expedition Linnaeus funded paid off in specimens; sometimes the return on the investment was just a naturalist who&#x27;d survived, and not much else.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-johan-peter-falck" data-search="johan peter falck">
+    <div class="ap-map"><img src="images/apostle_maps/johan_peter_falck.svg" alt="Route map for Johan Peter Falck" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Johan Peter Falck</div>
+      <div class="ap-years">1732-1774</div>
+      <div class="ap-route">Russia -- the Volga, the steppes, Kazan</div>
+      <span class="ap-badge ap-badge-cited">Cited by Gould &mdash; see &ldquo;Falk. Reise&rdquo; in the main Library</span>
+      <div class="ap-vignette">See the full entry under Falk. Reise -- opium addiction and depression during years in the Russian field, ending in suicide at Kazan in 1774; his journals were only published a decade later, assembled from the notes of a man who never lived to organise them himself.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-daniel-solander" data-search="daniel solander">
+    <div class="ap-map"><img src="images/apostle_maps/daniel_solander.svg" alt="Route map for Daniel Solander" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Daniel Solander</div>
+      <div class="ap-years">1733-1782</div>
+      <div class="ap-route">England, then the Pacific with Captain Cook&#x27;s first voyage (Australia, New Zealand, Tahiti), and later Iceland</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Solander is the apostle who got away, in the nicest possible sense -- sent to England to study, he simply never came back to Sweden, instead settling in as one of the most connected naturalists in London, sailing with Joseph Banks on Cook&#x27;s first Endeavour voyage around the Pacific, and becoming a fixture of British science. Linnaeus, by most accounts, never received anything from him directly; Solander&#x27;s real legacy went to Britain&#x27;s museums and Banks&#x27;s own collections instead, not to the teacher who&#x27;d sent him out in the first place.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-anders-sparrman" data-search="anders sparrman">
+    <div class="ap-map"><img src="images/apostle_maps/anders_sparrman.svg" alt="Route map for Anders Sparrman" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Anders Sparrman</div>
+      <div class="ap-years">1748-1820</div>
+      <div class="ap-route">China, then South Africa and around the world with Cook&#x27;s second voyage, then Senegal</div>
+      <span class="ap-badge ap-badge-cited">Cited by Gould &mdash; see &ldquo;Sparrm. Mus. Carls&rdquo; in the main Library</span>
+      <div class="ap-vignette">Sparrman is the one apostle whose name Gould&#x27;s own citation list would recognise directly -- his Museum Carlsonianum (1786-89) is cited in Gould&#x27;s synonymies as &#x27;Sparrm. Mus. Carls&#x27;. His path there ran through the Cape of Good Hope, a full circumnavigation aboard Cook&#x27;s Resolution on the second voyage (he joined at the Cape rather than sailing from England), and later an expedition into Senegal. He made it home to Uppsala in 1776 and lived to 72 -- one of the apostle programme&#x27;s genuine full-circle successes, ending not just alive but still publishing decades later.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-carl-peter-thunberg" data-search="carl peter thunberg">
+    <div class="ap-map"><img src="images/apostle_maps/carl_peter_thunberg.svg" alt="Route map for Carl Peter Thunberg" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Carl Peter Thunberg</div>
+      <div class="ap-years">1743-1828</div>
+      <div class="ap-route">South Africa, then Japan (confined to the Dutch trading post of Dejima), then Java on the way home</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Thunberg pulled off one of the era&#x27;s great scientific end-runs: Japan was closed to virtually all Westerners, but as a doctor attached to the Dutch trading post at Dejima he got fifteen months of access no other European naturalist of his generation had, and came home to publish work that shaped Western botany&#x27;s understanding of Japan for a century. He lived to 85, outliving nearly every other apostle, and became a professor at Uppsala himself -- Linnaeus&#x27;s student turned the next generation&#x27;s Linnaeus.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-andreas-berlin" data-search="andreas berlin">
+    <div class="ap-map"><img src="images/apostle_maps/andreas_berlin.svg" alt="Route map for Andreas Berlin" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Andreas Berlin</div>
+      <div class="ap-years">1746-1773</div>
+      <div class="ap-route">West Africa -- Guinea and the Îles de Los</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Berlin&#x27;s expedition ended almost before it began -- a stomach illness killed him before he&#x27;d even reached the West African mainland, off the Îles de Los near Guinea. Of all seventeen apostles, his is one of the shortest, most abruptly cut-off stories: barely a footnote&#x27;s worth of time in the field before the programme&#x27;s steady toll of early deaths claimed one more name.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+
+  <div class="ap-card" id="apostle-adam-afzelius" data-search="adam afzelius">
+    <div class="ap-map"><img src="images/apostle_maps/adam_afzelius.svg" alt="Route map for Adam Afzelius" loading="lazy"></div>
+    <div class="ap-body">
+      <div class="ap-name">Adam Afzelius</div>
+      <div class="ap-years">1750-1837</div>
+      <div class="ap-route">Sierra Leone, collecting for several years around the fledgling colony at Freetown</div>
+      <span class="ap-badge ap-badge-uncited">Not cited by Gould (botanist/entomologist apostle)</span>
+      <div class="ap-vignette">Afzelius was the last of the seventeen, and one of the longest-lived -- he spent years around the new British colony at Sierra Leone (surviving a French naval attack on Freetown in 1794 along the way), came home safely in 1796 with a genuinely large haul of botanical specimens, and lived on to 87. By the time he died in 1837, Darwin was already a young man about to sail on the Beagle -- the apostle era and the next great age of naturalist-explorers briefly overlapping in one long Swedish lifetime.</div>
+      <div class="ap-sources">Checked against: Wikipedia: Apostles of Linnaeus</div>
+    </div>
+  </div>
+  <div id="empty-msg">No apostle matches that search.</div>
+</div>
+<footer>Gould&rsquo;s Bibliography Hub &mdash; part of the GouldianKnot project</footer>
+<script>
+const search = document.getElementById('search');
+const cards = Array.from(document.querySelectorAll('.ap-card'));
+const emptyMsg = document.getElementById('empty-msg');
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let visible = 0;
+  cards.forEach(c => {
+    const show = !q || c.dataset.search.includes(q);
+    c.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  emptyMsg.style.display = visible === 0 ? 'block' : 'none';
+});
+</script>
+</body>
+</html>

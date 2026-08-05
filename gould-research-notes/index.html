@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Notes &mdash; GouldianKnot</title>
+<style>
+  :root {
+    --bg: #f6f0e2; --fg: #3a2f22; --accent: #7a5230; --accent-2: #8a6d3b;
+    --border: #d8c9a8; --card-bg: #fffdf8; --teal: #1f7a6e; --rust: #a6192e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  }
+  header { padding: 46px 24px 26px; text-align: center; border-bottom: 1px solid var(--border); }
+  header .kicker { letter-spacing: 0.25em; text-transform: uppercase; font-size: 12px; color: var(--accent); margin-bottom: 10px; }
+  header h1 { font-size: 30px; margin: 0 0 10px; font-weight: 600; }
+  header .sub { font-size: 14px; color: var(--accent-2); max-width: 680px; margin: 0 auto; line-height: 1.6; }
+  .back-link { display: inline-block; margin-top: 14px; font-size: 12px; color: var(--teal); text-decoration: none; }
+  .back-link:hover { text-decoration: underline; }
+
+  .notes-list { max-width: 760px; margin: 0 auto; padding: 30px 24px 70px; display: grid; gap: 18px; }
+  .note-card {
+    display: block; background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+    padding: 22px 24px; text-decoration: none; color: inherit; box-shadow: 0 1px 3px rgba(58,47,34,0.06);
+    transition: box-shadow 0.15s ease;
+  }
+  .note-card:hover { box-shadow: 0 2px 10px rgba(58,47,34,0.14); }
+  .note-kicker { font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-2); margin-bottom: 6px; }
+  .note-title { font-size: 20px; margin: 0 0 8px; font-weight: 600; color: var(--accent); line-height: 1.3; }
+  .note-teaser { font-size: 14px; line-height: 1.6; color: #4a3f30; margin: 0 0 10px; }
+  .note-readmore { font-size: 12px; color: var(--teal); }
+  footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker">GouldianKnot &middot; a standalone pillar</div>
+  <h1>Research Notes</h1>
+  <div class="sub">Essays that sit outside any single gallery or the Bibliography Hub &mdash; the wider history, science, and people
+  around Gould&rsquo;s work, written where there&rsquo;s something concrete in this project&rsquo;s own material to hang them on,
+  not general intellectual history for its own sake.</div>
+</header>
+<div class="notes-list">
+
+  <a class="note-card" href="fleming_and_the_last_great_auk.html">
+    <div class="note-kicker">Research Note &middot; Pre-Darwinian science and scripture</div>
+    <h2 class="note-title">Gould&rsquo;s Most-Cited Authority Was a Minister Who Held the Last British Great Auk</h2>
+    <p class="note-teaser">John Fleming was cited by Gould 44 times across Birds of Great Britain &mdash; more than almost anyone else in the Library. He was also a Free Church minister who spent his career trying to reconcile geology with Genesis, and in 1821 he was handed, alive, the last Great Auk Britain would ever see.</p>
+    <div class="note-readmore">Read the note &rarr;</div>
+  </a>
+
+  <a class="note-card" href="lorenz_and_the_birds_gould_only_drew.html">
+    <div class="note-kicker">Research Note &middot; A then-and-now pairing, not a citation</div>
+    <h2 class="note-title">What the Plate Doesn&rsquo;t Show: Lorenz and the Birds Gould Only Drew</h2>
+    <p class="note-teaser">Gould never read Konrad Lorenz &mdash; Lorenz was born the year after Gould died. But two of Lorenz&rsquo;s most famous research subjects, the Jackdaw and the Grey Lag Goose, are birds this gallery already has on the wall. A look at what a static 1870s plate could show, and what a goose that had imprinted on a man in a hat could not have told him.</p>
+    <div class="note-readmore">Read the note &rarr;</div>
+  </a>
+</div>
+<footer>Part of the GouldianKnot project family</footer>
+</body>
+</html>
