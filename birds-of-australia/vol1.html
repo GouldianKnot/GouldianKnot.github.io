@@ -53,6 +53,12 @@
   dialog#reader img { max-width: 100%; border-radius: 6px; margin-bottom: 14px; }
   dialog#reader .dtext { font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
   footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); }
+
+  .read-in-reader-link{
+    display:inline-block; margin-top:6px; font-size:12.5px; font-weight:600;
+    color: var(--accent-2, var(--accent)); text-decoration:none;
+  }
+  .read-in-reader-link:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -68,7 +74,7 @@
 </header>
 <div class="grid" id="grid">
 
-  <div class="card" data-latin="aquila fucosa" data-index="0">
+  <div class="card" data-latin="aquila fucosa" data-index="0" id="plate-1">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/4ae5ef2e0aff17773fd57dddeb037910e6debcbc.jpg" alt="Aquila fucosa plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 1 &middot; Wedge-tailed Eagle</div>
@@ -87,10 +93,11 @@ Traite d&#x27;Orn., p. 39.---Steph. Cont. Shaw&#x27;s Gen. Zool., vol. xiv. p. 1
 
 Aquila albirostris, Viei…</div>
       <button class="read-more" data-index="0">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Aquila%20fucosa">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="aquila morphnoides" data-index="1">
+  <div class="card" data-latin="aquila morphnoides" data-index="1" id="plate-2">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/43832f7ace0d63438b3507cf5cb225111a84d81e.jpg" alt="Aquila morphnoides plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 2 &middot; Little Australian Eagle</div>
@@ -103,10 +110,11 @@ Aquila Morphnoides, Gould in Proc, of Zool. Soc., Part VIII. p, 161.
 
 I shall perhaps better convey an idea of the rarity of this small but true species of Aquila, by stating that the specimen from which the accompanying drawing was made, and which forms part of my own collection, is the only one I have ever seen either living or dead. It is the second species of …</div>
       <button class="read-more" data-index="1">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Aquila%20morphnoides">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="ichthyiaetus leucogaster" data-index="2">
+  <div class="card" data-latin="ichthyiaetus leucogaster" data-index="2" id="plate-3">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/6d7e549899ca25b33c210f1f797d9c56d155ab1d.jpg" alt="Ichthyiaetus leucogaster plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 3 &middot; White-bellied Sea Eagle</div>
@@ -125,10 +133,11 @@ Haliceetus leucogaster, Gould, Syn. Birds of Australia, Part III.
 
 I have l…</div>
       <button class="read-more" data-index="2">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Ichthyiaetus%20leucogaster">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="haliastur leucosternus" data-index="3">
+  <div class="card" data-latin="haliastur leucosternus" data-index="3" id="plate-4">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/12bb5359c48fc3da320255cd8113223e1c3ce001.jpg" alt="Haliastur leucosternus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 4 &middot; White-breasted Sea Eagle</div>
@@ -147,10 +156,11 @@ Me-ne-u-roo, Aborigines of the Cobourg Peninsula.
 
 In size and in the general markings of its plumage, this beautiful species is more closely a…</div>
       <button class="read-more" data-index="3">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Haliastur%20leucosternus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="haliastur sphenurus" data-index="4">
+  <div class="card" data-latin="haliastur sphenurus" data-index="4" id="plate-5">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/11d9f50c55948b1361f9f260c13fa5026440bae2.jpg" alt="Haliastur sphenurus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 5 &middot; Whistling Eagle</div>
@@ -167,10 +177,11 @@ Moru and Wirwin, Aborigines of New South Wales.
 
 En-ha-jook, Aborigines of the Cobourg …</div>
       <button class="read-more" data-index="4">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Haliastur%20sphenurus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="pandion leucocephalus" data-index="5">
+  <div class="card" data-latin="pandion leucocephalus" data-index="5" id="plate-6">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/c0de7cc78394184a4a4ff5a9e4f2f15a9c73d527.jpg" alt="Pandion leucocephalus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 6 &middot; White-headed Osprey</div>
@@ -191,10 +202,11 @@ Fish Hawk, Colonists of Swan River.
 
 The White-headed Osprey, though not an abundant sp…</div>
       <button class="read-more" data-index="5">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Pandion%20leucocephalus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="falco hypoleucus" data-index="6">
+  <div class="card" data-latin="falco hypoleucus" data-index="6" id="plate-7">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/d6672eeabf7727339840edb090f69b06f6fa060f.jpg" alt="Falco hypoleucus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 7 &middot; Grey Falcon</div>
@@ -207,10 +219,11 @@ Falco hypoleucus, Gould in Proc, of Zool. Soc., Part VIII. p. 162. Boorh-ga, Abo
 
 Of this rare and beautiful Falcon I have seen only four examples, three of which are in my own collection, and the fourth in that of the Earl of Derby. The specimen from which my description in the &quot; Proceedings of the Zoological Society &quot; was taken, w…</div>
       <button class="read-more" data-index="6">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Falco%20hypoleucus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="falco melanogenys" data-index="7">
+  <div class="card" data-latin="falco melanogenys" data-index="7" id="plate-8">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/721a74ef6437558b660a4e7b6d3a2a3bd36c4721.jpg" alt="Falco melanogenys plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 8 &middot; Black-cheeked Falcon</div>
@@ -231,10 +244,11 @@ Gwet-ul-bur, Aborigines of the mountain and lowland districts of Western Austral
 
 The present bird, like the F.…</div>
       <button class="read-more" data-index="7">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Falco%20melanogenys">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="falco subniger" data-index="8">
+  <div class="card" data-latin="falco subniger" data-index="8" id="plate-9">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/c5698029f8c534150b0e2a95290b0f4e23bec5c3.jpg" alt="Falco subniger plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 9 &middot; Black Falcon</div>
@@ -249,10 +263,11 @@ Falco (Hierofalco&#x27;) subniger, Kaup, Isis, 1847, p. 76.
 
 All that I am able to communicate respecting this rare species of Falcon is that I have seen four examples, which were killed in South Australia; no particulars of its h…</div>
       <button class="read-more" data-index="8">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Falco%20subniger">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="falco frontatus" data-index="9">
+  <div class="card" data-latin="falco frontatus" data-index="9" id="plate-10">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/baa7c6147bd28aa08f38e36a64f598691bf07aaa.jpg" alt="Falco frontatus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 10 &middot; White -fronted Falcon</div>
@@ -269,10 +284,11 @@ Little Falcon, Colonists of Western Australia.
 
 This, one of the least of the true Falcons found in Australia, is universally spread over the southern portion of that country, including Van Diemen&#x27;s Land and the islands in Bass&#x27;s Straits. As its long p…</div>
       <button class="read-more" data-index="9">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Falco%20frontatus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="ieracidea berigora" data-index="10">
+  <div class="card" data-latin="ieracidea berigora" data-index="10" id="plate-11">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/ea73881b6425403c3232d1437b145a4f1a0f950f.jpg" alt="Ieracidea berigora plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 11 &middot; Brown Hawk</div>
@@ -293,10 +309,11 @@ Brown Hawk, Colonists of Van Diemen&#x27;s Land.
 
 This species is universally distributed over Van Diemen&#x27;s Land and New South Wales. It is represented in western and north-wester…</div>
       <button class="read-more" data-index="10">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Ieracidea%20berigora">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="ieracidea occidentalis" data-index="11">
+  <div class="card" data-latin="ieracidea occidentalis" data-index="11" id="plate-12">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/78811397efd6913198240626505d80042ae5eeea.jpg" alt="Ieracidea occidentalis plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 12 &middot; Western Brown Hawk</div>
@@ -311,10 +328,11 @@ Kar-gyne, Aborigines of the lowland and mountain districts of Western Australia.
 
 Hitherto ornithologists, and among them myself, have regarded the Common Brown Hawks, which occur so numerously in collections from Australia, as referrible to one and the same species,---an opinion founded principa…</div>
       <button class="read-more" data-index="11">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Ieracidea%20occidentalis">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="tinnunculus cencroides" data-index="12">
+  <div class="card" data-latin="tinnunculus cencroides" data-index="12" id="plate-13">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/e98ad39f52d42751b77f0addfc136e223c5f4e40.jpg" alt="Tinnunculus cencroides plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 13 &middot; Nankeen Kestril</div>
@@ -329,10 +347,11 @@ Ornithologists will not fail to observe how beautifully the present bird represe
 
 So far as is yet known, this elegant Kestril is…</div>
       <button class="read-more" data-index="12">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Tinnunculus%20cencroides">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="astur nova-hollandia" data-index="13">
+  <div class="card" data-latin="astur nova-hollandia" data-index="13" id="plate-14">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/39f1bdd550ff35e099d673f1c7845bbce0c0a008.jpg" alt="Astur nova-hollandia plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 14 &middot; New Holland Goshawk</div>
@@ -349,10 +368,11 @@ Fair Falcon, Lath. Gen. Syn. Supp., vol. ii. p. 54 ?---Lath. Gen. Hist., vol. i.
 
 The only part of Australia in which I have met with this species is New South Wales, where it would appear to evince a preference for the…</div>
       <button class="read-more" data-index="13">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Astur%20nova-hollandia">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="astur nova=hollandiz" data-index="14">
+  <div class="card" data-latin="astur nova=hollandiz" data-index="14" id="plate-15">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/305077299b29de5a4451b37c7012f4e3628208fe.jpg" alt="Astur nova=hollandiz plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 15 &middot; White Goshawk</div>
@@ -371,10 +391,11 @@ Falco Novce-Hollandice, Lath. Ind. Orn., vol. i. p. 16.--- Gmel. Syst. Nat., vol
 
 Falco …</div>
       <button class="read-more" data-index="14">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Astur%20nova%3Dhollandiz">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="astur radiatus" data-index="15">
+  <div class="card" data-latin="astur radiatus" data-index="15" id="plate-16">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/33657f737f4b389271fce68fedc8103b62a094f3.jpg" alt="Astur radiatus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 16 &middot; Radiated Goshawk</div>
@@ -391,10 +412,11 @@ Halidetus Calei, Vig. and Horsf. in Linn. Trans., vol. xv. p. 186.
 
 The bird here represented I conceive to be the true Falco radiatus of Latham ; it is but little known to ornithologists, from th…</div>
       <button class="read-more" data-index="15">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Astur%20radiatus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="astur approximans" data-index="16">
+  <div class="card" data-latin="astur approximans" data-index="16" id="plate-17">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/47dd636a440daaefc47d995757482e52dc10d588.jpg" alt="Astur approximans plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 17 &middot; Australian Goshawk</div>
@@ -415,10 +437,11 @@ Bilbil, Aborigines of New South Wales.
 
 Among the whole perhaps of the Australian birds, certainly among the Austra…</div>
       <button class="read-more" data-index="16">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Astur%20approximans">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="astur cruentus" data-index="17">
+  <div class="card" data-latin="astur cruentus" data-index="17" id="plate-18">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/895454aab6a5454fc332b5456a529fb2f10b3b7d.jpg" alt="Astur cruentus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 18 &middot; West Australian Goshawk</div>
@@ -435,10 +458,11 @@ Good-jee-lum, Aborigines around Perth, Western Australia.
 
 This Hawk is intermediate in size between the Astur approximans and Accipiter torquatus; it is of a more grey Or blue colour on the back, and has the transverse lines on…</div>
       <button class="read-more" data-index="17">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Astur%20cruentus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="accipiter torquatus" data-index="18">
+  <div class="card" data-latin="accipiter torquatus" data-index="18" id="plate-19">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/7297faedeaa5921a4f5c212ea3e0d94cfcb35b25.jpg" alt="Accipiter torquatus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 19 &middot; Collared Sparrow Hawk</div>
@@ -455,10 +479,11 @@ Falco nisus, Lath. Ind. Orn. Supp., p. xi. ?
 
 New Holland Sparrow Hawk, Lath. Gen. Syn. Supp., vol. ii. p. 51?; and Gen. Hist.,…</div>
       <button class="read-more" data-index="18">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Accipiter%20torquatus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="buteo melanosternon" data-index="19">
+  <div class="card" data-latin="buteo melanosternon" data-index="19" id="plate-20">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/ecfcd1608096460e2a75d710ca9a6c5b0f805f55.jpg" alt="Buteo melanosternon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 20 &middot; Black-breasted Buzzard</div>
@@ -473,10 +498,11 @@ Goo-dap, Aborigines of the mountain districts of Western Australia.
 
 If we examine the Australian members of the family of Falconidce, we cannot fail to observe that it comprises representatives of most of the forms inhabiting similar latitudes in the northern hemisphere; no example of the genu…</div>
       <button class="read-more" data-index="19">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Buteo%20melanosternon">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="milvus affinis" data-index="20">
+  <div class="card" data-latin="milvus affinis" data-index="20" id="plate-21">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/0a113de9cf5b2893468b133d26df66fb688d793a.jpg" alt="Milvus affinis plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 21 &middot; Allied Kite</div>
@@ -489,10 +515,11 @@ Milvus affinis, Gould in Proc, of Zool. Soc., Part V. p. 140 ; and in Syn. Birds
 
 With the single exception of Van Diemen&#x27;s Land, this Kite is universally dispersed over all the Australian Colonies, and is equally as common at Port Essington, on the north coast, as it is on the southern por­tions of the country.…</div>
       <button class="read-more" data-index="20">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Milvus%20affinis">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="milvus isurus" data-index="21">
+  <div class="card" data-latin="milvus isurus" data-index="21" id="plate-22">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/6d603140435d04e9ec19d566974a74beeb1b7ad2.jpg" alt="Milvus isurus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 22 &middot; Square-tailed Kite</div>
@@ -509,10 +536,11 @@ Kite, of the Colonists.
 
 This new species, although possessing the short feet, long wings, and other characters of the true Kites, may at once be distinguished from all the other member…</div>
       <button class="read-more" data-index="21">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Milvus%20isurus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="elanus axillaris" data-index="22">
+  <div class="card" data-latin="elanus axillaris" data-index="22" id="plate-23">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/5c8403e987a1144fbd36f446478d2fba367924c2.jpg" alt="Elanus axillaris plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 23 &middot; Black-shouldered Kite</div>
@@ -531,10 +559,11 @@ Elanus notatus, Gould in Proc, of Zool. Soc., PartV. p. 141; and in Syn. Birds o
 
 A more careful comparison of the birds from var…</div>
       <button class="read-more" data-index="22">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Elanus%20axillaris">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="elanus scriptus" data-index="23">
+  <div class="card" data-latin="elanus scriptus" data-index="23" id="plate-24">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/77fa8fa99433384708b9945141937f312edc5739.jpg" alt="Elanus scriptus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 24 &middot; Letter-winged Kite</div>
@@ -547,10 +576,11 @@ Elanus scriptus, Gould in Proc. of Zool. Soc., June 28, 1842.
 
 I have nothing more to communicate respecting this new species of Elanus, than that I found a single speci­men of it among a collection of skins that had been sent from South Australia. In size it considerably exceeds the Black-shouldered Kite, from which it also differs in the colouring of the upper surface, …</div>
       <button class="read-more" data-index="23">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Elanus%20scriptus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="lepidogenys subcristatus" data-index="24">
+  <div class="card" data-latin="lepidogenys subcristatus" data-index="24" id="plate-25">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/1458b4c4be9223b5a7bcc2277d50985296a702bf.jpg" alt="Lepidogenys subcristatus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 25 &middot; Crested Hawk</div>
@@ -563,10 +593,11 @@ Lepiaogenys subcristatus, Gould in Proc, of Zool. Soc., Part V. p. 140 ; and in 
 
 I regret to say that I am not sufficiently acquainted with this singular species to give any account of its hahits and economy, but, judging from the feebleness of its bill and talons and the shortness of its tarsi, I conceive that it principally preys up…</div>
       <button class="read-more" data-index="24">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Lepidogenys%20subcristatus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="circus assimilis" data-index="25">
+  <div class="card" data-latin="circus assimilis" data-index="25" id="plate-26">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/e3aabd5beb21f8d7335782a6bead78d741c9eb80.jpg" alt="Circus assimilis plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 26 &middot; Allied Harrier</div>
@@ -581,10 +612,11 @@ Swamp Hawk, of the Colonists.
 
 The Circus assimilis may be regarded as the commonest of the Harriers inhabiting New South Wales and South Australia; it also occurs, but in smaller numbers, in Van Diemen&#x27;s Land. Another Harrier is rather abundantly dispersed over all the localities suitable to its existen…</div>
       <button class="read-more" data-index="25">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Circus%20assimilis">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="circus jardinii" data-index="26">
+  <div class="card" data-latin="circus jardinii" data-index="26" id="plate-27">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/05f131fab4829c92b67e74f260ab65785cf9792e.jpg" alt="Circus jardinii plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 27 &middot; Jardine&#x27;s Harrier</div>
@@ -595,10 +627,11 @@ Circus Jardinii, Gould in Proc. of Zool. Soc., Part V. p. 141; and in Syn. Birds
 
 This very beautiful Harrier, which is distinguished from every other species of the genus at present known by the spotted character of its plumage, is plentifully dispersed over every portion of New South Wales, wherever localities favourable to the existence of the Har…</div>
       <button class="read-more" data-index="26">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Circus%20jardinii">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="strix castanops" data-index="27">
+  <div class="card" data-latin="strix castanops" data-index="27" id="plate-28">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/e78b6f28ed3a6dbe4e5860a5d08e623dd514f917.jpg" alt="Strix castanops plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 28 &middot; Chestnut-faced Owl</div>
@@ -611,10 +644,11 @@ Strix castanops, Gould in Proc. of Zool. Soc., Part IV. p. 140 ; and in Syn. Bir
 
 Van Diemen&#x27;s Land is the native country of this Owl, a species distinguished from all the other members of the genus Strix, as now restricted, by its great size and powerful form; few of the Raptorial birds, in fact, with the exception of the Eagles, are more formid…</div>
       <button class="read-more" data-index="27">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Strix%20castanops">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="strix personata" data-index="28">
+  <div class="card" data-latin="strix personata" data-index="28" id="plate-29">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/7ceaaef2e3121c85f719c0afaf44ea1debeab49c.jpg" alt="Strix personata plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 29 &middot; Masked Barn Owl</div>
@@ -629,10 +663,11 @@ Strix Cyclops, Gould in Proc, of Zool. Soc., Part IV. p. 140 ; and in Syn. Birds
 
 It will be recollected that the habitat of the Strix castanops is Van Diemen&#x27;s Land, to which island it is probably restricted; on the other h…</div>
       <button class="read-more" data-index="28">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Strix%20personata">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="strix tenebricosus" data-index="29">
+  <div class="card" data-latin="strix tenebricosus" data-index="29" id="plate-30">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/29356328874aea84430f2a9569c928c22c76d97f.jpg" alt="Strix tenebricosus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 30 &middot; Sooty Owl</div>
@@ -645,10 +680,11 @@ Strix tenebricosus, Gould in Proc, of Zool. Soc., Part XIII. p. 80.
 
 A fine specimen of this species is comprised in the collection of the British Museum, and a second example graces my own; its habitat is undoubtedly the dense brushes of the east coast of Australia, where, like other Owls, it remains secluded during the day, and sallies forth at night in search of its natural …</div>
       <button class="read-more" data-index="29">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Strix%20tenebricosus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="strix delicatulus" data-index="30">
+  <div class="card" data-latin="strix delicatulus" data-index="30" id="plate-31">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/12f2bef3385324f4bfcf25e12841385c21a290bb.jpg" alt="Strix delicatulus plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 31 &middot; Delicate Owl</div>
@@ -661,10 +697,11 @@ Strix delicatulus, Gould in Proc, of Zool. Soc., Part IV., 1836, p. 140 ; and in
 
 This is the least of the Australian Owls belonging to that section of the group to which the generic term of Strix has been restricted; it is also the one most generally distributed. I observed it in almos…</div>
       <button class="read-more" data-index="30">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Strix%20delicatulus">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="athene boobook" data-index="31">
+  <div class="card" data-latin="athene boobook" data-index="31" id="plate-32">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/7571e4fb7ae3611ef8b763b5639453b90e751e53.jpg" alt="Athene boobook plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 32 &middot; Boobook Owl</div>
@@ -681,10 +718,11 @@ Buck-buck, Aborigines of New South Wales.
 
 Goor-goor-da, Aborigines of Western Austr…</div>
       <button class="read-more" data-index="31">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Athene%20boobook">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="athene maculata" data-index="32">
+  <div class="card" data-latin="athene maculata" data-index="32" id="plate-33">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/f187b8d88ae25371659e5ea0da17792ab1f623d3.jpg" alt="Athene maculata plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 33 &middot; Spotted Owl</div>
@@ -699,10 +737,11 @@ Athene maculata, Gould in Syn. Birds of Australia, Part III.
 
 [This species is very generally distributed over Van Diemen&#x27;s Land; it also inhabits South Australia and New South Wales, but in far less numbers. It generally takes up its abode in the thickly-foliaged trees of the woods and gulleys, and usually selects tho…</div>
       <button class="read-more" data-index="32">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Athene%20maculata">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="athene connivens" data-index="33">
+  <div class="card" data-latin="athene connivens" data-index="33" id="plate-34">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/a05a1b8e954897da4f94a578b433cd547c270d5c.jpg" alt="Athene connivens plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 34 &middot; Winking Owl</div>
@@ -721,10 +760,11 @@ Goora-a-gang, Aborigines of New South Wales.
 
 Wool-boo-gle, Aborigines of the mountain district of Wes…</div>
       <button class="read-more" data-index="33">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Athene%20connivens">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="athene strenua" data-index="34">
+  <div class="card" data-latin="athene strenua" data-index="34" id="plate-35">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/a300a7dc96d1afbffdb517193a40384b450d2b69.jpg" alt="Athene strenua plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 35 &middot; Powerful Owl</div>
@@ -737,10 +777,11 @@ Athene strenua, Gould in Proc, of Zool. Soc,, Part V. p. 142; and in Syn. Birds 
 
 With the exception of the Eagles, Aquila fucosa and Ichthyiaetus leucogaster, this is the most powerful of the Raptorial birds yet discovered in Australia. Its strength is prodigious, and woe to him who ventures to approach its clutch when wounded. So far as I have been able to ascerta…</div>
       <button class="read-more" data-index="34">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Athene%20strenua">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-latin="athene rufa" data-index="35">
+  <div class="card" data-latin="athene rufa" data-index="35" id="plate-36">
     <div class="plate-wrap"><img class="plate-img" src="images/vol1_plates/f63eb9804f944f2b571f3a6239e80d6eada6332f.jpg" alt="Athene rufa plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. I &middot; Plate 36 &middot; Rufous Owl</div>
@@ -753,6 +794,7 @@ Athene rufa, Gould in Proc. of Zool. Soc., February 24, 1846. Ngor-gork, Aborigi
 
 A single specimen of this fine Owl was obtained at Port Essington by Mr. Gilbert, who shot it in a thicket amidst the swamps in the neighbourhood of the settlement. It is a most powerful species, fully equalling in size the Athene strenua, from which however it is at once. distingu…</div>
       <button class="read-more" data-index="35">Read full account &rarr;</button>
+      <a class="read-in-reader-link" href="reader.html?species=Athene%20rufa">Open in Reader &rarr;</a>
     </div>
   </div>
 </div>
