@@ -44,12 +44,27 @@
   .lib-badge-story { background: #7a5a1f; color: #fff; }
   .lib-story-text { color: #3a2f1e; }
   .lib-story-sources { font-size: 10.5px; color: #a3906a; margin-top: 6px; font-style: italic; }
+  .lib-search-wrap { position: sticky; top: 0; background: #fbf8f2; padding: 10px 0 14px; margin-bottom: 4px; z-index: 5; border-bottom: 1px solid #e4ddce; }
+  .lib-search-input {
+    width: 100%; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 15px; padding: 10px 14px; border: 1px solid #cfc4a8; border-radius: 8px;
+    background: #fff; color: #2c2620;
+  }
+  .lib-search-input:focus { outline: none; border-color: #1f7a6e; box-shadow: 0 0 0 2px #cfe4de; }
+  .lib-search-count { font-size: 11.5px; color: #8a7a63; margin-top: 6px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  .lib-entry.lib-hidden { display: none; }
+  .lib-no-results { display: none; padding: 30px 0; text-align: center; color: #8a7a63; font-style: italic; }
 </style>
 </head>
 <body>
 <h1>Gould&rsquo;s Library</h1>
 <div class="subtitle">The books and journals John Gould cited as his sources throughout Birds of Great Britain (1862&ndash;1873), extracted from the synonymy citations at the head of each species account and deduplicated across all 5 volumes.</div>
-<div class="progress">410 of 414 distinct works verified with full APA citations and working links so far (ordered by how often Gould cites them). 4 could not be identified despite extensive lookup work &mdash; the searching phase for those is now closed (Jan&rsquo;s call, 5 Aug 2026), though new material could always reopen one. 22 of 414 also have a researched author-and-significance write-up so far &mdash; who the person was, and what this reference actually offered Gould&rsquo;s own readers and offers a browser today &mdash; a slow-growing feature, not a completed one. Every citation also shows which of the site&rsquo;s species plates it&rsquo;s attached to, and, where Gould&rsquo;s own text gives one, the old Latin name he cited it under.</div>
+<div class="progress">411 of 414 distinct works verified with full APA citations and working links so far (ordered by how often Gould cites them). 4 could not be identified despite extensive lookup work &mdash; the searching phase for those is now closed (Jan&rsquo;s call, 5 Aug 2026), though new material could always reopen one. 23 of 414 also have a researched author-and-significance write-up so far &mdash; who the person was, and what this reference actually offered Gould&rsquo;s own readers and offers a browser today &mdash; a slow-growing feature, not a completed one. Every citation also shows which of the site&rsquo;s species plates it&rsquo;s attached to, and, where Gould&rsquo;s own text gives one, the old Latin name he cited it under.</div>
+<div class="lib-search-wrap">
+  <input type="text" id="lib-search" class="lib-search-input" placeholder="Search by author, title, species, or keyword&hellip;" autocomplete="off">
+  <div class="lib-search-count" id="lib-search-count"></div>
+</div>
+<div id="lib-entries">
 
     <div class="lib-entry lib-verified" id="work-linn-syst-nat">
       
@@ -369,9 +384,16 @@ One genuine loose thread from the sources themselves, logged rather than resolve
 
     <div class="lib-entry lib-verified" id="work-g-r-gray-list-of-gen-of-birds">
       
-      <div class="lib-story lib-story-empty">
-        <span class="lib-badge lib-badge-story-pending">Author &amp; significance</span>
-        <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
+      <div class="lib-story">
+        <span class="lib-badge lib-badge-story">Author &amp; significance</span>
+        <span class="lib-story-text">There is a small paradox sitting inside a single citation string in Gould&#x27;s own Library. &quot;G. R. Gray, List of Gen. of Birds&quot; carries 20 citations across 19 species -- a tidy, unremarkable-looking entry, tied for next-most-cited with a Scottish naturalist&#x27;s manual. But checked line by line against Gould&#x27;s actual page references, the string turns out to name not one book but two. Ten of the twenty citations point to a slim, single-volume checklist, its pages running from p. 3 to p. 98 and two of them explicitly dated &quot;1840&quot; and &quot;1841&quot; in Gould&#x27;s own text. The other ten point to something else entirely: a citation reaching into &quot;vol. iii&quot; and page 660, from a three-volume production that would not exist for another three to five years. Both are genuinely by the same author -- Gould simply never bothered to distinguish them, and a century and a half later neither did the algorithm that clustered his citations back into this Library.
+
+The man behind both books was George Robert Gray (8 July 1808 -- 6 May 1872), born in Little Chelsea, London, to Samuel Frederick Gray, a working naturalist and pharmacologist, and younger brother of John Edward Gray, who would go on to run the British Museum&#x27;s entire Zoology department. George joined the Museum himself in 1831, aged twenty-two, as an Assistant in the Zoology Branch -- not, at first, as a bird man at all: his earliest published work was entomological, cataloguing Lepidoptera and, eventually, more than doubling the number of named stick-insect species then known to science, and in 1833 he was a founding member of the Royal Entomological Society of London. Only afterward did he move into ornithology, eventually serving as head of the British Museum&#x27;s ornithological section for forty-one years.
+
+The first of the two books behind this citation, A List of the Genera of Birds, with an Indication of the Typical Species of Each Genus, appeared in 1840 -- a working checklist rather than a narrative, meant to pin down which species stood as the type for each bird genus then recognised. A revised second edition followed in 1841, with a further sixteen-page appendix in 1842; Gould&#x27;s dated citations, split between &quot;1840&quot; and &quot;1841&quot; and running only as far as p. 98, match this slim single volume exactly. The second, far larger book was The Genera of Birds: Comprising Their Generic Characters, a Notice of the Habits of Each Genus, and an Extensive List of Species Referred to Their Several Genera, issued in three volumes between 1844 and 1849, illustrated by David William Mitchell and, in its later plates, Joseph Wolf, and containing an estimated 46,000 individual references -- one of the most exhaustive single-author indexing projects in nineteenth-century ornithology. Gould&#x27;s own citation data confirms the identification independently: a handful of entries elsewhere in this Library, kept separate from these twenty, read &quot;Gray and Mitch. Gen. of Birds, vol. iii. p. 653&quot; -- naming Mitchell outright and citing the same volume and page range as the unlabelled half of this cluster.
+
+Gray kept at this kind of work for the rest of his career, publishing a further Hand-list of Genera and Species of Birds in three parts between 1869 and 1871, essentially a running catalogue of the British Museum&#x27;s own collection, before his death in London in 1872. None of it reads as dramatic. It reads as exactly what it was: four decades spent making sure that when a name was attached to a bird, someone could actually go and check it -- work so thorough that even Gould, citing it in a hurry, folded two separate books into one shorthand without anyone noticing for over 170 years.</span>
+        <div class="lib-story-sources">Checked against: gould_library_clusters_gb.json -- re-ranked all 414 clusters from scratch this pass (not trusted from Pass 16&#x27;s plan note): confirmed a genuine tie at 20 total citations / 19 species between &#x27;G. R. Gray, List of Gen. of Birds&#x27; and &#x27;Macgill. Man. of Nat. Hist., Orn&#x27;, both metrics tied exactly, sitting directly below the now-told &#x27;Keys, et Blas. Wirbelth. Eur&#x27; (21/21, told last pass)., Tie-break reasoning: species_count did not resolve it (19=19 for both). Fell back to alphabetical order of the canonical key (&#x27;G. R. Gray...&#x27; before &#x27;Macgill...&#x27;) as a plain, defensible, non-arbitrary tiebreaker, the same rule used for Fleming/Keyserling in Pass 15. &#x27;Macgill. Man. of Nat. Hist., Orn&#x27; (William MacGillivray) remains the natural next candidate for a future pass., citation_stories.json -- confirmed no existing entry for &#x27;G. R. Gray, List of Gen. of Birds&#x27; (22 entries going in) before writing., citations_parsed_gb.json -- spot-checked all 20 raw citations behind the cluster&#x27;s two variant spellings. &#x27;G. R. Gray, List of Gen. of Birds&#x27; (10, e.g. &#x27;Otocoris alpestris, G. R. Gray, List of Gen. of Birds, 1841, p. 62.&#x27;, &#x27;Unota, G. R. Gray, List of Gen. of Birds, 1840, p. 45.&#x27;) resolve to a single-volume checklist with pages running p. 3-p. 98 and explicit 1840/1841 dates in the raw text. &#x27;G. R. Gray, Gen. of Birds&#x27; (10, e.g. &#x27;Caccabis rufa, G. R. Gray, Gen. of Birds, vol. iii. p. 508...&#x27;, &#x27;Limosa lapponica, G. R. Gray, Gen. of Birds, vol. iii. p. 570...&#x27;) resolve instead to a separate multi-volume work referencing &#x27;vol. i&#x27; and &#x27;vol. iii&#x27; with page numbers into the 600s -- genuinely two different books by the same author merged under one clustering canonical key, not double-counted or parsing noise; a second, wholly separate resolved_work in the same dataset, &#x27;Gray and Mitch. Gen. of Birds&#x27; (4 citations, e.g. &#x27;Stercorarius catarrhactes, Gray and Mitch. Gen. of Birds, vol. iii. p. 653...&#x27;), independently corroborates the multi-volume work&#x27;s identity as The Genera of Birds by naming illustrator David William Mitchell directly and citing the same vol. iii page range., en.wikipedia.org/wiki/George_Robert_Gray -- birth 8 July 1808 (Little Chelsea, London), death 6 May 1872 (London), son of naturalist/pharmacologist Samuel Frederick Gray, younger brother of zoologist John Edward Gray, joined the British Museum in 1831 as Assistant Keeper of the Zoology Branch, early entomological work (Lepidoptera, more than doubling named phasmid species across three publications in 1833/1835/1843), founding member of the Royal Entomological Society of London in 1833, head of the British Museum&#x27;s ornithological section for forty-one years, The Genera of Birds (1844-49, illustrated by David William Mitchell and Joseph Wolf, ~46,000 references) as his defining ornithological work, archive.org/details/listofgeneraofbi00gra -- publication record for &#x27;A list of the genera of birds: with their synonyma and an indication of the typical species of each genus&#x27; confirming the 1841 (revised) edition, R. and J.E. Taylor, London, plus a separate 16-page 1842 appendix -- consistent with the 1840/1841 dated citations found directly in Gould&#x27;s own data and the &#x27;2nd edit.&#x27; variant spelling recorded in gould_library_clusters_gb.json, collections.si.edu (Smithsonian Institution collections record) -- independently confirmed &#x27;The Genera of Birds... illustrated by David William Mitchell; in three volumes; 1844-1849&#x27; as a distinct, later, multi-volume work from the 1840/41 List, WebSearch for &#x27;George Robert Gray&#x27; + &#x27;John Gould&#x27; rivalry/collaboration -- no reliable secondary source found describing any documented personal or professional relationship between Gray and Gould specifically; excluded from the vignette rather than speculated, consistent with this project&#x27;s established discipline of excluding unverifiable claims, WebSearch for &#x27;Hand-list of genera and species of birds&#x27; 1869-1871 -- confirmed as a real, later British Museum catalogue publication by Gray, used only briefly in the vignette&#x27;s closing paragraph as a career-capping detail, not elaborated beyond what was confirmed</div>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Gray, G. R. (1840). A list of the genera of birds, with their synonyma and an indication of the typical species of each genus. R. and J. E. Taylor.</div>
       <div class="lib-meta">Cited 20 times across 19 species &middot; <a href="https://archive.org/details/listofgeneraofbi00gra" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
@@ -472,8 +494,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Koch, C. L. (1816). System der baierischen Zoologie (Vol. 1). Stein.</div>
-      <div class="lib-meta">Cited 13 times across 13 species &middot; <a href="https://www.digitale-sammlungen.de/de/view/bsb11272057" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      
+      <div class="lib-meta">Cited 13 times across 13 species &middot; <a href="https://books.google.com/books?id=cLJYAAAAcAAJ" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">[LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Saxicola montana</em>, <em>Curruca luscinia</em>, <em>Muscipeta locustella</em>, <em>montanus</em> (+8 more)</div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Koch, Baier. ZooL”, “Koch, Syst. Baier. Zool”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-078" title="Petrocincla saxatilis">Rock-Thrush</a><a class="lib-species-tag" href="index.html#plate-090" title="Luscinia philomela">Nightingale</a><a class="lib-species-tag" href="index.html#plate-112" title="Locustella avicula">Grasshopper Warbler</a><a class="lib-species-tag" href="index.html#plate-123" title="Anthus spinoletta">Vinous Pipit</a><a class="lib-species-tag" href="index.html#plate-149" title="Chrysomitris spinus">Siskin</a><a class="lib-species-tag" href="index.html#plate-150" title="Serinus hortulanus">Serin Finch</a><a class="lib-species-tag" href="index.html#plate-153" title="Pyrrhula vulgaris">Bullfinch</a><a class="lib-species-tag" href="index.html#plate-154" title="Pyrrhula vulgaris">Bullfinch</a><a class="lib-species-tag" href="index.html#plate-161" title="Linota cannabina">Linnet</a><a class="lib-species-tag" href="index.html#plate-223" title="Oedicnemus crepitans">Stone-Plover, or Thick-knee</a><a class="lib-species-tag" href="index.html#plate-241" title="Glottis canescens">Greenshank</a><a class="lib-species-tag" href="index.html#plate-260" title="Actodromas minuta">Little Stint</a><a class="lib-species-tag" href="index.html#plate-263" title="Limicola pygmaea">Broad-billed Sandpiper</a></div>
@@ -808,8 +830,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Koch, C. L. (1816). System der baierischen Zoologie (Vol. 1). Stein.</div>
-      <div class="lib-meta">Cited 7 times across 7 species &middot; <a href="https://www.digitale-sammlungen.de/de/view/bsb11272057" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Same work as “Koch, Baier. Zool.” above — Gould gives the title in fuller form here.</div>
+      <div class="lib-meta">Cited 7 times across 7 species &middot; <a href="https://books.google.com/books?id=cLJYAAAAcAAJ" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Same work as “Koch, Baier. Zool.” above — Gould gives the title in fuller form here. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Accipiter aruginosus</em>, <em>Pygargus dispar</em>, <em>Acredula caudata</em>, <em>Panurus biarmicus</em> (+1 more)</div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Koch, Syst. Baierisch. ZooL”, “Koch, Syst. d. Baierisch. Zool. 1816”, “Koch, Syst. Baierisch. Zool”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-022" title="Circus aeruginosus">Marsh-Harrier</a><a class="lib-species-tag" href="index.html#plate-023" title="Circus aeruginosus">Marsh-Harrier</a><a class="lib-species-tag" href="index.html#plate-024" title="Circus cyaneus">Hen Harrier</a><a class="lib-species-tag" href="index.html#plate-062" title="Mecistura caudata">Long-tailed Tit</a><a class="lib-species-tag" href="index.html#plate-063" title="Mecistura caudata">Long-tailed Tit</a><a class="lib-species-tag" href="index.html#plate-064" title="Calamophilus biarmicus">Bearded Tit</a><a class="lib-species-tag" href="index.html#plate-176" title="Garrulus glandarius">Jay</a></div>
@@ -836,8 +858,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Eyton, T. C. (1836). A history of the rarer British birds. Longman, Rees, Orme, Brown, Green, and Longman.</div>
-      <div class="lib-meta">Cited 7 times across 6 species &middot; <a href="https://www.biodiversitylibrary.org/creator/16323" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      
+      <div class="lib-meta">Cited 7 times across 6 species &middot; <a href="https://www.biodiversitylibrary.org/item/77954" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">[LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Budytes boarula</em>, <em>acuta</em>, <em>caudata</em>, <em>Chroicocephalus minutus</em> (+2 more)</div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Eyton, Hist. of Rarer Brit. Birds”, “Eyton, Rare Brit. Birds”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-118" title="Calobates sulphurea">Grey Wagtail</a><a class="lib-species-tag" href="index.html#plate-119" title="Calobates sulphurea">Grey Wagtail</a><a class="lib-species-tag" href="index.html#plate-296" title="Dafila acuta">Pintailed Duck</a><a class="lib-species-tag" href="index.html#plate-344" title="Hydrocoloeus minutus">Little Gull</a><a class="lib-species-tag" href="index.html#plate-348" title="Sterna hirundo">Common Tern</a><a class="lib-species-tag" href="index.html#plate-357" title="Stercorarius pomatorhinus">Pomatorhine Skua</a></div>
@@ -1034,8 +1056,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Bonnaterre, P. J. (1790–1823). Tableau encyclopédique et méthodique des trois règnes de la nature: Ornithologie. Panckoucke.</div>
-      <div class="lib-meta">Cited 5 times across 5 species &middot; <a href="https://archive.org/details/tableauencyclop00bonn" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      
+      <div class="lib-meta">Cited 5 times across 5 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/119325" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">[LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Anthus paludosa</em>, <em>Coturnix communis</em>, <em>Turnix andalusica</em>, <em>candidus</em> (+1 more)</div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Bonn. Ency. Meth., Orn”, “Bonn. Enc. Meth. Orn”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-121" title="Anthus campestris">Tawny Pipit</a><a class="lib-species-tag" href="index.html#plate-203" title="Coturnix communis">Common Quail</a><a class="lib-species-tag" href="index.html#plate-204" title="Turnix africanus">Andalusian Turnix</a><a class="lib-species-tag" href="index.html#plate-222" title="Himantopus candidus">Stilt- or Long-legged Plover</a><a class="lib-species-tag" href="index.html#plate-303" title="Eniconetta stelleri">Steller&#x27;s Duck</a></div>
@@ -1048,8 +1070,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Coues, E. (1860s–1870s). [Ornithological notes]. Proceedings of the Academy of Natural Sciences of Philadelphia.</div>
-      <div class="lib-meta">Cited 5 times across 5 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/8241" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Coues published numerous short species/genus notes across many issues of this journal; Gould&#x27;s citations don&#x27;t specify which issue.</div>
+      <div class="lib-meta">Cited 5 times across 5 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/6885" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Coues published numerous short species/genus notes across many issues of this journal; Gould&#x27;s citations don&#x27;t specify which issue. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Actodromas honapartei</em>, <em>macroura</em>, <em>Stercorarius richardsonii</em>, <em>Buffoni</em> (+1 more)</div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Coues, Proc. Acad. Nat. Sci. Philad”, “Coues, Proc. Acad. Sci. Philad. 1863”, “Coues, Proc, of Acad. Nat. Sci. Philad”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-259" title="Pelidna Bonapartei">Bonaparte&#x27;s Sandpiper</a><a class="lib-species-tag" href="index.html#plate-350" title="Sterna macrura">Arctic Tern</a><a class="lib-species-tag" href="index.html#plate-358" title="Stercorarius parasiticus">Arctic Skua</a><a class="lib-species-tag" href="index.html#plate-359" title="Stercorarius longicaudus">Long-tailed Skua</a><a class="lib-species-tag" href="index.html#plate-363" title="Thalassidroma Leachii">Fork-tailed Storm-Petrel</a></div>
@@ -1286,8 +1308,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Bonaparte, C. L. (1828). Synopsis of the birds of the United States. Annals of the Lyceum of Natural History of New York, 2, 1–435.</div>
-      <div class="lib-meta">Cited 4 times across 4 species &middot; <a href="https://www.biodiversitylibrary.org/creator/12459" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      
+      <div class="lib-meta">Cited 4 times across 4 species &middot; <a href="https://archive.org/details/annalsoflyceumof21828lyce" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">LINK FIXED 2026-08-06: earlier link (BHL creator/12459) resolved to an unrelated limnology paper, flagged as unresolved in the full link audit. Found replacement: the actual host volume -- Annals of the Lyceum of Natural History of New-York, Vol. 2, 1828 -- on Internet Archive (identifier annalsoflyceumof21828lyce), confirmed matching the exact volume and year in the APA citation (&quot;2, 1-435&quot;). This is the full journal volume, not a page-specific link to Bonaparte&#x27;s article within it; the volume&#x27;s own scan has some page-sequencing/missing-page issues per Internet Archive&#x27;s own item notes, but the identification is solid on volume+year match.</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Fuligula mollissima</em>, <em>Fuligula spectabilis</em>, <em>Fuligula fusca</em>, <em>Fuligula perspicillata</em></div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Bonap. Syn. of Birds of United States”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-304" title="Somateria mollissima">Eider Duck</a><a class="lib-species-tag" href="index.html#plate-305" title="Somateria spectabilis">King Duck</a><a class="lib-species-tag" href="index.html#plate-307" title="Oidemia fusca">Velvet Scoter</a><a class="lib-species-tag" href="index.html#plate-308" title="Oidemia perspicillata">Surf-Scoter</a></div>
@@ -1524,8 +1546,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Eyton, T. C. (1836). A history of the rarer British birds. Longman, Rees, Orme, Brown, Green, and Longman.</div>
-      <div class="lib-meta">Cited 3 times across 3 species &middot; <a href="https://www.biodiversitylibrary.org/creator/16323" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Same work as “Eyton, Hist, of Rarer Brit. Birds.” above, author abbreviated differently.</div>
+      <div class="lib-meta">Cited 3 times across 3 species &middot; <a href="https://www.biodiversitylibrary.org/item/77954" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Same work as “Eyton, Hist, of Rarer Brit. Birds.” above, author abbreviated differently. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Whitei</em>, <em>Turtur vulgaris</em>, <em>Rissa cinerea</em></div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Eyt. Hist. Rarer Brit. Birds”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-073" title="Oreocincla aurea">White&#x27;s Thrush</a><a class="lib-species-tag" href="index.html#plate-192" title="Turtur auritus">Turtledove</a><a class="lib-species-tag" href="index.html#plate-339" title="Rissa tridactyla">Kittiwake</a></div>
@@ -1678,8 +1700,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Vigors, N. A. (1820s–1830s). [Ornithological papers]. The Zoological Journal.</div>
-      <div class="lib-meta">Cited 2 times across 2 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/8309" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Vigors, a founder of the Zoological Society of London, published numerous short papers in this journal; Gould&#x27;s citations don&#x27;t specify which one.</div>
+      <div class="lib-meta">Cited 2 times across 2 species &middot; <a href="https://archive.org/details/zoologicaljourna118241825sowe" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Vigors, a founder of the Zoological Society of London, published numerous short papers in this journal; Gould&#x27;s citations don&#x27;t specify which one. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Petrocincla saxatilis</em>, <em>Thalassidroma pelagica</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-078" title="Petrocincla saxatilis">Rock-Thrush</a><a class="lib-species-tag" href="index.html#plate-364" title="Thalassidroma pelagica">Storm-Petrel</a></div>
@@ -2112,8 +2134,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Retzius, A. J. (1800). Caroli a Linné Fauna Svecica (New ed.). Siegfried Lebrecht Crusius.</div>
-      <div class="lib-meta">Cited 2 times across 2 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/79923" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Retzius&#x27;s revised, updated edition of Linnaeus&#x27;s own Fauna Suecica (his catalogue of Swedish animals), reissued decades after the original with corrections and additions.</div>
+      <div class="lib-meta">Cited 2 times across 2 species &middot; <a href="https://archive.org/details/faunaesuecicaec00linn" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Retzius&#x27;s revised, updated edition of Linnaeus&#x27;s own Fauna Suecica (his catalogue of Swedish animals), reissued decades after the original with corrections and additions. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>flammea</em>, <em>islandica</em></div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Retz. edit. Linn. Paun. Suec”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-155" title="Carpodacus erythrinus">Scarlet Bullfinch</a><a class="lib-species-tag" href="index.html#plate-256" title="Ancylocheilus subarquata">Curlew Sandpiper</a></div>
@@ -2168,8 +2190,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Gould, J. (1840–1848). The birds of Australia (7 vols.). Author.</div>
-      <div class="lib-meta">Cited 2 times across 2 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/50135" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Gould&#x27;s own earlier great work, self-cited when a British species&#x27; Australian relative or comparison is relevant. A fitting one to verify the same week fresh OCR of the full Birds of Australia corpus turned up separately.</div>
+      <div class="lib-meta">Cited 2 times across 2 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/105698" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Gould&#x27;s own earlier great work, self-cited when a British species&#x27; Australian relative or comparison is relevant. A fitting one to verify the same week fresh OCR of the full Birds of Australia corpus turned up separately. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>syrmatophorus</em>, <em>strenuus</em></div>
       <div class="lib-variants">Also appears in Gould&rsquo;s text as: “Gould, Handb. Birds of Australia”</div>
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-210" title="Herodias alba">Great White Egret or White Heron</a><a class="lib-species-tag" href="index.html#plate-346" title="Hydroprogne caspia">Caspian Tern</a></div>
@@ -2252,8 +2274,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Hodgson, B. H. (1830s–1840s). [Ornithological papers]. Journal of the Asiatic Society of Bengal.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/9331" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Brian Houghton Hodgson was a British diplomat and pioneering naturalist based in Nepal; his many papers on Himalayan and Indian birds in this journal are a source Gould draws on for comparison with British species&#x27; Asian relatives.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/51678" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Brian Houghton Hodgson was a British diplomat and pioneering naturalist based in Nepal; his many papers on Himalayan and Indian birds in this journal are a source Gould draws on for comparison with British species&#x27; Asian relatives. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>indicus</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-005" title="Pandion haliaetus">Osprey</a></div>
@@ -2280,8 +2302,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Merrem, B. (1786). Beyträge zur besondern Geschichte der Vögel (Vol. 2). Johann Jacob Bohn.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/49548" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Blasius Merrem&#x27;s contributions to the special natural history of birds, cited here at a specific page of volume 2.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://books.google.com/books?id=fHug6UBmG7IC" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Blasius Merrem&#x27;s contributions to the special natural history of birds, cited here at a specific page of volume 2. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>glaucopis</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-006" title="Buteo vulgaris">Common Buzzard</a></div>
@@ -2364,8 +2386,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Linnaeus, C. (1746). Fauna Svecica sistens animalia Sveciae regni. Laurentius Salvius.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/62462" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Linnaeus&#x27;s own original catalogue of Swedish animals, first published 1746 — distinct from Retzius&#x27;s later revised edition (see &quot;Retz. edit. Linn. Faun. Suec&quot; above), here cited directly for the species Falco gentilis.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://archive.org/details/carolilinnaeimed01linn" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Linnaeus&#x27;s own original catalogue of Swedish animals, first published 1746 — distinct from Retzius&#x27;s later revised edition (see &quot;Retz. edit. Linn. Faun. Suec&quot; above), here cited directly for the species Falco gentilis. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Goshawk</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-009" title="Astur palumbarius">Goshawk</a></div>
@@ -2392,8 +2414,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Tickell, S. R. (1830s–1840s). [Ornithological papers]. Journal of the Asiatic Society of Bengal.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/9331" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Samuel Tickell was a British army officer and naturalist in India, publishing bird descriptions in the same journal as Hodgson (see &quot;Hodgs. Journ. Asiat. Soc. Beng&quot; above) — another source Gould draws on for Indian relatives of British species.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/51678" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Samuel Tickell was a British army officer and naturalist in India, publishing bird descriptions in the same journal as Hodgson (see &quot;Hodgs. Journ. Asiat. Soc. Beng&quot; above) — another source Gould draws on for Indian relatives of British species. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>nisosimilis</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-010" title="Accipiter nisus">Sparrow-hawk</a></div>
@@ -2434,8 +2456,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> McClelland, J. (1839). [Notes on the natural history of Assam and neighbouring districts]. Proceedings of the Zoological Society of London.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/8232" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">John McClelland was a Scottish surgeon-naturalist working in British India (Assam); this is his contribution to the Zoological Society&#x27;s proceedings, another Indian-relatives source alongside Hodgson and Tickell above.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/44963" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">John McClelland was a Scottish surgeon-naturalist working in British India (Assam); this is his contribution to the Zoological Society&#x27;s proceedings, another Indian-relatives source alongside Hodgson and Tickell above. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>interstinctus</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-019" title="Tinnunculus alaudarius">Kestrel</a></div>
@@ -2448,8 +2470,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Retzius, A. J. (1800). Caroli a Linné Fauna Svecica (New ed.). Siegfried Lebrecht Crusius.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/79923" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Same work as &quot;Retz. edit. Linn. Faun. Suec&quot; above, abbreviated shorter.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://archive.org/details/faunaesuecicaec00linn" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Same work as &quot;Retz. edit. Linn. Faun. Suec&quot; above, abbreviated shorter. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>fasciatus</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-019" title="Tinnunculus alaudarius">Kestrel</a></div>
@@ -2598,8 +2620,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Leach, W. E. (1816). Systematic catalogue of the specimens of the indigenous mammalia and birds that are preserved at the British Museum. R. and A. Taylor.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/126303" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">William Elford Leach&#x27;s catalogue of the British Museum&#x27;s own native mammal and bird specimens — an institutional reference point distinct from field guides or regional faunas.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://books.google.com/books?id=fWY-_jU3FV0C" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">William Elford Leach&#x27;s catalogue of the British Museum&#x27;s own native mammal and bird specimens — an institutional reference point distinct from field guides or regional faunas. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>asio</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-029" title="Otus vulgaris">Long-eared Owl</a></div>
@@ -2654,8 +2676,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Cetti, F. (1776). Gli uccelli di Sardegna [The birds of Sardinia]. Stamperia Reale.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/10530" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Part of Francesco Cetti&#x27;s multi-volume natural history of Sardinia, one of the earliest dedicated regional bird faunas for that island.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://books.google.com/books/about/Storia_naturale_della_Sardegna.html?id=DrBTAAAAcAAJ" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Part of Francesco Cetti&#x27;s multi-volume natural history of Sardinia, one of the earliest dedicated regional bird faunas for that island. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>zorca</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-031" title="Scops zorca">Scops Eared Owl</a></div>
@@ -2962,8 +2984,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> This entry bundles two separate citations that the automated split didn&#x27;t fully separate: Parzudaki&#x27;s catalogue (see &quot;Parz. Cat. des Ois. d&#x27;Eur., No. 162&quot; above) and a new-species description by Robert Swinhoe in The Ibis, the journal of the British Ornithologists&#x27; Union (founded 1859).</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/8085" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Flagged rather than fully resolved — the Swinhoe/Ibis half refers to a specific new-species paper on a Geocichla thrush that isn&#x27;t pinned down to an exact year/volume here; the Ibis link above goes to the journal generally.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/49405" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Flagged rather than fully resolved — the Swinhoe/Ibis half refers to a specific new-species paper on a Geocichla thrush that isn&#x27;t pinned down to an exact year/volume here; the Ibis link above goes to the journal generally. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Cicbloselys sibericus</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-074" title="Cichloselys sibiricus">Siberian Thrush</a></div>
@@ -3410,8 +3432,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Koch, C. L. (1816). System der baierischen Zoologie: Zum Gebrauch als Taschenbuch (Vol. 1). Nürnberg.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.digitale-sammlungen.de/de/view/bsb11272057" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Jan identified &#x27;Id&#x27; as Latin &#x27;idem&#x27; — Koch citing his own work again immediately after an earlier reference to it. Karl Ludwig Koch&#x27;s 1816 zoological handbook for Bavaria, confirmed via the Bavarian State Library and National Library of Australia catalogue records.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://books.google.com/books?id=cLJYAAAAcAAJ" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Jan identified &#x27;Id&#x27; as Latin &#x27;idem&#x27; — Koch citing his own work again immediately after an earlier reference to it. Karl Ludwig Koch&#x27;s 1816 zoological handbook for Bavaria, confirmed via the Bavarian State Library and National Library of Australia catalogue records. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>olivacea</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-112" title="Locustella avicula">Grasshopper Warbler</a></div>
@@ -3578,8 +3600,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Hodgson, B. H. (1830s–1840s). [Ornithological papers]. Journal of the Asiatic Society of Bengal.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/9331" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Variant spelling (&#x27;Hodg.&#x27; vs &#x27;Hodgs.&#x27;) of the already-verified Hodgson citation to the Journal of the Asiatic Society of Bengal.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/51678" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Variant spelling (&#x27;Hodg.&#x27; vs &#x27;Hodgs.&#x27;) of the already-verified Hodgson citation to the Journal of the Asiatic Society of Bengal. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>sordida</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-137" title="Emberiza pusilla">Dwarf Bunting</a></div>
@@ -3676,8 +3698,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Selby, P. J. (early-mid 19th c.). Contributions in Transactions of the Linnean Society of London. Linnean Society of London.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/..." target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Prideaux John Selby, English ornithologist and illustrator (author of Illustrations of British Ornithology, already verified separately), also published notes in the Linnean Society&#x27;s Transactions.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/683" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Prideaux John Selby, English ornithologist and illustrator (author of Illustrations of British Ornithology, already verified separately), also published notes in the Linnean Society&#x27;s Transactions. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Plectrophanes lapponica</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-142" title="Centrophanes lapponica">Lapland Bunting</a></div>
@@ -3767,11 +3789,15 @@ One genuine loose thread from the sources themselves, logged rather than resolve
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-155" title="Carpodacus erythrinus">Scarlet Bullfinch</a></div>
     </div>
 
-    <div class="lib-entry lib-unidentified" id="work-endl-u-scholz-naturfreund">
+    <div class="lib-entry lib-verified" id="work-endl-u-scholz-naturfreund">
       
-      <div class="lib-citation"><span class="lib-badge lib-badge-unidentified">Not identified</span> <em>Gould cites this as “Endl. u. Scholz, Naturfreund” &mdash; not identified despite extensive lookup work. Search phase concluded 5 Aug 2026 (Jan&rsquo;s call: further hits are possible but unlikely without new material).</em></div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <span class="lib-pending">no source found</span></div>
-      
+      <div class="lib-story lib-story-empty">
+        <span class="lib-badge lib-badge-story-pending">Author &amp; significance</span>
+        <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
+      </div>
+      <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Endler, F. G. (1763-1830), &amp; Scholz, F. P. (1772-1837). (1809-1824). Der Naturfreund, oder Beitraege zur schlesischen Naturgeschichte [The Nature Friend, or Contributions to Silesian Natural History]. C. F. Barth, Breslau.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://bibliotekacyfrowa.pl/dlibra/publication/40904/der-naturfreund-oder-beitrage-zur-schlesischen-naturgeschichte-endler-friedrich-gottlob-1763-1830?language=pl" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">RESOLVED, 2026-08-06. Jan located and shared the actual page (Der Naturfreund, p. 17, &#x27;Tab. 5&#x27;: &#x27;Loxia erytraea, karminrothkoepfige Kernbeisser&#x27; / carmine-red-headed grosbeak). Strong match to Gould&#x27;s citation on two independent points: the plate number (&#x27;tab. 5&#x27;, matching Gould&#x27;s &#x27;tab. 5, mas&#x27; exactly) and the species epithet spelling (&#x27;erytraea&#x27; vs Gould&#x27;s &#x27;erythraa&#x27;/&#x27;erythrea&#x27;, a period spelling variant). The account, written by the author after finding the bird near Breslau, initially suspects it may be the bird Latham described in &#x27;Syst. Ornith. I p. 445 No. 33&#x27;; the specimen was mounted by a Mr. Drescher for Count Mattuschka&#x27;s natural history collection, later sold to Magdeburg. One point NOT yet reconciled: Gould&#x27;s citation gives &#x27;tom. i. p. 9&#x27; but the located page is numbered 17 in the source&#x27;s own pagination -- not yet explained, but not doubted given the plate-number and species-name match. The &#x27;et tom. ii. p. 185, tab. 77, fem.&#x27; half of Gould&#x27;s citation (the female specimen, volume 2) has not yet been separately located. Journal confirmed as &#x27;popular science weekly devoted to the flora and fauna of Silesia&#x27; (214 plates total, 8vo format, publisher Carl Friedrich Barth, Breslau, 1809-1824), Endler as primary illustrator/creator and Scholz as collaborating illustrator, per the Wroclaw University Library&#x27;s own digital-collection metadata and a corroborating Muzeum Cyfrowe (Digital Museum) artist-authority record -- both independent of, and used to CORRECT, an initial lead. ACCESS NOTE (2026-08-06): the URL above is a bibliographic metadata/description page on the Wroclaw digital library platform (dLibra) -- it confirms the record but does not itself provide a direct download or page-viewer link; that appears to require a separate interface on the source site not reachable via a simple URL. An alternate link Jan was given (dbc.wroc.pl, edition/131416) was checked directly and returns a 403 error, so it is not given as a direct link. Instead, as a second source to try: Dolnoslaska Biblioteka Cyfrowa (Digital Library of Lower Silesia -- DBC Wroclaw) -- search for &#x27;Der Naturfreund oder Beitraege zur Schlesischen Naturgeschichte&#x27; at dbc.wroc.pl (https://www.dbc.wroc.pl).</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>erythraa</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-155" title="Carpodacus erythrinus">Scarlet Bullfinch</a></div>
@@ -4677,8 +4703,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Gmelin, S. G. (1770s). Commentarii Academiae Scientiarum Imperialis Petropolitanae. Imperial Academy of Sciences of St. Petersburg.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/9636" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">&quot;Gld.&quot; is an abbreviated/OCR-damaged rendering of &quot;Gmel.&quot; (Gmelin); this is the same Petersburg Academy commentary series already verified elsewhere as &quot;S. G. Gmel. Nov. Comm. Petrop&quot; for its later (&quot;Novi&quot;) volumes.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://archive.org/details/commentariiacade01impe" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">&quot;Gld.&quot; is an abbreviated/OCR-damaged rendering of &quot;Gmel.&quot; (Gmelin); this is the same Petersburg Academy commentary series already verified elsewhere as &quot;S. G. Gmel. Nov. Comm. Petrop&quot; for its later (&quot;Novi&quot;) volumes. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Scolopax subarquata</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-256" title="Ancylocheilus subarquata">Curlew Sandpiper</a></div>
@@ -5153,8 +5179,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Eyton, T. C. (1836). A history of the rarer British birds. Longman, Rees, Orme, Brown, Green, and Longman.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/creator/16323" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Same work as &quot;Eyton, Hist, of Rarer Brit. Birds&quot;; John Ray is cited alongside Eyton here as a corroborating early authority, not as the source of a separate work.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/item/77954" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Same work as &quot;Eyton, Hist, of Rarer Brit. Birds&quot;; John Ray is cited alongside Eyton here as a corroborating early authority, not as the source of a separate work. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>Gesneri</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-302" title="Fuligula marila">Scaup Duck</a></div>
@@ -5307,8 +5333,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Valenciennes, A. (1846). [Zoological account]. In Voyage autour du monde exécuté pendant les années 1836 et 1837 sur la corvette la Bonite, commandée par M. Vaillant (Zoologie). Arthus Bertrand.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/creator/24736" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Achille Valenciennes contributed the zoological accounts for several French naval survey voyages of this period; &quot;la Chloris&quot; refers to the corvette involved.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/15863" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Achille Valenciennes contributed the zoological accounts for several French naval survey voyages of this period; &quot;la Chloris&quot; refers to the corvette involved. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>lacrymans</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-326" title="Uria troile">Common Guillemot</a></div>
@@ -5405,8 +5431,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
         <span class="lib-story-text lib-story-text-pending">Not yet researched &mdash; who this person was and what this reference offered Gould&rsquo;s readers is a growing feature of this page, filled in a few entries at a time.</span>
       </div>
       <div class="lib-citation"><span class="lib-badge lib-badge-verified">Verified</span> Sabine, J. (1818-1824). Various zoological papers. Transactions of the Linnean Society of London.</div>
-      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/9670" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
-      <div class="lib-note">Joseph Sabine contributed several ornithological papers to the Linnean Society&#x27;s Transactions in this period; Gould&#x27;s abbreviated citation does not specify which volume/paper.</div>
+      <div class="lib-meta">Cited 1 time across 1 species &middot; <a href="https://www.biodiversitylibrary.org/bibliography/683" target="_blank" rel="noopener">View source &amp; download &rarr;</a></div>
+      <div class="lib-note">Joseph Sabine contributed several ornithological papers to the Linnean Society&#x27;s Transactions in this period; Gould&#x27;s abbreviated citation does not specify which volume/paper. [LINK FIXED 2026-08-06: prior URL pointed to a wrong/unrelated record on the same host, found during full link audit; replaced with verified correct link.]</div>
       <div class="lib-old-names">Gould&rsquo;s own synonymy line names this: <em>argentatus</em></div>
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-336" title="Larus islandicus">Iceland Gull</a></div>
@@ -5870,6 +5896,8 @@ One genuine loose thread from the sources themselves, logged rather than resolve
       
       <div class="lib-species-tags"><a class="lib-species-tag" href="index.html#plate-364" title="Thalassidroma pelagica">Storm-Petrel</a></div>
     </div>
+<div class="lib-no-results" id="lib-no-results">No citations match your search.</div>
+</div>
 <script>
 document.addEventListener('click', function(e) {
   var btn = e.target.closest('.lib-species-tag-toggle');
@@ -5878,6 +5906,47 @@ document.addEventListener('click', function(e) {
   var expanded = wrap.classList.toggle('expanded');
   btn.innerHTML = expanded ? btn.dataset.lessLabel : btn.dataset.moreLabel;
 });
+
+(function() {
+  var input = document.getElementById('lib-search');
+  var countEl = document.getElementById('lib-search-count');
+  var noResults = document.getElementById('lib-no-results');
+  var entries = Array.prototype.slice.call(document.querySelectorAll('.lib-entry'));
+  var totalCount = entries.length;
+  // Cache lowercased searchable text once per entry so filtering on every
+  // keystroke doesn't have to re-walk the DOM (~400 entries).
+  entries.forEach(function(el) {
+    el._searchText = el.textContent.toLowerCase();
+  });
+
+  function runFilter() {
+    var q = input.value.trim().toLowerCase();
+    if (!q) {
+      entries.forEach(function(el) { el.classList.remove('lib-hidden'); });
+      countEl.textContent = '';
+      noResults.style.display = 'none';
+      return;
+    }
+    var terms = q.split(/\s+/).filter(Boolean);
+    var shown = 0;
+    entries.forEach(function(el) {
+      var match = terms.every(function(t) { return el._searchText.indexOf(t) !== -1; });
+      el.classList.toggle('lib-hidden', !match);
+      if (match) shown++;
+    });
+    countEl.textContent = shown + ' of ' + totalCount + ' citations match';
+    noResults.style.display = shown === 0 ? 'block' : 'none';
+  }
+
+  input.addEventListener('input', runFilter);
+  // Support #work-xxx deep links even while a search is active on load.
+  if (window.location.hash) {
+    var target = document.querySelector(window.location.hash);
+    if (target && target.classList.contains('lib-entry')) {
+      // leave filter empty so the deep-linked entry is visible
+    }
+  }
+})();
 </script>
 </body>
 </html>
