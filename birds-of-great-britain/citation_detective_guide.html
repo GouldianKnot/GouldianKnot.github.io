@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Find a Cited Work Without a Direct Link &mdash; Gould&rsquo;s Library</title>
+<style>
+  body { font-family: Georgia, serif; max-width: 820px; margin: 0 auto; padding: 30px 20px 100px; background: #fbf8f2; color: #2c2620; line-height: 1.65; }
+  h1 { font-size: 26px; margin-bottom: 4px; }
+  h2 { font-size: 19px; margin-top: 44px; margin-bottom: 10px; color: #1f4d45; border-bottom: 2px solid #cfe4de; padding-bottom: 6px; }
+  h3 { font-size: 15.5px; margin-top: 26px; margin-bottom: 6px; color: #6b3d1f; }
+  p { margin: 0 0 14px; }
+  .subtitle { color: #6b6255; font-size: 14px; margin-bottom: 10px; }
+  .back-link { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12.5px; font-weight: 600; color: #1f7a6e; text-decoration: none; margin-bottom: 22px; }
+  .back-link:hover { text-decoration: underline; }
+  .intro-box { background: #efe8d8; border: 1px solid #e4ddce; border-radius: 6px; padding: 14px 18px; margin: 18px 0 8px; font-size: 14px; }
+  .case { background: #f6f0e2; border: 1px solid #e6dbbf; border-radius: 6px; padding: 16px 18px; margin: 14px 0 20px; }
+  .case-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.03em; color: #7a5a1f; margin-bottom: 8px; }
+  .case p:last-child { margin-bottom: 0; }
+  .warn-box { background: #f7ece9; border: 1px solid #e0bfb6; border-radius: 6px; padding: 14px 18px; margin: 14px 0 20px; }
+  .warn-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.03em; color: #a6192e; margin-bottom: 8px; }
+  .tool-list { margin: 10px 0 18px; padding: 0; list-style: none; }
+  .tool-list li { padding: 8px 0 8px 14px; border-left: 3px solid #cfe4de; margin-bottom: 6px; }
+  .tool-list b { color: #1f4d45; }
+  .checklist { background: #fff; border: 1px solid #e4ddce; border-radius: 6px; padding: 18px 22px; margin: 14px 0 24px; }
+  .checklist ol { margin: 0; padding-left: 20px; }
+  .checklist li { margin-bottom: 10px; }
+  .checklist li:last-child { margin-bottom: 0; }
+  em { font-style: italic; }
+  code { font-family: 'SF Mono', Consolas, monospace; font-size: 0.92em; background: #efe8d8; padding: 1px 5px; border-radius: 3px; }
+  .quote { font-style: italic; color: #4a3f2d; padding-left: 14px; border-left: 3px solid #b2914a; margin: 10px 0; }
+  .footer-note { margin-top: 50px; padding-top: 16px; border-top: 1px solid #e4ddce; font-size: 12px; color: #8a7a63; font-style: italic; }
+  .lib-directory { margin: 14px 0 10px; }
+  .lib-dir-group-title { font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; color: #a6192e; margin: 24px 0 8px; }
+  .lib-dir-entry { background: #fff; border: 1px solid #e4ddce; border-radius: 6px; padding: 12px 16px; margin-bottom: 8px; }
+  .lib-dir-name { font-weight: 700; font-size: 14px; color: #1f4d45; }
+  .lib-dir-domain { font-family: 'SF Mono', Consolas, monospace; font-size: 11px; color: #8a7a63; margin-left: 6px; }
+  .lib-dir-count { display: inline-block; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10px; font-weight: 700; color: #1f7a6e; background: #eaf3f0; border-radius: 10px; padding: 1px 8px; margin-left: 8px; vertical-align: 1px; }
+  .lib-dir-desc { font-size: 13px; margin-top: 5px; color: #4a3f2d; }
+</style>
+</head>
+<body>
+
+<a class="back-link" href="gould_library_gb.html">&larr; Back to Gould&rsquo;s Library</a>
+<h1>How to Find a Cited Work Without a Direct Link</h1>
+<div class="subtitle">A working guide to 19th-century citation detective work, written from the actual research trail behind Gould&rsquo;s Library &mdash; including the dead ends.</div>
+
+<div class="intro-box">
+Every entry in Gould&rsquo;s Library now shows a working link to the actual book or journal it cites. But a link is the <em>answer</em>, not the method. If you were handed one of Gould&rsquo;s citations cold &mdash; something like <code>cinerascens, Barb. Rev. Zool. 1838, p. 121.</code> &mdash; with no link at all, how would you actually go about finding it? That's a real, transferable research skill, useful for any old citation in any field, not just birds. This page walks through the method, using real cases from this project where the search took real work &mdash; including two where the first answer we found was confidently wrong.
+</div>
+
+<h2>1. Decode the shorthand first</h2>
+<p>Old citations are compressed almost to the point of being a private code. <code>Barb. Rev. Zool. 1838, p. 121</code> breaks down into four separate pieces, and you need all four before you can search intelligently: an <b>author abbreviation</b> (<code>Barb.</code>), a <b>work abbreviation</b> (<code>Rev. Zool.</code>), a <b>year</b> (<code>1838</code>), and a <b>page</b> (<code>p. 121</code>). Do this decoding step deliberately, on paper or in a note, before you search anything. A citation you haven&rsquo;t fully parsed will send you in circles.</p>
+<p>Some abbreviations are guessable from context (<code>Rev. Zool.</code> is almost certainly some "Revue Zoologique"). Others need a specialized reference: 19th-century zoological writing followed fairly standard abbreviation conventions for journal titles, and the Biodiversity Heritage Library's own author and title indexes (see below) are often the fastest way to expand one you don't recognize, since you can search the abbreviation itself and see what full titles BHL already associates with it.</p>
+
+<h2>2. Search the actual digitized-library ecosystem, not just Google</h2>
+<p>A generic web search for an old citation often turns up nothing, or worse, a confident-looking wrong answer (see the warning below). The material you actually want almost always lives in one of a handful of large historical-scanning projects, and it's worth learning to search each of them directly rather than relying on a search engine to find them for you.</p>
+<ul class="tool-list">
+  <li><b>Biodiversity Heritage Library (biodiversitylibrary.org)</b> &mdash; the single best resource for old natural-history journals and books specifically. Searchable by title, author, and year; most items also have OCR'd full text you can search inside.</li>
+  <li><b>Internet Archive (archive.org)</b> &mdash; a huge general scan collection, including many journals BHL doesn't have, plus a full-text search across everything it holds.</li>
+  <li><b>HathiTrust (hathitrust.org)</b> &mdash; especially strong for complete, long journal runs across many decades.</li>
+  <li><b>Google Books</b> &mdash; sometimes has a scan nothing else does, particularly for a specific volume year; worth a direct search even after checking the above.</li>
+  <li><b>National and regional digital libraries</b> &mdash; for a French work, Gallica (the Bibliothèque nationale de France's digital library); for German-language works, national or regional collections (this project has used Poland's dLibra network and Sweden's national digital collections, among others). If a citation is clearly not in English, search for that country's own national library digitization project by name rather than assuming BHL or archive.org will have it.</li>
+</ul>
+<p>On every one of these, search the <em>expanded</em> title in quotation marks, plus the year &mdash; not the abbreviation, and not a loose paraphrase. <code>"Revue Zoologique" 1838</code> finds things; <code>Barb Rev Zool</code> mostly doesn't.</p>
+
+<h3>The full directory: every library Gould's Library actually used</h3>
+<p>The 414 citations resolved on Gould's Library page didn't come from one place &mdash; they're scattered across more than two dozen different digital libraries, each with its own scope, its own strengths, and its own reason for existing. Below is every one of them, so you know what you're actually looking at when a search leads you there. Where a citation you're chasing turns out not to be in any of these, that's often a sign the work is held by a specialist library not listed here yet &mdash; for instance, Jan found a citation in this project herself using the Real Jardín Botánico's own digital library in Madrid (<code>bibdigital.rjb.csic.es</code>), a botanical-garden library not otherwise needed for this bird-focused project but exactly the kind of specialist collection worth knowing exists.</p>
+
+<div class="lib-directory">
+
+<div class="lib-dir-group-title">The big general-purpose archives</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Biodiversity Heritage Library</span><span class="lib-dir-domain">biodiversitylibrary.org</span><span class="lib-dir-count">used 200 times</span>
+  <div class="lib-dir-desc">A consortium of natural-history museum, botanical-garden, and research libraries (the Smithsonian, the Natural History Museum London, Harvard, Kew, and dozens more) that jointly digitize their own historical collections. Purpose-built for exactly this kind of work &mdash; it holds more old zoological and botanical literature, fully text-searchable, than any other single site, which is why it's by far the most-used source in this project. Its reputation rests on being run directly by the institutions that hold the original books, not a third party.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Internet Archive</span><span class="lib-dir-domain">archive.org</span><span class="lib-dir-count">used 120 times</span>
+  <div class="lib-dir-desc">A general-purpose nonprofit digital library (San Francisco), scanning everything from software to web pages to millions of public-domain books &mdash; including many old journals BHL doesn't carry, and full-text search across its entire holdings. Less specialized than BHL, but bigger and often has a scan nothing else does.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">HathiTrust</span><span class="lib-dir-domain">babel.hathitrust.org / catalog.hathitrust.org</span><span class="lib-dir-count">used 4 times</span>
+  <div class="lib-dir-desc">A partnership of major North American and European research university libraries (Michigan, California, Cornell and others founded it) pooling their own scanned collections. Especially strong for complete runs of long-running journals across many decades, since member libraries often hold a full bound set where a single library elsewhere might have gaps.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Google Books</span><span class="lib-dir-domain">books.google.com / books.google.de</span><span class="lib-dir-count">used 20 times</span>
+  <div class="lib-dir-desc">Google's own decades-long book-scanning project, run in partnership with major libraries worldwide. Enormous in scale, and sometimes has a specific volume/year that the specialist archives above don't &mdash; worth a direct search even after checking them, precisely because its coverage doesn't fully overlap with theirs.</div>
+</div>
+
+<div class="lib-dir-group-title">National and university digital libraries</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Deutsche Digitale Bibliothek (German Digital Library)</span><span class="lib-dir-domain">deutsche-digitale-bibliothek.de</span><span class="lib-dir-count">used 18 times</span>
+  <div class="lib-dir-desc">Germany's national cultural-heritage portal, run by the Prussian Cultural Heritage Foundation, aggregating collections from thousands of German museums, archives, and libraries into one searchable index. The go-to first stop for German-language 19th-century natural history works.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Gallica</span><span class="lib-dir-domain">gallica.bnf.fr</span><span class="lib-dir-count">used 5 times</span>
+  <div class="lib-dir-desc">The digital library of the Bibliothèque nationale de France, France's national library. The standard first stop for French-language works &mdash; it holds an enormous share of everything published in France before the 20th century.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Munich Digitization Center (MDZ)</span><span class="lib-dir-domain">digitale-sammlungen.de</span>
+  <div class="lib-dir-desc">Run by the Bavarian State Library, one of Germany's largest research libraries, with one of the biggest historical-book digitization programmes in Europe.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Heidelberg University Library</span><span class="lib-dir-domain">digi.ub.uni-heidelberg.de</span>
+  <div class="lib-dir-desc">Germany's oldest university library, with a long-running, well-regarded digitization programme covering its own historical holdings, especially strong for older German scientific journals.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Göttingen Digitization Centre (GDZ)</span><span class="lib-dir-domain">gdz.sub.uni-goettingen.de</span>
+  <div class="lib-dir-desc">Run by Göttingen State and University Library, one of the pioneering German digitization centres, known specifically for its historical scientific and scholarly journal runs.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Thuringian University and State Library Jena (ThULB / urMEL)</span><span class="lib-dir-domain">zs.thulb.uni-jena.de</span>
+  <div class="lib-dir-desc">Jena's university and state library, which digitizes and hosts historical German regional and scientific serials through its "urMEL" platform &mdash; useful for narrower regional natural-history journals that larger archives sometimes miss.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">e-rara.ch</span><span class="lib-dir-domain">e-rara.ch</span><span class="lib-dir-count">used 2 times</span>
+  <div class="lib-dir-desc">A shared platform for digitized rare books held by Swiss libraries (ETH Zurich, the Zentralbibliothek Zürich, and other Swiss institutions contribute to it jointly) &mdash; the equivalent, for Switzerland, of what Gallica is for France.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Biblioteka Cyfrowa (Digital Library of Lower Silesia / Wrocław University Library)</span><span class="lib-dir-domain">bibliotekacyfrowa.pl</span>
+  <div class="lib-dir-desc">A regional Polish digital library network centred on Wrocław, digitizing historical material connected to Lower Silesia (formerly the German region of Silesia) &mdash; relevant here because a number of older German natural-history works were published or held in what's now western Poland.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Odyssée &mdash; Aix-Marseille Université</span><span class="lib-dir-domain">odyssee.univ-amu.fr</span>
+  <div class="lib-dir-desc">Aix-Marseille University's own heritage digital library, with over a million digitized pages from its historical collections &mdash; one of several French university libraries (alongside the Lorraine one below) that digitize their own older holdings independently of Gallica.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Pulsar &mdash; Université de Lorraine</span><span class="lib-dir-domain">pulsar-bu.univ-lorraine.fr</span>
+  <div class="lib-dir-desc">The University of Lorraine's own portal for its libraries' historical/heritage document collections &mdash; another university-level French digitization project distinct from the national Gallica collection.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">State Museum of Natural History, Lviv (SMNH)</span><span class="lib-dir-domain">lib.smnh.org</span>
+  <div class="lib-dir-desc">The scientific library of the State Museum of Natural History of the National Academy of Sciences of Ukraine, in Lviv &mdash; a specialist natural-history library digitizing rare older works from its own holdings, including works not easily findable through the bigger Western-European or American archives.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Real Jardín Botánico (CSIC) Digital Library</span><span class="lib-dir-domain">bibdigital.rjb.csic.es</span>
+  <div class="lib-dir-desc">The digital library of Spain's Royal Botanical Garden in Madrid, part of the Spanish National Research Council (CSIC). A specialist botanical/natural-history collection, and a good reminder that a citation you can't find in the general archives may well be sitting in a smaller institutional library built around exactly its subject.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Library of Congress</span><span class="lib-dir-domain">loc.gov</span>
+  <div class="lib-dir-desc">The United States' national library, with its own large digitized collection of historical books and serials &mdash; the American equivalent of a Gallica or a Deutsche Digitale Bibliothek.</div>
+</div>
+
+<div class="lib-dir-group-title">Journals, reference works, and scholarly indexes</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Oxford University Press journals platform</span><span class="lib-dir-domain">academic.oup.com</span>
+  <div class="lib-dir-desc">The modern publisher and online host of long-running academic journals, including <em>The Ibis</em> itself &mdash; useful for confirming a journal's current publisher and sometimes for accessing more recent volumes than the historical archives cover.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Wiley Online Library</span><span class="lib-dir-domain">onlinelibrary.wiley.com</span>
+  <div class="lib-dir-desc">One of the largest academic publishers' own journal platforms &mdash; relevant when a historical journal is still published today under a modern commercial imprint.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">DOI.org</span><span class="lib-dir-domain">doi.org</span>
+  <div class="lib-dir-desc">Not a library itself, but the resolver for Digital Object Identifiers &mdash; a permanent-link system used across academic publishing. A doi.org link redirects to wherever the actual publisher currently hosts a work, so it's a reliable way to cite something whose hosting might change over time.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Wikipedia / Wikisource / Wikimedia Species</span><span class="lib-dir-domain">en.wikipedia.org / en.wikisource.org / species.wikimedia.org</span><span class="lib-dir-count">used 9 times</span>
+  <div class="lib-dir-desc">Not primary sources themselves, but useful starting points: Wikipedia and its sister project Wikisource (which hosts full transcribed public-domain texts) can confirm an author's dates, a work's full title, or a species' current taxonomic status quickly &mdash; genuinely useful for orientation, but never a substitute for checking the actual primary source.</div>
+</div>
+
+<div class="lib-dir-entry">
+  <span class="lib-dir-name">Darwin Online</span><span class="lib-dir-domain">darwin-online.org.uk</span>
+  <div class="lib-dir-desc">"The Complete Work of Charles Darwin Online," an academic project (led by historian John van Wyhe, based at the National University of Singapore) that has assembled the single most complete online collection of Darwin's own publications and manuscripts anywhere &mdash; the standard scholarly reference for anything Darwin actually wrote.</div>
+</div>
+
+</div>
+
+
+<h2>3. Pin the exact volume before you trust any page number</h2>
+<p>A page number is meaningless on its own. Most 19th-century journals ran for decades under the same title, so <code>p. 297</code> could belong to any one of thirty different physical volumes. Always confirm you have the specific year/volume the citation actually names before you go looking for a page inside it &mdash; and remember that a journal's internal volume numbering (<code>Tome I</code>, <code>Vol. IV</code>) doesn't always match its calendar year in an obvious way, so check both.</p>
+
+<h2>4. Verify before you trust it &mdash; read the actual page, not just an index entry</h2>
+<p>This is the step most people skip, and it's the one that causes the most false leads. An index or bibliography entry pointing you to a work is a <em>lead</em>, not a confirmation. Bibliographic indexes from this era are dense, multi-column, and were themselves typeset by hand &mdash; it's easy for an old index to send you to the wrong page, the wrong volume, or even the wrong journal entirely. Always open the actual source page and read the actual passage before you consider a citation resolved.</p>
+
+<div class="case">
+<div class="case-title">Case study &mdash; the Barbieri citation</div>
+<p>Gould's citation read <code>cinerascens, Barb. Rev. Zool. 1838, p. 121.</code> Jan located and uploaded the actual 1838 volume of <em>Revue Zoologique, par la Société Cuvierienne</em>. Searching its own alphabetical index turned up a promising lead: <em>"Falco cinerascens (Ois.) Barbier-Montault ... 121."</em> But the real confirmation only came from turning to page 121 itself and reading the article that starts there &mdash; "Notice sur les mœurs du Busard Montagu, <em>Falco cinerascens</em>, Temm., par M. Barbier Montault de Loudun" &mdash; which matched Gould's citation exactly, right down to the species name and page. The index pointed the way; the actual page proved it.</p>
+</div>
+
+<h2>5. Watch out for confident-sounding wrong answers</h2>
+<p>This is the most important lesson from this whole project, and it applies whether the wrong answer comes from an AI tool, an old secondary source, or your own hunch. A very specific, confident answer is not the same thing as a correct one &mdash; specificity is not evidence. The only thing that counts is checking the claim against the actual primary source, yourself, every time.</p>
+
+<div class="warn-box">
+<div class="warn-title">Case study &mdash; the Sclater/Ibis citation, and a fabricated "solution"</div>
+<p>Gould's citation for the Pomarine Skua read <code>Lestris pomatorhinus, Sclater, Ibis, 1862, p. 297.</code> An AI research assistant (Gemini) confidently proposed that this citation contained a "double clerical error" &mdash; that the real author was someone else entirely, the real year was 1863, and the real source was a different paper in a different journal, even producing an "exact" quoted passage supposedly from page 297: a specific species number, a specific Latin name, formatted exactly like genuine 19th-century text.</p>
+<p>None of it held up. Checking the real paper it pointed to showed it was actually published in a completely different journal than claimed (confirmed independently two separate ways). And once Jan supplied the actual 1863 volume of <em>The Ibis</em>, page 297 turned out to contain something else altogether &mdash; a totally unrelated bird description, with no species numbered as claimed anywhere in the volume. The "exact quoted passage" had been invented outright.</p>
+<p>The real answer, found separately: Gould's original citation had been correct all along. A different, genuine ornithologist (Alfred Newton), writing the very next year in a different article entirely, happened to independently cite the exact same Sclater note &mdash; same author, same journal, same year, same page &mdash; confirming it by coincidence rather than by design. The lesson isn't "don't use AI tools" &mdash; it's that <em>any</em> claim, however confident or detailed, needs to be checked against a real page before it goes in the record.</p>
+</div>
+
+<div class="case">
+<div class="case-title">Case study &mdash; the Lapeyrouse citation, a near-identical trap avoided twice</div>
+<p>A separate AI-sourced lead for this citation got the translator's name wrong and misidentified which year a German volume-numbering convention referred to &mdash; both caught only because the actual named individuals and dates were independently cross-checked against library catalogue records, rather than taken on trust. The eventual real resolution came from a full-text search of the actual source document for a distinctive species name Gould himself used in his citation &mdash; a technique worth remembering: when you have the source narrowed down to one document, search inside it for the single most unusual word in the citation, not a common one.</p>
+</div>
+
+<h2>A practical checklist</h2>
+<div class="checklist">
+<ol>
+<li>Write out the citation's four parts separately: author, work title (expanded, not abbreviated), year, page.</li>
+<li>Search the expanded title in quotation marks plus the year, directly on BHL, archive.org, and HathiTrust in turn &mdash; don't rely on one search engine query to surface all three.</li>
+<li>If the work isn't in English, go straight to that country's national digital library rather than assuming an English-language archive will have it.</li>
+<li>Once you find a candidate volume, confirm its exact year/volume number matches the citation before going further &mdash; a title match alone isn't enough.</li>
+<li>Open the actual page the citation names and read the actual passage. An index or bibliography entry is a lead, never a confirmation.</li>
+<li>If a claim (from any source, AI or otherwise) gives you a suspiciously exact quote or detail, verify it against the primary page yourself before trusting it &mdash; confidence and detail are not evidence.</li>
+<li>Where possible, look for independent corroboration &mdash; a second, unrelated source that happens to cite the same thing is much stronger evidence than one source alone.</li>
+<li>Write down what you actually confirmed and how, honestly &mdash; including anything you couldn't verify. A citation record that admits its own gaps is more trustworthy than one that quietly guesses.</li>
+</ol>
+</div>
+
+<p class="quote">"My students would have given up on the citation searching." &mdash; if you're a student reading this: you now have the exact method a real research project used to resolve citations that had gone unidentified for years. It takes patience, and most leads turn out to be wrong before one turns out to be right &mdash; that's normal, not a sign you're doing it badly.</p>
+
+<div class="footer-note">Written 2026-08-06 as a teaching companion to Gould&rsquo;s Library, drawn directly from this project's own resolved (and unresolved) citations.</div>
+
+</body>
+</html>
