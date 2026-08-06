@@ -44,7 +44,24 @@
   .gould-text { font-size: 12.5px; line-height: 1.5; color: #4a3f30; flex: 1; }
   .read-more { margin-top: 10px; align-self: flex-start; background: none; border: none; color: var(--accent); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0; text-decoration: underline dotted; }
   .read-more:hover { color: var(--accent-2); }
-  #empty-msg { display: none; text-align: center; padding: 60px; color: var(--accent-2); }
+    #empty-msg { display: none; text-align: center; padding: 60px; color: var(--accent-2); }
+  .potd {
+    max-width: 640px; margin: 18px auto 0; padding: 14px 20px; background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 1px 3px rgba(58,47,34,0.08);
+    display: none; flex-direction: column; gap: 10px;
+  }
+  .potd-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+  .potd-label #potdDate { color: var(--accent-2); font-weight: 500; text-transform: none; letter-spacing: normal; }
+  .potd-body { display: flex; align-items: center; gap: 16px; text-align: left; }
+  .potd-thumb { flex-shrink: 0; width: 72px; height: 72px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: #fff; display: flex; align-items: center; justify-content: center; }
+  .potd-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+  .potd-info { min-width: 0; }
+  .potd-name { font-size: 15px; font-weight: 600; color: var(--fg); line-height: 1.3; }
+  .potd-latin { font-style: italic; color: var(--accent); font-size: 13px; margin-top: 2px; }
+  .potd-link { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; color: var(--accent); cursor: pointer; text-decoration: none; }
+  .potd-link:hover { text-decoration: underline; }
+  .card.potd-flash { box-shadow: 0 0 0 3px var(--accent-2), 0 4px 10px rgba(58,47,34,0.2); transition: box-shadow 0.3s ease; }
+  @media (max-width: 480px) { .potd-body { flex-direction: column; align-items: flex-start; } }
   dialog#reader { max-width: 620px; width: 92%; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--fg); padding: 0; }
   dialog#reader::backdrop { background: rgba(58,47,34,0.5); }
   dialog#reader .dclose { position: absolute; top: 10px; right: 14px; border: none; background: none; font-size: 20px; cursor: pointer; color: var(--accent); }
@@ -52,12 +69,6 @@
   dialog#reader img { max-width: 100%; border-radius: 6px; margin-bottom: 14px; }
   dialog#reader .dtext { font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
   footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); }
-
-  .read-in-reader-link{
-    display:inline-block; margin-top:6px; font-size:12.5px; font-weight:600;
-    color: var(--accent-2, var(--accent)); text-decoration:none;
-  }
-  .read-in-reader-link:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -71,12 +82,23 @@
   <div class="stats">82 of 82 plates in this build &middot; 82 plated</div>
   <input id="search" type="search" placeholder="Search by name...">
 </header>
+<div class="potd" id="potd" style="display:none;">
+  <div class="potd-label">Plate of the Day &middot; <span id="potdDate"></span></div>
+  <div class="potd-body">
+    <div class="potd-thumb" id="potdThumb"></div>
+    <div class="potd-info">
+      <div class="potd-name" id="potdName"></div>
+      <div class="potd-latin" id="potdLatin"></div>
+      <a class="potd-link" id="potdLink" href="#">View this plate &rarr;</a>
+    </div>
+  </div>
+</div>
 <div class="grid" id="grid">
 
-  <div class="card" data-search="emu dromaius nova-hollandia." data-index="0" id="plate-1">
+  <div class="card" data-search="emu dromaius nova-hollandia." data-index="0">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/ea0c5537121402b32cf30fcd3472ceeab810c692.jpg" alt="Emu plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 1 &middot; Emu</div>
+      <div class="plate-no">Vol. VI &middot; Plate 1 &middot; Emu</div>
       <div class="latin-line"><span class="latin">DROMAIUS NOVA-HOLLANDIA.</span></div>
       <div class="gould-text">#### [The Emu.]
 
@@ -90,14 +112,13 @@
 
 *Casoare de la…</div>
       <button class="read-more" data-index="0">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=DROMAIUS%20NOVA-HOLLANDIA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="kiwi-kiwi apteryx australis," data-index="1" id="plate-2">
+  <div class="card" data-search="kiwi-kiwi apteryx australis," data-index="1">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/a7bcb828184a7cd88e7747451ede518dc0d3a474.jpg" alt="Kiwi-kiwi plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 2 &middot; Kiwi-kiwi</div>
+      <div class="plate-no">Vol. VI &middot; Plate 2 &middot; Kiwi-kiwi</div>
       <div class="latin-line"><span class="latin">APTERYX AUSTRALIS,</span></div>
       <div class="gould-text">*[Shaw.]*
 
@@ -107,14 +128,13 @@
 
 *Apteryx,* Temm. Man. d&#x27;Orn. 2nd Edit. Anal., p.…</div>
       <button class="read-more" data-index="1">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=APTERYX%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="owen&#x27;s apteryx apteryx owenii," data-index="2" id="plate-3">
+  <div class="card" data-search="owen&#x27;s apteryx apteryx owenii," data-index="2">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/0ce28116557cd96717b2051d03309ca98f9d76d6.jpg" alt="Owen&#x27;s Apteryx plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 3 &middot; Owen&#x27;s Apteryx</div>
+      <div class="plate-no">Vol. VI &middot; Plate 3 &middot; Owen&#x27;s Apteryx</div>
       <div class="latin-line"><span class="latin">APTERYX OWENII,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -124,14 +144,13 @@ Owen&#x27;s Apteryx.
 
 [The]{.smallcaps} acquisition of a second species of Apteryx is an evidence that our knowledge of the natural productions of New Zealand is far from complete ; and as a farther proof that such is the case, I may mention that from information I have lately received, I have reason to believe that a third and much larger specie…</div>
       <button class="read-more" data-index="2">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=APTERYX%20OWENII%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian bustard otis australasianus," data-index="3" id="plate-4">
+  <div class="card" data-search="australian bustard otis australasianus," data-index="3">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/bf23f9a72c0c0e7dcef9538a7d6039f289bdd6a2.jpg" alt="Australian Bustard plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 4 &middot; Australian Bustard</div>
+      <div class="plate-no">Vol. VI &middot; Plate 4 &middot; Australian Bustard</div>
       <div class="latin-line"><span class="latin">OTIS AUSTRALASIANUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -147,14 +166,13 @@ Australian Bustard.
 
 [It]{.smallcaps} is a remarkable circumstance, that the vast collections of birds that have been transmitted from Australia to Europe during the last fifty years should not ha…</div>
       <button class="read-more" data-index="3">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=OTIS%20AUSTRALASIANUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="southern stone-plover cedicnemus grallarius." data-index="4" id="plate-5">
+  <div class="card" data-search="southern stone-plover cedicnemus grallarius." data-index="4">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/b687dd60bd30ab613fa4cb3925e377c5b48cd19b.jpg" alt="Southern Stone-Plover plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 5 &middot; Southern Stone-Plover</div>
+      <div class="plate-no">Vol. VI &middot; Plate 5 &middot; Southern Stone-Plover</div>
       <div class="latin-line"><span class="latin">CEDICNEMUS GRALLARIUS.</span></div>
       <div class="gould-text">Southern Stone Plover.
 
@@ -166,14 +184,13 @@ Australian Bustard.
 
 *(Edicnemus longipes,* Geoff. in Mus. Paris.---Vieill. Gal. des Ois., tom. ii. pl. 228.---Temm. PL Col., 386.---Less. Traite d&#x27;Orn., p. 546.---Vieill. Nouv…</div>
       <button class="read-more" data-index="4">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CEDICNEMUS%20GRALLARIUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="large-billed plover esacus magnirostris." data-index="5" id="plate-6">
+  <div class="card" data-search="large-billed plover esacus magnirostris." data-index="5">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/1033abebb9b2cf984839262c7b015803a08790e8.jpg" alt="Large-billed Plover plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 6 &middot; Large-billed Plover</div>
+      <div class="plate-no">Vol. VI &middot; Plate 6 &middot; Large-billed Plover</div>
       <div class="latin-line"><span class="latin">ESACUS MAGNIROSTRIS.</span></div>
       <div class="gould-text">### [Large-billed Plover.]
 
@@ -185,14 +202,13 @@ Australian Bustard.
 
 *Great-billed Plover,* Lath. G…</div>
       <button class="read-more" data-index="5">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ESACUS%20MAGNIROSTRIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white-breasted oyster-catcher hamatopus longirostris," data-index="6" id="plate-7">
+  <div class="card" data-search="white-breasted oyster-catcher hamatopus longirostris," data-index="6">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/7f6858ac94a8a4ce715f71642cc55bca94423e3a.jpg" alt="White-breasted Oyster-Catcher plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 7 &middot; White-breasted Oyster-Catcher</div>
+      <div class="plate-no">Vol. VI &middot; Plate 7 &middot; White-breasted Oyster-Catcher</div>
       <div class="latin-line"><span class="latin">HAMATOPUS LONGIROSTRIS,</span></div>
       <div class="gould-text">*[Vieill.]*
 
@@ -206,14 +222,13 @@ White-breasted Oyster-catcher.
 
 [This]{.smallcaps} species is so generally dispersed over the southern coast of Australia, that to particularize localities wher…</div>
       <button class="read-more" data-index="6">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HAMATOPUS%20LONGIROSTRIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="sooty oyster-catcher hamatopus fuliginosus," data-index="7" id="plate-8">
+  <div class="card" data-search="sooty oyster-catcher hamatopus fuliginosus," data-index="7">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/315437762638f4d152f07ae2bd9953d5ab9eb112.jpg" alt="Sooty Oyster-Catcher plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 8 &middot; Sooty Oyster-Catcher</div>
+      <div class="plate-no">Vol. VI &middot; Plate 8 &middot; Sooty Oyster-Catcher</div>
       <div class="latin-line"><span class="latin">HAMATOPUS FULIGINOSUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -229,14 +244,13 @@ Sooty Oyster-catcher.
 
 [After]{.smallcaps} a careful examination and comparison of the Black Oyster-catchers of the Cape of Good Hope, Cape Horn and Austra…</div>
       <button class="read-more" data-index="7">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HAMATOPUS%20FULIGINOSUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="wattled pewit lobivanellus lobatus." data-index="8" id="plate-9">
+  <div class="card" data-search="wattled pewit lobivanellus lobatus." data-index="8">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/937042b3908f6331bc5cf28be8349ee6dc8141d3.jpg" alt="Wattled Pewit plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 9 &middot; Wattled Pewit</div>
+      <div class="plate-no">Vol. VI &middot; Plate 9 &middot; Wattled Pewit</div>
       <div class="latin-line"><span class="latin">LOBIVANELLUS LOBATUS.</span></div>
       <div class="gould-text">Wattled Pewit.
 
@@ -252,14 +266,13 @@ Sooty Oyster-catcher.
 
 *Van…</div>
       <button class="read-more" data-index="8">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LOBIVANELLUS%20LOBATUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="masked pewit lobivanellus personatus ," data-index="9" id="plate-10">
+  <div class="card" data-search="masked pewit lobivanellus personatus ," data-index="9">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/563d3bcdd48c50143e335a3b80d8753d5a3eb206.jpg" alt="Masked Pewit plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 10 &middot; Masked Pewit</div>
+      <div class="plate-no">Vol. VI &middot; Plate 10 &middot; Masked Pewit</div>
       <div class="latin-line"><span class="latin">LOBIVANELLUS PERSONATUS ,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -273,14 +286,13 @@ Masked Pewit.
 
 [This]{.smallcaps} new Pewit, which is as abundant in the northern parts of Australia as the Wattled Pewit is in the eastern, is more elegantly formed than that species, being of the same size in the body, but with more leng…</div>
       <button class="read-more" data-index="9">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LOBIVANELLUS%20PERSONATUS%20%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-breasted pewit sarciophorus pectoralis." data-index="10" id="plate-11">
+  <div class="card" data-search="black-breasted pewit sarciophorus pectoralis." data-index="10">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/cde7be72f5fe32a98213d7da5af910d8c0fe1c8e.jpg" alt="Black-breasted Pewit plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 11 &middot; Black-breasted Pewit</div>
+      <div class="plate-no">Vol. VI &middot; Plate 11 &middot; Black-breasted Pewit</div>
       <div class="latin-line"><span class="latin">SARCIOPHORUS PECTORALIS.</span></div>
       <div class="gould-text">Black-breasted Pewit.
 
@@ -290,14 +302,13 @@ Masked Pewit.
 
 [This]{.smallcaps} species is known to inhabit Van Diemen&#x27;s Land, South Australia and New South Wales, but over what other portions of the Australian continent its range is extended, has not yet been a…</div>
       <button class="read-more" data-index="10">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SARCIOPHORUS%20PECTORALIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="grey plover squatarola helvetica." data-index="11" id="plate-12">
+  <div class="card" data-search="grey plover squatarola helvetica." data-index="11">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/735432c555b1114b8c5817c0348879c567a258ce.jpg" alt="Grey Plover plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 12 &middot; Grey Plover</div>
+      <div class="plate-no">Vol. VI &middot; Plate 12 &middot; Grey Plover</div>
       <div class="latin-line"><span class="latin">SQUATAROLA HELVETICA.</span></div>
       <div class="gould-text">Grey Plover.
 
@@ -311,14 +322,13 @@ Masked Pewit.
 
 *Swiss Sandpiper,* Lath. Gen. Syn., vol. v. p. 167.---Id. Supp., p. 248.---Ib. Gen.…</div>
       <button class="read-more" data-index="11">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SQUATAROLA%20HELVETICA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian golden plover charadrius xanthocheilus," data-index="12" id="plate-13">
+  <div class="card" data-search="australian golden plover charadrius xanthocheilus," data-index="12">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/1de17e12001a7af6fcccdcb030dc1cd713565bb5.jpg" alt="Australian Golden Plover plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 13 &middot; Australian Golden Plover</div>
+      <div class="plate-no">Vol. VI &middot; Plate 13 &middot; Australian Golden Plover</div>
       <div class="latin-line"><span class="latin">CHARADRIUS XANTHOCHEILUS,</span></div>
       <div class="gould-text">*[Wagl.]*
 
@@ -328,14 +338,13 @@ Australian Golden Plover.
 
 [This]{.smallcaps} species of Golden Plover, which I have referred to the *Charadrius xanthocheilus* of Wagler, although nowhere very abundant, is generally dispersed over all the colonies from Van Diemen&#x27;s Land to the extreme north of the continent of Australia, and …</div>
       <button class="read-more" data-index="12">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CHARADRIUS%20XANTHOCHEILUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="brown plover charadrius veredus," data-index="13" id="plate-14">
+  <div class="card" data-search="brown plover charadrius veredus," data-index="13">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/1eeb40908f29fbb48136e7f41ff8e8cc9a79bcf9.jpg" alt="Brown Plover plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 14 &middot; Brown Plover</div>
+      <div class="plate-no">Vol. VI &middot; Plate 14 &middot; Brown Plover</div>
       <div class="latin-line"><span class="latin">CHARADRIUS VEREDUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -345,14 +354,13 @@ Brown Plover.
 
 A [specimen]{.smallcaps} of this species was procured at Port Essington by Mr. Gilbert, and a second has been sent to me from Sydney by Mr. Strange; these, and one other example, are all that have come under my observation ; we may consequently infer that it is a very rare bird in Australia. Judging from its structure a…</div>
       <button class="read-more" data-index="13">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CHARADRIUS%20VEREDUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian dottrel eudromias australis," data-index="14" id="plate-15">
+  <div class="card" data-search="australian dottrel eudromias australis," data-index="14">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/a340b3c06a33b57110be1823f313e546c9dd470b.jpg" alt="Australian Dottrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 15 &middot; Australian Dottrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 15 &middot; Australian Dottrel</div>
       <div class="latin-line"><span class="latin">EUDROMIAS AUSTRALIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -362,14 +370,13 @@ Australian Dottrel.
 
 [By]{.smallcaps} the ornithologist, the bird forming the subject of the present memoir will be looked upon with the greatest interest, as an additional species of a genus of which hitherto only a single example was known, namely the Common Dottrel *{Eudromias morinella)* of the British Islands. Nothing can be more…</div>
       <button class="read-more" data-index="14">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EUDROMIAS%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="double-banded dottrel hiaticula bicingta." data-index="15" id="plate-16">
+  <div class="card" data-search="double-banded dottrel hiaticula bicingta." data-index="15">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/5fc72c82950e4cdb32f019fa1593b0bc90951872.jpg" alt="Double-banded Dottrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 16 &middot; Double-banded Dottrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 16 &middot; Double-banded Dottrel</div>
       <div class="latin-line"><span class="latin">HIATICULA BICINGTA.</span></div>
       <div class="gould-text">Double-banded Dottrel.
 
@@ -381,14 +388,13 @@ Australian Dottrel.
 
 [My]{.smallcaps} friend Ronald C. Gunn, Esq., informs me that he has found this fine species plentifully dispersed along the northern shores of Van Diemen&#x27;s Land, particularly at Circular Head and …</div>
       <button class="read-more" data-index="15">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIATICULA%20BICINGTA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-capped dottrel hiaticula ruficapilla." data-index="16" id="plate-17">
+  <div class="card" data-search="red-capped dottrel hiaticula ruficapilla." data-index="16">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/a2d434e5fc46224d47df52ac290cf2976ffab991.jpg" alt="Red-capped Dottrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 17 &middot; Red-capped Dottrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 17 &middot; Red-capped Dottrel</div>
       <div class="latin-line"><span class="latin">HIATICULA RUFICAPILLA.</span></div>
       <div class="gould-text">Red-capped Dottrel.
 
@@ -400,14 +406,13 @@ Australian Dottrel.
 
 *Sand-Lar…</div>
       <button class="read-more" data-index="16">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIATICULA%20RUFICAPILLA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="hooded dottrel hiaticula monacha." data-index="17" id="plate-18">
+  <div class="card" data-search="hooded dottrel hiaticula monacha." data-index="17">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/33281283066cce07338e262c7e6a9fb84039517c.jpg" alt="Hooded Dottrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 18 &middot; Hooded Dottrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 18 &middot; Hooded Dottrel</div>
       <div class="latin-line"><span class="latin">HIATICULA MONACHA.</span></div>
       <div class="gould-text">Hooded Dottrel.
 
@@ -421,14 +426,13 @@ Australian Dottrel.
 
 [This]{.smallcaps} elegant species of Dottrel is universally dispersed over the sea-coasts of the southern parts of Australia, but…</div>
       <button class="read-more" data-index="17">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIATICULA%20MONACHA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="allied dottrel hiaticula inornate" data-index="18" id="plate-19">
+  <div class="card" data-search="allied dottrel hiaticula inornate" data-index="18">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/58bb94567437ddbd019b1431005f1c01a2511a24.jpg" alt="Allied Dottrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 19 &middot; Allied Dottrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 19 &middot; Allied Dottrel</div>
       <div class="latin-line"><span class="latin">HIATICULA INORNATE</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -438,14 +442,13 @@ Allied Dottrel.
 
 I [have]{.smallcaps} for some years had in my possession two examples of this species, the uniformity of whose colouring suggested the term of *inornata* as an appropriate appellation; lately, however, through the kindness of Lieut. Ince, R.N., I have received other examples with a brighter style of marking, which is doubtless …</div>
       <button class="read-more" data-index="18">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIATICULA%20INORNATE">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-fronted dottrel hiaticula nigrifrons." data-index="19" id="plate-20">
+  <div class="card" data-search="black-fronted dottrel hiaticula nigrifrons." data-index="19">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/691d9985bfdcdda19fe6d41b86a495acfcc90dda.jpg" alt="Black-fronted Dottrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 20 &middot; Black-fronted Dottrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 20 &middot; Black-fronted Dottrel</div>
       <div class="latin-line"><span class="latin">HIATICULA NIGRIFRONS.</span></div>
       <div class="gould-text">Black-fronted Dottrel.
 
@@ -459,14 +462,13 @@ I [have]{.smallcaps} for some years had in my possession two examples of this sp
 
 [The]{.smallcaps} temp…</div>
       <button class="read-more" data-index="19">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIATICULA%20NIGRIFRONS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="banded red-knee erythrogonys cinctus, gould." data-index="20" id="plate-21">
+  <div class="card" data-search="banded red-knee erythrogonys cinctus, gould." data-index="20">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/f91647dc13d2bc0773855d1eed63942b8c0f64b1.jpg" alt="Banded Red-knee plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 21 &middot; Banded Red-knee</div>
+      <div class="plate-no">Vol. VI &middot; Plate 21 &middot; Banded Red-knee</div>
       <div class="latin-line"><span class="latin">Erythrogonys cinctus, Gould.</span></div>
       <div class="gould-text">IE &gt; Y&#x27;I II 11 IRQ( Q NN Y S C)UINC T UU 8 z *Cow/ol*ERYTHROGONYS CINCTUS, *Gould, *Banded Red-knee.
 
@@ -474,14 +476,13 @@ I [have]{.smallcaps} for some years had in my possession two examples of this sp
 
 [Over]{.smallcaps} what extent of country the Banded Red-knee may range is yet to be determined; the south-eastern portions of Australia are the only localities from which, if I recollect rightly, I have eve…</div>
       <button class="read-more" data-index="20">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Erythrogonys%20cinctus%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian pratincole glareola grallaria," data-index="21" id="plate-22">
+  <div class="card" data-search="australian pratincole glareola grallaria," data-index="21">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/a2e83b896adaed6ce0c1e3451430fab7317ea41c.jpg" alt="Australian Pratincole plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 22 &middot; Australian Pratincole</div>
+      <div class="plate-no">Vol. VI &middot; Plate 22 &middot; Australian Pratincole</div>
       <div class="latin-line"><span class="latin">GLAREOLA GRALLARIA,</span></div>
       <div class="gould-text">*[Temm.]*
 
@@ -493,14 +494,13 @@ Australian Pratincole.
 
 * Australis,* Leach in Linn. Trans., vol. xiii. p. 132. pl. 14. fig. 1, …</div>
       <button class="read-more" data-index="21">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GLAREOLA%20GRALLARIA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="oriental pratincole glareola orientalis," data-index="22" id="plate-23">
+  <div class="card" data-search="oriental pratincole glareola orientalis," data-index="22">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/70b61d78a394e061e14730cdeb812136c2a23721.jpg" alt="Oriental Pratincole plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 23 &middot; Oriental Pratincole</div>
+      <div class="plate-no">Vol. VI &middot; Plate 23 &middot; Oriental Pratincole</div>
       <div class="latin-line"><span class="latin">GLAREOLA ORIENTALIS,</span></div>
       <div class="gould-text">*[Leach.]*
 
@@ -514,14 +514,13 @@ Traite d&#x27;Orn., p. 541.---List of Birds in Brit. Mus Coll., part iii. p. 62.
 
 A [small]{.smallcaps} collection of birds presented to the Linnean Society in the early part of 1827 by Alexander MacLeay, Esq.…</div>
       <button class="read-more" data-index="22">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GLAREOLA%20ORIENTALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white-headed stilt himantopus leucocephalus," data-index="23" id="plate-24">
+  <div class="card" data-search="white-headed stilt himantopus leucocephalus," data-index="23">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/01b3076575e10e5efa02eb438062092f504e280d.jpg" alt="White-headed Stilt plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 24 &middot; White-headed Stilt</div>
+      <div class="plate-no">Vol. VI &middot; Plate 24 &middot; White-headed Stilt</div>
       <div class="latin-line"><span class="latin">HIMANTOPUS LEUCOCEPHALUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -531,14 +530,13 @@ White-headed Stilt.
 
 [Although]{.smallcaps} the extreme length of the legs of this bird, as compared with the small size of its body, would seem incompatible with easy carriage and graceful deportment, this is in realit…</div>
       <button class="read-more" data-index="23">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIMANTOPUS%20LEUCOCEPHALUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="new zealand stilt himantopus nova-zelandia," data-index="24" id="plate-25">
+  <div class="card" data-search="new zealand stilt himantopus nova-zelandia," data-index="24">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/9718cf8c993ca35eda06482de178bf0315dd72e4.jpg" alt="New Zealand Stilt plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 25 &middot; New Zealand Stilt</div>
+      <div class="plate-no">Vol. VI &middot; Plate 25 &middot; New Zealand Stilt</div>
       <div class="latin-line"><span class="latin">HIMANTOPUS NOVA-ZELANDIA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -548,14 +546,13 @@ New Zealand Stilt.
 
 As might be expected, the colonization of New Zealand has brought to light many ornithological novelties peculiar to those islands, the natural productions of which are even at this time so imperfectly known. The species here represented is, perhaps, one of the most interesting of those forwarded to the N…</div>
       <button class="read-more" data-index="24">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HIMANTOPUS%20NOVA-ZELANDIA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="banded stilt cladorhynchus pectoralis," data-index="25" id="plate-26">
+  <div class="card" data-search="banded stilt cladorhynchus pectoralis," data-index="25">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/d2d36fba09fd73711b04f6cc6c72645f4093ca30.jpg" alt="Banded Stilt plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 26 &middot; Banded Stilt</div>
+      <div class="plate-no">Vol. VI &middot; Plate 26 &middot; Banded Stilt</div>
       <div class="latin-line"><span class="latin">CLADORHYNCHUS PECTORALIS,</span></div>
       <div class="gould-text">*[G.R.G]~[rai/]~[.]*
 
@@ -569,14 +566,13 @@ Banded Stilt.
 
 [Since]{.smallcaps} the publication of the Second Part of my &quot; Synopsis of the Birds of Australia,&quot; in which I gave a description and part…</div>
       <button class="read-more" data-index="25">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CLADORHYNCHUS%20PECTORALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-necked avocet recurvirostra rubricollis," data-index="26" id="plate-27">
+  <div class="card" data-search="red-necked avocet recurvirostra rubricollis," data-index="26">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/512f23e7af5dbfec26d164d4138e9f6ae0c98262.jpg" alt="Red-necked Avocet plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 27 &middot; Red-necked Avocet</div>
+      <div class="plate-no">Vol. VI &middot; Plate 27 &middot; Red-necked Avocet</div>
       <div class="latin-line"><span class="latin">RECURVIROSTRA RUBRICOLLIS,</span></div>
       <div class="gould-text">*[Temm,]*
 
@@ -590,14 +586,13 @@ Red-necked Avocet.
 
 [The]{.smallcaps} western and southern portions o…</div>
       <button class="read-more" data-index="26">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=RECURVIROSTRA%20RUBRICOLLIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-tailed godwit limosa melanuroides," data-index="27" id="plate-28">
+  <div class="card" data-search="black-tailed godwit limosa melanuroides," data-index="27">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/e74751cdfcae7706716d15d0ae6dc4656bfbac28.jpg" alt="Black-tailed Godwit plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 28 &middot; Black-tailed Godwit</div>
+      <div class="plate-no">Vol. VI &middot; Plate 28 &middot; Black-tailed Godwit</div>
       <div class="latin-line"><span class="latin">LIMOSA MELANUROIDES,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -607,14 +602,13 @@ Black-tailed Godwit.
 
 [My]{.smallcaps} collection contains two specimens, male and female, in winter plumage, of this species, which at the first glance might readily he mistaken for specimens of the European bird ; on comparison however the Austra­lian species is found to be of a much smaller si…</div>
       <button class="read-more" data-index="27">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LIMOSA%20MELANUROIDES%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="barred-rumped godwit limosa uropygia lis," data-index="28" id="plate-29">
+  <div class="card" data-search="barred-rumped godwit limosa uropygia lis," data-index="28">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/1824142e7ac3f5af5c3a69d9d724bf9f52bd6fbc.jpg" alt="Barred-rumped Godwit plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 29 &middot; Barred-rumped Godwit</div>
+      <div class="plate-no">Vol. VI &middot; Plate 29 &middot; Barred-rumped Godwit</div>
       <div class="latin-line"><span class="latin">LIMOSA UROPYGIA LIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -624,14 +618,13 @@ Barred-rum ped Godwit.
 
 I [saw]{.smallcaps} this species in very great abundance, in company with Curlews, Oyster-catchers and Sandpipers, at Pitwater in Van Diemen&#x27;s Land, feeding on the extensive flats left bare by the receding tide ; I also observed it on the sandy flats in Spencer&#x27;s Gulf and on the sand-banks at the mouth of the r…</div>
       <button class="read-more" data-index="28">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LIMOSA%20UROPYGIA%20LIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian tringa schcniclus australis." data-index="29" id="plate-30">
+  <div class="card" data-search="australian tringa schcniclus australis." data-index="29">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/95f6563e22542e190d6473d444c4680ef99dc2fd.jpg" alt="Australian Tringa plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 30 &middot; Australian Tringa</div>
+      <div class="plate-no">Vol. VI &middot; Plate 30 &middot; Australian Tringa</div>
       <div class="latin-line"><span class="latin">SCHCNICLUS AUSTRALIS.</span></div>
       <div class="gould-text">Australian Tringa.
 
@@ -641,14 +634,13 @@ I [saw]{.smallcaps} this species in very great abundance, in company with Curlew
 
 [This]{.smallcaps} pretty species of Sandpiper is distributed over all parts of Australia, including Van Diemen&#x27;s Land. The sandy beaches of the sea-coast and the banks of the rivers in the interior of the country are equally visited by it; and in all such…</div>
       <button class="read-more" data-index="29">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SCHCNICLUS%20AUSTRALIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="little sandpiper schcniclus albescens." data-index="30" id="plate-31">
+  <div class="card" data-search="little sandpiper schcniclus albescens." data-index="30">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/88ba46882a5fd68369066089557ef7ef126db1b2.jpg" alt="Little Sandpiper plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 31 &middot; Little Sandpiper</div>
+      <div class="plate-no">Vol. VI &middot; Plate 31 &middot; Little Sandpiper</div>
       <div class="latin-line"><span class="latin">SCHCNICLUS ALBESCENS.</span></div>
       <div class="gould-text">Little Sandpiper.
 
@@ -660,14 +652,13 @@ I [saw]{.smallcaps} this species in very great abundance, in company with Curlew
 
 I [have]{.smallcaps} received specimens of this little Sandpiper from every one of the Australian colonies, the islands in Bass&#x27;s Straits, the Houtmann&#x27;s Abrolhos off the western coast, and Raine&#x27;s Isle…</div>
       <button class="read-more" data-index="30">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SCHCNICLUS%20ALBESCENS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="curlew sandpiper schcniclus subarquatus." data-index="31" id="plate-32">
+  <div class="card" data-search="curlew sandpiper schcniclus subarquatus." data-index="31">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/cbfa632e47acbcd0a0c8b062900ddb6435449511.jpg" alt="Curlew Sandpiper plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 32 &middot; Curlew Sandpiper</div>
+      <div class="plate-no">Vol. VI &middot; Plate 32 &middot; Curlew Sandpiper</div>
       <div class="latin-line"><span class="latin">SCHCNICLUS SUBARQUATUS.</span></div>
       <div class="gould-text">Curlew Sandpiper.
 
@@ -683,14 +674,13 @@ I [have]{.smallcaps} received specimens of this little Sandpiper from every one 
 
 [Some]{.smallcaps} few species of Australian birds are precisely identical with those…</div>
       <button class="read-more" data-index="31">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SCHCNICLUS%20SUBARQUATUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="great sandpiper schcniclus magnus," data-index="32" id="plate-33">
+  <div class="card" data-search="great sandpiper schcniclus magnus," data-index="32">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/b3599a75c88a58df74b6959b7398dd3bf5156117.jpg" alt="Great Sandpiper plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 33 &middot; Great Sandpiper</div>
+      <div class="plate-no">Vol. VI &middot; Plate 33 &middot; Great Sandpiper</div>
       <div class="latin-line"><span class="latin">SCHCNICLUS MAGNUS,</span></div>
       <div class="gould-text">[SCHCNICLUS MAGNUS, ]*[Gould.]*
 
@@ -700,14 +690,13 @@ Great Sandpiper.
 
 [This]{.smallcaps} is one of the few birds that I have not been able to obtain for my own collection ; there are, however, two specimens in the country; one in the British Museum, which was obtained on the north coast of Australia; the other, which was procured at Swan River, is in the possession…</div>
       <button class="read-more" data-index="32">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SCHCNICLUS%20MAGNUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="terek godwit terekia cinerea." data-index="33" id="plate-34">
+  <div class="card" data-search="terek godwit terekia cinerea." data-index="33">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/345f64b6e35f0e323effe84357b1340db9d10019.jpg" alt="Terek Godwit plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 34 &middot; Terek Godwit</div>
+      <div class="plate-no">Vol. VI &middot; Plate 34 &middot; Terek Godwit</div>
       <div class="latin-line"><span class="latin">TEREKIA CINEREA.</span></div>
       <div class="gould-text">Terek Godwit.
 
@@ -725,14 +714,13 @@ Great Sandpiper.
 
 *Terek Godwit,* Gould, Birds of Europe, vol. iv. pl. 307.…</div>
       <button class="read-more" data-index="33">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TEREKIA%20CINEREA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="fairy sandpiper actitis empusa," data-index="34" id="plate-35">
+  <div class="card" data-search="fairy sandpiper actitis empusa," data-index="34">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/cd06dd24816ed023487a6b374b45fd491cb80806.jpg" alt="Fairy Sandpiper plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 35 &middot; Fairy Sandpiper</div>
+      <div class="plate-no">Vol. VI &middot; Plate 35 &middot; Fairy Sandpiper</div>
       <div class="latin-line"><span class="latin">ACTITIS EMPUSA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -744,14 +732,13 @@ Fairy Sandpiper.
 
 [This]{.smallcaps} species, which is much smaller than the *Actitis hypoleucus* of Europe, and differs moreover in having the brown of the upper surface washed with translucent bronze, is very thinly dispersed over the Australian continent. Although I have seen specimens f…</div>
       <button class="read-more" data-index="34">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ACTITIS%20EMPUSA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian greenshank glottis glottoides." data-index="35" id="plate-36">
+  <div class="card" data-search="australian greenshank glottis glottoides." data-index="35">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/f6a256a2ebc5b16c2e02630ed4f22cf1e16c099b.jpg" alt="Australian Greenshank plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 36 &middot; Australian Greenshank</div>
+      <div class="plate-no">Vol. VI &middot; Plate 36 &middot; Australian Greenshank</div>
       <div class="latin-line"><span class="latin">GLOTTIS GLOTTOIDES.</span></div>
       <div class="gould-text">Australian Greenshank.
 
@@ -759,14 +746,13 @@ Fairy Sandpiper.
 
 [This]{.smallcaps} widely wandering species inhabits every country of the Old World from India to the most southern part of Australia. Although nowhere very abundant, it is so generally dispersed over Australia and Van Diemen&#x27;s Land, that I have seen specimens from eve…</div>
       <button class="read-more" data-index="35">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GLOTTIS%20GLOTTOIDES.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="marsh sandpiper totanus stagnatilis." data-index="36" id="plate-37">
+  <div class="card" data-search="marsh sandpiper totanus stagnatilis." data-index="36">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/951e71fcdc85db88f8daec13575ea50a17e86c70.jpg" alt="Marsh Sandpiper plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 37 &middot; Marsh Sandpiper</div>
+      <div class="plate-no">Vol. VI &middot; Plate 37 &middot; Marsh Sandpiper</div>
       <div class="latin-line"><span class="latin">TOTANUS STAGNATILIS.</span></div>
       <div class="gould-text">Marsh Sandpiper.
 
@@ -774,14 +760,13 @@ Fairy Sandpiper.
 
 I [shot]{.smallcaps} a specimen of this bird on the banks of the Lower Mokai on the 16th of December 1839: on com­paring it with Indian and European specimens, I find the whole to be identical; the Australian bird is however somewhat lighter in colour. The individual above-mentioned was feeding on…</div>
       <button class="read-more" data-index="36">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TOTANUS%20STAGNATILIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="grey-rumped sandpiper totanus griseopygius," data-index="37" id="plate-38">
+  <div class="card" data-search="grey-rumped sandpiper totanus griseopygius," data-index="37">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/20f5f7069625d93ecce9d0bdf1728bcdfa16f349.jpg" alt="Grey-rumped Sandpiper plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 38 &middot; Grey-rumped Sandpiper</div>
+      <div class="plate-no">Vol. VI &middot; Plate 38 &middot; Grey-rumped Sandpiper</div>
       <div class="latin-line"><span class="latin">TOTANUS GRISEOPYGIUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -793,14 +778,13 @@ Grey-rumped Sandpiper.
 
 [Never]{.smallcaps} having seen this Sandpiper in any collection but my own, nor a description of it in any of the ornithological works I have examined, I have deemed it necessary to give it a specific appellation, and have selected that of *griseopygius*…</div>
       <button class="read-more" data-index="37">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TOTANUS%20GRISEOPYGIUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="turnstone strepsilas interpres." data-index="38" id="plate-39">
+  <div class="card" data-search="turnstone strepsilas interpres." data-index="38">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/d925d5d299bfc754b18a0edd2fce9d2384b41cfe.jpg" alt="Turnstone plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 39 &middot; Turnstone</div>
+      <div class="plate-no">Vol. VI &middot; Plate 39 &middot; Turnstone</div>
       <div class="latin-line"><span class="latin">STREPSILAS INTERPRES.</span></div>
       <div class="gould-text">Turnstone.
 
@@ -812,14 +796,13 @@ Grey-rumped Sandpiper.
 
 [If]{.smallcaps} any one bird be universally dispersed over the sea-shores of the globe, it is the Turnstone, for there are few of whi…</div>
       <button class="read-more" data-index="38">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=STREPSILAS%20INTERPRES.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="new holland snipe scolopax australis,." data-index="39" id="plate-40">
+  <div class="card" data-search="new holland snipe scolopax australis,." data-index="39">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/10b08c75e9ef3457cc7a334c70a2e7a873f4dd8f.jpg" alt="New Holland Snipe plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 40 &middot; New Holland Snipe</div>
+      <div class="plate-no">Vol. VI &middot; Plate 40 &middot; New Holland Snipe</div>
       <div class="latin-line"><span class="latin">SCOLOPAX AUSTRALIS,.</span></div>
       <div class="gould-text">*[Lath.]*
 
@@ -837,14 +820,13 @@ New Holland Snipe.
 
 [On]{.smallcaps} comparing the Snipes killed at Port Essington w…</div>
       <button class="read-more" data-index="39">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SCOLOPAX%20AUSTRALIS%2C.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian rhyncha rhynchaa australis," data-index="40" id="plate-41">
+  <div class="card" data-search="australian rhyncha rhynchaa australis," data-index="40">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/56414973c3bea989a76fbf4fc3eeaadcd2c57d37.jpg" alt="Australian Rhyncha plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 41 &middot; Australian Rhyncha</div>
+      <div class="plate-no">Vol. VI &middot; Plate 41 &middot; Australian Rhyncha</div>
       <div class="latin-line"><span class="latin">RHYNCHAA AUSTRALIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -854,14 +836,13 @@ Australian Rhyncha.
 
 [The]{.smallcaps} Australian Rhyncha is a summer visitant to New South Wales, where it arrives in August and September; but whether its visits are regular, or only occur in such wet seasons as fill the lagoons and cause a redundance of rushes and other herbage to spring forth…</div>
       <button class="read-more" data-index="40">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=RHYNCHAA%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian curlew numenius australis," data-index="41" id="plate-42">
+  <div class="card" data-search="australian curlew numenius australis," data-index="41">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/c10931c87625d0050db1198e656865f89362a544.jpg" alt="Australian Curlew plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 42 &middot; Australian Curlew</div>
+      <div class="plate-no">Vol. VI &middot; Plate 42 &middot; Australian Curlew</div>
       <div class="latin-line"><span class="latin">NUMENIUS AUSTRALIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -877,14 +858,13 @@ Australian Curlew.
 
 [In]{.smallcaps} investigating the ornithology of any part of the world we find many instances of species so closely resembling others, known to be inhabitants of distant co…</div>
       <button class="read-more" data-index="41">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=NUMENIUS%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian whimbrel numenius uropygialis," data-index="42" id="plate-43">
+  <div class="card" data-search="australian whimbrel numenius uropygialis," data-index="42">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/f02e2e72b1da541244fe044e5139f79147dbf019.jpg" alt="Australian Whimbrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 43 &middot; Australian Whimbrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 43 &middot; Australian Whimbrel</div>
       <div class="latin-line"><span class="latin">NUMENIUS UROPYGIALIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -896,14 +876,13 @@ Australian Whimbrel.
 
 [This]{.smallcaps} species is somewhat smaller than the *Numenius Phceopus* of Europe, and moreover differs in having the rump barred and mottled instead of a pure white as in that bird ; in other respects they are so similar that a description of one would apply w…</div>
       <button class="read-more" data-index="42">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=NUMENIUS%20UROPYGIALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="little whimbrel numenius minutus," data-index="43" id="plate-44">
+  <div class="card" data-search="little whimbrel numenius minutus," data-index="43">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/9f052e3fbc6bfae2c2152caec128c6dd0e0ce5e0.jpg" alt="Little Whimbrel plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 44 &middot; Little Whimbrel</div>
+      <div class="plate-no">Vol. VI &middot; Plate 44 &middot; Little Whimbrel</div>
       <div class="latin-line"><span class="latin">NUMENIUS MINUTUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -913,14 +892,13 @@ Little Whimbrel.
 
 I [killed]{.smallcaps} a pair of this species out of a flock of about twenty in number which was flying over the race­course at Maitland in New South Wales, on the 4th of April 1839. The flock was constantly rising and flying round, sometimes to the distance of a mile, returning again, alighting, and running quickly ov…</div>
       <button class="read-more" data-index="43">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=NUMENIUS%20MINUTUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="straw-necked ibis geronticus spinicollis." data-index="44" id="plate-45">
+  <div class="card" data-search="straw-necked ibis geronticus spinicollis." data-index="44">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/cfcf974cc77e400df5073b5181958f88ba892203.jpg" alt="Straw-necked Ibis plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 45 &middot; Straw-necked Ibis</div>
+      <div class="plate-no">Vol. VI &middot; Plate 45 &middot; Straw-necked Ibis</div>
       <div class="latin-line"><span class="latin">GERONTICUS SPINICOLLIS.</span></div>
       <div class="gould-text">Straw-necked Ibis.
 
@@ -932,14 +910,13 @@ I [killed]{.smallcaps} a pair of this species out of a flock of about twenty in 
 
 [This]{.smallcaps} beautiful Ibis has never yet been discovered out of Australia, over the whole of which immense country it is probably d…</div>
       <button class="read-more" data-index="44">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GERONTICUS%20SPINICOLLIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white ibis threskiornis strictipennis." data-index="45" id="plate-46">
+  <div class="card" data-search="white ibis threskiornis strictipennis." data-index="45">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/7d0519c105fe2d9a592f070edda81405d83e550e.jpg" alt="White Ibis plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 46 &middot; White Ibis</div>
+      <div class="plate-no">Vol. VI &middot; Plate 46 &middot; White Ibis</div>
       <div class="latin-line"><span class="latin">THRESKIORNIS STRICTIPENNIS.</span></div>
       <div class="gould-text">White Ibis.
 
@@ -951,14 +928,13 @@ I [killed]{.smallcaps} a pair of this species out of a flock of about twenty in 
 
 [The]{.smallcaps} same cause that induced the Straw-necked Ibis *(Geronticus spinicollis&#x27;)* to visit New South Wales in such abundance during the year 1839 acted equally on the present bird…</div>
       <button class="read-more" data-index="45">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=THRESKIORNIS%20STRICTIPENNIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="glossy ibis falcinellus igneus." data-index="46" id="plate-47">
+  <div class="card" data-search="glossy ibis falcinellus igneus." data-index="46">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/35cd5000a61f7bff7df45dfdc254fab461b3f692.jpg" alt="Glossy Ibis plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 47 &middot; Glossy Ibis</div>
+      <div class="plate-no">Vol. VI &middot; Plate 47 &middot; Glossy Ibis</div>
       <div class="latin-line"><span class="latin">FALCINELLUS IGNEUS.</span></div>
       <div class="gould-text">Glossy Ibis.
 
@@ -968,14 +944,13 @@ I [killed]{.smallcaps} a pair of this species out of a flock of about twenty in 
 
 *Tantalus igneus,* Gmel…</div>
       <button class="read-more" data-index="46">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=FALCINELLUS%20IGNEUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian crane grus australasianus," data-index="47" id="plate-48">
+  <div class="card" data-search="australian crane grus australasianus," data-index="47">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/40dc3fb0f6ac1bd263fcf8c56034b0914e7eb585.jpg" alt="Australian Crane plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 48 &middot; Australian Crane</div>
+      <div class="plate-no">Vol. VI &middot; Plate 48 &middot; Australian Crane</div>
       <div class="latin-line"><span class="latin">GRUS AUSTRALASIANUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -987,14 +962,13 @@ Australian Crane.
 
 [Having]{.smallcaps} carefully compared the bird here represented with the *Grus Antigone* of India, with which it has hitherto been considered identical, I am satisfied that it is entirely distinct, and I have consequently assigned to it the specific term of *Australasianus,* whi…</div>
       <button class="read-more" data-index="47">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GRUS%20AUSTRALASIANUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="yellow-legged spoonbill platalea flavipes," data-index="48" id="plate-49">
+  <div class="card" data-search="yellow-legged spoonbill platalea flavipes," data-index="48">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/9900122a3f6b8c459e0c94a8d2dcc8f31933c716.jpg" alt="Yellow-legged Spoonbill plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 49 &middot; Yellow-legged Spoonbill</div>
+      <div class="plate-no">Vol. VI &middot; Plate 49 &middot; Yellow-legged Spoonbill</div>
       <div class="latin-line"><span class="latin">PLATALEA FLAVIPES,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1004,14 +978,13 @@ Yellow-legged Spoonbill.
 
 [This]{.smallcaps} species differs in so many points from the typical members of the genus *Platalea,* and has so many characters in common with the white Ibises of India and Africa, as almost to warrant its separation into a distinct genus ; its whole habits and economy, …</div>
       <button class="read-more" data-index="48">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATALEA%20FLAVIPES%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="royal spoonbill pl at ale a regia," data-index="49" id="plate-50">
+  <div class="card" data-search="royal spoonbill pl at ale a regia," data-index="49">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/51a1c3bf22c03584ed760f910a13c599b6cbf4d1.jpg" alt="Royal Spoonbill plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 50 &middot; Royal Spoonbill</div>
+      <div class="plate-no">Vol. VI &middot; Plate 50 &middot; Royal Spoonbill</div>
       <div class="latin-line"><span class="latin">PL AT ALE A REGIA,</span></div>
       <div class="gould-text">*[[gm.]]{.smallcaps}*
 
@@ -1021,14 +994,13 @@ Royal Spoonbill.
 
 [This]{.smallcaps} fine species of Spoonbill may be readily distinguished from the *Platalea leucorodia* of Europe by the nudity of its face, which even considerably beyond the eyes is entirely destitute of feathers, and is of the same black colour as the bill; in other re…</div>
       <button class="read-more" data-index="49">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PL%20AT%20ALE%20A%20REGIA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian mycteria mycteria australis," data-index="50" id="plate-51">
+  <div class="card" data-search="australian mycteria mycteria australis," data-index="50">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/b3b6f5428a2a51ac8febbddb6cb760947a2ae0d9.jpg" alt="Australian Mycteria plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 51 &middot; Australian Mycteria</div>
+      <div class="plate-no">Vol. VI &middot; Plate 51 &middot; Australian Mycteria</div>
       <div class="latin-line"><span class="latin">MYCTERIA AUSTRALIS,</span></div>
       <div class="gould-text">*[hath.]*
 
@@ -1038,14 +1010,13 @@ Australian Mycteria.
 
 *New Holland Jaliru,* …</div>
       <button class="read-more" data-index="50">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=MYCTERIA%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pacific heron ar dea pacifica," data-index="51" id="plate-52">
+  <div class="card" data-search="pacific heron ar dea pacifica," data-index="51">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/965880d557bea9693e907378bec5d2760f8bae7a.jpg" alt="Pacific Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 52 &middot; Pacific Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 52 &middot; Pacific Heron</div>
       <div class="latin-line"><span class="latin">AR DEA PACIFICA,</span></div>
       <div class="gould-text">*[Lath.]*
 
@@ -1059,14 +1030,13 @@ Pacific Heron.
 
 *Jil-lee-mil-yun,* Aborigines of the lowland, an…</div>
       <button class="read-more" data-index="51">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=AR%20DEA%20PACIFICA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white-fronted heron ardea nove-hollandia," data-index="52" id="plate-53">
+  <div class="card" data-search="white-fronted heron ardea nove-hollandia," data-index="52">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/24250ad9bb7b6db479448486f4e43a2c38e3c389.jpg" alt="White-fronted Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 53 &middot; White-fronted Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 53 &middot; White-fronted Heron</div>
       <div class="latin-line"><span class="latin">ARDEA NOVE-HOLLANDIA,</span></div>
       <div class="gould-text">*[Lath.]*
 
@@ -1078,14 +1048,13 @@ White-fronted Heron.
 
 *Herodias Nova-Hollandite,* List of Birds in Brit. Mus…</div>
       <button class="read-more" data-index="52">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDEA%20NOVE-HOLLANDIA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="great-billed heron ardea rectirostris." data-index="53" id="plate-54">
+  <div class="card" data-search="great-billed heron ardea rectirostris." data-index="53">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/7abc76a2334f0dada1450a8fce66f3aade593123.jpg" alt="Great-billed Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 54 &middot; Great-billed Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 54 &middot; Great-billed Heron</div>
       <div class="latin-line"><span class="latin">ARDEA RECTIROSTRIS.</span></div>
       <div class="gould-text">Great-billed Heron.
 
@@ -1095,14 +1064,13 @@ White-fronted Heron.
 
 [The]{.smallcaps} only part of Australia in which this bird has been seen is the Cobourg Peninsula on the north coast, where Mr. Gilbert found it breeding on the 5th of February. He states that it is solitary in its habi…</div>
       <button class="read-more" data-index="53">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDEA%20RECTIROSTRIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="great grey heron ardea leucophaa," data-index="54" id="plate-55">
+  <div class="card" data-search="great grey heron ardea leucophaa," data-index="54">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/fd2d9ef1df18214efabd4bbb2afd534278a9ab05.jpg" alt="Great Grey Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 55 &middot; Great Grey Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 55 &middot; Great Grey Heron</div>
       <div class="latin-line"><span class="latin">ARDEA LEUCOPHAA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1112,14 +1080,13 @@ Australian Heron.
 
 [During]{.smallcaps} my journey into the interior of South Australia in 1839,1 saw a fine adult example of this beautiful Heron, but although I resorted to every possible stratagem in my power to get within shot of it, I regret to say I was unsuccessful; I have since, however, received a skin direct from New South Wales, whi…</div>
       <button class="read-more" data-index="54">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDEA%20LEUCOPHAA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian egret herodias syrmatophorus," data-index="55" id="plate-56">
+  <div class="card" data-search="australian egret herodias syrmatophorus," data-index="55">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/5817ea1753382e739dfb3f875a98c6d2beaae99a.jpg" alt="Australian Egret plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 56 &middot; Australian Egret</div>
+      <div class="plate-no">Vol. VI &middot; Plate 56 &middot; Australian Egret</div>
       <div class="latin-line"><span class="latin">HERODIAS SYRMATOPHORUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1129,14 +1096,13 @@ Australian Egret.
 
 [This]{.smallcaps} noble species of Egret, the largest of the group inhabiting Australia, is very generally dispersed over all parts of that continent, and is equally to be met with along the rivers and lagoons of the interior as well as in the neighbourhood of the coast. I have often seen it near the mouth of the Hunter…</div>
       <button class="read-more" data-index="55">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HERODIAS%20SYRMATOPHORUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="plumed egret herodias plumiferus," data-index="56" id="plate-57">
+  <div class="card" data-search="plumed egret herodias plumiferus," data-index="56">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/e2ff28474cbf52f68f6a6ddffa9ece0f8db47061.jpg" alt="Plumed Egret plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 57 &middot; Plumed Egret</div>
+      <div class="plate-no">Vol. VI &middot; Plate 57 &middot; Plumed Egret</div>
       <div class="latin-line"><span class="latin">HERODIAS PLUMIFERUS,</span></div>
       <div class="gould-text">*[Gould,]*
 
@@ -1146,14 +1112,13 @@ Plumed Egret.
 
 No one of the members of the beautiful genus *Herodias* is more interesting than the present species, inas­much as it is not only adorned with the redundance of graceful plumes springing from the back, common to the other species, but it has a mass of feathers of precisely the same structure depending from the lower pa…</div>
       <button class="read-more" data-index="56">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HERODIAS%20PLUMIFERUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="spotless egret herodias immaculata," data-index="57" id="plate-58">
+  <div class="card" data-search="spotless egret herodias immaculata," data-index="57">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/79f235f4c36ddf905691e7ace456040c0e6ce739.jpg" alt="Spotless Egret plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 58 &middot; Spotless Egret</div>
+      <div class="plate-no">Vol. VI &middot; Plate 58 &middot; Spotless Egret</div>
       <div class="latin-line"><span class="latin">HERODIAS IMMACULATA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1167,14 +1132,13 @@ No one of the members of the beautiful genus *Herodias* is more interesting than
 
 [This]{.smallcaps} Spotless Egret, which is a beautiful representative of the *Herodias Garzetta* of Europe, is a native of the northern portion of Australia, and is extremely abundant in almost all parts of the Cobourg Peninsula, both on the …</div>
       <button class="read-more" data-index="57">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HERODIAS%20IMMACULATA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="sombre egret herodias pannosus." data-index="58" id="plate-59">
+  <div class="card" data-search="sombre egret herodias pannosus." data-index="58">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/ebb371ea110650e6e5013308f24286ac810544dc.jpg" alt="Sombre Egret plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 59 &middot; Sombre Egret</div>
+      <div class="plate-no">Vol. VI &middot; Plate 59 &middot; Sombre Egret</div>
       <div class="latin-line"><span class="latin">HERODIAS PANNOSUS.</span></div>
       <div class="gould-text">Sombre Egret.
 
@@ -1182,14 +1146,13 @@ No one of the members of the beautiful genus *Herodias* is more interesting than
 
 [The]{.smallcaps} only example of this species that has come under my observation is the fine adult specimen which graces my collection, and which I received from the neighbourhood of Port Stephens in 1843. Unfor­tunately I am not able to give any information respecting it, as no note of any kind accompanied the specimen. Its dark colou…</div>
       <button class="read-more" data-index="58">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HERODIAS%20PANNOSUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="blue reef heron herodias jugularis." data-index="59" id="plate-60">
+  <div class="card" data-search="blue reef heron herodias jugularis." data-index="59">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/52e19e2909e0f43c2c4ce568a2d5add6210b0f5f.jpg" alt="Blue Reef Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 60 &middot; Blue Reef Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 60 &middot; Blue Reef Heron</div>
       <div class="latin-line"><span class="latin">HERODIAS JUGULARIS.</span></div>
       <div class="gould-text">Blue Reef Heron.
 
@@ -1205,14 +1168,13 @@ No one of the members of the beautiful genus *Herodias* is more interesting than
 
 [The]{.smallcaps} Blue Reef Heron is universally distributed over the whole of the coasts of the great continent of Australia, and is also found in New Zealand : the sea-coast is evidently the…</div>
       <button class="read-more" data-index="59">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HERODIAS%20JUGULARIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white reef heron herodias greyi, g.r.gray." data-index="60" id="plate-61">
+  <div class="card" data-search="white reef heron herodias greyi, g.r.gray." data-index="60">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/34e8ed1d37e8b0047e6433f71836ad2208a991ab.jpg" alt="White Reef Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 61 &middot; White Reef Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 61 &middot; White Reef Heron</div>
       <div class="latin-line"><span class="latin">Herodias Greyi, G.R.Gray.</span></div>
       <div class="gould-text">White Reef Heron.
 
@@ -1220,14 +1182,13 @@ No one of the members of the beautiful genus *Herodias* is more interesting than
 
 [This]{.smallcaps} species of Heron is abundantly dispersed over the whole of the northern and eastern coasts of Australia wherever low islands and reefs of coral running parallel to those coasts are found to exist. It presents so many points of similarity in size and in form to the *H. jugular is,* that I have long been of opin…</div>
       <button class="read-more" data-index="60">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Herodias%20Greyi%2C%20G.R.Gray.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pied egret herodias picata," data-index="61" id="plate-62">
+  <div class="card" data-search="pied egret herodias picata," data-index="61">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/2ec47b7e8fa440d0bbd7f05035d3efeeed974b8a.jpg" alt="Pied Egret plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 62 &middot; Pied Egret</div>
+      <div class="plate-no">Vol. VI &middot; Plate 62 &middot; Pied Egret</div>
       <div class="latin-line"><span class="latin">HERODIAS PICATA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1239,14 +1200,13 @@ No one of the members of the beautiful genus *Herodias* is more interesting than
 
 [Examples]{.smallcaps} of this species, not the least beautiful member of the tribe to which it belongs, have been sent to me by Mr. Gilbert and by Lieut. Ince; they were all procured in the neighbourhood of Port Essington, where Mr. Gilbert states that it inha…</div>
       <button class="read-more" data-index="61">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HERODIAS%20PICATA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="nankeen night heron nycticorax caledonicus." data-index="62" id="plate-63">
+  <div class="card" data-search="nankeen night heron nycticorax caledonicus." data-index="62">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/47cf2261d8acda694737dbab4621f09a80a57ffa.jpg" alt="Nankeen Night Heron plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 63 &middot; Nankeen Night Heron</div>
+      <div class="plate-no">Vol. VI &middot; Plate 63 &middot; Nankeen Night Heron</div>
       <div class="latin-line"><span class="latin">NYCTICORAX CALEDONICUS.</span></div>
       <div class="gould-text">Nankeen Night Heron.
 
@@ -1260,14 +1220,13 @@ No one of the members of the beautiful genus *Herodias* is more interesting than
 
 *New Holland Night Heron,* Lath. Gen. Hist., vol. ix. …</div>
       <button class="read-more" data-index="62">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=NYCTICORAX%20CALEDONICUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian bittern botaurus australis," data-index="63" id="plate-64">
+  <div class="card" data-search="australian bittern botaurus australis," data-index="63">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/449eeee378960fac28f54edef8657bdd1f8bd0e5.jpg" alt="Australian Bittern plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 64 &middot; Australian Bittern</div>
+      <div class="plate-no">Vol. VI &middot; Plate 64 &middot; Australian Bittern</div>
       <div class="latin-line"><span class="latin">BOTAURUS AUSTRALIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1277,14 +1236,13 @@ Australian Bittern.
 
 [The]{.smallcaps} Australian Bittern, although nowhere very abundant, is so generally diffused over the surface of the country wherever marshes and the sedgy banks of rivers occur, that there are few localities of this description in which its pr…</div>
       <button class="read-more" data-index="63">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=BOTAURUS%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="yellow-necked bittern ardetta? flavicollis." data-index="64" id="plate-65">
+  <div class="card" data-search="yellow-necked bittern ardetta? flavicollis." data-index="64">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/7cc9361b1d276f6416537a2c6bb03ab00a3eaf99.jpg" alt="Yellow-necked Bittern plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 65 &middot; Yellow-necked Bittern</div>
+      <div class="plate-no">Vol. VI &middot; Plate 65 &middot; Yellow-necked Bittern</div>
       <div class="latin-line"><span class="latin">ARDETTA? FLAVICOLLIS.</span></div>
       <div class="gould-text">Yellow-necked Bittern.
 
@@ -1298,14 +1256,13 @@ Australian Bittern.
 
 *Wor-gorl,* Abo…</div>
       <button class="read-more" data-index="64">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDETTA%3F%20FLAVICOLLIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="thick-billed green bittern ardetta macrorhyncha," data-index="65" id="plate-66">
+  <div class="card" data-search="thick-billed green bittern ardetta macrorhyncha," data-index="65">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/2e35bbfcec1fb5d51304f86d905dbdf309dad633.jpg" alt="Thick-billed Green Bittern plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 66 &middot; Thick-billed Green Bittern</div>
+      <div class="plate-no">Vol. VI &middot; Plate 66 &middot; Thick-billed Green Bittern</div>
       <div class="latin-line"><span class="latin">ARDETTA MACRORHYNCHA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1315,14 +1272,13 @@ Thick-billed Green Bittern.
 
 [The]{.smallcaps} more robust bill, larger bead and greater size of this species will at all times distinguish it from *Ardetta stagnatilis* and A. *Jmanica.* The only part of Australia from which it has yet been received is the east coast. I myself observed two individuals sitting close to their flat ne…</div>
       <button class="read-more" data-index="65">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDETTA%20MACRORHYNCHA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="little grey bittern ardetta stagnatilis," data-index="66" id="plate-67">
+  <div class="card" data-search="little grey bittern ardetta stagnatilis," data-index="66">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/f29701d5311118df75e2be89e31ce4aef36df69b.jpg" alt="Little Grey Bittern plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 67 &middot; Little Grey Bittern</div>
+      <div class="plate-no">Vol. VI &middot; Plate 67 &middot; Little Grey Bittern</div>
       <div class="latin-line"><span class="latin">ARDETTA STAGNATILIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1334,14 +1290,13 @@ Little Grey Bittern.
 
 [This]{.smallcaps} bird is tolerably abundant at Port Essington and other parts of the north coast of Australia, where its favourite haunts are small islets covered with mangroves and low swampy points of land running out into the se…</div>
       <button class="read-more" data-index="66">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDETTA%20STAGNATILIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="minute bittern ardetta pusilla." data-index="67" id="plate-68">
+  <div class="card" data-search="minute bittern ardetta pusilla." data-index="67">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/73f22946b5cead08f78de3b34f51413a149c7504.jpg" alt="Minute Bittern plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 68 &middot; Minute Bittern</div>
+      <div class="plate-no">Vol. VI &middot; Plate 68 &middot; Minute Bittern</div>
       <div class="latin-line"><span class="latin">ARDETTA PUSILLA.</span></div>
       <div class="gould-text">Minute Bittern.
 
@@ -1355,14 +1310,13 @@ Orn., part iii. p. 1128, young ?
 
 [Spec…</div>
       <button class="read-more" data-index="67">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=ARDETTA%20PUSILLA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-backed porphyrio porphyrio melanotus," data-index="68" id="plate-69">
+  <div class="card" data-search="black-backed porphyrio porphyrio melanotus," data-index="68">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/f2c46d8c52cb5041ae6d69245db0d6e1d1feac63.jpg" alt="Black-backed Porphyrio plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 69 &middot; Black-backed Porphyrio</div>
+      <div class="plate-no">Vol. VI &middot; Plate 69 &middot; Black-backed Porphyrio</div>
       <div class="latin-line"><span class="latin">PORPHYRIO MELANOTUS,</span></div>
       <div class="gould-text">*[Temm.]*
 
@@ -1378,14 +1332,13 @@ Zool., vol. xii. p. 259.
 
 [This]{.smallcaps} bird is universally distributed over Van Diemen&#x27;s Land and the greater part of the continent of Australia whereve…</div>
       <button class="read-more" data-index="68">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PORPHYRIO%20MELANOTUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="azure-breasted porphyrio porphyrio bellus," data-index="69" id="plate-70">
+  <div class="card" data-search="azure-breasted porphyrio porphyrio bellus," data-index="69">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/6b0fcfe6a2ed1d96476762d765e47fb2e68b2300.jpg" alt="Azure-breasted Porphyrio plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 70 &middot; Azure-breasted Porphyrio</div>
+      <div class="plate-no">Vol. VI &middot; Plate 70 &middot; Azure-breasted Porphyrio</div>
       <div class="latin-line"><span class="latin">PORPHYRIO BELLUS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1399,14 +1352,13 @@ Azure-breasted Porphyrio.
 
 [This]{.smallcaps} fine species of *Porphyrio* is a native of Western Australia, to which portion of the continent it would appear to he restricted; I did not observe it during my rambles in South Au…</div>
       <button class="read-more" data-index="69">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PORPHYRIO%20BELLUS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="mortier&#x27;s tribonyx tribonyx mortieri," data-index="70" id="plate-71">
+  <div class="card" data-search="mortier&#x27;s tribonyx tribonyx mortieri," data-index="70">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/47c53aeccda0fa5b5cb3eeeee11aa3c0788b46b6.jpg" alt="Mortier&#x27;s Tribonyx plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 71 &middot; Mortier&#x27;s Tribonyx</div>
+      <div class="plate-no">Vol. VI &middot; Plate 71 &middot; Mortier&#x27;s Tribonyx</div>
       <div class="latin-line"><span class="latin">TRIBONYX MORTIERI,</span></div>
       <div class="gould-text">*[DuBus.]*
 
@@ -1420,14 +1372,13 @@ Mortier&#x27;s Tribonyx.
 
 [This]{.smallcaps} bird is rather abundantly dispersed over Van Diemen&#x27;s Land, but from the extreme shyness of its disposition,…</div>
       <button class="read-more" data-index="70">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TRIBONYX%20MORTIERI%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-tailed tribonyx tribonyx v entr a li s," data-index="71" id="plate-72">
+  <div class="card" data-search="black-tailed tribonyx tribonyx v entr a li s," data-index="71">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/a0b554cd70a2407862ca94f7ef188ace0b75891e.jpg" alt="Black-tailed Tribonyx plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 72 &middot; Black-tailed Tribonyx</div>
+      <div class="plate-no">Vol. VI &middot; Plate 72 &middot; Black-tailed Tribonyx</div>
       <div class="latin-line"><span class="latin">TRIBONYX V ENTR A LI S,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1447,14 +1398,13 @@ Part III. p. 122.
 
 [Since]{.smallcaps} my …</div>
       <button class="read-more" data-index="71">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TRIBONYX%20V%20ENTR%20A%20LI%20S%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="sombre gallinule gallinula tenebrosa," data-index="72" id="plate-73">
+  <div class="card" data-search="sombre gallinule gallinula tenebrosa," data-index="72">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/9129dce884ea2381e64551bd49db0d014706eb30.jpg" alt="Sombre Gallinule plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 73 &middot; Sombre Gallinule</div>
+      <div class="plate-no">Vol. VI &middot; Plate 73 &middot; Sombre Gallinule</div>
       <div class="latin-line"><span class="latin">GALLINULA TENEBROSA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1464,14 +1414,13 @@ Sombre Gallinule.
 
 [This]{.smallcaps} species of Gallinule inhabits the sedgy banks of rivers, creeks and water-holes. I frequently en­countered it in New South Wales, particularly in the neighbourhood of the Upper Hunter ; and I also possess specimens collected on the banks of the Murray in South Australia. The total absence of any whit…</div>
       <button class="read-more" data-index="72">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GALLINULA%20TENEBROSA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian coot fulica australis," data-index="73" id="plate-74">
+  <div class="card" data-search="australian coot fulica australis," data-index="73">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/700d2c985ee965c42f0f276c0ff958351abe293a.jpg" alt="Australian Coot plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 74 &middot; Australian Coot</div>
+      <div class="plate-no">Vol. VI &middot; Plate 74 &middot; Australian Coot</div>
       <div class="latin-line"><span class="latin">FULICA AUSTRALIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1485,14 +1434,13 @@ Australian Coot.
 
 [That]{.smallcaps} a true Coot should be found to inhabit Australia need not be a matter of surprise, when we have seen how many of the forms hitherto considered to be peculiar to the northern hem…</div>
       <button class="read-more" data-index="73">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=FULICA%20AUSTRALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="gallinaceous parra parra gallinacea," data-index="74" id="plate-75">
+  <div class="card" data-search="gallinaceous parra parra gallinacea," data-index="74">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/e1426b9a56485c4e6cba0f68aa83a8204822d098.jpg" alt="Gallinaceous Parra plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 75 &middot; Gallinaceous Parra</div>
+      <div class="plate-no">Vol. VI &middot; Plate 75 &middot; Gallinaceous Parra</div>
       <div class="latin-line"><span class="latin">PARRA GALLINACEA,</span></div>
       <div class="gould-text">*[Temm.]*
 
@@ -1506,14 +1454,13 @@ Gallinaceous Parra.
 
 The *Parra gallinacea* is one of th…</div>
       <button class="read-more" data-index="74">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PARRA%20GALLINACEA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pectoral rail rallus pectoralis," data-index="75" id="plate-76">
+  <div class="card" data-search="pectoral rail rallus pectoralis," data-index="75">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/76dbe9708a4e2d3aa53a95c6491b72181c5344bf.jpg" alt="Pectoral Rail plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 76 &middot; Pectoral Rail</div>
+      <div class="plate-no">Vol. VI &middot; Plate 76 &middot; Pectoral Rail</div>
       <div class="latin-line"><span class="latin">RALLUS PECTORALIS,</span></div>
       <div class="gould-text">*[c]~[m]~[.]*
 
@@ -1527,14 +1474,13 @@ Pectoral Rail.
 
 [The]{.smallcaps} Pectoral Rail is a summer visitant to New South Wales, but if we regard the Rails from Southern and Western Australia, which are rather smaller and have somewhat more attenuated bills, as mer…</div>
       <button class="read-more" data-index="75">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=RALLUS%20PECTORALIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="lewin&#x27;s water rail rallus lewinii," data-index="76" id="plate-77">
+  <div class="card" data-search="lewin&#x27;s water rail rallus lewinii," data-index="76">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/1940cfd567e6c447e27cb167edca3c1d9d879e14.jpg" alt="Lewin&#x27;s Water Rail plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 77 &middot; Lewin&#x27;s Water Rail</div>
+      <div class="plate-no">Vol. VI &middot; Plate 77 &middot; Lewin&#x27;s Water Rail</div>
       <div class="latin-line"><span class="latin">RALLUS LEWINII,</span></div>
       <div class="gould-text">*[Swains.]*
 
@@ -1548,14 +1494,13 @@ Lewin&#x27;s Water Rail.
 
 [In]{.smallcaps} Van Diemen&#x27;s Land this species is very abundant in all low marshy situations, lagoons, and the rushy banks of rivers; it occurs on most of the small islands in D&#x27;Entrecasteaux&#x27; Channel; I have also seen specim…</div>
       <button class="read-more" data-index="76">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=RALLUS%20LEWINII%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="chestnut-bellied rail eulabeornis castaneoventris," data-index="77" id="plate-78">
+  <div class="card" data-search="chestnut-bellied rail eulabeornis castaneoventris," data-index="77">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/446c8eef79cff5292026bd8cfd77a80d9a3b988f.jpg" alt="Chestnut-bellied Rail plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 78 &middot; Chestnut-bellied Rail</div>
+      <div class="plate-no">Vol. VI &middot; Plate 78 &middot; Chestnut-bellied Rail</div>
       <div class="latin-line"><span class="latin">EULABEORNIS CASTANEOVENTRIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1565,14 +1510,13 @@ Chestnut-bellied Rail.
 
 [This]{.smallcaps} large and fine species of Rail, of which a single specimen only has as yet come under my notice, inhabits the low muddy shores and mangrove swamps of the north coast of Australia. The specimen above alluded to, which is in my own collection,…</div>
       <button class="read-more" data-index="77">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EULABEORNIS%20CASTANEOVENTRIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="spotted water crake porzana fluminea," data-index="78" id="plate-79">
+  <div class="card" data-search="spotted water crake porzana fluminea," data-index="78">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/47dc3443295fd8ab582f742920ab89803b1b6b51.jpg" alt="Spotted Water Crake plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 79 &middot; Spotted Water Crake</div>
+      <div class="plate-no">Vol. VI &middot; Plate 79 &middot; Spotted Water Crake</div>
       <div class="latin-line"><span class="latin">PORZANA FLUMINEA,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1582,14 +1526,13 @@ Spotted Water Crake.
 
 [This]{.smallcaps} species, like its representative in the British Islands *(Rallus porzana,* Linn.), inhabits morasses, reed-beds, and the neighbourhood of rivers clothed with dense herbage; hence it is seldom to be seen unless the greatest trouble and labour be taken to hunt it out from its hiding-place. The uniform …</div>
       <button class="read-more" data-index="78">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PORZANA%20FLUMINEA%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="water crake porzana palustris," data-index="79" id="plate-80">
+  <div class="card" data-search="water crake porzana palustris," data-index="79">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/4a85d477e418475cda14537f4d3ccc7cf1488c2e.jpg" alt="Water Crake plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 80 &middot; Water Crake</div>
+      <div class="plate-no">Vol. VI &middot; Plate 80 &middot; Water Crake</div>
       <div class="latin-line"><span class="latin">PORZANA PALUSTRIS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1599,14 +1542,13 @@ Water Crake.
 
 [This]{.smallcaps} little Water Crake would appear to be more abundant in Van Diemen&#x27;s Land than on the continent of Australia, for although I clearly ascertained that it inhabits New South Wales, it is not so numerous there, in consequence, probably, of the country being much less fluviatile, and therefore much less suitable…</div>
       <button class="read-more" data-index="79">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PORZANA%20PALUSTRIS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white-eyebrowed water crake porzana leucophrys," data-index="80" id="plate-81">
+  <div class="card" data-search="white-eyebrowed water crake porzana leucophrys," data-index="80">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/2db49ee506a4bd55e7708fa23bcd66940ed1ecf7.jpg" alt="White-eyebrowed Water Crake plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 81 &middot; White-eyebrowed Water Crake</div>
+      <div class="plate-no">Vol. VI &middot; Plate 81 &middot; White-eyebrowed Water Crake</div>
       <div class="latin-line"><span class="latin">PORZANA LEUCOPHRYS,</span></div>
       <div class="gould-text">*[Gould.]*
 
@@ -1616,14 +1558,13 @@ White-eyebrowed Water Crake.
 
 [This]{.smallcaps} species is an inhabitant of the northern parts of Australia, where it frequents the thick clumps of mangrove roots bordering the lakes. It is a somewhat familiar bird, and is but little disturbed by the approach of an intruder; on the contra…</div>
       <button class="read-more" data-index="80">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PORZANA%20LEUCOPHRYS%2C">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="spotless gallinule porzana? immaculata." data-index="81" id="plate-82">
+  <div class="card" data-search="spotless gallinule porzana? immaculata." data-index="81">
     <div class="plate-wrap"><img class="plate-img" src="images/vol6_plates/3dc8a8b445cddcde125976bd9eb72f269d158641.jpg" alt="Spotless Gallinule plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 82 &middot; Spotless Gallinule</div>
+      <div class="plate-no">Vol. VI &middot; Plate 82 &middot; Spotless Gallinule</div>
       <div class="latin-line"><span class="latin">PORZANA? IMMACULATA.</span></div>
       <div class="gould-text">**Spotless Gallinule.**
 
@@ -1635,7 +1576,6 @@ White-eyebrowed Water Crake.
 
 I [believe]{.smallcaps} I am correct in stating that this species is universally distributed over the whole of Australia, Van Diemen&#x27;s Land, and the islands in Bass&#x27;s Straits. My collectio…</div>
       <button class="read-more" data-index="81">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PORZANA%3F%20IMMACULATA.">Open in Reader &rarr;</a>
     </div>
   </div>
 </div>
@@ -1655,6 +1595,33 @@ const IMG_MAP = {"ea0c5537121402b32cf30fcd3472ceeab810c692.jpg":"images/vol6_pla
 const searchEl = document.getElementById('search');
 const emptyMsg = document.getElementById('empty-msg');
 const cards = Array.from(document.querySelectorAll('.card'));
+
+// Plate of the Day -- a deterministic pick from today's date (not Math.random(), so every
+// visitor sees the same plate on the same day, changing only at local midnight). No stable
+// per-card id/anchor exists on this page, so "view this plate" scrolls straight to the held
+// DOM reference and flashes it, rather than using a #hash link.
+(function() {
+  if (!cards.length) return;
+  const today = new Date();
+  const dateStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  let h = 0;
+  for (let di = 0; di < dateStr.length; di++) { h = ((h << 5) - h + dateStr.charCodeAt(di)) | 0; }
+  const pick = cards[Math.abs(h) % cards.length];
+  const img = pick.querySelector('.plate-img');
+  const nameEl = pick.querySelector('.plate-no');
+  const latinEl = pick.querySelector('.latin-line');
+  if (img) document.getElementById('potdThumb').innerHTML = '<img src="' + img.getAttribute('src') + '" alt="">';
+  if (nameEl) document.getElementById('potdName').textContent = nameEl.textContent.replace('†', ' †');
+  if (latinEl) document.getElementById('potdLatin').textContent = latinEl.textContent.trim();
+  document.getElementById('potdDate').textContent = today.toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
+  document.getElementById('potdLink').addEventListener('click', function(e) {
+    e.preventDefault();
+    pick.scrollIntoView({behavior: 'smooth', block: 'center'});
+    pick.classList.add('potd-flash');
+    setTimeout(function() { pick.classList.remove('potd-flash'); }, 2200);
+  });
+  document.getElementById('potd').style.display = 'flex';
+})();
 
 searchEl.addEventListener('input', () => {
   const q = searchEl.value.trim().toLowerCase();
