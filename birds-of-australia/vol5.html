@@ -39,6 +39,8 @@
   .no-plate { font-size: 12px; color: #a9967a; font-style: italic; padding: 30px 10px; text-align: center; }
   .card-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
   .plate-no { font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .extinct-marker { display: inline-flex; align-items: baseline; gap: 2px; margin-left: 4px; color: #8a2b2b; font-weight: 700; cursor: help; vertical-align: super; text-transform: none; letter-spacing: 0; }
+  .extinct-marker .extinct-year { font-weight: 600; font-size: 0.9em; }
   .latin-line { margin-bottom: 6px; }
   .latin { font-style: italic; color: var(--accent); font-size: 14px; }
   .gould-text { font-size: 12.5px; line-height: 1.5; color: #4a3f30; flex: 1; }
@@ -52,12 +54,6 @@
   dialog#reader img { max-width: 100%; border-radius: 6px; margin-bottom: 14px; }
   dialog#reader .dtext { font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
   footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); }
-
-  .read-in-reader-link{
-    display:inline-block; margin-top:6px; font-size:12.5px; font-weight:600;
-    color: var(--accent-2, var(--accent)); text-decoration:none;
-  }
-  .read-in-reader-link:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -72,7 +68,7 @@
 </header>
 <div class="grid" id="grid">
 
-  <div class="card" data-search="crested cockatoo cacatua galerita" data-index="0" id="plate-1">
+  <div class="card" data-search="crested cockatoo cacatua galerita" data-index="0">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/9bc53684e4ac2a5f5f0ff556e50462ec3188afb0.jpg" alt="Crested Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 1 &middot; Crested Cockatoo</div>
@@ -91,11 +87,10 @@ Crested Cockatoo.
 
 *Cacatua galerita,* Vieill. 2nde Edit, du Nouv. Diet. d&#x27;Hi…</div>
       <button class="read-more" data-index="0">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CACATUA%20GALERITA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="leadbeater&#x27;s cockatoo cacatua leadbeateri." data-index="1" id="plate-2">
+  <div class="card" data-search="leadbeater&#x27;s cockatoo cacatua leadbeateri." data-index="1">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/b240924e1301b7459f198af2faf051cc0b8f7aa3.jpg" alt="Leadbeater&#x27;s Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 2 &middot; Leadbeater&#x27;s Cockatoo</div>
@@ -108,11 +103,10 @@ Crested Cockatoo.
 
 *Cacatua Leadbeateri,* Wagl. Mon. Psitt. in Abh…</div>
       <button class="read-more" data-index="1">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CACATUA%20LEADBEATERI.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="blood-stained cockatoo cacatua sanguinea" data-index="2" id="plate-3">
+  <div class="card" data-search="blood-stained cockatoo cacatua sanguinea" data-index="2">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/5356a678afb73ef782c77ceaa22ad1ea3ff5d9e5.jpg" alt="Blood-stained Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 3 &middot; Blood-stained Cockatoo</div>
@@ -125,11 +119,10 @@ Blood-stained Cockatoo.
 
 [The]{.smallcaps} circumstance of this species never having been characterized until I described it in the &quot; Proceedings of the Zoological Society,&quot; above quoted, may doubtless be attributed to its being solely an inhabitant of the north and north-west coasts of Australia, portions of the country where few collect…</div>
       <button class="read-more" data-index="2">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CACATUA%20SANGUINEA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="rose-breasted cockatoo cacatua eos." data-index="3" id="plate-4">
+  <div class="card" data-search="rose-breasted cockatoo cacatua eos." data-index="3">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/cd1f030f846c47241bdde20bf9cf101ad0900aa5.jpg" alt="Rose-breasted Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 4 &middot; Rose-breasted Cockatoo</div>
@@ -146,11 +139,10 @@ Blood-stained Cockatoo.
 
 *Cacatua roseicapilla,* Wagl. Mon. Psitt. in Abhand.…</div>
       <button class="read-more" data-index="3">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CACATUA%20EOS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="long-billed cockatoo licmetis nasicus." data-index="4" id="plate-5">
+  <div class="card" data-search="long-billed cockatoo licmetis nasicus." data-index="4">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/7763fde38b18c97a5fca523cece41969fb9540c2.jpg" alt="Long-billed Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 5 &middot; Long-billed Cockatoo</div>
@@ -169,11 +161,10 @@ Blood-stained Cockatoo.
 
 *Plyctolop…</div>
       <button class="read-more" data-index="4">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LICMETIS%20NASICUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="philip island parrot nest o r pro d u c t u s" data-index="5" id="plate-6">
+  <div class="card" data-search="philip island parrot nest o r pro d u c t u s" data-index="5">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/ca77aac9db221fbb9bc3843a62cfd2662123a5bc.jpg" alt="Philip Island Parrot plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 6 &middot; Philip Island Parrot</div>
@@ -194,11 +185,10 @@ Phillip Island Parrot.
 
 I [have]{.smallcap…</div>
       <button class="read-more" data-index="5">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=NEST%20O%20R%20PRO%20D%20U%20C%20T%20U%20S">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="banksian cockatoo calyptorhynchus banksii." data-index="6" id="plate-7">
+  <div class="card" data-search="banksian cockatoo calyptorhynchus banksii." data-index="6">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/164c3924d35f17d3058c3a244fc406a13c04baec.jpg" alt="Banksian Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 7 &middot; Banksian Cockatoo</div>
@@ -215,11 +205,10 @@ Banksian Cockatoo.
 
 * s…</div>
       <button class="read-more" data-index="6">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALYPTORHYNCHUS%20BANKSII.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="great-billed black cockatoo calyptorhynchus macrorhynchus" data-index="7" id="plate-8">
+  <div class="card" data-search="great-billed black cockatoo calyptorhynchus macrorhynchus" data-index="7">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/a0001ff1bedcb0cda0dfb2d12729930e7cfe43fc.jpg" alt="Great-billed Black Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 8 &middot; Great-billed Black Cockatoo</div>
@@ -232,11 +221,10 @@ Great-billed Black Cockatoo.
 
 [All]{.smallcaps} the examples of this species that have come under my notice have been collected at Port Essington, where it is usually seen in small troops of from four to six in number. It has many characters in common with the Black Cockatoos of the south coas…</div>
       <button class="read-more" data-index="7">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALYPTORHYNCHUS%20MACRORHYNCHUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="western black cockatoo calyptorhynchus naso" data-index="8" id="plate-9">
+  <div class="card" data-search="western black cockatoo calyptorhynchus naso" data-index="8">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/8fd3570035e5900a75854f478e4ad1d63e9c6920.jpg" alt="Western Black Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 9 &middot; Western Black Cockatoo</div>
@@ -255,11 +243,10 @@ Western Black Cockatoo.
 
 [The]{.smallcaps} characters by which this species is distinguished from the *Calyptorhynchus macrorhynchus,* are a smaller bi…</div>
       <button class="read-more" data-index="8">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALYPTORHYNCHUS%20NASO">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="leach&#x27;s cockatoo calyptorhynchus leachil" data-index="9" id="plate-10">
+  <div class="card" data-search="leach&#x27;s cockatoo calyptorhynchus leachil" data-index="9">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/f5d044ed5db8638b7abd0e52e74417011809ab8a.jpg" alt="Leach&#x27;s Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 10 &middot; Leach&#x27;s Cockatoo</div>
@@ -276,11 +263,10 @@ Western Black Cockatoo.
 
 *Solanders Cockatoo,* Lath. Gen. Hist., vol. ii.…</div>
       <button class="read-more" data-index="9">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALYPTORHYNCHUS%20LEACHIL">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="funereal cockatoo calyptorhynchus funereus." data-index="10" id="plate-11">
+  <div class="card" data-search="funereal cockatoo calyptorhynchus funereus." data-index="10">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/b78a617b1f3d7b2af05540d2b2e376e05dc53438.jpg" alt="Funereal Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 11 &middot; Funereal Cockatoo</div>
@@ -297,11 +283,10 @@ Western Black Cockatoo.
 
 *Plyctoloph…</div>
       <button class="read-more" data-index="10">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALYPTORHYNCHUS%20FUNEREUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="yellow-eared black cockatoo calyptorhynchus xanthonotus" data-index="11" id="plate-12">
+  <div class="card" data-search="yellow-eared black cockatoo calyptorhynchus xanthonotus" data-index="11">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/f46c6397d9d2cb5eaef681555989ec66fd8fef8e.jpg" alt="Yellow-eared Black Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 12 &middot; Yellow-eared Black Cockatoo</div>
@@ -314,11 +299,10 @@ Yellow-eared Black Cockatoo.
 
 [The]{.smallcaps} great stronghold of this species is Van Diemen&#x27;s Land, but I have also seen specimens from Flinders&#x27; Island and South Australia, in all of which countries it is the representative of the *Cahjptorkynchus funereus *of New South Wales. It is …</div>
       <button class="read-more" data-index="11">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALYPTORHYNCHUS%20XANTHONOTUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="baudin&#x27;s cockatoo calyptorhynchus baudinii, vig." data-index="12" id="plate-13">
+  <div class="card" data-search="baudin&#x27;s cockatoo calyptorhynchus baudinii, vig." data-index="12">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/8b7cf841dde4bf6937b838c4d680d67393798115.jpg" alt="Baudin&#x27;s Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 13 &middot; Baudin&#x27;s Cockatoo</div>
@@ -341,11 +325,10 @@ Baudin&#x27;s Cockatoo.
 
 [This]{.smal…</div>
       <button class="read-more" data-index="12">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Calyptorhynchus%20baudinii%2C%20Vig.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="gang-gang cockatoo callocephalon galeatum." data-index="13" id="plate-14">
+  <div class="card" data-search="gang-gang cockatoo callocephalon galeatum." data-index="13">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d343132c8de1e965aebf9789ab7a68b3eef54715.jpg" alt="Gang-gang Cockatoo plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 14 &middot; Gang-gang Cockatoo</div>
@@ -362,11 +345,10 @@ Gen. Hist., vol ii. p. 218. pl. xxviii.
 
 *Corydon galeatu…</div>
       <button class="read-more" data-index="13">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CALLOCEPHALON%20GALEATUM.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="barraband&#x27;s parrakeet polytelis barrabandii, swains." data-index="14" id="plate-15">
+  <div class="card" data-search="barraband&#x27;s parrakeet polytelis barrabandii, swains." data-index="14">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/8fc5e6530f421b3dc11c6b947d7519fff61c986c.jpg" alt="Barraband&#x27;s Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 15 &middot; Barraband&#x27;s Parrakeet</div>
@@ -383,11 +365,10 @@ Barraband&#x27;s Parrakeet.
 
 *Polytelis Barrabandi,* Wagl. Mon. Psitt. in Abhand., pp. 489 and 519.---Gould in Syn. Birds of Aus…</div>
       <button class="read-more" data-index="14">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Polytelis%20Barrabandii%2C%20Swains.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-tailed parrakeet polytelis melanura." data-index="15" id="plate-16">
+  <div class="card" data-search="black-tailed parrakeet polytelis melanura." data-index="15">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/781d5634feb9fe03c1d44ea8c29e929711e63dd2.jpg" alt="Black-tailed Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 16 &middot; Black-tailed Parrakeet</div>
@@ -408,11 +389,10 @@ Barraband&#x27;s Parrakeet.
 
 So little is known of the habits and econom…</div>
       <button class="read-more" data-index="15">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=POLYTELIS%20MELANURA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="king lory aprosmictus scapulatus." data-index="16" id="plate-17">
+  <div class="card" data-search="king lory aprosmictus scapulatus." data-index="16">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/314bcac1752defc239a776f1f20dd89c18edcb95.jpg" alt="King Lory plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 17 &middot; King Lory</div>
@@ -431,11 +411,10 @@ Syn. Supp., vol. ii. p. 81.
 
 *Pl…</div>
       <button class="read-more" data-index="16">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=APROSMICTUS%20SCAPULATUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-winged lory aprosmictus erythropterus." data-index="17" id="plate-18">
+  <div class="card" data-search="red-winged lory aprosmictus erythropterus." data-index="17">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/55fec96b0187538ea54445f41befe3731081fe5f.jpg" alt="Red-winged Lory plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 18 &middot; Red-winged Lory</div>
@@ -450,11 +429,10 @@ Syn. Supp., vol. ii. p. 81.
 
 *Platycercus eryt…</div>
       <button class="read-more" data-index="17">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=APROSMICTUS%20ERYTHROPTERUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="yellow-collared parrakeet platycercus semitorquatus" data-index="18" id="plate-19">
+  <div class="card" data-search="yellow-collared parrakeet platycercus semitorquatus" data-index="18">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/ced0ef423dc7222bda4bfea99f88888f4a14b0de.jpg" alt="Yellow-collared Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 19 &middot; Yellow-collared Parrakeet</div>
@@ -473,11 +451,10 @@ Yellow-collared Parrakeet.
 
 [This]{.smallcaps} very noble species of *Platycercus* is abundantly dispersed over the greater portion of Western Australia, where it inh…</div>
       <button class="read-more" data-index="18">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20SEMITORQUATUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="bauer&#x27;s parrakeet platycercus baueri" data-index="19" id="plate-20">
+  <div class="card" data-search="bauer&#x27;s parrakeet platycercus baueri" data-index="19">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/1aa16da0fd5bb3688d257e005fedb28fe3cf5e79.jpg" alt="Bauer&#x27;s Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 20 &middot; Bauer&#x27;s Parrakeet</div>
@@ -496,11 +473,10 @@ Bauer&#x27;s Parrakeet.
 
 Shaw&#x27;s Gen. Zool., vol. xiv. p. 121.…</div>
       <button class="read-more" data-index="19">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20BAUERI">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="barnard&#x27;s parrakeet platycercus barnardi" data-index="20" id="plate-21">
+  <div class="card" data-search="barnard&#x27;s parrakeet platycercus barnardi" data-index="20">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/ca1071c4023a7988b626c0fee2ca269a14ab0316.jpg" alt="Barnard&#x27;s Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 21 &middot; Barnard&#x27;s Parrakeet</div>
@@ -515,11 +491,10 @@ Barnard&#x27;s Parrakeet.
 
 [The ]{.smallcaps}*Platycercus Bamardi* is one of the most beautiful of the genus inhabiting Australia ; the accom…</div>
       <button class="read-more" data-index="20">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20BARNARDI">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="adelaide parrakeet platycercus adelaidia" data-index="21" id="plate-22">
+  <div class="card" data-search="adelaide parrakeet platycercus adelaidia" data-index="21">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/48f7fcf25bb9407a691c1fbb21e8f9b008b68eaf.jpg" alt="Adelaide Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 22 &middot; Adelaide Parrakeet</div>
@@ -534,11 +509,10 @@ Adelaide Parrakeet.
 
 [This]{.smallcaps} beautiful *Platycercus* is a native of South Australia, and from the circumstance of my having procured some of my finest specimens in the very streets of that embryo city, I have been induced to give it the specific name of *Adelaides.* In al…</div>
       <button class="read-more" data-index="21">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20ADELAIDIA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pennant&#x27;s parrakeet platycercus pennantii." data-index="22" id="plate-23">
+  <div class="card" data-search="pennant&#x27;s parrakeet platycercus pennantii." data-index="22">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/edd58ad2d9a29879331df3aa14fc36a6a7e7ac64.jpg" alt="Pennant&#x27;s Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 23 &middot; Pennant&#x27;s Parrakeet</div>
@@ -555,11 +529,10 @@ Adelaide Parrakeet.
 
 *Pennantian Parrot,* Lath. Gen. Syn. Supp., vol. i. p. 61; vol. ii. p. 83.---Phill. Bot. Bay, pl. in p. 154.---White&#x27;s Journ., pl. inpp. 174,175.---Shaw, Gen. ZooL, vol. viii. p. 4…</div>
       <button class="read-more" data-index="22">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20PENNANTII.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="yellow-bellied parrakeet platycercus flavi ventris." data-index="23" id="plate-24">
+  <div class="card" data-search="yellow-bellied parrakeet platycercus flavi ventris." data-index="23">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/bfab3b88451c4bdf15efb1266ff879f8c0d64d04.jpg" alt="Yellow-bellied Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 24 &middot; Yellow-bellied Parrakeet</div>
@@ -577,11 +550,10 @@ Adelaide Parrakeet.
 *Platycercus fiaviventris,* Vig. and Horsf. in Linn. Trans., vol. xv. p. 281.---Gould in Syn. Birds of Australia, Part II.
 …</div>
       <button class="read-more" data-index="23">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20FLAVI%20VENTRIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="yellow-rumped parrakeet platycercus flaveolus" data-index="24" id="plate-25">
+  <div class="card" data-search="yellow-rumped parrakeet platycercus flaveolus" data-index="24">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/78f9db922179895f70a897263300ea4154c3c6e4.jpg" alt="Yellow-rumped Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 25 &middot; Yellow-rumped Parrakeet</div>
@@ -594,11 +566,10 @@ Yellow-rumped Parrakeet.
 
 I [have]{.smallcaps} no other information to communicate respecting this beautiful *Platycercus,* than that it is an inhabitant of New South Wales, and is abundant on the banks of the rivers Lachlan and Darling. The bird was first sent to this country by Captain Sturt some years since, when he presented a bea…</div>
       <button class="read-more" data-index="24">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20FLAVEOLUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pale-headed parrakeet platycercus palliceps, vig." data-index="25" id="plate-26">
+  <div class="card" data-search="pale-headed parrakeet platycercus palliceps, vig." data-index="25">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/bae961d6352ae2beee0d36fc27de21e559db55ab.jpg" alt="Pale-headed Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 26 &middot; Pale-headed Parrakeet</div>
@@ -615,11 +586,10 @@ Pale-headed Parrakeet.
 
 [This]{.smallcaps} elegant species of *Platycercus,* which, up to the present time, has been more frequently seen alive in a state of captivity than preserved in our …</div>
       <button class="read-more" data-index="25">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Platycercus%20palliceps%2C%20Vig.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="rose-hill parrakeet platycercus eximius" data-index="26" id="plate-27">
+  <div class="card" data-search="rose-hill parrakeet platycercus eximius" data-index="26">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/1a75b4134b35c0d6bd847e39d4e4884f9af73dfa.jpg" alt="Rose-hill Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 27 &middot; Rose-hill Parrakeet</div>
@@ -634,11 +604,10 @@ Rose-hill Parrakeet.
 
 *Nonpareil Parrot,* Lath. Gen. Hist., Vol. ii. p. 138. No. 41.---Id. Gen. Syn. Suppl., p. 85.---Shaw, Zool., vol. viii. p. 411.…</div>
       <button class="read-more" data-index="26">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20EXIMIUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="splendid parrakeet platycercus splendidus, gould." data-index="27" id="plate-28">
+  <div class="card" data-search="splendid parrakeet platycercus splendidus, gould." data-index="27">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/cfc474e78f6f81445361cc5d420aa7ba23f8125e.jpg" alt="Splendid Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 28 &middot; Splendid Parrakeet</div>
@@ -653,11 +622,10 @@ Splendid Parrakeet.
 
 [That]{.smallcaps} the gradual investigation of the interior of Australia will lead to the discovery of many new and interesting objects, is proved by the recent acquisition of the lovely species here represe…</div>
       <button class="read-more" data-index="27">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Platycercus%20splendidus%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="the earl of derby&#x27;s parrakeet platycercus icterotis" data-index="28" id="plate-29">
+  <div class="card" data-search="the earl of derby&#x27;s parrakeet platycercus icterotis" data-index="28">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/7c34d1e36a40eef8f70843cf87b133db71f9b322.jpg" alt="The Earl of Derby&#x27;s Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 29 &middot; The Earl of Derby&#x27;s Parrakeet</div>
@@ -676,11 +644,10 @@ The Earl of Derby&#x27;s Parrakeet.
 
 *G…</div>
       <button class="read-more" data-index="28">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20ICTEROTIS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="fiery parrakeet platycercus ignitus, leadb." data-index="29" id="plate-30">
+  <div class="card" data-search="fiery parrakeet platycercus ignitus, leadb." data-index="29">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/9c05997d8e8bfa9f30b2c91ff55a08982eaf59f8.jpg" alt="Fiery Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 30 &middot; Fiery Parrakeet</div>
@@ -691,11 +658,10 @@ The Earl of Derby&#x27;s Parrakeet.
 
 [In]{.smallcaps} the year 1837 Mr. John Leadbeater received from the district of Moreton Bay a beautiful Parrakeet, of which the accompanying Plate is a representation. This specimen, the only one I have seen, is the most singular and anomalous bird that has ever come under my notice ; for while on the one hand it exhibits many fea…</div>
       <button class="read-more" data-index="29">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Platycercus%20ignitus%2C%20Leadb.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="brown&#x27;s parrakeet platycercus brownie" data-index="30" id="plate-31">
+  <div class="card" data-search="brown&#x27;s parrakeet platycercus brownie" data-index="30">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/e1a46cfa24b7501cbe277f977f29d26d13252a05.jpg" alt="Brown&#x27;s Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 31 &middot; Brown&#x27;s Parrakeet</div>
@@ -718,11 +684,10 @@ Brown&#x27;s Parrakeet.
 
 [This]{.smallcaps} …</div>
       <button class="read-more" data-index="30">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PLATYCERCUS%20BROWNIE">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-capped parrakeet platycercus pileatus, vig." data-index="31" id="plate-32">
+  <div class="card" data-search="red-capped parrakeet platycercus pileatus, vig." data-index="31">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/33643e0c8efdcd26a6f605e13b0210e303680f1a.jpg" alt="Red-capped Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 32 &middot; Red-capped Parrakeet</div>
@@ -741,11 +706,10 @@ Red-capped Parrakeet.
 
 [The ]{.smallcaps}*Platycercus pileatus* differs s…</div>
       <button class="read-more" data-index="31">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Platycercus%20pileatus%2C%20Vig.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="crimson-bellied parrakeet psephotus haematogaster, gould." data-index="32" id="plate-33">
+  <div class="card" data-search="crimson-bellied parrakeet psephotus haematogaster, gould." data-index="32">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/67fb1436208d2c7331deb7f1e87953a780fe8598.jpg" alt="Crimson-bellied Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 33 &middot; Crimson-bellied Parrakeet</div>
@@ -756,14 +720,13 @@ Red-capped Parrakeet.
 
 [This]{.smallcaps} species of Parrakeet is an inhabitant of the interior of New South Wales, where it frequents the borders of the rivers Namoi and Darling; in all probability its range extends far to the northward; but, so far as is yet known, it has never been found in Southern or …</div>
       <button class="read-more" data-index="32">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Psephotus%20haematogaster%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="beautiful parrakeet psephotus pulcherrimus, gould." data-index="33" id="plate-34">
+  <div class="card" data-search="beautiful parrakeet psephotus pulcherrimus, gould." data-index="33">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/0e1ff1894744048e9101e8c16fd040c17b6da14c.jpg" alt="Beautiful Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
-      <div class="plate-no">Vol. V &middot; Plate 34 &middot; Beautiful Parrakeet</div>
+      <div class="plate-no">Vol. V &middot; Plate 34 &middot; Beautiful Parrakeet<sup class="extinct-marker" tabindex="0" title="Extinct — last confirmed 1927. Last confirmed sighting 14 September 1927, near Gayndah, Queensland. Genus now usually placed in Psephotellus.">&dagger;<span class="extinct-year">1927</span></sup></div>
       <div class="latin-line"><span class="latin">Psephotus pulcherrimus, Gould.</span></div>
       <div class="gould-text">IN IIHIO/0(S ((I(&#x27;If1: I IIMTOYS: *`Goulel.`*
 
@@ -775,11 +738,10 @@ Beautiful Parrakeet.
 
 [The]{.smallcaps} graceful form of this new Parrakeet, combined with the extreme brilliancy of its plumage, render it one of the most lovely of the *Psittacidce* yet discovered; and in whatever light we r…</div>
       <button class="read-more" data-index="33">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Psephotus%20pulcherrimus%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="many-coloured parrakeet psephotus multicolor." data-index="34" id="plate-35">
+  <div class="card" data-search="many-coloured parrakeet psephotus multicolor." data-index="34">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/41f81a49c35e643f493a6cb3ae55cd955a253ee9.jpg" alt="Many-coloured Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 35 &middot; Many-coloured Parrakeet</div>
@@ -794,11 +756,10 @@ Beautiful Parrakeet.
 
 [This]{.smallcaps} species is strictly an inhabitant of the interior of Australia, being found on…</div>
       <button class="read-more" data-index="34">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PSEPHOTUS%20MULTICOLOR.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-backed parrakeet psephotus hamatonotus" data-index="35" id="plate-36">
+  <div class="card" data-search="red-backed parrakeet psephotus hamatonotus" data-index="35">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/c71458f3a002ea7667175a5124c06ee7f9088ae9.jpg" alt="Red-backed Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 36 &middot; Red-backed Parrakeet</div>
@@ -811,11 +772,10 @@ Red-backed Parrakeet.
 
 [This]{.smallcaps} species inhabits the interior of the south-eastern division of the Australian continent; it is abundantly dispersed over the Liverpool Plains, and all the open country to the northward as far as it has yet been explored ; it also inhabits similar t…</div>
       <button class="read-more" data-index="35">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PSEPHOTUS%20HAMATONOTUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="blue-banded grass-parrakeet euphema chrysostoma, wagl." data-index="36" id="plate-37">
+  <div class="card" data-search="blue-banded grass-parrakeet euphema chrysostoma, wagl." data-index="36">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/3b9b3b794a1bdb512df0b0ebe5f4549c09a928fb.jpg" alt="Blue-banded Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 37 &middot; Blue-banded Grass-Parrakeet</div>
@@ -834,11 +794,10 @@ Blue-Banded Grass-Parrakeet.
 
 *Nanodes venustus,* Vig. and Horsf. in Linn. Trans., vol. xv. p. 274.&#x27;---Selb…</div>
       <button class="read-more" data-index="36">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Euphema%20chrysostoma%2C%20Wagl.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="elegant grass-parrakeet euphema elegans" data-index="37" id="plate-38">
+  <div class="card" data-search="elegant grass-parrakeet euphema elegans" data-index="37">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/36222bb5ecb256667b4a9420a6853dd4a0742b1e.jpg" alt="Elegant Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 38 &middot; Elegant Grass-Parrakeet</div>
@@ -855,11 +814,10 @@ Elegant Grass-Parrakeet.
 
 [Although]{.smallcaps} closely resembling in size and form the Blue-banded Grass-Parrakeet, this species differs in several minor particulars. The green colourin…</div>
       <button class="read-more" data-index="37">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EUPHEMA%20ELEGANS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="orange-bellied grass-parrakeet euphema aurantia" data-index="38" id="plate-39">
+  <div class="card" data-search="orange-bellied grass-parrakeet euphema aurantia" data-index="38">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/313d8bbcbf4c7f8ad24016398bb67d01d2e0ed5f.jpg" alt="Orange-bellied Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 39 &middot; Orange-bellied Grass-Parrakeet</div>
@@ -872,11 +830,10 @@ Orange-bellied Grass-Parrakeet.
 
 [Although]{.smallcaps} the present bird is not so elegant in form, nor graced with so brilliant a frontal band as several others of the group, it has received an ample compensation in the rich orange mark that adorns the under surface, a character by which it may be distinguished from every other known speci…</div>
       <button class="read-more" data-index="38">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EUPHEMA%20AURANTIA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="rock grass-parrakeet euphema petrophila, gould." data-index="39" id="plate-40">
+  <div class="card" data-search="rock grass-parrakeet euphema petrophila, gould." data-index="39">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/1bcde85151e1319d88727a00bc15b9a6d0bd5b90.jpg" alt="Rock Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 40 &middot; Rock Grass-Parrakeet</div>
@@ -893,11 +850,10 @@ Rock Grass-Parrakeet.
 
 [Independently]{.smallcaps} of the difference in the colouring of the face of this species, it differs also from all the other members of the genus in its habits ; for although, like them, …</div>
       <button class="read-more" data-index="39">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Euphema%20petrophila%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="chestnut-shouldered grass-parrakeet euphema pulchella" data-index="40" id="plate-41">
+  <div class="card" data-search="chestnut-shouldered grass-parrakeet euphema pulchella" data-index="40">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/b73c38a04a966fcfb394a4263a4fc07614e0d14a.jpg" alt="Chestnut-shouldered Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 41 &middot; Chestnut-shouldered Grass-Parrakeet</div>
@@ -912,11 +868,10 @@ Chestnut-shouldered Grass-Parrakeet.
 
 *La Perruche Edwards,* Le Vaill. Hist…</div>
       <button class="read-more" data-index="40">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EUPHEMA%20PULCHELLA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="splendid grass-parrakeet euphema splendid a" data-index="41" id="plate-42">
+  <div class="card" data-search="splendid grass-parrakeet euphema splendid a" data-index="41">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d6d251bbdbf3741306ba478c38f4b4ff9cecc6c8.jpg" alt="Splendid Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 42 &middot; Splendid Grass-Parrakeet</div>
@@ -929,11 +884,10 @@ Splendid Grass Parrakeet.
 
 [It]{.smallcaps} is a source of much regret to me, that I am unable to give more than a very slight notice of the beautiful bird that forms the subject of the present Plate. The single specimen from which my description was taken came into my possession in 1840, unfortunately without any other information acc…</div>
       <button class="read-more" data-index="41">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EUPHEMA%20SPLENDID%20A">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="bourke&#x27;s grass-parrakeet euphema bourkii." data-index="42" id="plate-43">
+  <div class="card" data-search="bourke&#x27;s grass-parrakeet euphema bourkii." data-index="42">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/c20362a09a64b392c2c0f0c701f616658ce4eb37.jpg" alt="Bourke&#x27;s Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 43 &middot; Bourke&#x27;s Grass-Parrakeet</div>
@@ -944,11 +898,10 @@ Splendid Grass Parrakeet.
 
 [For]{.smallcaps} a knowledge of this new species of Grass-Parrakeet, the scientific world is indebted to Major Sir T. L. Mitchell, who discovered it on the banks of the River Bogan, during one of his expeditions into the interior of New South Wales. It is particularly interesting, as exhibiting in the crescentic form of t…</div>
       <button class="read-more" data-index="42">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=EUPHEMA%20BOURKII.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="warbling grass-parrakeet melopsittacus undulatus." data-index="43" id="plate-44">
+  <div class="card" data-search="warbling grass-parrakeet melopsittacus undulatus." data-index="43">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/ca33c37f39f20905c4728c552c0330b17379efb3.jpg" alt="Warbling Grass-Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 44 &middot; Warbling Grass-Parrakeet</div>
@@ -963,11 +916,10 @@ Splendid Grass Parrakeet.
 
 *Nanodes undulatus,* Vig. and Horsf. in Linn. Trans., vol. xv. p. 277.---Steph. Cont. of Shaw&#x27;s Gen. Zool., vol. xiv. p. 119.---Lear&#x27;s Il…</div>
       <button class="read-more" data-index="43">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=MELOPSITTACUS%20UNDULATUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="cockatoo parrakeet nymphicus nova-hollandia" data-index="44" id="plate-45">
+  <div class="card" data-search="cockatoo parrakeet nymphicus nova-hollandia" data-index="44">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/683ceb6862a9bb34a3c11eae8d43fe0e5e88d0f5.jpg" alt="Cockatoo Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 45 &middot; Cockatoo Parrakeet</div>
@@ -984,11 +936,10 @@ Cockatoo Parrakeet.
 
 *Nymphicus Novae-Hollandiae,* Wagl., Mon. Psitt. in Abhand, &amp;c., pp. 490 and 522.---Selb., Nat. Lib., vol…</div>
       <button class="read-more" data-index="44">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=NYMPHICUS%20NOVA-HOLLANDIA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="ground parrakeet pezoporus formosus" data-index="45" id="plate-46">
+  <div class="card" data-search="ground parrakeet pezoporus formosus" data-index="45">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d875fa06198bc370a73586e3567621336f84f17f.jpg" alt="Ground Parrakeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 46 &middot; Ground Parrakeet</div>
@@ -1007,11 +958,10 @@ Ground Parrakeet.
 
 *Ground Par…</div>
       <button class="read-more" data-index="45">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PEZOPORUS%20FORMOSUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="swift lorikeet lathamus discolor." data-index="46" id="plate-47">
+  <div class="card" data-search="swift lorikeet lathamus discolor." data-index="46">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/74c65ed25008ce2c154ece796bee492f9f1e5f5b.jpg" alt="Swift Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 47 &middot; Swift Lorikeet</div>
@@ -1026,11 +976,10 @@ Ground Parrakeet.
 
 *Psittacus humeralis,*** Kuhl, Consp. Psit…</div>
       <button class="read-more" data-index="46">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LATHAMUS%20DISCOLOR.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="swainson&#x27;s lorikeet trichoglossus swainsonii" data-index="47" id="plate-48">
+  <div class="card" data-search="swainson&#x27;s lorikeet trichoglossus swainsonii" data-index="47">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/bdc6dd3925b99e1e4468fec8ca7a9ab4d85b25a4.jpg" alt="Swainson&#x27;s Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 48 &middot; Swainson&#x27;s Lorikeet</div>
@@ -1049,11 +998,10 @@ Swainson&#x27;s Lorikeet.
 
 *Trichoglossus hamatodus,*** Vig. and Horsf. …</div>
       <button class="read-more" data-index="47">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TRICHOGLOSSUS%20SWAINSONII">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-collared lorikeet trichoglossus rubritorquis" data-index="48" id="plate-49">
+  <div class="card" data-search="red-collared lorikeet trichoglossus rubritorquis" data-index="48">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/a998b8df012a75f277a2c463d4285cbef26a7563.jpg" alt="Red-collared Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 49 &middot; Red-collared Lorikeet</div>
@@ -1066,11 +1014,10 @@ Red-collared Lorikeet.
 
 [This]{.smallcaps} lovely *Trichoglossus* inhabits the northern coasts of Australia, and is as beautiful a representative of its near ally, the *T. Swainsonii* of the south coast, as can well be imagined. In thei…</div>
       <button class="read-more" data-index="48">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TRICHOGLOSSUS%20RUBRITORQUIS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="scaly-breasted lorikeet trichoglossus chlorolepidotus" data-index="49" id="plate-50">
+  <div class="card" data-search="scaly-breasted lorikeet trichoglossus chlorolepidotus" data-index="49">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/0ec8b263fde9514e135b9811a361e3036c0d787e.jpg" alt="Scaly-breasted Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 50 &middot; Scaly-breasted Lorikeet</div>
@@ -1087,11 +1034,10 @@ Scaly-breasted Lorikeet.
 
 [The]{.smallcaps} present Lorikeet is one of the four species of this genus inhabiting New South …</div>
       <button class="read-more" data-index="49">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TRICHOGLOSSUS%20CHLOROLEPIDOTUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="varied lorikeet trichoglossus versicolor, vig." data-index="50" id="plate-51">
+  <div class="card" data-search="varied lorikeet trichoglossus versicolor, vig." data-index="50">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/79e53bc25027f5171ab400780fb0ffc673f8602f.jpg" alt="Varied Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 51 &middot; Varied Lorikeet</div>
@@ -1102,11 +1048,10 @@ Scaly-breasted Lorikeet.
 
 [There]{.smallcaps} is no other species of the genus *Trichoglossus* yet discovered with which the present could be con­founded ; it is at once rendered conspicuously distinct from all its allies by the narrow stripe of yellow down t…</div>
       <button class="read-more" data-index="50">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Trichoglossus%20versicolor%2C%20Vig.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="musky lorikeet trichoglossus concinnus, vig. and horsf." data-index="51" id="plate-52">
+  <div class="card" data-search="musky lorikeet trichoglossus concinnus, vig. and horsf." data-index="51">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d4a0b06380c2c5ca8ad6d6c7e848958156d99296.jpg" alt="Musky Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 52 &middot; Musky Lorikeet</div>
@@ -1127,11 +1072,10 @@ Musky Parrakeet.
 
 *Pacific Parrakeet…</div>
       <button class="read-more" data-index="51">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Trichoglossus%20concinnus%2C%20Vig.%20and%20Horsf.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="porphyry-crowned lorikeet trichoglossus porphyrocephalus, dietr." data-index="52" id="plate-53">
+  <div class="card" data-search="porphyry-crowned lorikeet trichoglossus porphyrocephalus, dietr." data-index="52">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/ba0a61b03a4a6e722b72faf720f513287b474699.jpg" alt="Porphyry-crowned Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 53 &middot; Porphyry-crowned Lorikeet</div>
@@ -1150,11 +1094,10 @@ Porphyry-crowned Lorikeet.
 
 *Psittacula Florentis,* Bourj. de St. HiL, Supp. Le Vaill. His…</div>
       <button class="read-more" data-index="52">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Trichoglossus%20porphyrocephalus%2C%20Dietr.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="little lorikeet trichoglossus pusillus" data-index="53" id="plate-54">
+  <div class="card" data-search="little lorikeet trichoglossus pusillus" data-index="53">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/f5f9b878879368f4213d5dd25571a5da71f5a0fc.jpg" alt="Little Lorikeet plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 54 &middot; Little Lorikeet</div>
@@ -1175,11 +1118,10 @@ p. 47.
 
 *Small Parrot,* Lath. Gen. Hist., vol. ii. p. 194.…</div>
       <button class="read-more" data-index="53">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TRICHOGLOSSUS%20PUSILLUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="swainson&#x27;s fruit pigeon ptilinopus swainsonii" data-index="54" id="plate-55">
+  <div class="card" data-search="swainson&#x27;s fruit pigeon ptilinopus swainsonii" data-index="54">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d8f7fea52cd9d4062ba13a68d90404e49d1f2c33.jpg" alt="Swainson&#x27;s Fruit Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 55 &middot; Swainson&#x27;s Fruit Pigeon</div>
@@ -1196,11 +1138,10 @@ Swainson&#x27;s Fruit Pig-eon.
 
 [Considerable]{.smallcaps} confusion has existed respecting the very beautiful birds constituting the genus *Ptilinopus,* as to whether they are so many species…</div>
       <button class="read-more" data-index="54">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PTILINOPUS%20SWAINSONII">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="ewing&#x27;s fruit pigeon ptilinopus ewingii, gould." data-index="55" id="plate-56">
+  <div class="card" data-search="ewing&#x27;s fruit pigeon ptilinopus ewingii, gould." data-index="55">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/9e58b2311c3316efb4fbfef7d0edf32f3f8d8e97.jpg" alt="Ewing&#x27;s Fruit Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 56 &middot; Ewing&#x27;s Fruit Pigeon</div>
@@ -1215,11 +1156,10 @@ Ewing&#x27;s Fruit Pigeon.
 
 [This]{.smallcaps} lovely species, which is a native of the Cobourg Peninsula, and doubtless ranges over the northern coast of Australia generally, differs from the preceding, *Ptilinopus Swainsonii,* in being much smaller in all …</div>
       <button class="read-more" data-index="55">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Ptilinopus%20Ewingii%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="superb fruit pigeon ptilinopus superbus." data-index="56" id="plate-57">
+  <div class="card" data-search="superb fruit pigeon ptilinopus superbus." data-index="56">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/75455f3eb4b8ff0b6ac0949165ad8251669886ac.jpg" alt="Superb Fruit Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 57 &middot; Superb Fruit Pigeon</div>
@@ -1230,11 +1170,10 @@ Ewing&#x27;s Fruit Pigeon.
 
 [This]{.smallcaps} lovely species was originally figured and described in the splendid work on the Pigeons by Madame Knip and my friend M. Temminck as an inhabitant of one of the islands of the Pacific Ocean; and it affords me much pleasure to be enabled to incl…</div>
       <button class="read-more" data-index="56">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PTILINOPUS%20SUPERBUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="magnificent fruit pigeon carpophaga magnifica." data-index="57" id="plate-58">
+  <div class="card" data-search="magnificent fruit pigeon carpophaga magnifica." data-index="57">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/3cfe25a1c93f5b7a924ae5182bfbf663d987a554.jpg" alt="Magnificent Fruit Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 58 &middot; Magnificent Fruit Pigeon</div>
@@ -1249,11 +1188,10 @@ Ewing&#x27;s Fruit Pigeon.
 
 [This]{.smallcaps} splendid bird, the finest of the Pigeons yet discovered in Australia, is abundant in all the …</div>
       <button class="read-more" data-index="57">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CARPOPHAGA%20MAGNIFICA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white-headed fruit pigeon carpophaga leucomela." data-index="58" id="plate-59">
+  <div class="card" data-search="white-headed fruit pigeon carpophaga leucomela." data-index="58">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/71fe722d2f1f7b5ef181fa6e789879948daa846b.jpg" alt="White-headed Fruit Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 59 &middot; White-headed Fruit Pigeon</div>
@@ -1270,11 +1208,10 @@ Ewing&#x27;s Fruit Pigeon.
 
 [This]{.smallcaps} fine species of Pigeon is an inhabitant of those vast pr…</div>
       <button class="read-more" data-index="58">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CARPOPHAGA%20LEUCOMELA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="torres strait fruit pigeon carpophaga luctuosa" data-index="59" id="plate-60">
+  <div class="card" data-search="torres strait fruit pigeon carpophaga luctuosa" data-index="59">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/997ed44230e542eb95966d1a7d9dccc220b57ce7.jpg" alt="Torres Strait Fruit Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 60 &middot; Torres Strait Fruit Pigeon</div>
@@ -1285,11 +1222,10 @@ Ewing&#x27;s Fruit Pigeon.
 
 [This]{.smallcaps} bird is commonly known by the name of the Torres Strait Pigeon, from its being so abundant there that few voyagers pass the straits during its breeding-season without encountering it. It arrives in the Cobourg Peninsula at the beginning of November and d…</div>
       <button class="read-more" data-index="59">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CARPOPHAGA%20LUCTUOSA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="top-knot pigeon lopholaimus antarcticus, g.r.gray." data-index="60" id="plate-61">
+  <div class="card" data-search="top-knot pigeon lopholaimus antarcticus, g.r.gray." data-index="60">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d3674865711ca521d6ac956b6fdf26ac19c45d6a.jpg" alt="Top-Knot Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 61 &middot; Top-Knot Pigeon</div>
@@ -1308,11 +1244,10 @@ CZHZmandeimpLOPHOLAIMUS ANTARCTICUS, *G.R.Gray *Top-knot Pigeon.
 
 * antarcticus,* G. R. Gray, List of Gen. of B…</div>
       <button class="read-more" data-index="60">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Lopholaimus%20antarcticus%2C%20G.R.Gray.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="little green pigeon chalcophaps chrysochlora." data-index="61" id="plate-62">
+  <div class="card" data-search="little green pigeon chalcophaps chrysochlora." data-index="61">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/7a147c3c11de8f32db7b1a863a0a25383f376411.jpg" alt="Little Green Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 62 &middot; Little Green Pigeon</div>
@@ -1329,11 +1264,10 @@ CZHZmandeimpLOPHOLAIMUS ANTARCTICUS, *G.R.Gray *Top-knot Pigeon.
 
 [There]{.smallcaps} are, in my opinion, several closely allied species of this form, distributed over Australia and the islands of Java, Sumatra, &amp;c., who…</div>
       <button class="read-more" data-index="61">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=CHALCOPHAPS%20CHRYSOCHLORA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="wonga-wonga pigeon leucosarcia picata." data-index="62" id="plate-63">
+  <div class="card" data-search="wonga-wonga pigeon leucosarcia picata." data-index="62">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/7698d81e1bcd0c1c02869237c482b41a18d4b162.jpg" alt="Wonga-wonga Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 63 &middot; Wonga-wonga Pigeon</div>
@@ -1348,11 +1282,10 @@ CZHZmandeimpLOPHOLAIMUS ANTARCTICUS, *G.R.Gray *Top-knot Pigeon.
 
 *Columba Jamiesonii,* Quoy et Gaim. Voy. Partie Zoolog., p…</div>
       <button class="read-more" data-index="62">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LEUCOSARCIA%20PICATA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="bronze-winged pigeon peristera chalcoptera, swains." data-index="63" id="plate-64">
+  <div class="card" data-search="bronze-winged pigeon peristera chalcoptera, swains." data-index="63">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/632166d620234cc6c2f8f219618b49b157a11911.jpg" alt="Bronze-winged Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 64 &middot; Bronze-winged Pigeon</div>
@@ -1367,11 +1300,10 @@ CZHZmandeimpLOPHOLAIMUS ANTARCTICUS, *G.R.Gray *Top-knot Pigeon.
 
 *Bronze-winged Pigeon,* Lath. Gen. Syn. Supp., vol. ii. p. 266.---Phill. Bot. Bay, pl. in p. 162.---White&#x27;s Journ., p…</div>
       <button class="read-more" data-index="63">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Peristera%20chalcoptera%2C%20Swains.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="brush bronze-winged pigeon peristera elegans." data-index="64" id="plate-65">
+  <div class="card" data-search="brush bronze-winged pigeon peristera elegans." data-index="64">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/298c213f2c1e6e24ee4288ab6f70bbf95b0a7e4d.jpg" alt="Brush Bronze-winged Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 65 &middot; Brush Bronze-winged Pigeon</div>
@@ -1390,11 +1322,10 @@ CZHZmandeimpLOPHOLAIMUS ANTARCTICUS, *G.R.Gray *Top-knot Pigeon.
 
 [T…</div>
       <button class="read-more" data-index="64">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PERISTERA%20ELEGANS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="harlequin bronze-wing peristera histrionica" data-index="65" id="plate-66">
+  <div class="card" data-search="harlequin bronze-wing peristera histrionica" data-index="65">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/03c974a3f9ab4f0662c311dea11c0371568356e8.jpg" alt="Harlequin Bronze-wing plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 66 &middot; Harlequin Bronze-wing</div>
@@ -1409,11 +1340,10 @@ I [first]{.smallcaps} met with this new and beautiful pigeon on the 2nd of Decem
 
 I was strolling beside the stream at sunrise, when one of these birds rose from the water&#x27;s edge, flew to …</div>
       <button class="read-more" data-index="65">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PERISTERA%20HISTRIONICA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="partridge bronze-wing geophaps scripta." data-index="66" id="plate-67">
+  <div class="card" data-search="partridge bronze-wing geophaps scripta." data-index="66">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/ec01e29391f7f3814f9f258f17287d150d2c7168.jpg" alt="Partridge Bronze-wing plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 67 &middot; Partridge Bronze-wing</div>
@@ -1426,11 +1356,10 @@ I was strolling beside the stream at sunrise, when one of these birds rose from 
 
 [This]{.smallcaps} Pigeon has more than ordinary claims to the attention both of the ornithologist and the epicure, since to the first it is of i…</div>
       <button class="read-more" data-index="66">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GEOPHAPS%20SCRIPTA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="smith&#x27;s partridge bronze-wing geophaps smithil" data-index="67" id="plate-68">
+  <div class="card" data-search="smith&#x27;s partridge bronze-wing geophaps smithil" data-index="67">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/e5f132aa377e9230a0eccd1053b38f37697df1d1.jpg" alt="Smith&#x27;s Partridge Bronze-wing plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 68 &middot; Smith&#x27;s Partridge Bronze-wing</div>
@@ -1445,11 +1374,10 @@ I was strolling beside the stream at sunrise, when one of these birds rose from 
 
 [In]{.smallcaps} structure this species is in every respect a true *Geophaps,* and the accompanying notes by Mr. Gilbert show that it as closely assimilates in its habits and economy to the type of the genus as i…</div>
       <button class="read-more" data-index="67">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GEOPHAPS%20SMITHIL">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="plumed partridge bronze-wing geophaps plumifera" data-index="68" id="plate-69">
+  <div class="card" data-search="plumed partridge bronze-wing geophaps plumifera" data-index="68">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/b9663f5cc02818ace7cae0662d86b27057026752.jpg" alt="Plumed Partridge Bronze-wing plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 69 &middot; Plumed Partridge Bronze-wing</div>
@@ -1462,11 +1390,10 @@ Plumed Partridge Bronze-wing.
 
 [This]{.smallcaps} rare and highly interesting species of Pigeon was sent me by my friend B. Bynoe, Esq., who procured it on the north-west coast of Australia. The notes accompanying the bird informed me that &quot; it inhabits the country between Cape Hotham and the island of Depuch; the specimen sent is from…</div>
       <button class="read-more" data-index="68">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GEOPHAPS%20PLUMIFERA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="crested pigeon ocyphaps lophotes." data-index="69" id="plate-70">
+  <div class="card" data-search="crested pigeon ocyphaps lophotes." data-index="69">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/12067e1cd64e50846533f884f3ccf5559d4acf3e.jpg" alt="Crested Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 70 &middot; Crested Pigeon</div>
@@ -1481,11 +1408,10 @@ Plumed Partridge Bronze-wing.
 
 [The]{.smallcaps} chasteness of its colouring, the extreme elegance o…</div>
       <button class="read-more" data-index="69">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=OCYPHAPS%20LOPHOTES.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="white-quilled rock dove petrophassa albipennis" data-index="70" id="plate-71">
+  <div class="card" data-search="white-quilled rock dove petrophassa albipennis" data-index="70">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/d5f790498fe15e56062c1a0478b7a23f1fca70ce.jpg" alt="White-quilled Rock Dove plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 71 &middot; White-quilled Rock Dove</div>
@@ -1498,11 +1424,10 @@ White-quilled Rock Dove.
 
 [This]{.smallcaps} highly singular species of Pigeon is an inhabitant of the most rugged, rocky and sterile districts of the north-west coast of Australia. The specimens in my possession were sent me by the Officers of the Beagle, but, I regret to say, were unaccompanied by any particulars respecting their …</div>
       <button class="read-more" data-index="70">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PETROPHASSA%20ALBIPENNIS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="barred-shouldered ground dove geopelia humeralis." data-index="71" id="plate-72">
+  <div class="card" data-search="barred-shouldered ground dove geopelia humeralis." data-index="71">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/3f1ff74eff7a37cc56b982147e5b0ec307d50c25.jpg" alt="Barred-shouldered Ground Dove plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 72 &middot; Barred-shouldered Ground Dove</div>
@@ -1515,11 +1440,10 @@ White-quilled Rock Dove.
 
 [There]{.smallcaps} are reasons for believing that the *Geopelia humeralis* inhabits the whole of the vast interior of Australia as well as the neighbourhood of the coasts of its northern and eastern portions. In New South Wales it is sparingly dispersed over the Liverpool Plains, where some of th…</div>
       <button class="read-more" data-index="71">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GEOPELIA%20HUMERALIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="peaceful ground dove geopelia tranquilla" data-index="72" id="plate-73">
+  <div class="card" data-search="peaceful ground dove geopelia tranquilla" data-index="72">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/11bfed0ed9ec8c816c50b188d6d5915fa926a0ae.jpg" alt="Peaceful Ground Dove plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 73 &middot; Peaceful Ground Dove</div>
@@ -1532,11 +1456,10 @@ Peaceful Dove.
 
 [The]{.smallcaps} interior of the country northward from New South Wales is inhabited by considerable numbers of this pretty little Dove, but it has not yet been met with either in Southern or Western Australia. It was very abundant on the Namoi, particularly on the lower part of that river; and that its range will extend …</div>
       <button class="read-more" data-index="72">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GEOPELIA%20TRANQUILLA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="graceful ground dove geopelia cuneata." data-index="73" id="plate-74">
+  <div class="card" data-search="graceful ground dove geopelia cuneata." data-index="73">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/bcc806a62a7470f5b6a67149a9222c4ba67701dd.jpg" alt="Graceful Ground Dove plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 74 &middot; Graceful Ground Dove</div>
@@ -1555,11 +1478,10 @@ Peaceful Dove.
 
 *Turtle Dove…</div>
       <button class="read-more" data-index="73">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GEOPELIA%20CUNEATA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pheasant-tailed pigeon macropygia phasianella." data-index="74" id="plate-75">
+  <div class="card" data-search="pheasant-tailed pigeon macropygia phasianella." data-index="74">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/bb52d64131be75a7135aece9d28306e07af57417.jpg" alt="Pheasant-tailed Pigeon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 75 &middot; Pheasant-tailed Pigeon</div>
@@ -1570,11 +1492,10 @@ Peaceful Dove.
 
 [From]{.smallcaps} what I could personally observe during my residence in New South Wales, the Pheasant-tailed Pigeon resorts entirely to the brushes, as in no instance did I ever meet with it in the open parts of the country. From Illawarra to Moreton Bay it is a common and stationary species. It is a fine showy bird in a state of nature, and e…</div>
       <button class="read-more" data-index="74">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=MACROPYGIA%20PHASIANELLA.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="gnathodon gnathodon strigirostris" data-index="75" id="plate-76">
+  <div class="card" data-search="gnathodon gnathodon strigirostris" data-index="75">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/9508a93345b1319660334155ad6607ae58057794.jpg" alt="Gnathodon plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 76 &middot; Gnathodon</div>
@@ -1587,11 +1508,10 @@ Gnathodon.
 
 [The]{.smallcaps} researches of modern zoologists have not perhaps brought to light a more curious object than the bird here represented, a single specimen of which is in the collection of Sir William Jardine, Bart., to whose kindness and liberality I am indebted for permission to include a drawing of it…</div>
       <button class="read-more" data-index="75">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=GNATHODON%20STRIGIROSTRIS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="wattled talegalla talegalla lathaml" data-index="76" id="plate-77">
+  <div class="card" data-search="wattled talegalla talegalla lathaml" data-index="76">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/780b0e34d60d300148149ec2edfb814567520904.jpg" alt="Wattled Talegalla plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 77 &middot; Wattled Talegalla</div>
@@ -1612,11 +1532,10 @@ Gnathodon.
 
 *Brush…</div>
       <button class="read-more" data-index="76">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=TALEGALLA%20LATHAML">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="ocellated leipoa leipoa ocellata" data-index="77" id="plate-78">
+  <div class="card" data-search="ocellated leipoa leipoa ocellata" data-index="77">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/5802106c6d19fc18049cfa9cb602d0ff7073778c.jpg" alt="Ocellated Leipoa plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 78 &middot; Ocellated Leipoa</div>
@@ -1633,11 +1552,10 @@ Ocellated Leipoa.
 
 [This]{.smallcaps} beautiful bird is among the most interesting of the novelties which the little-explored regions of Australia have lately unfolded to us ; since, by its di…</div>
       <button class="read-more" data-index="77">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=LEIPOA%20OCELLATA">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="mound-raising megapode megapodius tumulus" data-index="78" id="plate-79">
+  <div class="card" data-search="mound-raising megapode megapodius tumulus" data-index="78">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/3002486fd7d5674f6ac1d996e9fec41d504afec1.jpg" alt="Mound-raising Megapode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 79 &middot; Mound-raising Megapode</div>
@@ -1654,11 +1572,10 @@ Mound-raising- Megapode.
 
 [The]{.smallcaps} discovery of a species of *Megapodius* in Australia, as soon as the northern portions of the country should be subjected to a careful investigation, is no more than might have been expected, cons…</div>
       <button class="read-more" data-index="78">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=MEGAPODIUS%20TUMULUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="collared plain wanderer pedionomus torquatus" data-index="79" id="plate-80">
+  <div class="card" data-search="collared plain wanderer pedionomus torquatus" data-index="79">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/7ad661edf0b0f030bc575235c44c6c527147f4b7.jpg" alt="Collared Plain Wanderer plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 80 &middot; Collared Plain Wanderer</div>
@@ -1671,11 +1588,10 @@ Collared Plain Wanderer.
 
 [The]{.smallcaps} structure of this singular little bird is admirably adapted for inhabiting those extensive and arid plains which characterize many of the central portions of Australia; and we may reasonably suppose, that when­ever its vast interior shall be explored, other species of this new form will be…</div>
       <button class="read-more" data-index="79">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=PEDIONOMUS%20TORQUATUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-breasted hemipode hemipodius melanogaster" data-index="80" id="plate-81">
+  <div class="card" data-search="black-breasted hemipode hemipodius melanogaster" data-index="80">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/8dfa14f13d06fa5ebae64b5152d4e7652c00c404.jpg" alt="Black-breasted Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 81 &middot; Black-breasted Hemipode</div>
@@ -1688,11 +1604,10 @@ Collared Plain Wanderer.
 
 [Australia]{.smallcaps} may be said to constitute the great nursery of the Hemipodes ; for no other country is inhabited by so many species, and certainly there is not a finer one in existence than the subject of the present Plate. Future research will doubtless furnish others, and in all probability th…</div>
       <button class="read-more" data-index="80">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HEMIPODIUS%20MELANOGASTER">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="varied hemipode hemipodius varius." data-index="81" id="plate-82">
+  <div class="card" data-search="varied hemipode hemipodius varius." data-index="81">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/625ad8ca9d999d3fe651d305878a8fd38564fb5a.jpg" alt="Varied Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 82 &middot; Varied Hemipode</div>
@@ -1711,11 +1626,10 @@ Collared Plain Wanderer.
 
 Birds in B…</div>
       <button class="read-more" data-index="81">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HEMIPODIUS%20VARIUS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="sparkling hemipode hemipodius scintillans" data-index="82" id="plate-83">
+  <div class="card" data-search="sparkling hemipode hemipodius scintillans" data-index="82">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/aab3fc080ac1c356c8bc6780667c7c1eea451213.jpg" alt="Sparkling Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 83 &middot; Sparkling Hemipode</div>
@@ -1730,11 +1644,10 @@ Sparkling- Hemipode.
 
 In …</div>
       <button class="read-more" data-index="82">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HEMIPODIUS%20SCINTILLANS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="black-backed hemipode hemipodius melanotus" data-index="83" id="plate-84">
+  <div class="card" data-search="black-backed hemipode hemipodius melanotus" data-index="83">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/8f35a8faa9c66577db6307da941462c5dde783c1.jpg" alt="Black-backed Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 84 &middot; Black-backed Hemipode</div>
@@ -1747,11 +1660,10 @@ Black-backed Hemipode.
 
 [Several]{.smallcaps} years have now elapsed since I described this species from a specimen received from Moreton Bay; since then I have obtained other examples from the eastern and northern parts of Aus…</div>
       <button class="read-more" data-index="83">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HEMIPODIUS%20MELANOTUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="chestnut-backed hemipode hemipodius castanotus" data-index="84" id="plate-85">
+  <div class="card" data-search="chestnut-backed hemipode hemipodius castanotus" data-index="84">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/a76d43e21f1dfdc3ca674d9be6cbdd952d30327f.jpg" alt="Chestnut-backed Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 85 &middot; Chestnut-backed Hemipode</div>
@@ -1768,11 +1680,10 @@ Chestnut-backed Hemipode.
 
 [The]{.smallcaps} Chestnut-backed Hemipode inhabits the northern and north-western portions of Australia; spe­cimens from the latter have been forwarded to me by Mr. Bynoe and by Mr. Dring of H.M.S. Beagle ; Mr. Gilbert also foun…</div>
       <button class="read-more" data-index="84">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HEMIPODIUS%20CASTANOTUS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="red-chested hemipode hemipodius pyrrhothorax, gould." data-index="85" id="plate-86">
+  <div class="card" data-search="red-chested hemipode hemipodius pyrrhothorax, gould." data-index="85">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/5a1d9c9d28dae05298cea4d021a661bdfa3f42db.jpg" alt="Red-chested Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 86 &middot; Red-chested Hemipode</div>
@@ -1785,11 +1696,10 @@ Red-chested Hemipode.
 
 [Little]{.smallcaps} as is known of the Swift-flying Hemipode, even less information has been obtained respecting the history of the present species, which, although assimilating in some of its characters to the former, …</div>
       <button class="read-more" data-index="85">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Hemipodius%20pyrrhothorax%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="swift-flying hemipode hemipodius velox" data-index="86" id="plate-87">
+  <div class="card" data-search="swift-flying hemipode hemipodius velox" data-index="86">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/fd155885b2b48eed065e3d9c34a9da3fba896b19.jpg" alt="Swift-flying Hemipode plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 87 &middot; Swift-flying Hemipode</div>
@@ -1804,11 +1714,10 @@ Swift-flying- Hemipode.
 
 I [found]{.smallcaps} this new and interesting species of *Hemipodius* abundant in various parts of New South Wales, but whether it has always visited those localities, or has only recently made its appearance…</div>
       <button class="read-more" data-index="86">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=HEMIPODIUS%20VELOX">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="pectoral quail coturnix pectoralis" data-index="87" id="plate-88">
+  <div class="card" data-search="pectoral quail coturnix pectoralis" data-index="87">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/f355ccbdb58f394d576f3626ea0978bcf59c2fae.jpg" alt="Pectoral Quail plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 88 &middot; Pectoral Quail</div>
@@ -1823,11 +1732,10 @@ Pectoral Quail.
 
 [In]{.smallcaps} Van Diemen&#x27;s Land, South Australia and New South Wales, the present species is very abundant; I have also received specimens from Western Australia and a s…</div>
       <button class="read-more" data-index="87">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=COTURNIX%20PECTORALIS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="australian partridge synoicus australis." data-index="88" id="plate-89">
+  <div class="card" data-search="australian partridge synoicus australis." data-index="88">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/2a9d184635aa03a4dcad5e9eeca22f839bef36bd.jpg" alt="Australian Partridge plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 89 &middot; Australian Partridge</div>
@@ -1844,11 +1752,10 @@ Gal. des Ois., pl. 215.---Less. Traite d&#x27;Orn., p. 508.
 
 *Moo-reete,* Aborigines of the lowland districts of Western Australi…</div>
       <button class="read-more" data-index="88">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SYNOICUS%20AUSTRALIS.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="van diemen&#x27;s land partridge synoicus diemenensis" data-index="89" id="plate-90">
+  <div class="card" data-search="van diemen&#x27;s land partridge synoicus diemenensis" data-index="89">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/74e5107a29663f318f83cdd075aa54423e0ba1e0.jpg" alt="Van Diemen&#x27;s Land Partridge plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 90 &middot; Van Diemen&#x27;s Land Partridge</div>
@@ -1863,11 +1770,10 @@ Van Diemen&#x27;s Land Partridge.
 
 [During]{.smallcaps} my visit to Van Diemen&#x27;s Land I was frequently informed that there were two kinds of Quail besides the stubble and painted Quails, the former of which is a true *Coturnix* and the latter a *Hemipodius, *while the two birds referred to belong to nei…</div>
       <button class="read-more" data-index="89">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=SYNOICUS%20DIEMENENSIS">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="sombre partridge synoicus sordidus, gould." data-index="90" id="plate-91">
+  <div class="card" data-search="sombre partridge synoicus sordidus, gould." data-index="90">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/88c5460c7766037de3564c7dd6ff16ef88a111da.jpg" alt="Sombre Partridge plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 91 &middot; Sombre Partridge</div>
@@ -1880,11 +1786,10 @@ Sombre Partridge.
 
 [With]{.smallcaps} the exception of . *Sinensis,* this species is the least of the genus yet discovered; it moreover differs from them all in the absence of any varied markings, in lieu of which all the feathers of t…</div>
       <button class="read-more" data-index="90">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Synoicus%20sordidus%2C%20Gould.">Open in Reader &rarr;</a>
     </div>
   </div>
 
-  <div class="card" data-search="chinese quail synoicus? chinensis" data-index="91" id="plate-92">
+  <div class="card" data-search="chinese quail synoicus? chinensis" data-index="91">
     <div class="plate-wrap"><img class="plate-img" src="images/vol5_plates/cb161fd2c4652b828d0c9fdb31d97074b0f16e38.jpg" alt="Chinese Quail plate" loading="lazy"></div>
     <div class="card-body">
       <div class="plate-no">Vol. V &middot; Plate 92 &middot; Chinese Quail</div>
@@ -1901,7 +1806,6 @@ Sombre Partridge.
 
 *Fr…</div>
       <button class="read-more" data-index="91">Read full account &rarr;</button>
-      <a class="read-in-reader-link" href="reader.html?species=Synoicus%3F%20Chinensis">Open in Reader &rarr;</a>
     </div>
   </div>
 </div>
