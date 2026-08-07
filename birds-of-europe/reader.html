@@ -46,6 +46,7 @@
        (Light/Sepia/Night) -- a dimmed room around a lit page, so the eye
        has nothing bright to strain against beyond the book itself. */
     background: radial-gradient(ellipse at center, #1a1815 0%, #050403 100%);
+    cursor: pointer; /* click this dark margin to leave the Reader */
     display:flex; align-items:center; justify-content:center; flex-direction:column;
     height:100vh; overflow:hidden;
   }
@@ -490,5 +491,19 @@ window.addEventListener('resize', () => { requestAnimationFrame(measureAndShow);
   else currentIdx = sorted[0]._idx;
   render();
 })();
+
+// Click outside the book (in the dark surrounding space) to leave the
+// Reader and return to wherever it makes most sense -- the exact plate
+// card if we know it, the Contents page if we arrived from there,
+// otherwise the project's home gallery.
+document.body.addEventListener('click', function(e){
+  if (e.target !== document.body) return;
+  var dest = 'index.html';
+  var pb = document.getElementById('plateBackLink');
+  var cb = document.getElementById('contentsBackLink');
+  if (pb && pb.style.display !== 'none' && pb.getAttribute('href') && pb.getAttribute('href') !== '#') dest = pb.href;
+  else if (cb && cb.style.display !== 'none' && cb.getAttribute('href') && cb.getAttribute('href') !== '#') dest = cb.href;
+  window.location.href = dest;
+});
 </script>
 </body></html>
