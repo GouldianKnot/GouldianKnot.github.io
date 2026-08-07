@@ -69,6 +69,12 @@
     padding: 4px 8px; border-radius: 5px; display: inline-block; flex-shrink:0; white-space:nowrap;
   }
   .home-link:hover{ background:#5f3e22; }
+  .contents-back-link{
+    font-size: 18px; line-height:1; color: var(--accent); text-decoration: none; opacity:0.75;
+    padding: 4px 7px; border-radius: 5px; display: none; flex-shrink:0;
+  }
+  .contents-back-link:hover{ opacity:1; background: rgba(122,82,48,0.12); }
+  .device.theme-night .contents-back-link{ color:#d8c9a8; }
   .topbar select{
     font-family: inherit; font-size:12px; background:transparent; color:inherit; border:1px solid var(--chrome-border);
     border-radius:4px; padding:3px 4px; max-width: 118px;
@@ -196,6 +202,7 @@
   <div class="topbar">
     <div class="topbar-left">
       <a href="index.html" class="home-link">&#127968; Home</a>
+      <a href="#" id="contentsBackLink" class="contents-back-link" title="Back to Contents" aria-label="Back to Contents">&#8617;</a>
       <select id="speciesSelect"></select>
     </div>
     <div class="controls">
@@ -489,6 +496,16 @@ window.addEventListener('resize', () => { requestAnimationFrame(measureAndShow);
   else if (q && byCommon.has(q)) currentIdx = byCommon.get(q);
   else currentIdx = sorted[0]._idx;
   render();
+
+  // Arrived from the Contents page -- show a plain, wordless back link that
+  // returns there (scrolled to the right volume) instead of home to the
+  // gallery. See gb_contents.html.
+  if (params.get('from') === 'contents') {
+    const vol = params.get('vol') || '';
+    const link = document.getElementById('contentsBackLink');
+    link.href = 'gb_contents.html' + (vol ? '#vol-' + encodeURIComponent(vol) : '');
+    link.style.display = 'inline-block';
+  }
 })();
 </script>
 </body></html>
