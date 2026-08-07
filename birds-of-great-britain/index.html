@@ -46,9 +46,9 @@
   .header-sidenote[data-align="left"] { text-align: left; }
   .header-sidenote[data-align="right"] { text-align: right; }
   @keyframes sidenote-float {
-    0%   { transform: translate(0, 0); }
-    50%  { transform: translate(var(--float-x, 6px), var(--float-y, -8px)); }
-    100% { transform: translate(0, 0); }
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(var(--float-x, 6px), var(--float-y, -8px)) scale(var(--float-scale, 1.08)); }
+    100% { transform: translate(0, 0) scale(1); }
   }
   @media (prefers-reduced-motion: reduce) {
     .header-sidenote { animation: none; }
@@ -309,7 +309,7 @@
   <div class="header-overlay" id="headerOverlay"></div>
   <button type="button" class="cladogram-toggle" id="cladogramToggle">
     <span class="ct-title">Modern Bird Classification: Cladograms informed through molecular phylogenetics</span>
-    <span class="ct-action">Show Cladogram</span>
+    <span class="ct-action">The Cladogram Explorer</span>
   </button>
     <div class="header-inner">
     <div class="eyebrow" id="eyebrowText">John Gould &middot; 1862&ndash;1873</div>
@@ -354,6 +354,30 @@
   <a class="header-sidenote" data-align="left"
      href="reader.html?species=Anser%20ferus">
     <span class="fleuron">&#10087;</span>Read Vol. V<br>the Natatores, from the beginning
+  </a>
+  <a class="header-sidenote" data-align="right"
+     href="gb_anatomy_diagram.html">
+    <span class="fleuron">&#10087;</span>Anatomy of a Dove<br>the parts of a bird, labelled
+  </a>
+  <a class="header-sidenote" data-align="left"
+     href="gb_print_view.html">
+    <span class="fleuron">&#10087;</span>Catalogue of Bird Species<br>the full print / reference view
+  </a>
+  <a class="header-sidenote" data-align="right"
+     href="cladogram.html">
+    <span class="fleuron">&#10087;</span>Cladogram Explorer<br>how these birds relate to one another
+  </a>
+  <a class="header-sidenote" data-align="left"
+     href="gb_reclassification_summary.html">
+    <span class="fleuron">&#10087;</span>Classification since the 1800&rsquo;s<br>what&rsquo;s changed, and why?
+  </a>
+  <a class="header-sidenote" data-align="right"
+     href="gb_still_debated.html">
+    <span class="fleuron">&#10087;</span>Still Debated&hellip;<br>the cases ornithologists haven&rsquo;t settled
+  </a>
+  <a class="header-sidenote" data-align="left"
+     href="citation_detective_guide.html">
+    <span class="fleuron">&#10087;</span>Jan&rsquo;s Citation Detective Guide<br>how the sources were tracked down
   </a>
 </div>
 <div class="potd" id="potd" style="display:none;">
@@ -29978,21 +30002,28 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
 
       var maxH = 0;
       notes.forEach(function(el) { maxH = Math.max(maxH, el.offsetHeight || 140); });
-      var maxCount = Math.max(sides.left.length, sides.right.length);
-      // If the header+toolbar range can't fit every band at full item height, extend the
-      // usable range further down the page (into the volume-chip row's whitespace) rather
-      // than let items overlap -- "down to where the search bar ends" is the target, not a
-      // hard ceiling.
-      var neededHeight = maxH * maxCount * 1.08;
-      if (bottomPad - topPad < neededHeight) { bottomPad = topPad + neededHeight; }
+      // Each side may start its usable range at a different y (the right column's start
+      // is pushed down past the Cladogram button), so the needed-height check -- and any
+      // bottomPad extension -- must be worked out per side against that side's own start,
+      // not against topPad for both. Otherwise the side with the later start silently gets
+      // squeezed into fewer effective bands than the other and can overlap.
+      var sideTops = {
+        left: topPad,
+        right: (cBox ? Math.max(topPad, cBox.y + cBox.h + 20) : topPad)
+      };
+      var neededBottom = bottomPad;
+      ['left', 'right'].forEach(function(side) {
+        var count = sides[side].length;
+        if (!count) return;
+        var needed = sideTops[side] + maxH * count * 1.22;
+        if (needed > neededBottom) { neededBottom = needed; }
+      });
+      bottomPad = neededBottom;
 
       ['left', 'right'].forEach(function(side) {
         var items = sides[side];
         if (!items.length) return;
-        var sideTop = topPad;
-        // Reserve the Cladogram button's footprint at the very top of the right column so
-        // band 0 there never has to fight it via chance sampling.
-        if (side === 'right' && cBox) { sideTop = Math.max(topPad, cBox.y + cBox.h + 20); }
+        var sideTop = sideTops[side];
         var bandH = (bottomPad - sideTop) / items.length;
         items.forEach(function(el, i) {
           var w = el.offsetWidth || 260, h = el.offsetHeight || 140;
@@ -30014,6 +30045,7 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
           el.style.setProperty('--float-delay', (-Math.random() * 12).toFixed(1) + 's');
           el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
           el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
+          el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
         });
       });
     }

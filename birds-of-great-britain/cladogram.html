@@ -100,12 +100,65 @@
     padding: 5px 12px; border-radius: 5px; display: inline-block;
   }
   .home-link:hover { background: #5f3e22; }
+
+  /* Faint, floating "sunken heading" links back out to the rest of the project ---
+     same treatment as the index page's header, adapted to this page's narrower,
+     centered (max-width:900px) content column. */
+  .cladogram-decor-layer { position: static; }
+  .header-sidenote {
+    position: absolute; z-index: 2; font-family: Georgia, 'Iowan Old Style', serif;
+    font-size: 22px; font-style: italic; letter-spacing: 0.02em; color: #8a7a63; opacity: 0.36;
+    text-decoration: none; transition: opacity 0.25s ease, color 0.25s ease;
+    max-width: 300px; line-height: 1.25; will-change: transform;
+    animation: sidenote-float var(--float-dur, 10s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  .header-sidenote:hover,
+  .header-sidenote:focus-visible,
+  .header-sidenote.is-near {
+    opacity: 0.95; color: #7a5230;
+  }
+  .header-sidenote .fleuron { display: block; font-size: 24px; opacity: 0.7; margin-bottom: 2px; }
+  .header-sidenote[data-align="left"] { text-align: left; }
+  .header-sidenote[data-align="right"] { text-align: right; }
+  @keyframes sidenote-float {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(var(--float-x, 6px), var(--float-y, -8px)) scale(var(--float-scale, 1.06)); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-sidenote { animation: none; }
+  }
+  @media (max-width: 1100px) {
+    .header-sidenote { display: none; }
+  }
 </style></head>
 <body>
 
 <div class="top-nav">
   <a href="index.html" class="home-link">🏠 Birds of Great Britain — home</a>
   <a href="javascript:history.back()" class="back-link" id="backLink" style="display:none;margin-bottom:0;">← back to where you were</a>
+</div>
+
+<div class="cladogram-decor-layer" id="cladogramDecorLayer">
+  <a class="header-sidenote" data-align="left" href="index.html">
+    <span class="fleuron">❧</span>The Birds of Great Britain<br>back to the full gallery
+  </a>
+  <a class="header-sidenote" data-align="right" href="gould_library_gb.html">
+    <span class="fleuron">❧</span>Gould&rsquo;s Library<br>the works behind every citation
+  </a>
+  <a class="header-sidenote" data-align="left" href="reader.html">
+    <span class="fleuron">❧</span>Read Gould&rsquo;s Volumes<br>the full folio, page by page
+  </a>
+  <a class="header-sidenote" data-align="right" href="gb_print_view.html">
+    <span class="fleuron">❧</span>Catalogue of Bird Species<br>the full print / reference view
+  </a>
+  <a class="header-sidenote" data-align="left" href="gb_reclassification_summary.html">
+    <span class="fleuron">❧</span>Classification since the 1800&rsquo;s<br>what&rsquo;s changed, and why?
+  </a>
+  <a class="header-sidenote" data-align="right" href="gb_still_debated.html">
+    <span class="fleuron">❧</span>Still Debated&hellip;<br>the cases ornithologists haven&rsquo;t settled
+  </a>
 </div>
 <h1>Bird Cladogram Explorer</h1>
 <div class="subtitle">Type any bird's name — species or genus, Latin or common — and see where it actually sits, computed live from real, current phylogenetic data (McTavish et al. 2025, Open Tree of Life synthesis, 19,302 species). Not limited to Gould's birds: this covers the whole tree.</div>
@@ -690,6 +743,92 @@ app.addEventListener('click', (e) => {
     runSearch();
   }
   if (document.referrer) document.getElementById('backLink').style.display = 'inline-block';
+})();
+</script>
+
+<script>
+// --- floating "sunken heading" links back to the rest of the project -----
+// Self-contained: own IIFE, own rand(), doesn't touch anything above.
+(function () {
+  function rand(a, b) { return a + Math.random() * (b - a); }
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.header-sidenote'));
+  if (!notes.length) return;
+  var topNav = document.querySelector('.top-nav');
+  var searchBox = document.querySelector('.search-box');
+
+  function layout() {
+    if (window.innerWidth <= 1100) return; // CSS hides them below this width anyway
+    var scrollX = window.pageXOffset, scrollY = window.pageYOffset;
+    var bodyRect = document.body.getBoundingClientRect(); // body is the centered, max-width:900px column
+    var topRect = (topNav || document.body).getBoundingClientRect();
+    var bottomRect = (searchBox || document.body).getBoundingClientRect();
+
+    var contentLeft = bodyRect.left + scrollX;
+    var contentRight = bodyRect.right + scrollX;
+    var pageLeft = 0, pageRight = window.innerWidth;
+    var pad = 24;
+    var topPad = topRect.top + scrollY;
+    var bottomPad = bottomRect.bottom + scrollY + 40;
+
+    var sides = { left: [], right: [] };
+    notes.forEach(function (el, idx) { sides[idx % 2 === 0 ? 'left' : 'right'].push(el); });
+
+    var maxH = 0;
+    notes.forEach(function (el) { maxH = Math.max(maxH, el.offsetHeight || 110); });
+    var neededBottom = bottomPad;
+    ['left', 'right'].forEach(function (side) {
+      var count = sides[side].length;
+      if (!count) return;
+      var needed = topPad + maxH * count * 1.2;
+      if (needed > neededBottom) neededBottom = needed;
+    });
+    bottomPad = neededBottom;
+
+    ['left', 'right'].forEach(function (side) {
+      var items = sides[side];
+      if (!items.length) return;
+      var bandH = (bottomPad - topPad) / items.length;
+      items.forEach(function (el, i) {
+        var w = el.offsetWidth || 220, h = el.offsetHeight || 110;
+        var bandTop = topPad + i * bandH;
+        var slack = Math.max(0, bandH - h);
+        var y = bandTop + rand(slack * 0.15, slack * 0.85);
+        var x;
+        if (side === 'left') {
+          var leftMax = Math.max(pageLeft + pad, contentLeft - w - pad);
+          x = rand(pageLeft + pad, leftMax);
+        } else {
+          var rightMin = Math.min(pageRight - w - pad, contentRight + pad);
+          x = rand(rightMin, Math.max(rightMin, pageRight - w - pad));
+        }
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        el.style.setProperty('--float-dur', (8 + Math.random() * 7).toFixed(1) + 's');
+        el.style.setProperty('--float-delay', (-Math.random() * 12).toFixed(1) + 's');
+        el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
+        el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
+        el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
+      });
+    });
+  }
+
+  layout();
+  var resizeTimer;
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layout, 150);
+  });
+
+  window.addEventListener('mousemove', function (e) {
+    var mx = e.pageX, my = e.pageY, MAX_DIST = 240;
+    notes.forEach(function (el) {
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width / 2 + window.pageXOffset;
+      var cy = r.top + r.height / 2 + window.pageYOffset;
+      var dist = Math.hypot(mx - cx, my - cy);
+      el.classList.toggle('is-near', dist < MAX_DIST);
+    });
+  });
 })();
 </script>
 </body></html>
