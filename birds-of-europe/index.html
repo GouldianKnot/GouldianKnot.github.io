@@ -221,6 +221,51 @@
   .storyline-body ul, .storyline-body ol { margin: 0 0 12px; padding-left: 22px; }
   .storyline-body li { margin-bottom: 4px; }
   .storyline-body hr { border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 16px 0; }
+  .ai-disclosure {
+    background: rgba(217,185,138,0.08); border: 1px solid rgba(217,185,138,0.35); border-radius: 8px;
+    padding: 12px 16px; margin: 14px 0 16px; font-size: 12.5px; line-height: 1.6; color: #cdd3de;
+  }
+  .ai-disclosure-label { font-weight: 700; color: #d9b98a; font-size: 12px; letter-spacing: 0.02em; margin-bottom: 6px; }
+  .ai-disclosure p { margin: 0; }
+  .ai-disclosure strong { color: #e8dcc4; }
+  .ai-badge {
+    display: inline-block; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 9px; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase; color: #cdd3de; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18); border-radius: 999px; padding: 2px 7px; margin-left: 8px; vertical-align: 1px;
+  }
+  .storyline-body .sourced-badge { color: #a8d9c0; background: rgba(31,122,110,0.12); border-color: rgba(31,122,110,0.35); }
+  .graphic-organizer {
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;
+    padding: 14px 16px 10px; margin: 4px 0 20px;
+  }
+  .go-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: #9bb3d9; margin-bottom: 6px;
+  }
+  .go-svg { width: 100%; height: auto; display: block; }
+  .go-node { fill: #232733; stroke: #7d8798; stroke-width: 1.5; }
+  .go-node-center { fill: #2c2417; stroke: #d9b98a; }
+  .go-node-anon { stroke-dasharray: 4 3; }
+  .go-node-title { text-anchor: middle; fill: #e8dcc4; font-size: 12.5px; font-weight: 700; font-family: Georgia, serif; }
+  .go-node-sub { text-anchor: middle; fill: #aeb8ca; font-size: 9.5px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  .go-edge-label {
+    text-anchor: middle; fill: #9bb3d9; font-size: 10px; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-style: italic;
+  }
+  .go-edge-label-dashed { fill: #8a93a3; }
+  .go-caption { font-size: 11.5px; color: #aeb8ca; font-style: italic; line-height: 1.5; margin-top: 6px; }
+  .go-timeline { width: 100%; height: auto; display: block; }
+  .go-tl-axis { stroke: #5a6272; stroke-width: 1.5; }
+  .go-tl-tick { stroke: #7d8798; stroke-width: 1.5; }
+  .go-tl-year { text-anchor: middle; fill: #9bb3d9; font-size: 10.5px; font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  .go-tl-label { fill: #cdd3de; font-size: 10.5px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  .go-tl-label tspan.go-tl-label-em { fill: #d9b98a; font-weight: 700; }
+  .go-flow-box { fill: #232733; stroke: #7d8798; stroke-width: 1.5; }
+  .go-flow-title { text-anchor: middle; fill: #e8dcc4; font-size: 12px; font-weight: 700; font-family: Georgia, serif; }
+  .go-flow-sub { text-anchor: middle; fill: #aeb8ca; font-size: 9.5px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  .go-flow-num { fill: #d9b98a; font-size: 11px; font-weight: 700; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+  .go-tl-bar { fill: rgba(155,179,217,0.28); stroke: #9bb3d9; stroke-width: 1.2; }
+  .go-tl-bar-hi { fill: #d9b98a; stroke: #e8dcc4; stroke-width: 1.5; }
   .glossary-list {
     columns: 2;
     column-gap: 32px;
@@ -1097,10 +1142,73 @@
     <p><a href="europe_map.html" target="_blank" rel="noopener" class="map-link">Open the
     interactive map of where they worked &rarr;</a> &mdash; a browsable map of Europe pinning
     every naming authority and illustrator to the city where they actually did their work.</p>
+    <div class="ai-disclosure">
+      <div class="ai-disclosure-label">&#9888; About these notes</div>
+      <p>The five Rough Research Notes below were drafted with AI assistance from public secondary sources, then reviewed
+      and curated for this site &mdash; they are background reading, not original scholarship, and haven't all been checked
+      to the same standard. <strong>The Artists behind these volumes</strong>, <strong>The story of hand illustration</strong>,
+      and <strong>An American story</strong> each carry a source list and their own list of claims still flagged as unverified.
+      <strong>Ornithology and Natural History through the 19th and 20th centuries</strong> and <strong>The evolution of
+      the Taxonomy of birds</strong> do not yet have sourcing documented below them, and should be treated as rough
+      orientation only. If you plan to rely on or cite anything here, please verify it independently first.</p>
+    </div>
     <div class="storyline-menu">
       <details class="storyline-section">
-      <summary>Rough Research Note: The Artists behind these volumes</summary>
+      <summary>Rough Research Note: The Artists behind these volumes <span class="ai-badge">AI-drafted</span></summary>
       <div class="storyline-body"><p>When you look at a hand-coloured plate from John Gould's <em>The Birds of Europe</em>, the label often reads "J. &amp; E. Gould" or "E. Lear." But these five folio volumes were not made by one artist, or even two. They were the product of a small industry: a naturalist-publisher who directed the project, a gifted wife who did most of the drawing and lithography, a teenage prodigy who taught her the trade, and a workshop of colourists — many of them anonymous, several of them women — who hand-tinted every one of the roughly 448 plates, copy by copy, for hundreds of wealthy subscribers. Here is who they were.</p>
+<div class="graphic-organizer">
+  <div class="go-label">At a glance &mdash; who worked with whom</div>
+  <svg viewBox="0 0 700 380" role="img" aria-labelledby="go-artists-title go-artists-desc" class="go-svg">
+    <title id="go-artists-title">Diagram of the working relationships behind The Birds of Europe</title>
+    <desc id="go-artists-desc">John Gould at the centre, connected to Elizabeth Gould (his wife and lithographer), Edward Lear (who taught Elizabeth lithography and drew plates for Gould), Gabriel Bayfield (his chief colourist), and an anonymous workshop of colourists directed by Bayfield.</desc>
+    <defs>
+      <marker id="go-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#7d8798"></path>
+      </marker>
+    </defs>
+    <line x1="350" y1="190" x2="150" y2="100" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-arrow)"></line>
+    <line x1="350" y1="190" x2="550" y2="100" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-arrow)"></line>
+    <line x1="350" y1="190" x2="550" y2="290" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-arrow)"></line>
+    <line x1="550" y1="90" x2="160" y2="100" stroke="#5a6272" stroke-width="1.2" stroke-dasharray="3 4" marker-end="url(#go-arrow)"></line>
+    <line x1="550" y1="290" x2="150" y2="290" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-arrow)"></line>
+    <text x="230" y="135" class="go-edge-label">married, 1829</text>
+    <text x="475" y="135" class="go-edge-label">employed, 1831&ndash;32</text>
+    <text x="475" y="250" class="go-edge-label">employed, &asymp;1831&ndash;61</text>
+    <text x="355" y="83" class="go-edge-label go-edge-label-dashed">taught lithography</text>
+    <text x="335" y="280" class="go-edge-label">directed</text>
+    <g transform="translate(350,190)">
+      <circle r="52" class="go-node go-node-center"></circle>
+      <text class="go-node-title" y="-4">John Gould</text>
+      <text class="go-node-sub" y="14">Publisher &amp;</text>
+      <text class="go-node-sub" y="28">Taxonomist</text>
+    </g>
+    <g transform="translate(130,90)">
+      <circle r="46" class="go-node"></circle>
+      <text class="go-node-title" y="-4">Elizabeth Gould</text>
+      <text class="go-node-sub" y="12">Artist &amp; Lithographer</text>
+      <text class="go-node-sub" y="26">1829&ndash;1841</text>
+    </g>
+    <g transform="translate(570,90)">
+      <circle r="46" class="go-node"></circle>
+      <text class="go-node-title" y="-4">Edward Lear</text>
+      <text class="go-node-sub" y="12">Draughtsman &amp; Tutor</text>
+      <text class="go-node-sub" y="26">1831&ndash;1832</text>
+    </g>
+    <g transform="translate(570,290)">
+      <circle r="46" class="go-node"></circle>
+      <text class="go-node-title" y="-4">Gabriel Bayfield</text>
+      <text class="go-node-sub" y="12">Chief Colourist</text>
+      <text class="go-node-sub" y="26">&asymp;1831&ndash;1861</text>
+    </g>
+    <g transform="translate(130,290)">
+      <circle r="46" class="go-node go-node-anon"></circle>
+      <text class="go-node-title" y="-4">Workshop</text>
+      <text class="go-node-title" y="10">Colourists</text>
+      <text class="go-node-sub" y="27">largely anonymous</text>
+    </g>
+  </svg>
+  <div class="go-caption">A simplified map of the working relationships described in the note below &mdash; solid arrows show who employed whom, the dashed arrow shows who taught whom. Not a complete org chart: see the text for the fuller, messier story.</div>
+</div>
 <h2>1. John Gould (1804–1881): The Publisher Who Couldn't Really Draw</h2>
 <p>John Gould began his working life not as an artist but as a gardener's son and, from around age 20, a taxidermist. In 1827 he became the first official taxidermist ("Curator and Preserver") for the newly founded Zoological Society of London — a job that put him in daily contact with imported animal skins, live specimens, and London's scientific elite. This was the making of his career: it gave him unmatched access to new and rare bird specimens as they arrived in Britain, well before other naturalists had seen them.</p>
 <p>Gould's own artistic ability was genuinely limited. He produced only rough pencil, ink, and watercolour sketches — enough to capture a bird's essential pose, colour scheme, and characteristic "jizz," but not refined finished art. His real talents lay elsewhere: as a shrewd businessman, an energetic organiser, and (increasingly, as his career went on) a competent taxonomist who described many new species. He ran what amounted to a small publishing factory from his own home, coordinating specimen acquisition, artists, lithographers, printers, colourists, and subscriber sales — while raising six children with help from his long-serving secretary, Edwin Charles Prince.</p>
@@ -1161,8 +1269,66 @@
 </ul></div>
     </details>
 <details class="storyline-section">
-      <summary>Rough Research Note: The story of hand illustration in natural history</summary>
+      <summary>Rough Research Note: The story of hand illustration in natural history <span class="ai-badge">AI-drafted</span></summary>
       <div class="storyline-body"><h2>1. How a hand-coloured lithograph was made</h2>
+<div class="graphic-organizer">
+  <div class="go-label">At a glance &mdash; five steps from stone to subscriber</div>
+  <svg viewBox="0 0 760 190" role="img" aria-labelledby="go-flow-title go-flow-desc" class="go-svg">
+    <title id="go-flow-title">Five steps of producing a hand-coloured lithograph</title>
+    <desc id="go-flow-desc">Draw on stone with greasy crayon, fix with acid and gum arabic, dampen and ink the stone then press it onto paper, hand-colour each printed sheet to match a pattern plate, then bind the coloured plates into parts for subscribers.</desc>
+    <defs>
+      <marker id="go-flow-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#7d8798"></path>
+      </marker>
+    </defs>
+    <line x1="140" y1="70" x2="168" y2="70" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-flow-arrow)"></line>
+    <line x1="288" y1="70" x2="316" y2="70" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-flow-arrow)"></line>
+    <line x1="436" y1="70" x2="464" y2="70" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-flow-arrow)"></line>
+    <line x1="584" y1="70" x2="612" y2="70" stroke="#7d8798" stroke-width="1.5" marker-end="url(#go-flow-arrow)"></line>
+    <g transform="translate(20,20)">
+      <rect width="120" height="100" rx="8" class="go-flow-box"></rect>
+      <text x="60" y="24" class="go-flow-num">1</text>
+      <text x="60" y="46" class="go-flow-title">Draw on</text>
+      <text x="60" y="62" class="go-flow-title">stone</text>
+      <text x="60" y="80" class="go-flow-sub">greasy crayon,</text>
+      <text x="60" y="92" class="go-flow-sub">in reverse</text>
+    </g>
+    <g transform="translate(168,20)">
+      <rect width="120" height="100" rx="8" class="go-flow-box"></rect>
+      <text x="60" y="24" class="go-flow-num">2</text>
+      <text x="60" y="46" class="go-flow-title">Fix the</text>
+      <text x="60" y="62" class="go-flow-title">drawing</text>
+      <text x="60" y="80" class="go-flow-sub">acid &amp; gum-arabic</text>
+      <text x="60" y="92" class="go-flow-sub">wash</text>
+    </g>
+    <g transform="translate(316,20)">
+      <rect width="120" height="100" rx="8" class="go-flow-box"></rect>
+      <text x="60" y="24" class="go-flow-num">3</text>
+      <text x="60" y="46" class="go-flow-title">Damp, ink</text>
+      <text x="60" y="62" class="go-flow-title">&amp; press</text>
+      <text x="60" y="80" class="go-flow-sub">one impression</text>
+      <text x="60" y="92" class="go-flow-sub">per copy sold</text>
+    </g>
+    <g transform="translate(464,20)">
+      <rect width="120" height="100" rx="8" class="go-flow-box"></rect>
+      <text x="60" y="24" class="go-flow-num">4</text>
+      <text x="60" y="46" class="go-flow-title">Hand-</text>
+      <text x="60" y="62" class="go-flow-title">colour</text>
+      <text x="60" y="80" class="go-flow-sub">workshop, matched</text>
+      <text x="60" y="92" class="go-flow-sub">to a pattern plate</text>
+    </g>
+    <g transform="translate(612,20)">
+      <rect width="120" height="100" rx="8" class="go-flow-box"></rect>
+      <text x="60" y="24" class="go-flow-num">5</text>
+      <text x="60" y="46" class="go-flow-title">Bind &amp;</text>
+      <text x="60" y="62" class="go-flow-title">distribute</text>
+      <text x="60" y="80" class="go-flow-sub">parts sent to</text>
+      <text x="60" y="92" class="go-flow-sub">subscribers</text>
+    </g>
+    <text x="380" y="160" class="go-tl-label" text-anchor="middle">Every step after the initial drawing was typically done by someone other than the credited artist.</text>
+  </svg>
+  <div class="go-caption">A simplified version of the process described in the text &mdash; see the paragraphs above and below for how each step actually worked, and who did it.</div>
+</div>
 <p>By the 1820s–30s, lithography had largely overtaken copper engraving as the printing method of choice for high-quality natural history illustration in Britain, and Gould's <em>Birds of Europe</em> (1832–1837) is a landmark example of the technique at its height.</p>
 <p><strong>The process.</strong> Lithography, invented around 1798 by the Bavarian Alois Senefelder, works on the simple chemical principle that grease and water repel each other. An artist drew the image directly onto a slab of specially quarried, finely polished limestone using a greasy crayon or a greasy ink applied with a pen or brush. The stone was then treated with a weak nitric-acid/gum-arabic solution, which fixed the greasy drawing and made the undrawn areas of the stone receptive to water. In printing, the stone was dampened with water — which was repelled by the greasy drawn lines but soaked into the bare limestone — and then rolled with oil-based printing ink, which stuck only to the greasy crayon marks and was repelled by the wet stone. A sheet of paper was laid on top and run through a press, transferring the image (in reverse) onto the paper. By around 1830 lithographers had also developed "lithotint," a wash technique using a brush that allowed watercolour-like tonal effects directly on the stone (Australian Museum; History of Science Museum, Oxford).</p>
 <p><strong>Why it replaced engraving.</strong> Copper (and later steel) engraving required a specialist engraver to translate an artist's drawing into a network of incised lines cut with a burin — an indirect, highly skilled but interpretive process that inevitably smoothed over the individual character of the original drawing. Lithography, by contrast, let the artist draw straight onto the stone, so the printed image preserved the freedom, texture and immediacy of the original sketch — described by one source as making drawing on stone "almost as natural an action as drawing onto paper" (Australian Museum, <em>Lithography in the time of Gould</em>). This was especially valued in natural history illustration, where fidelity to an artist's direct observation of an animal's texture, plumage or fur mattered a great deal; lithography could, for instance, reproduce fine feather detail or the texture of stone around a fossil far more convincingly than an engraved line could (Linda Hall Library). Lithography was also faster and cheaper to produce than engraving once the artist-lithographer skill was in place, making large multi-volume works commercially feasible.</p>
@@ -1213,8 +1379,62 @@
 </ul></div>
     </details>
 <details class="storyline-section">
-      <summary>Rough Research Note: Ornithology and Natural History through the 19th and 20th centuries</summary>
+      <summary>Rough Research Note: Ornithology and Natural History through the 19th and 20th centuries <span class="ai-badge">AI-drafted</span></summary>
       <div class="storyline-body"><p>Every time you see a scientific name like <em>Falco peregrinus</em> Tunstall or <em>Turdus merula</em> Linnaeus, that final word or abbreviation is the "authority" — the naturalist who first formally described the species. Gould's plates, published across the 1830s, sit at the peak of a great European age of collecting, describing, and classifying birds. This page introduces the naturalists whose names recur most often in that era, and traces how ornithology itself changed shape across two centuries: from private cabinets of stuffed skins to museum systematics, and eventually to modern field science and genetics.</p>
+<div class="graphic-organizer">
+  <div class="go-label">At a glance &mdash; when these seven naturalists lived</div>
+  <svg viewBox="0 0 900 262" role="img" aria-labelledby="go-tl3-title go-tl3-desc" class="go-svg go-timeline">
+    <title id="go-tl3-title">Lifespans of seven naturalists behind Gould-era bird names</title>
+    <desc id="go-tl3-desc">A timeline from 1700 to 1870 showing the lifespans of Linnaeus, Pallas, Vieillot, Bechstein, Temminck, Naumann, and Brehm, with the 1832 to 1837 publication of Birds of Europe marked for reference.</desc>
+    <rect x="568" y="10" width="20" height="222" fill="rgba(217,185,138,0.14)"></rect>
+    <text x="578.0" y="244" class="go-tl-label" text-anchor="middle" font-style="italic">Birds of Europe, 1832&ndash;37</text>
+    <g>
+      <rect x="68" y="26" width="284" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="62" y="38" class="go-tl-label" text-anchor="end">Linnaeus</text>
+      <text x="358" y="38" class="go-tl-year">1707&ndash;1778</text>
+    </g>
+    <g>
+      <rect x="204" y="54" width="280" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="198" y="66" class="go-tl-label" text-anchor="end">Pallas</text>
+      <text x="490" y="66" class="go-tl-year">1741&ndash;1811</text>
+    </g>
+    <g>
+      <rect x="232" y="82" width="332" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="226" y="94" class="go-tl-label" text-anchor="end">Vieillot</text>
+      <text x="570" y="94" class="go-tl-year">1748&ndash;1831</text>
+    </g>
+    <g>
+      <rect x="268" y="110" width="260" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="262" y="122" class="go-tl-label" text-anchor="end">Bechstein</text>
+      <text x="534" y="122" class="go-tl-year">1757&ndash;1822</text>
+    </g>
+    <g>
+      <rect x="352" y="138" width="320" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="346" y="150" class="go-tl-label" text-anchor="end">Temminck</text>
+      <text x="678" y="150" class="go-tl-year">1778&ndash;1858</text>
+    </g>
+    <g>
+      <rect x="360" y="166" width="308" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="354" y="178" class="go-tl-label" text-anchor="end">Naumann</text>
+      <text x="674" y="178" class="go-tl-year">1780&ndash;1857</text>
+    </g>
+    <g>
+      <rect x="388" y="194" width="308" height="16" rx="4" class="go-node go-tl-bar"></rect>
+      <text x="382" y="206" class="go-tl-label" text-anchor="end">Brehm</text>
+      <text x="702" y="206" class="go-tl-year">1787&ndash;1864</text>
+    </g>
+    <line x1="40" y1="230" x2="720" y2="230" class="go-tl-axis"></line>
+    <line x1="40" y1="226" x2="40" y2="234" class="go-tl-tick"></line>
+    <text x="40" y="258" class="go-tl-year">1700</text>
+    <line x1="240" y1="226" x2="240" y2="234" class="go-tl-tick"></line>
+    <text x="240" y="258" class="go-tl-year">1750</text>
+    <line x1="440" y1="226" x2="440" y2="234" class="go-tl-tick"></line>
+    <text x="440" y="258" class="go-tl-year">1800</text>
+    <line x1="640" y1="226" x2="640" y2="234" class="go-tl-tick"></line>
+    <text x="640" y="258" class="go-tl-year">1850</text>
+  </svg>
+  <div class="go-caption">Bars show each naturalist's lifetime, ordered by birth year; the shaded band marks when Gould was publishing <em>The Birds of Europe</em>. See the numbered sections below for who each person was.</div>
+</div>
 <h2>1. Carl Linnaeus (1707–1778): The Grammar of Naming Nature</h2>
 <p>Linnaeus was a Swedish botanist and physician who, decades before Gould, solved a problem that had plagued naturalists for centuries: how to give every living thing a stable, universally recognized name. Before Linnaeus, species were often labeled with long descriptive Latin phrases that varied from author to author. In his book <em>Systema Naturae</em>, Linnaeus popularized <strong>binomial nomenclature</strong> — a two-part Latin name consisting of genus (capitalized) plus species (lowercase), such as <em>Corvus corax</em> for the raven. The tenth edition of <em>Systema Naturae</em> (1758) is now treated by zoologists as the official starting point of animal nomenclature, classifying about 4,400 animal species by that point.</p>
 <p>Linnaeus died nearly 60 years before Gould's <em>Birds of Europe</em> began publication, but every binomial on every one of Gould's plates exists because of the system he standardized. When a bird's Latin name is followed simply by "Linnaeus" or "L.," it means Linnaeus himself first described that species — often one of the most common and widespread European birds, since he was working from what naturalists already knew in the mid-1700s.</p>
@@ -1268,8 +1488,66 @@
 </ul></div>
     </details>
 <details class="storyline-section">
-      <summary>Rough Research Note: The evolution of the Taxonomy of birds before and after Gould</summary>
+      <summary>Rough Research Note: The evolution of the Taxonomy of birds before and after Gould <span class="ai-badge">AI-drafted</span></summary>
       <div class="storyline-body"><h2>1. Gould and Darwin's Galápagos Specimens (1837)</h2>
+<div class="graphic-organizer">
+  <div class="go-label">At a glance &mdash; from misidentified skins to a textbook icon</div>
+  <svg viewBox="0 0 860 160" role="img" aria-labelledby="go-tl4-title go-tl4-desc" class="go-svg go-timeline">
+    <title id="go-tl4-title">Timeline from Gould's 1837 identification to the popularisation of "Darwin's finches"</title>
+    <desc id="go-tl4-desc">1836 Darwin returns from the Beagle voyage. 1837 Gould identifies the finches as one closely related group. 1838 to 1841 the Beagle Zoology Part III is published. 1845 the second edition of Journal of Researches includes the famous finch passage. 1859 On the Origin of Species is published. 1936 Percy Lowe coins the phrase Darwin's finches. 1947 David Lack's book Darwin's Finches is published. Not drawn to a strict time scale.</desc>
+    <line x1="90" y1="76" x2="770" y2="76" class="go-tl-axis"></line>
+    <g>
+      <line x1="90" y1="76" x2="90" y2="100" class="go-tl-tick"></line>
+      <circle cx="90" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="86" y="116" class="go-tl-label" text-anchor="start">Darwin returns</text>
+      <text x="86" y="132" class="go-tl-label" text-anchor="start">from the Beagle voyage</text>
+      <text x="86" y="92" class="go-tl-year" text-anchor="start">1836</text>
+    </g>
+    <g>
+      <line x1="203" y1="76" x2="203" y2="60" class="go-tl-tick"></line>
+      <circle cx="203" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="203" y="44" class="go-tl-label" text-anchor="middle">Gould identifies</text>
+      <text x="203" y="28" class="go-tl-label" text-anchor="middle">the finches as one group</text>
+      <text x="203" y="92" class="go-tl-year" text-anchor="middle">1837</text>
+    </g>
+    <g>
+      <line x1="317" y1="76" x2="317" y2="100" class="go-tl-tick"></line>
+      <circle cx="317" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="317" y="116" class="go-tl-label" text-anchor="middle">Beagle Zoology</text>
+      <text x="317" y="132" class="go-tl-label" text-anchor="middle">Part III published</text>
+      <text x="317" y="92" class="go-tl-year" text-anchor="middle">1838–41</text>
+    </g>
+    <g>
+      <line x1="430" y1="76" x2="430" y2="60" class="go-tl-tick"></line>
+      <circle cx="430" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="430" y="44" class="go-tl-label" text-anchor="middle">2nd edition,</text>
+      <text x="430" y="28" class="go-tl-label" text-anchor="middle">Journal of Researches</text>
+      <text x="430" y="92" class="go-tl-year" text-anchor="middle">1845</text>
+    </g>
+    <g>
+      <line x1="543" y1="76" x2="543" y2="100" class="go-tl-tick"></line>
+      <circle cx="543" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="543" y="116" class="go-tl-label" text-anchor="middle">On the Origin</text>
+      <text x="543" y="132" class="go-tl-label" text-anchor="middle">of Species</text>
+      <text x="543" y="92" class="go-tl-year" text-anchor="middle">1859</text>
+    </g>
+    <g>
+      <line x1="657" y1="76" x2="657" y2="60" class="go-tl-tick"></line>
+      <circle cx="657" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="657" y="44" class="go-tl-label" text-anchor="middle">“Darwin’s finches”</text>
+      <text x="657" y="28" class="go-tl-label" text-anchor="middle">coined by Percy Lowe</text>
+      <text x="657" y="92" class="go-tl-year" text-anchor="middle">1936</text>
+    </g>
+    <g>
+      <line x1="770" y1="76" x2="770" y2="100" class="go-tl-tick"></line>
+      <circle cx="770" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="774" y="116" class="go-tl-label" text-anchor="end">David Lack’s</text>
+      <text x="774" y="132" class="go-tl-label" text-anchor="end">Darwin's Finches</text>
+      <text x="774" y="92" class="go-tl-year" text-anchor="end">1947</text>
+    </g>
+  </svg>
+  <div class="go-caption">Milestones in sequence, spaced evenly for readability rather than strictly to scale &mdash; see the text for the fuller, more cautious version of this story (including the Sulloway caveat below).</div>
+</div>
 <p>When Charles Darwin returned from the <em>Beagle</em> voyage in October 1836, he had collected birds from the Galápagos Islands but had not sorted them carefully by island of origin, and he had misidentified several of them in the field. He believed his finch-like specimens belonged to several different, unrelated bird families — describing some as "gross-beaks," others as blackbirds, finches, and wrens — because their beaks differed so dramatically (from thick, seed-cracking bills to slender, warbler-like ones) that they did not look like close relatives.</p>
 <p>Darwin handed his bird skins over to the ornithologist John Gould, who at the time was building his reputation through works like <em>Birds of Europe</em> (1832–37). Gould examined the specimens in the weeks that followed and, in a presentation to the Zoological Society of London in early January 1837 (commonly dated 4 or 10 January 1837 in secondary sources), announced a striking conclusion: despite their varied beaks, the birds were not a mixed assortment of finches, blackbirds, and wrens at all, but <strong>one closely related group of ground finches</strong>, comprising a dozen or so distinct species found nowhere else. Gould also determined that Darwin's Galápagos mockingbirds — which Darwin himself had noticed varied slightly from island to island — were three separate species rather than varieties of one species.</p>
 <p>This was a significant jolt to Darwin. If closely related species had diverged from a common ancestor on different islands of the same small archipelago, that pattern was hard to reconcile with the standard view that species were fixed and independently created. Darwin began re-examining his notes and specimen labels (rushing to check his shipmates' better-labeled collections for island-of-origin data) and, within months, opened his first private notebooks on "transmutation" (notebook B, begun around July 1837).</p>
@@ -1323,9 +1601,60 @@
 </ul></div>
     </details>
 <details class="storyline-section">
-      <summary>Rough Research Note: An American story: cataloguing Creation without an empire</summary>
+      <summary>Rough Research Note: An American story: cataloguing Creation without an empire <span class="ai-badge">AI-drafted</span></summary>
       <div class="storyline-body"><p><em>A research note prompted by a fair question about the "Where They Worked" map — that it looks, understandably, very Eurocentric. Was that just the scope of this Gould gallery, or is it a reasonably accurate picture of the period?</em></p>
 <h2>The honest answer first</h2>
+<div class="graphic-organizer">
+  <div class="go-label">At a glance &mdash; America's own cataloguing effort, and one Atlantic crossing</div>
+  <svg viewBox="0 0 860 160" role="img" aria-labelledby="go-tl5-title go-tl5-desc" class="go-svg go-timeline">
+    <title id="go-tl5-title">Timeline of early American natural-history cataloguing, 1804 to 1842</title>
+    <desc id="go-tl5-desc">1804 to 1806 the Lewis and Clark expedition. 1808 to 1814 Alexander Wilson's American Ornithology. 1819 to 1820 the Long expedition to the Rocky Mountains. 1826, highlighted, John James Audubon sails to Britain for lack of American publishing infrastructure. 1827 to 1838 Birds of America is printed in London. 1838 to 1842 the Wilkes Expedition, with naturalist Titian Peale. Not drawn to a strict time scale.</desc>
+    <line x1="90" y1="76" x2="770" y2="76" class="go-tl-axis"></line>
+    <g>
+      <line x1="90" y1="76" x2="90" y2="100" class="go-tl-tick"></line>
+      <circle cx="90" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="86" y="116" class="go-tl-label" text-anchor="start">Lewis &amp; Clark</text>
+      <text x="86" y="132" class="go-tl-label" text-anchor="start">expedition west</text>
+      <text x="86" y="92" class="go-tl-year" text-anchor="start">1804–06</text>
+    </g>
+    <g>
+      <line x1="226" y1="76" x2="226" y2="60" class="go-tl-tick"></line>
+      <circle cx="226" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="226" y="44" class="go-tl-label" text-anchor="middle">Wilson's American</text>
+      <text x="226" y="28" class="go-tl-label" text-anchor="middle">Ornithology</text>
+      <text x="226" y="92" class="go-tl-year" text-anchor="middle">1808–14</text>
+    </g>
+    <g>
+      <line x1="362" y1="76" x2="362" y2="100" class="go-tl-tick"></line>
+      <circle cx="362" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="362" y="116" class="go-tl-label" text-anchor="middle">Long expedition</text>
+      <text x="362" y="132" class="go-tl-label" text-anchor="middle">to the Rockies</text>
+      <text x="362" y="92" class="go-tl-year" text-anchor="middle">1819–20</text>
+    </g>
+    <g>
+      <line x1="498" y1="76" x2="498" y2="60" class="go-tl-tick"></line>
+      <circle cx="498" cy="76" r="7" class="go-tl-bar go-tl-bar-hi"></circle>
+      <text x="498" y="44" class="go-tl-label" text-anchor="middle">Audubon sails</text>
+      <text x="498" y="28" class="go-tl-label" text-anchor="middle">to Britain</text>
+      <text x="498" y="92" class="go-tl-year" text-anchor="middle">1826</text>
+    </g>
+    <g>
+      <line x1="634" y1="76" x2="634" y2="100" class="go-tl-tick"></line>
+      <circle cx="634" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="634" y="116" class="go-tl-label" text-anchor="middle">Birds of America</text>
+      <text x="634" y="132" class="go-tl-label" text-anchor="middle">printed in London</text>
+      <text x="634" y="92" class="go-tl-year" text-anchor="middle">1827–38</text>
+    </g>
+    <g>
+      <line x1="770" y1="76" x2="770" y2="60" class="go-tl-tick"></line>
+      <circle cx="770" cy="76" r="5" class="go-tl-bar"></circle>
+      <text x="774" y="44" class="go-tl-label" text-anchor="end">Wilkes Expedition</text>
+      <text x="774" y="28" class="go-tl-label" text-anchor="end">(Titian Peale)</text>
+      <text x="774" y="92" class="go-tl-year" text-anchor="end">1838–42</text>
+    </g>
+  </svg>
+  <div class="go-caption">The highlighted 1826 crossing is the "structural inversion" described below: at the moment Gould was building his London operation, Audubon crossed the Atlantic to reach that same infrastructure, because it barely existed yet in America.</div>
+</div>
 <p>The map's scope is Gould's <em>Birds of Europe</em> (1832–37), so it was always going to look European — that part is simply correct and not a flaw to fix. But it would be misleading to leave the impression that the impulse to catalogue nature systematically belonged only to Britain and its empire in this period. The United States had its own version of the same impulse, running on almost exactly the same clock, and it is worth telling honestly — not as a footnote correction to the map, but because it complicates the story in an interesting way: for part of this period, the infrastructure for large-scale, professional natural history publishing barely existed in America at all, and the traffic sometimes ran the other way across the Atlantic.</p>
 <h2>1. A nationalistic, not colonial, starting point</h2>
 <p>Long before the fifty-year mark, the American drive to catalogue nature had a distinctly defensive flavour rather than an administrative one. The French naturalist the Comte de Buffon had argued, in his <em>Histoire Naturelle</em>, that the New World's climate was damp and degenerating, producing smaller, weaker animals than the Old World — and, by extension, that American life more broadly was inferior. Thomas Jefferson took this personally enough to arrange for a full moose carcass, antlers and all, to be shipped to Paris specifically to confront Buffon with physical evidence to the contrary (American Scientist; Scientific American). This is worth noting because it means the earliest American natural-history impulse wasn't "go out and survey what the Crown now controls" (Britain's colonial model) — it was closer to "prove our nature is not inferior to Europe's." The motivation was national self-respect, not empire-building; the United States in this period had no overseas colonial apparatus remotely comparable to Britain's for dispatching salaried collectors to catalogued possessions.</p>
@@ -33416,6 +33745,8 @@ spilt op namsae aid ‘to anol
   // straight off the already-rendered cards in the DOM rather than a separate data file, so
   // there's zero duplication of the (large, inline base64) plate images.
   (function() {
+    if (true) return; // <-- disabled at Jan's request (2026-08-08), pending a redesign as a
+    // full tile on the Topper hub instead; delete this line to re-enable this inline version.
     if (!cards.length) return;
     const today = new Date();
     const dateStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
