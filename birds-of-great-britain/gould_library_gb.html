@@ -78,11 +78,102 @@
   .lib-entry.lib-hidden { display: none; }
   .lib-entry.lib-search-focus { background: #fdf3dc; border-radius: 6px; box-shadow: 0 0 0 2px #b2914a; }
   .lib-no-results { display: none; padding: 30px 0; text-align: center; color: #8a7a63; font-style: italic; }
+
+  :root {
+    --paper: #faf5ea; --paper-dark: #f0e6d2; --ink: #2b241b; --ink-soft: #5a4f3f;
+    --accent: #7a5230; --accent-2: #8a6d3b; --border: #d8c9a8;
+    --gould-teal: #1f7a6e;
+  }
+  .lib-header {
+    position: relative; text-align: center; padding: 48px 20px 190px; overflow: hidden;
+    border-bottom: 1px solid var(--border); background: var(--paper-dark);
+    width: 100vw; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;
+    margin-top: -30px; margin-bottom: 30px; box-sizing: border-box;
+  }
+  .lib-header .header-inner { max-width: 900px; margin: 0 auto; }
+  .lib-header .eyebrow {
+    letter-spacing: 0.25em; text-transform: uppercase; font-size: 12px; color: var(--accent); margin-bottom: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .lib-header h1 {
+    font-size: clamp(26px, 4vw, 40px); margin: 0 0 8px; font-weight: 400; letter-spacing: 0.02em; color: var(--ink);
+    font-family: Georgia, 'Iowan Old Style', serif;
+  }
+  .lib-header p.sub {
+    color: var(--ink-soft); font-size: 14.5px; margin: 0 auto; max-width: 640px; line-height: 1.55; font-style: italic;
+  }
+  .header-decor-layer { position: static; }
+  .header-sidenote {
+    position: absolute; z-index: 2; font-family: Georgia, 'Iowan Old Style', serif;
+    font-size: 21px; font-style: italic; letter-spacing: 0.02em; color: var(--ink-soft); opacity: 0.38;
+    text-decoration: none; transition: opacity 0.25s ease, color 0.25s ease;
+    max-width: 280px; line-height: 1.25; will-change: transform;
+    animation: sidenote-float var(--float-dur, 10s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  .header-sidenote:hover,
+  .header-sidenote:focus-visible,
+  .header-sidenote.is-near {
+    opacity: 0.95; color: var(--accent);
+  }
+  .header-sidenote.sidenote-narrative {
+    color: var(--gould-teal); opacity: 0.6;
+  }
+  .header-sidenote.sidenote-narrative:hover,
+  .header-sidenote.sidenote-narrative:focus-visible,
+  .header-sidenote.sidenote-narrative.is-near {
+    opacity: 1; color: #14544c;
+  }
+  .header-sidenote[data-align="left"] { text-align: left; }
+  .header-sidenote[data-align="right"] { text-align: right; }
+  @keyframes sidenote-float {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(var(--float-x, 6px), var(--float-y, -8px)) scale(var(--float-scale, 1.08)); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-sidenote { animation: none; }
+  }
+  @media (max-width: 760px) {
+    .header-sidenote {
+      position: static !important; display: inline-block; max-width: none; margin: 0 10px 8px;
+      opacity: 0.55; text-align: center !important; animation: none; transform: none !important;
+      font-size: 16px;
+    }
+  }
 </style>
 </head>
 <body>
-<h1>Gould&rsquo;s Library</h1>
-<div class="subtitle">The books and journals John Gould cited as his sources throughout Birds of Great Britain (1862&ndash;1873), extracted from the synonymy citations at the head of each species account and deduplicated across all 5 volumes.</div>
+<header class="lib-header">
+  <div class="header-inner">
+    <div class="eyebrow">John Gould &middot; 1862&ndash;1873</div>
+    <h1>Gould&rsquo;s Library</h1>
+    <p class="sub">The books and journals John Gould cited as his sources throughout Birds of Great Britain (1862&ndash;1873), extracted from the synonymy citations at the head of each species account and deduplicated across all 5 volumes.</p>
+  </div>
+</header>
+<div class="header-decor-layer" id="headerDecorLayer">
+  <a class="header-sidenote" data-align="left" href="index.html">
+    The Birds of Great Britain<br>back to the gallery, 1862&ndash;1873
+  </a>
+  <a class="header-sidenote sidenote-narrative" data-align="right" href="reader.html">
+    Read the Narratives<br>Gould&rsquo;s and Morris&rsquo;s accounts, page by page
+  </a>
+  <a class="header-sidenote" data-align="left" href="../Birds_of_Europe/index.html">
+    The Birds of Europe<br>1832&ndash;1837, Gould&rsquo;s first great folio
+  </a>
+  <a class="header-sidenote" data-align="right" href="../Beagle/index.html">
+    Birds of the Beagle<br>Darwin&rsquo;s specimens, Gould&rsquo;s plates
+  </a>
+  <a class="header-sidenote" data-align="left" href="../Goulds_Bibliography_Hub/linnaeus_apostles.html">
+    Linnaeus&rsquo; Apostles<br>the 18th-century students who made this possible
+  </a>
+  <a class="header-sidenote" data-align="right" href="cladogram.html">
+    Cladogram Explorer<br>where do these birds actually sit?
+  </a>
+  <a class="header-sidenote" data-align="left" href="../Topper/index.html">
+    The GouldianKnot<br>the whole library, in one place
+  </a>
+</div>
 <div class="progress">414 of 414 distinct works verified with full APA citations and working links so far (ordered by how often Gould cites them). 1 could not be identified despite extensive lookup work &mdash; the searching phase for those is now closed (Jan&rsquo;s call, 5 Aug 2026), though new material could always reopen one. 23 of 414 also have a researched author-and-significance write-up so far &mdash; who the person was, and what this reference actually offered Gould&rsquo;s own readers and offers a browser today &mdash; a slow-growing feature, not a completed one. Every citation also shows which of the site&rsquo;s species plates it&rsquo;s attached to, and, where Gould&rsquo;s own text gives one, the old Latin name he cited it under.</div>
 <div class="lib-howto-link"><a href="citation_detective_guide.html">&#128269; New to citation-hunting? Read &ldquo;How to Find a Cited Work Without a Direct Link&rdquo; &rarr;</a></div>
 <div class="lib-search-wrap">
@@ -6036,6 +6127,104 @@ document.addEventListener('click', function(e) {
       // leave filter empty so the deep-linked entry is visible
     }
   }
+})();
+</script>
+
+<script>
+(function() {
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.header-sidenote'));
+  var headerEl = document.querySelector('.lib-header');
+  if (!notes.length || !headerEl) return;
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  function layout() {
+    if (window.innerWidth <= 760) return; // mobile: static stacked layout, CSS handles it
+    var hRect = headerEl.getBoundingClientRect();
+    var scrollX = window.pageXOffset, scrollY = window.pageYOffset;
+    var top = hRect.top + scrollY;
+    var bottom = hRect.bottom + scrollY;
+    var left = 0, width = hRect.width;
+    var contentW = Math.min(640, width - 80);
+    var contentLeft = left + (width - contentW) / 2;
+    var contentRight = contentLeft + contentW;
+    var pad = 20, topPad = top + 10, bottomPad = bottom - 6;
+
+    var sides = { left: [], right: [] };
+    notes.forEach(function(el, idx) { sides[idx % 2 === 0 ? 'left' : 'right'].push(el); });
+
+    var sideTops = { left: topPad, right: topPad };
+
+    ['left', 'right'].forEach(function(side) {
+      var items = sides[side];
+      if (!items.length) return;
+      var sideTop = sideTops[side];
+      var available = Math.max(60, bottomPad - sideTop);
+      var naturalH = 0;
+      items.forEach(function(el) { naturalH += (el.offsetHeight || 130); });
+      var shrink = naturalH > available ? Math.max(0.85, available / naturalH) : 1;
+      if (shrink < 1) {
+        items.forEach(function(el) {
+          var baseSize = parseFloat(window.getComputedStyle(el).fontSize) || 25;
+          el.style.fontSize = (baseSize * shrink).toFixed(1) + 'px';
+        });
+      }
+
+      var heights = items.map(function(el) { return el.offsetHeight || 130; });
+      var totalH = heights.reduce(function(a, b) { return a + b; }, 0);
+      var leftover = Math.max(0, available - totalH);
+      var gapEach = leftover / items.length;
+      var cursor = sideTop;
+      items.forEach(function(el, i) {
+        var h = heights[i];
+        var w = el.offsetWidth || 240;
+        var jitter = gapEach > 0 ? rand(gapEach * 0.15, gapEach * 0.85) : 0;
+        var y = cursor + jitter;
+        cursor += h + gapEach;
+        var x;
+        if (side === 'left') {
+          var leftMax = Math.max(left + pad, contentLeft - w - pad);
+          x = rand(left + pad, leftMax);
+        } else {
+          var rightMin = Math.min(left + width - w - pad, contentRight + pad);
+          x = rand(rightMin, Math.max(rightMin, left + width - w - pad));
+        }
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        el.style.right = 'auto';
+        el.style.setProperty('--float-dur', (8 + Math.random() * 7).toFixed(1) + 's');
+        el.style.setProperty('--float-delay', (-Math.random() * 12).toFixed(1) + 's');
+        el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
+        el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
+        el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
+      });
+    });
+  }
+
+  layout();
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layout, 200);
+  });
+
+  var MAX_DIST = 240;
+  var BASE = 0.38, PEAK = 0.95;
+  function update(x, y) {
+    notes.forEach(function(el) {
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var d = Math.hypot(x - cx, y - cy);
+      var t = Math.max(0, 1 - d / MAX_DIST);
+      el.style.opacity = (BASE + t * (PEAK - BASE)).toFixed(2);
+      el.classList.toggle('is-near', t > 0.55);
+    });
+  }
+  function reset() {
+    notes.forEach(function(el) { el.style.opacity = ''; el.classList.remove('is-near'); });
+  }
+  headerEl.addEventListener('mousemove', function(e) { update(e.clientX, e.clientY); });
+  headerEl.addEventListener('mouseleave', reset);
 })();
 </script>
 </body>
