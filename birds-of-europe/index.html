@@ -84,6 +84,38 @@
     position: relative;
     z-index: 2;
   }
+  .header-decor-layer { position: static; }
+  .header-sidenote {
+    position: absolute; z-index: 2; font-family: Georgia, 'Iowan Old Style', serif;
+    font-size: 27px; font-style: italic; letter-spacing: 0.02em; color: var(--ink-soft); opacity: 0.38;
+    text-decoration: none; transition: opacity 0.25s ease, color 0.25s ease;
+    max-width: 380px; line-height: 1.25; will-change: transform;
+    animation: sidenote-float var(--float-dur, 10s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  .header-sidenote:hover,
+  .header-sidenote:focus-visible,
+  .header-sidenote.is-near {
+    opacity: 0.95; color: var(--accent);
+  }
+  .header-sidenote .fleuron { display: block; font-size: 30px; opacity: 0.7; margin-bottom: 2px; }
+  .header-sidenote[data-align="left"] { text-align: left; }
+  .header-sidenote[data-align="right"] { text-align: right; }
+  @keyframes sidenote-float {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(var(--float-x, 6px), var(--float-y, -8px)) scale(var(--float-scale, 1.08)); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-sidenote { animation: none; }
+  }
+  @media (max-width: 760px) {
+    .header-sidenote {
+      position: static !important; display: inline-block; max-width: none; margin: 0 10px 8px;
+      opacity: 0.55; text-align: center !important; animation: none; transform: none !important;
+      font-size: 18px;
+    }
+  }
   header .eyebrow {
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -851,6 +883,24 @@
     </ul>
   </div>
 </header>
+
+<div class="header-decor-layer" id="headerDecorLayer">
+  <a class="header-sidenote vol-jump-link" data-align="left" data-vol="I" href="index.html?vol=I#grid">
+    <span class="fleuron">&#10087;</span>Browse Vol. I<br>the Raptores, in this gallery
+  </a>
+  <a class="header-sidenote vol-jump-link" data-align="right" data-vol="II" href="index.html?vol=II#grid">
+    <span class="fleuron">&#10087;</span>Browse Vol. II<br>the Insessores, from the beginning
+  </a>
+  <a class="header-sidenote vol-jump-link" data-align="left" data-vol="III" href="index.html?vol=III#grid">
+    <span class="fleuron">&#10087;</span>Browse Vol. III<br>the Insessores, continued
+  </a>
+  <a class="header-sidenote vol-jump-link" data-align="right" data-vol="IV" href="index.html?vol=IV#grid">
+    <span class="fleuron">&#10087;</span>Browse Vol. IV<br>the Rasores &amp; Grallatores
+  </a>
+  <a class="header-sidenote vol-jump-link" data-align="left" data-vol="V" href="index.html?vol=V#grid">
+    <span class="fleuron">&#10087;</span>Browse Vol. V<br>the Natatores, ducks, divers &amp; auks
+  </a>
+</div>
 
 <div class="potd" id="potd" style="display:none;">
   <div class="potd-label">Plate of the Day &middot; <span id="potdDate"></span></div>
@@ -33737,6 +33787,149 @@ spilt op namsae aid ‘to anol
     document.querySelectorAll('.gloss-term.tip-open, .authority-term.tip-open').forEach(t => t.classList.remove('tip-open'));
     document.querySelectorAll('.gloss-tip.tip-visible').forEach(tip => tip.classList.remove('tip-visible'));
   }, { passive: true });
+
+  // Faint header "sunken heading" links -- randomly scattered across the header's open
+  // space (left/right of the centered title column, full height down to where the toolbar
+  // begins), re-scattered on resize, each with its own slow independent "float" drift, and
+  // brightening with cursor proximity rather than just direct hover. Ported verbatim from
+  // the companion Birds of Great Britain gallery.
+  (function() {
+    var notes = Array.prototype.slice.call(document.querySelectorAll('.header-sidenote'));
+    var headerEl = document.querySelector('header');
+    var cladogramBtn = document.getElementById('cladogramToggle');
+    if (!notes.length || !headerEl) return;
+
+    function rand(min, max) { return min + Math.random() * (max - min); }
+
+    function layout() {
+      if (window.innerWidth <= 760) return; // mobile: static stacked layout, CSS handles it
+      var toolbarEl = document.querySelector('.toolbar');
+      var hRect = headerEl.getBoundingClientRect();
+      var tRect = toolbarEl ? toolbarEl.getBoundingClientRect() : hRect;
+      var scrollX = window.pageXOffset, scrollY = window.pageYOffset;
+      var top = hRect.top + scrollY;
+      var bottom = tRect.bottom + scrollY;
+      var left = 0, width = hRect.width;
+      var contentW = Math.min(700, width - 80);
+      var contentLeft = left + (width - contentW) / 2;
+      var contentRight = contentLeft + contentW;
+      var pad = 26, topPad = top + 18, bottomPad = bottom - 20;
+      var cBox = null;
+      if (cladogramBtn) {
+        var cr = cladogramBtn.getBoundingClientRect();
+        cBox = { x: cr.left + scrollX, y: cr.top + scrollY, w: cr.width, h: cr.height };
+      }
+      var sides = { left: [], right: [] };
+      notes.forEach(function(el, idx) { sides[idx % 2 === 0 ? 'left' : 'right'].push(el); });
+
+      var maxH = 0;
+      notes.forEach(function(el) { maxH = Math.max(maxH, el.offsetHeight || 140); });
+      var sideTops = {
+        left: topPad,
+        right: (cBox ? Math.max(topPad, cBox.y + cBox.h + 20) : topPad)
+      };
+      var neededBottom = bottomPad;
+      ['left', 'right'].forEach(function(side) {
+        var count = sides[side].length;
+        if (!count) return;
+        var needed = sideTops[side] + maxH * count * 1.22;
+        if (needed > neededBottom) { neededBottom = needed; }
+      });
+      bottomPad = neededBottom;
+
+      ['left', 'right'].forEach(function(side) {
+        var items = sides[side];
+        if (!items.length) return;
+        var sideTop = sideTops[side];
+        var bandH = (bottomPad - sideTop) / items.length;
+        items.forEach(function(el, i) {
+          var w = el.offsetWidth || 260, h = el.offsetHeight || 140;
+          var bandTop = sideTop + i * bandH;
+          var slack = Math.max(0, bandH - h);
+          var y = bandTop + rand(slack * 0.15, slack * 0.85);
+          var x;
+          if (side === 'left') {
+            var leftMax = Math.max(left + pad, contentLeft - w - pad);
+            x = rand(left + pad, leftMax);
+          } else {
+            var rightMin = Math.min(left + width - w - pad, contentRight + pad);
+            x = rand(rightMin, Math.max(rightMin, left + width - w - pad));
+          }
+          el.style.left = x + 'px';
+          el.style.top = y + 'px';
+          el.style.right = 'auto';
+          el.style.setProperty('--float-dur', (8 + Math.random() * 7).toFixed(1) + 's');
+          el.style.setProperty('--float-delay', (-Math.random() * 12).toFixed(1) + 's');
+          el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
+          el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
+          el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
+        });
+      });
+    }
+
+    layout();
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(layout, 200);
+    });
+
+    var MAX_DIST = 260;
+    var BASE = 0.38, PEAK = 0.95;
+    function update(x, y) {
+      notes.forEach(function(el) {
+        var r = el.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var d = Math.hypot(x - cx, y - cy);
+        var t = Math.max(0, 1 - d / MAX_DIST);
+        el.style.opacity = (BASE + t * (PEAK - BASE)).toFixed(2);
+        el.classList.toggle('is-near', t > 0.55);
+      });
+    }
+    function reset() {
+      notes.forEach(function(el) { el.style.opacity = ''; el.classList.remove('is-near'); });
+    }
+    headerEl.addEventListener('mousemove', function(e) { update(e.clientX, e.clientY); });
+    headerEl.addEventListener('mouseleave', reset);
+  })();
+
+  // "Browse Vol. N" floating links -- rather than a full page reload, apply the same
+  // volume filter the Vol chips below already provide, then smooth-scroll down to the
+  // (now filtered) gallery grid. A real href (index.html?vol=N#grid) is kept on each link
+  // so it still works from a bookmark, a new tab, or with JS disabled.
+  (function() {
+    var jumpLinks = document.querySelectorAll('.vol-jump-link');
+    if (!jumpLinks.length) return;
+
+    function activateVolume(vol) {
+      var chip = volChips.filter(function(c) { return c.dataset.volume === vol; })[0];
+      if (!chip) return;
+      if (activeVolume !== vol) {
+        activeVolume = vol;
+        volChips.forEach(function(c) { c.classList.toggle('active', c.dataset.volume === vol); });
+        setHeaderBg(vol);
+        update();
+      }
+      var gridEl = document.getElementById('grid');
+      if (gridEl) gridEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    jumpLinks.forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        activateVolume(a.dataset.vol);
+      });
+    });
+
+    // Deep link support: index.html?vol=III#grid jumps straight to that volume's filter,
+    // same as clicking the sidenote link, in case this page is opened fresh from a link
+    // shared elsewhere rather than clicked in-page.
+    var params = new URLSearchParams(window.location.search);
+    var qVol = params.get('vol');
+    if (qVol && READY_VOLUMES.has(qVol)) {
+      activateVolume(qVol);
+    }
+  })();
 </script>
 
 </body>
