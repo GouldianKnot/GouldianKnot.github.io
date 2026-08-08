@@ -34757,36 +34757,46 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
       var sides = { left: [], right: [] };
       notes.forEach(function(el, idx) { sides[idx % 2 === 0 ? 'left' : 'right'].push(el); });
 
-      var maxH = 0;
-      notes.forEach(function(el) { maxH = Math.max(maxH, el.offsetHeight || 140); });
       // Each side may start its usable range at a different y (the right column's start
-      // is pushed down past the Cladogram button), so the needed-height check -- and any
-      // bottomPad extension -- must be worked out per side against that side's own start,
-      // not against topPad for both. Otherwise the side with the later start silently gets
-      // squeezed into fewer effective bands than the other and can overlap.
+      // is pushed down past the Cladogram button), so packing is worked out per side
+      // against that side's own start, not against topPad for both.
       var sideTops = {
         left: topPad,
         right: (cBox ? Math.max(topPad, cBox.y + cBox.h + 20) : topPad)
       };
-      var neededBottom = bottomPad;
-      ['left', 'right'].forEach(function(side) {
-        var count = sides[side].length;
-        if (!count) return;
-        var needed = sideTops[side] + maxH * count * 1.22;
-        if (needed > neededBottom) { neededBottom = needed; }
-      });
-      bottomPad = neededBottom;
-
+      // HARD CAP: bottomPad never extends past the header/toolbar boundary computed
+      // above, no matter how many sidenotes there are. An earlier version of this script
+      // let a "needed height" calculation push bottomPad arbitrarily far down whenever
+      // there wasn't enough natural room -- with enough sidenotes (13, once the 5 "Read
+      // Vol." links joined the original 8) that pushed some of them hundreds of pixels
+      // past the toolbar and on top of the plate grid below, silently intercepting clicks
+      // meant for the glossary tooltips on the first few cards. If a side's items don't
+      // fit comfortably at full size within the available (uncapped) band, shrink their
+      // font-size instead of growing the band -- never the reverse.
       ['left', 'right'].forEach(function(side) {
         var items = sides[side];
         if (!items.length) return;
         var sideTop = sideTops[side];
-        var bandH = (bottomPad - sideTop) / items.length;
+        var available = Math.max(60, bottomPad - sideTop);
+        var naturalH = 0;
+        items.forEach(function(el) { naturalH += (el.offsetHeight || 140) * 1.22; });
+        var shrink = naturalH > available ? Math.max(0.55, available / naturalH) : 1;
+        if (shrink < 1) {
+          items.forEach(function(el) {
+            var baseSize = parseFloat(window.getComputedStyle(el).fontSize) || 27;
+            el.style.fontSize = (baseSize * shrink).toFixed(1) + 'px';
+          });
+        }
+
+        var heights = items.map(function(el) { return (el.offsetHeight || 140) * 1.22; });
+        var totalH = heights.reduce(function(a, b) { return a + b; }, 0);
+        var bandScale = totalH > available ? available / totalH : 1;
+        var cursor = sideTop;
         items.forEach(function(el, i) {
+          var bandH = heights[i] * bandScale;
           var w = el.offsetWidth || 260, h = el.offsetHeight || 140;
-          var bandTop = sideTop + i * bandH;
           var slack = Math.max(0, bandH - h);
-          var y = bandTop + rand(slack * 0.15, slack * 0.85);
+          var y = cursor + rand(slack * 0.15, slack * 0.85);
           var x;
           if (side === 'left') {
             var leftMax = Math.max(left + pad, contentLeft - w - pad);
@@ -34803,6 +34813,7 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
           el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
           el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
           el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
+          cursor += bandH;
         });
       });
     }
