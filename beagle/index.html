@@ -20,6 +20,44 @@
     border-bottom: 1px solid var(--border); background: var(--paper-dark);
   }
   .header-inner { position: relative; z-index: 1; }
+  .header-decor-layer { position: static; }
+  .header-sidenote {
+    position: absolute; z-index: 2; font-family: Georgia, 'Iowan Old Style', serif;
+    font-size: 27px; font-style: italic; letter-spacing: 0.02em; color: var(--ink-soft); opacity: 0.38;
+    text-decoration: none; transition: opacity 0.25s ease, color 0.25s ease;
+    max-width: 380px; line-height: 1.25; will-change: transform;
+    animation: sidenote-float var(--float-dur, 10s) ease-in-out infinite;
+    animation-delay: var(--float-delay, 0s);
+  }
+  .header-sidenote:hover,
+  .header-sidenote:focus-visible,
+  .header-sidenote.is-near {
+    opacity: 0.95; color: var(--accent);
+  }
+  .header-sidenote .fleuron { display: block; font-size: 30px; opacity: 0.7; margin-bottom: 2px; }
+  .header-sidenote[data-align="left"] { text-align: left; }
+  .header-sidenote[data-align="right"] { text-align: right; }
+  @keyframes sidenote-float {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(var(--float-x, 6px), var(--float-y, -8px)) scale(var(--float-scale, 1.08)); }
+    100% { transform: translate(0, 0) scale(1); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .header-sidenote { animation: none; }
+  }
+  @media (max-width: 760px) {
+    .header-sidenote {
+      position: static !important; display: inline-block; max-width: none; margin: 0 10px 8px;
+      opacity: 0.55; text-align: center !important; animation: none; transform: none !important;
+      font-size: 18px;
+    }
+  }
+  .region-jump-link {
+    font-size: 15px; max-width: 220px; line-height: 1.3; white-space: nowrap;
+  }
+  .region-jump-link .fleuron {
+    display: inline; font-size: 15px; opacity: 0.7; margin-bottom: 0; margin-right: 3px;
+  }
   header .eyebrow {
     letter-spacing: 0.25em; text-transform: uppercase; font-size: 12px; color: var(--accent); margin-bottom: 10px;
   }
@@ -421,6 +459,17 @@
     <p class="on-this-day" id="onThisDay"></p>
   </div>
 </header>
+
+<div class="header-decor-layer" id="headerDecorLayer">
+  <a class="header-sidenote region-jump-link" data-align="left" data-region="Cape Verde Islands" href="index.html?region=Cape%20Verde%20Islands#grid" title="January 1832 &mdash; the voyage&rsquo;s first landfall"><span class="fleuron">&#10087;</span> Cape Verde Islands</a>
+  <a class="header-sidenote region-jump-link" data-align="right" data-region="La Plata" href="index.html?region=La%20Plata#grid" title="Mid&ndash;late 1832 &mdash; Montevideo &amp; Buenos Aires"><span class="fleuron">&#10087;</span> La Plata</a>
+  <a class="header-sidenote region-jump-link" data-align="left" data-region="Patagonia" href="index.html?region=Patagonia#grid" title="1832&ndash;1834 &mdash; the long coastal surveys"><span class="fleuron">&#10087;</span> Patagonia</a>
+  <a class="header-sidenote region-jump-link" data-align="right" data-region="Tierra del Fuego" href="index.html?region=Tierra%20del%20Fuego#grid" title="December 1832 &mdash; first visit"><span class="fleuron">&#10087;</span> Tierra del Fuego</a>
+  <a class="header-sidenote region-jump-link" data-align="left" data-region="Falkland Islands" href="index.html?region=Falkland%20Islands#grid" title="March 1833 &mdash; Berkeley Sound"><span class="fleuron">&#10087;</span> Falkland Islands</a>
+  <a class="header-sidenote region-jump-link" data-align="right" data-region="Chile" href="index.html?region=Chile#grid" title="1834&ndash;1835 &mdash; Valpara&iacute;so &amp; the coast"><span class="fleuron">&#10087;</span> Chile</a>
+  <a class="header-sidenote region-jump-link" data-align="left" data-region="Gal&aacute;pagos Islands" href="index.html?region=Gal%C3%A1pagos%20Islands#grid" title="September 1835 &mdash; the finches"><span class="fleuron">&#10087;</span> Gal&aacute;pagos Islands</a>
+</div>
+
 <div class="toolbar">
   <input id="search" type="search" placeholder="Search by name, Latin binomial, region, or plate&hellip;">
 </div>
@@ -4529,6 +4578,38 @@ titicaca, in bolivia." data-region="Patagonia|Falkland Islands" data-genus="Anse
     setTag(chip.dataset.type, chip.dataset.value);
   });
 
+  // "Region" floating header links -- the voyage's rough chronological order of first
+  // arrival at each region. Rather than a full page reload, apply the same region filter
+  // the toolbar's filter-chips already provide (via this same closure's setTag), then
+  // smooth-scroll down to the (now filtered) gallery grid. A real href
+  // (index.html?region=...#grid) is kept on each link so it still works from a bookmark,
+  // a new tab, or with JS disabled.
+  (function() {
+    var jumpLinks = document.querySelectorAll('.region-jump-link');
+    if (!jumpLinks.length) return;
+
+    function activateRegion(region) {
+      if (!(activeTag && activeTag.type === 'region' && activeTag.value === region)) {
+        setTag('region', region);
+      }
+      var gridEl = document.getElementById('grid');
+      if (gridEl) gridEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    jumpLinks.forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        activateRegion(a.dataset.region);
+      });
+    });
+
+    var params = new URLSearchParams(window.location.search);
+    var qRegion = params.get('region');
+    if (qRegion) {
+      activateRegion(qRegion);
+    }
+  })();
+
   function applyFilter() {
     var q = search.value.trim().toLowerCase();
     var shown = 0;
@@ -4880,6 +4961,114 @@ titicaca, in bolivia." data-region="Patagonia|Falkland Islands" data-genus="Anse
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+
+// Faint header "sunken heading" links -- randomly scattered across the header's open
+// space, re-scattered on resize, each with its own slow independent "float" drift, and
+// brightening with cursor proximity rather than just direct hover. Ported verbatim from
+// the companion Birds of Great Britain gallery.
+(function() {
+  var notes = Array.prototype.slice.call(document.querySelectorAll('.header-sidenote'));
+  var headerEl = document.querySelector('header');
+  var cladogramBtn = document.getElementById('cladogramToggle');
+  if (!notes.length || !headerEl) return;
+
+  function rand(min, max) { return min + Math.random() * (max - min); }
+
+  function layout() {
+    if (window.innerWidth <= 760) return; // mobile: static stacked layout, CSS handles it
+    var toolbarEl = document.querySelector('.toolbar');
+    var mapFlexEl = document.querySelector('.voyage-map-flex');
+    var hRect = headerEl.getBoundingClientRect();
+    var tRect = toolbarEl ? toolbarEl.getBoundingClientRect() : hRect;
+    var scrollX = window.pageXOffset, scrollY = window.pageYOffset;
+    var top = hRect.top + scrollY;
+    // If this header has a near-full-width map/cards row below the title (Beagle), stop
+    // the floating band above it instead of running down to the toolbar -- that row
+    // leaves no clean side channel once it starts.
+    var bottom = (mapFlexEl ? mapFlexEl.getBoundingClientRect().top + scrollY - 10 : tRect.bottom + scrollY);
+    var left = 0, width = hRect.width;
+    var contentW = Math.min(700, width - 80);
+    var contentLeft = left + (width - contentW) / 2;
+    var contentRight = contentLeft + contentW;
+    var pad = 26, topPad = top + 18, bottomPad = bottom - 20;
+    var cBox = null;
+    if (cladogramBtn) {
+      var cr = cladogramBtn.getBoundingClientRect();
+      cBox = { x: cr.left + scrollX, y: cr.top + scrollY, w: cr.width, h: cr.height };
+    }
+    var sides = { left: [], right: [] };
+    notes.forEach(function(el, idx) { sides[idx % 2 === 0 ? 'left' : 'right'].push(el); });
+
+    var maxH = 0;
+    notes.forEach(function(el) { maxH = Math.max(maxH, el.offsetHeight || 140); });
+    var sideTops = {
+      left: topPad,
+      right: (cBox ? Math.max(topPad, cBox.y + cBox.h + 20) : topPad)
+    };
+    var neededBottom = bottomPad;
+    ['left', 'right'].forEach(function(side) {
+      var count = sides[side].length;
+      if (!count) return;
+      var needed = sideTops[side] + maxH * count * 1.22;
+      if (needed > neededBottom) { neededBottom = needed; }
+    });
+    bottomPad = neededBottom;
+
+    ['left', 'right'].forEach(function(side) {
+      var items = sides[side];
+      if (!items.length) return;
+      var sideTop = sideTops[side];
+      var bandH = (bottomPad - sideTop) / items.length;
+      items.forEach(function(el, i) {
+        var w = el.offsetWidth || 260, h = el.offsetHeight || 140;
+        var bandTop = sideTop + i * bandH;
+        var slack = Math.max(0, bandH - h);
+        var y = bandTop + rand(slack * 0.15, slack * 0.85);
+        var x;
+        if (side === 'left') {
+          var leftMax = Math.max(left + pad, contentLeft - w - pad);
+          x = rand(left + pad, leftMax);
+        } else {
+          var rightMin = Math.min(left + width - w - pad, contentRight + pad);
+          x = rand(rightMin, Math.max(rightMin, left + width - w - pad));
+        }
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        el.style.right = 'auto';
+        el.style.setProperty('--float-dur', (8 + Math.random() * 7).toFixed(1) + 's');
+        el.style.setProperty('--float-delay', (-Math.random() * 12).toFixed(1) + 's');
+        el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
+        el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
+        el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
+      });
+    });
+  }
+
+  layout();
+  var resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(layout, 200);
+  });
+
+  var MAX_DIST = 260;
+  var BASE = 0.38, PEAK = 0.95;
+  function update(x, y) {
+    notes.forEach(function(el) {
+      var r = el.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var d = Math.hypot(x - cx, y - cy);
+      var t = Math.max(0, 1 - d / MAX_DIST);
+      el.style.opacity = (BASE + t * (PEAK - BASE)).toFixed(2);
+      el.classList.toggle('is-near', t > 0.55);
+    });
+  }
+  function reset() {
+    notes.forEach(function(el) { el.style.opacity = ''; el.classList.remove('is-near'); });
+  }
+  headerEl.addEventListener('mousemove', function(e) { update(e.clientX, e.clientY); });
+  headerEl.addEventListener('mouseleave', reset);
 })();
 </script>
 </body>
