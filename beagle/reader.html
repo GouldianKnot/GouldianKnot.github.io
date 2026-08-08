@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reader &mdash; Birds of the Beagle</title>
+<title>Browser-Reader &mdash; Birds of the Beagle</title>
 <style>
 
   @font-face {
@@ -43,7 +43,7 @@
   body{
     margin:0; font-family: Georgia, 'Iowan Old Style', serif;
     background: radial-gradient(ellipse at center, #1a1815 0%, #050403 100%);
-    cursor: pointer; /* click this dark margin to leave the Reader */
+    cursor: pointer; /* click this dark margin to leave the Browser-Reader */
     display:flex; align-items:center; justify-content:center; flex-direction:column;
     height:100vh; overflow:hidden;
   }
@@ -456,7 +456,7 @@
     <span id="pageLabel">Page 1 of 1</span>
     <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
     <span id="pctLabel">0%</span>
-    <button type="button" class="zen-help-btn" id="zenHelpBtn" title="Reader tips">?</button>
+    <button type="button" class="zen-help-btn" id="zenHelpBtn" title="Browser-Reader tips">?</button>
   </div>
   <div class="zen-help-panel" id="zenHelpPanel">
     <p>Tap or click the faint arrows at the left/right edges of the page to turn it &mdash; or click anywhere in the left/right third of the page itself.</p>
@@ -1047,8 +1047,8 @@ window.addEventListener('hashchange', () => {
 });
 
 // Click outside the book (in the dark surrounding space) to leave the
-// Reader and return to wherever it makes most sense -- the exact plate
-// card if we know it, the Contents page if we arrived from there,
+// Browser-Reader and return to wherever it makes most sense -- the exact
+// plate card if we know it, the Contents page if we arrived from there,
 // otherwise the project's home gallery.
 document.body.addEventListener('click', function(e){
   if (e.target !== document.body) return;
