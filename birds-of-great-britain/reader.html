@@ -109,6 +109,31 @@
      as an overlay ON TOP of the reading text below, instead of pushing that
      text down (Jan's request, 2026-08-06: no "jerk" when opening). */
   .topbar-wrap{ position:relative; z-index:30; }
+  .vol-nav-btn{
+    background:var(--chrome); color:var(--accent); border:1px solid var(--chrome-border); border-radius:4px;
+    padding:4px 8px; cursor:pointer; font-size:13px; line-height:1;
+  }
+  .vol-nav-btn.active{ background:var(--accent); color:#fffdf8; }
+  .device.theme-night .vol-nav-btn{ background:#2c2c2c; color:#d8c9a8; border-color:#444; }
+  .vol-nav-panel{
+    display:none; position:absolute; right:8px; z-index:40; min-width:230px;
+    background:var(--chrome); border:1px solid var(--chrome-border); border-radius:8px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.28); padding:8px;
+  }
+  .vol-nav-panel.open{ display:block; }
+  .device.theme-night .vol-nav-panel{ background:#2c2c2c; border-color:#444; }
+  .vol-nav-panel-title{
+    font-size:10.5px; text-transform:uppercase; letter-spacing:0.06em; color:var(--accent);
+    opacity:0.7; padding:4px 8px 6px;
+  }
+  .vol-nav-item{
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+    padding:8px 10px; border-radius:6px; text-decoration:none; color:var(--ink); font-size:13.5px;
+  }
+  .vol-nav-item:hover{ background:rgba(122,82,48,0.14); }
+  .device.theme-night .vol-nav-item:hover{ background:rgba(255,255,255,0.08); }
+  .vol-nav-num{ font-weight:600; color:var(--accent); white-space:nowrap; }
+  .vol-nav-name{ opacity:0.8; text-align:right; }
   .search-row{
     position:absolute; top:100%; left:0; right:0;
     max-height:0; overflow:hidden; opacity:0;
@@ -215,6 +240,15 @@
       <button id="dyslexiaBtn" class="dyslexia-btn" title="Cycles through typefaces designed for easier reading: OpenDyslexic, Lexend, and Atkinson Hyperlegible">Reading font: Off</button>
       <button id="omegaBtn" class="omega-btn">&Omega;</button>
       <button id="searchToggleBtn" class="search-toggle-btn" type="button" title="Search this book">?</button>
+      <button id="volNavBtn" class="vol-nav-btn" type="button" title="Jump to a Volume's contents list" aria-haspopup="true" aria-expanded="false">&#127760;</button>
+    </div>
+    <div class="vol-nav-panel" id="volNavPanel" role="menu" aria-label="Jump to a volume">
+      <div class="vol-nav-panel-title">Jump to a Volume</div>
+      <a href="gb_contents.html#vol-I" class="vol-nav-item" role="menuitem"><span class="vol-nav-num">Vol. I</span><span class="vol-nav-name">Raptores</span></a>
+      <a href="gb_contents.html#vol-II" class="vol-nav-item" role="menuitem"><span class="vol-nav-num">Vol. II</span><span class="vol-nav-name">Insessores</span></a>
+      <a href="gb_contents.html#vol-III" class="vol-nav-item" role="menuitem"><span class="vol-nav-num">Vol. III</span><span class="vol-nav-name">Insessores (continued)</span></a>
+      <a href="gb_contents.html#vol-IV" class="vol-nav-item" role="menuitem"><span class="vol-nav-num">Vol. IV</span><span class="vol-nav-name">Rasores &amp; Grallatores</span></a>
+      <a href="gb_contents.html#vol-V" class="vol-nav-item" role="menuitem"><span class="vol-nav-num">Vol. V</span><span class="vol-nav-name">Natatores</span></a>
     </div>
   </div>
   <div class="search-row" id="searchRow">
@@ -507,6 +541,40 @@ window.addEventListener('resize', () => { requestAnimationFrame(measureAndShow);
     link.href = 'gb_contents.html' + (vol ? '#vol-' + encodeURIComponent(vol) : '');
     link.style.display = 'inline-block';
   }
+})();
+
+// Globe button -- opens a small panel to jump straight to any Volume's
+// contents list (gb_contents.html, scrolled to that volume's heading).
+(function(){
+  const btn = document.getElementById('volNavBtn');
+  const panel = document.getElementById('volNavPanel');
+  if (!btn || !panel) return;
+  const wrap = document.querySelector('.topbar-wrap');
+  btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    const isOpen = panel.classList.toggle('open');
+    btn.classList.toggle('active', isOpen);
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    if (isOpen && wrap) {
+      const btnRect = btn.getBoundingClientRect();
+      const wrapRect = wrap.getBoundingClientRect();
+      panel.style.top = (btnRect.bottom - wrapRect.top + 6) + 'px';
+    }
+  });
+  document.addEventListener('click', function(e){
+    if (!panel.classList.contains('open')) return;
+    if (panel.contains(e.target) || e.target === btn) return;
+    panel.classList.remove('open');
+    btn.classList.remove('active');
+    btn.setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && panel.classList.contains('open')) {
+      panel.classList.remove('open');
+      btn.classList.remove('active');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
 })();
 
 // Click outside the book (in the dark surrounding space) to leave the
