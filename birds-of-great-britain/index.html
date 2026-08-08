@@ -43,6 +43,12 @@
     opacity: 0.95; color: var(--accent);
   }
   .header-sidenote .fleuron { display: block; font-size: 30px; opacity: 0.7; margin-bottom: 2px; }
+  .header-sidenote.sidenote-compact {
+    font-size: 15px; max-width: 220px; line-height: 1.3; white-space: nowrap;
+  }
+  .header-sidenote.sidenote-compact .fleuron {
+    display: inline; font-size: 13px; opacity: 0.7; margin-bottom: 0; margin-right: 3px;
+  }
   .header-sidenote[data-align="left"] { text-align: left; }
   .header-sidenote[data-align="right"] { text-align: right; }
   @keyframes sidenote-float {
@@ -344,26 +350,16 @@
      href="gould_library_gb.html">
     <span class="fleuron">&#10087;</span>Gould&rsquo;s Library<br>the works behind every citation here
   </a>
-  <a class="header-sidenote" data-align="left"
-     href="gb_contents.html#vol-I">
-    <span class="fleuron">&#10087;</span>Read Vol. I<br>the Raptores, from the beginning
-  </a>
-  <a class="header-sidenote" data-align="right"
-     href="gb_contents.html#vol-II">
-    <span class="fleuron">&#10087;</span>Read Vol. II<br>the Insessores, from the beginning
-  </a>
-  <a class="header-sidenote" data-align="left"
-     href="gb_contents.html#vol-III">
-    <span class="fleuron">&#10087;</span>Read Vol. III<br>the Rasores &amp; Grallatores, from the beginning
-  </a>
-  <a class="header-sidenote" data-align="right"
-     href="gb_contents.html#vol-IV">
-    <span class="fleuron">&#10087;</span>Read Vol. IV<br>Rasores &amp; Grallatores continued
-  </a>
-  <a class="header-sidenote" data-align="left"
-     href="gb_contents.html#vol-V">
-    <span class="fleuron">&#10087;</span>Read Vol. V<br>the Natatores, from the beginning
-  </a>
+  <a class="header-sidenote sidenote-compact" data-align="left"
+     href="gb_contents.html#vol-I" title="the Raptores, from the beginning"><span class="fleuron">&#10087;</span>Read Vol. I</a>
+  <a class="header-sidenote sidenote-compact" data-align="right"
+     href="gb_contents.html#vol-II" title="the Insessores, from the beginning"><span class="fleuron">&#10087;</span>Read Vol. II</a>
+  <a class="header-sidenote sidenote-compact" data-align="left"
+     href="gb_contents.html#vol-III" title="the Rasores & Grallatores, from the beginning"><span class="fleuron">&#10087;</span>Read Vol. III</a>
+  <a class="header-sidenote sidenote-compact" data-align="right"
+     href="gb_contents.html#vol-IV" title="Rasores & Grallatores continued"><span class="fleuron">&#10087;</span>Read Vol. IV</a>
+  <a class="header-sidenote sidenote-compact" data-align="left"
+     href="gb_contents.html#vol-V" title="the Natatores, from the beginning"><span class="fleuron">&#10087;</span>Read Vol. V</a>
   <a class="header-sidenote" data-align="right"
      href="gb_anatomy_diagram.html">
     <span class="fleuron">&#10087;</span>Anatomy of a Dove<br>the parts of a bird, labelled
@@ -34778,25 +34774,42 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
         if (!items.length) return;
         var sideTop = sideTops[side];
         var available = Math.max(60, bottomPad - sideTop);
+        // Shrink is a last resort, used only for however much space is left after the
+        // compact "Read Vol." links already do most of the work of fitting everything in.
+        // Both the note's own font-size AND its .fleuron icon (which has its own fixed
+        // font-size in CSS and won't shrink on its own) are scaled together here, so the
+        // fleuron never ends up oversized relative to the now-smaller heading text.
         var naturalH = 0;
-        items.forEach(function(el) { naturalH += (el.offsetHeight || 140) * 1.22; });
-        var shrink = naturalH > available ? Math.max(0.55, available / naturalH) : 1;
+        items.forEach(function(el) { naturalH += (el.offsetHeight || 140); });
+        var shrink = naturalH > available ? Math.max(0.7, available / naturalH) : 1;
         if (shrink < 1) {
           items.forEach(function(el) {
             var baseSize = parseFloat(window.getComputedStyle(el).fontSize) || 27;
             el.style.fontSize = (baseSize * shrink).toFixed(1) + 'px';
+            var fleuron = el.querySelector('.fleuron');
+            if (fleuron) {
+              var fleuronBase = parseFloat(window.getComputedStyle(fleuron).fontSize) || 30;
+              fleuron.style.fontSize = (fleuronBase * shrink).toFixed(1) + 'px';
+            }
           });
         }
 
-        var heights = items.map(function(el) { return (el.offsetHeight || 140) * 1.22; });
+        // Sequential packing: give every item its own real (post-shrink) height plus a
+        // share of whatever space is left over as a gap, jittered for a scattered look.
+        // Because each band is built from the item's ACTUAL height (never compressed
+        // below it), items can never overlap each other, even if there isn't quite
+        // enough room for the full desired spacing.
+        var heights = items.map(function(el) { return el.offsetHeight || 140; });
         var totalH = heights.reduce(function(a, b) { return a + b; }, 0);
-        var bandScale = totalH > available ? available / totalH : 1;
+        var leftover = Math.max(0, available - totalH);
+        var gapEach = leftover / items.length;
         var cursor = sideTop;
         items.forEach(function(el, i) {
-          var bandH = heights[i] * bandScale;
-          var w = el.offsetWidth || 260, h = el.offsetHeight || 140;
-          var slack = Math.max(0, bandH - h);
-          var y = cursor + rand(slack * 0.15, slack * 0.85);
+          var h = heights[i];
+          var w = el.offsetWidth || 260;
+          var jitter = gapEach > 0 ? rand(gapEach * 0.15, gapEach * 0.85) : 0;
+          var y = cursor + jitter;
+          cursor += h + gapEach;
           var x;
           if (side === 'left') {
             var leftMax = Math.max(left + pad, contentLeft - w - pad);
@@ -34813,7 +34826,6 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
           el.style.setProperty('--float-x', rand(-10, 10).toFixed(1) + 'px');
           el.style.setProperty('--float-y', rand(-12, 12).toFixed(1) + 'px');
           el.style.setProperty('--float-scale', rand(1.03, 1.10).toFixed(2));
-          cursor += bandH;
         });
       });
     }
