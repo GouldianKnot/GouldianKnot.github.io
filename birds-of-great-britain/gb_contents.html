@@ -34,6 +34,16 @@
   }
   .home-link:hover { background: #5f3e22; }
 
+  .tablet-btn {
+    position: fixed; top: 16px; left: 16px; z-index: 50;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 18px; font-family: Georgia, 'Iowan Old Style', serif; font-size: 13px;
+    color: var(--accent); text-decoration: none; letter-spacing: 0.04em;
+    box-shadow: 0 2px 8px rgba(43,24,16,0.15); transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .tablet-btn:hover, .tablet-btn:focus-visible { box-shadow: 0 4px 14px rgba(43,24,16,0.25); transform: translateY(-1px); }
+  @media (max-width: 640px) { .tablet-btn { top: 10px; left: 10px; padding: 6px 12px; font-size: 12px; } }
+
   .toolbar {
     position: sticky; top: 0; z-index: 10; background: var(--paper); border-bottom: 1px solid var(--border);
     padding: 12px 24px; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
@@ -100,6 +110,7 @@
 </style>
 </head>
 <body>
+<a class="tablet-btn" href="index.html">Gallery</a>
 <header class="page-head">
   <div class="eyebrow">John Gould &middot; 1862&ndash;1873</div>
   <h1>The Birds of Great Britain &mdash; Contents</h1>
