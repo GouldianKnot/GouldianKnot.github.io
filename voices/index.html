@@ -191,9 +191,27 @@
   .era-tablet-body p { margin: 0 0 10px; }
   .era-tablet-body p:last-child { margin-bottom: 0; }
 
-  footer { text-align: center; color: #8a7d68; font-size: 12px; padding: 30px 20px 50px; background: #14110d; font-family: -apple-system, Helvetica, Arial, sans-serif; }
+  footer { position: relative; text-align: center; color: #8a7d68; font-size: 12px; padding: 30px 90px 20px 20px; background: #14110d; font-family: -apple-system, Helvetica, Arial, sans-serif; }
   footer a { color: #b9ad98; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
+
+  .jj-corner { position: absolute; right: 24px; bottom: 14px; text-align: right; }
+  .jj-initials {
+    display: block;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    color: gold;
+    line-height: 1;
+    letter-spacing: 0.02em;
+    font-size: clamp(36px, 5vw, 64px);
+  }
+  .jj-caption { display: block; margin-top: 8px; max-width: 460px; font-size: 11px; line-height: 1.7; color: #8a7d68; }
+  .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
+  .jj-caption-voices {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-size: clamp(18px, 2.5vw, 32px);
+    color: #e6c34a;
+  }
 
   /* Voices -- the umbrella name for the multi-narrator reading project
      (Gould read alongside Yarrell, Morris, White, Gosse and whoever
@@ -236,7 +254,6 @@
   <div class="header-inner">
     <div class="eyebrow">John Gould &middot; Elizabeth Gould &middot; Edward Lear &middot; H. C. Richter &middot; 1830&ndash;1873</div>
     <h1>The GouldianKnot</h1>
-    <p class="sub">An arrival point for the whole of Gould&rsquo;s ornithological library, digitised, cross-referenced, and kept in one place. Every bird figured across these volumes lives in exactly one underlying gallery &mdash; search for it here, and it will take you straight there.</p>
     <div class="about-panel" id="aboutPanel">
       <div class="about-collapsed" id="aboutCollapsed">
         <span class="about-teaser"><strong>About this library.</strong> John Gould (1804&ndash;1881) was Victorian Britain&rsquo;s most prolific publisher of ornithological illustration&hellip;</span>
@@ -432,8 +449,12 @@
 </main>
 
 <footer>
-  The GouldianKnot &mdash; a student&rsquo;s digitisation of John Gould&rsquo;s ornithological library, built and maintained by Jan.<br>
+  The GouldianKnot &mdash; a student&rsquo;s digitisation of John Gould&rsquo;s ornithological library, built and maintained by JJ.<br>
   <a href="../birds-of-europe/index.html">Europe</a> &middot; <a href="../beagle/index.html">the Beagle</a> &middot; <a href="../birds-of-great-britain/index.html">Great Britain</a> &middot; <a href="../birds-of-great-britain/gould_library_gb.html">the Bibliography Hub</a>
+  <div class="jj-corner">
+    <span class="jj-initials">JJ</span>
+    <span class="jj-caption"><span class="jj-caption-voices">&ldquo;Voices&rdquo;</span> &mdash; a Summer Study in nineteenth&#8209;century Natural History.<br>The curious intersection of ideas &mdash; History of Science, Art and Romanticism &mdash;<br>as seen through the eyes of Elizabeth Gould (1804&nbsp;&ndash;&nbsp;1841),<br>the hidden illustrator behind John Gould&rsquo;s publishing works in Ornithology.<br>Collection of research notes from a German forest.<br>2026<br><a class="jj-contact-link" href="../contact.html">Contact</a></span>
+  </div>
 </footer>
 
 <script>
