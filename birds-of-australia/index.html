@@ -3267,6 +3267,8 @@ const cards = Array.from(document.querySelectorAll('.card'));
 // per-card id/anchor exists on this page, so "view this plate" scrolls straight to the held
 // DOM reference and flashes it, rather than using a #hash link.
 (function() {
+  if (true) return; // <-- disabled at Jan's request (2026-08-08), pending a redesign as a
+  // full tile on the Voices hub instead; delete this line to re-enable this inline version.
   if (!cards.length) return;
   const today = new Date();
   const dateStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
