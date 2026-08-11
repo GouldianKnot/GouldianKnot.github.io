@@ -122,7 +122,7 @@
   .result-project { margin-left: auto; font-size: 10.5px; color: var(--gould-teal); white-space: nowrap; padding-left: 10px; }
   .result-empty { padding: 14px; color: #8a7d68; font-size: 12.5px; text-align: center; }
 
-  main { position: relative; z-index: 3; max-width: 1300px; margin: 0 auto; padding: 110px 24px 80px; }
+  main { max-width: 1300px; margin: 0 auto; padding: 110px 24px 80px; }
   .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; }
   .tile {
     background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
@@ -191,7 +191,7 @@
   .era-tablet-body p { margin: 0 0 10px; }
   .era-tablet-body p:last-child { margin-bottom: 0; }
 
-  footer { position: relative; z-index: 3; min-height: 270px; text-align: center; color: #8a7d68; font-size: 12px; padding: 30px 90px 20px 20px; background: #14110d; font-family: -apple-system, Helvetica, Arial, sans-serif; }
+  footer { position: relative; text-align: center; color: #8a7d68; font-size: 12px; padding: 30px 90px 20px 20px; background: #14110d; font-family: -apple-system, Helvetica, Arial, sans-serif; }
   footer a { color: #b9ad98; text-decoration: none; }
   footer a:hover { text-decoration: underline; }
 
@@ -577,7 +577,12 @@ document.addEventListener('click', (e) => {
     if (window.innerWidth <= 760) return;
     const scrollY = window.pageYOffset;
     const top = 0;
-    const bottom = document.documentElement.scrollHeight;
+    // Stop before <main> ends -- leave the footer (and JJ's signature inside
+    // it) alone entirely rather than trying to out-stack it. Keeps the
+    // footer at its normal simple size, no z-index/background workarounds.
+    const mainEl = document.querySelector('main');
+    const mainRect = mainEl ? mainEl.getBoundingClientRect() : null;
+    const bottom = mainRect ? (mainRect.bottom + scrollY - 20) : document.documentElement.scrollHeight;
     const width = document.documentElement.clientWidth;
     const contentW = Math.min(760, width - 80);
     const contentLeft = (width - contentW) / 2;
