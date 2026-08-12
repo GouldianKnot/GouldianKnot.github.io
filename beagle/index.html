@@ -4607,11 +4607,12 @@ titicaca, in bolivia." data-region="Patagonia|Falkland Islands" data-genus="Anse
   })();
 
   function applyFilter() {
-    var q = search.value.trim().toLowerCase();
+    function normalizeSearch(s) { return s.replace(/-/g, ' ').replace(/\s+/g, ' ').trim(); }
+    var q = normalizeSearch(search.value.trim().toLowerCase());
     var shown = 0;
     cards.forEach(function(c) {
-      var matchesPrimary = !!q && c.getAttribute('data-search-primary').indexOf(q) !== -1;
-      var matchesSecondary = !!q && !matchesPrimary && c.getAttribute('data-search-secondary').indexOf(q) !== -1;
+      var matchesPrimary = !!q && normalizeSearch(c.getAttribute('data-search-primary')).indexOf(q) !== -1;
+      var matchesSecondary = !!q && !matchesPrimary && normalizeSearch(c.getAttribute('data-search-secondary')).indexOf(q) !== -1;
       var matchesSearch = !q || matchesPrimary || matchesSecondary;
       var matchesTag = true;
       if (activeTag) {
