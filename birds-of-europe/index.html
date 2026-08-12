@@ -918,16 +918,18 @@
   }
   .reader-icon-link-secondary:hover { opacity: 1; }
   footer {
+    position: relative;
     text-align: center;
-    padding: 30px 20px 60px;
+    padding: 30px 100px 60px 20px;
     color: var(--ink-soft);
     font-size: 12.5px;
   }
-  .jj-signature { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(0,0,0,0.08); text-align: center; }
-  .jj-signature .jj-initials { display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-weight: 700; color: #b8860b; line-height: 1; letter-spacing: 0.02em; font-size: clamp(28px, 4vw, 44px); }
-  .jj-signature .jj-caption { display: block; margin: 8px auto 0; max-width: 460px; font-size: 11px; line-height: 1.7; }
+  .jj-signature { position: absolute; right: 24px; bottom: 24px; text-align: right; }
+  .jj-signature .jj-initials { display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-weight: 700; color: #b8860b; line-height: 1; letter-spacing: 0.02em; font-size: clamp(36px, 5vw, 64px); }
+  .jj-signature .jj-caption { display: block; margin-top: 8px; max-width: 460px; font-size: 11px; line-height: 1.7; text-align: right; }
   .jj-signature .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
-  .jj-signature .jj-caption-voices { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: clamp(15px, 2vw, 24px); color: #b8860b; }
+  .jj-signature .jj-caption-voices { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: clamp(18px, 2.5vw, 32px); color: #b8860b; }
+  @media (max-width: 720px) { footer { padding: 30px 20px 60px; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
   .no-results {
     text-align: center;
     color: var(--ink-soft);
@@ -34055,8 +34057,9 @@ spilt op namsae aid ‘to anol
   lithographed almost entirely by Elizabeth Gould from John&rsquo;s field sketches. Gould&rsquo;s
   original English names are shown where they differ from the modern common name; modern scientific
   names and German/French common names reflect current usage. A handful of plates are included as
-  Gould described and figured them even though they're not valid species today &mdash; a small case
-  study in how species concepts get revised as evidence accumulates.
+  Gould described and figured them even though they're not valid species today &mdash; useful examples
+  in Epistemology/ToK/History of Science, in how scientific ideas about species get revised as fresh
+  evidence is gathered.
   <br><br>
   This gallery &mdash; its code, data and commentary &mdash; is released under the MIT License. The
   historical plates themselves are in the public domain.
