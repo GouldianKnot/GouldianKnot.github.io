@@ -920,16 +920,17 @@
   footer {
     position: relative;
     text-align: center;
-    padding: 30px 100px 60px 20px;
+    padding: 30px 100px 60px 24px;
     color: var(--ink-soft);
     font-size: 12.5px;
   }
+  .footer-body-left { text-align: left; max-width: 220px; }
   .jj-signature { position: absolute; right: 24px; bottom: 24px; text-align: right; }
   .jj-signature .jj-initials { display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-weight: 700; color: #b8860b; line-height: 1; letter-spacing: 0.02em; font-size: clamp(36px, 5vw, 64px); }
   .jj-signature .jj-caption { display: block; margin-top: 8px; max-width: 460px; font-size: 11px; line-height: 1.7; text-align: right; }
   .jj-signature .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
   .jj-signature .jj-caption-voices { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: clamp(18px, 2.5vw, 32px); color: #b8860b; }
-  @media (max-width: 720px) { footer { padding: 30px 20px 60px; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
+  @media (max-width: 720px) { footer { padding: 30px 20px 60px; } .footer-body-left { text-align: center; max-width: none; margin: 0 auto; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
   .no-results {
     text-align: center;
     color: var(--ink-soft);
@@ -34053,16 +34054,11 @@ spilt op namsae aid ‘to anol
 <p class="no-results" id="noResults">No plates match your search.</p>
 
 <footer>
-  Digitised from Internet Archive scans of <em>The Birds of Europe</em> by John Gould, drawn and
-  lithographed almost entirely by Elizabeth Gould from John&rsquo;s field sketches. Gould&rsquo;s
-  original English names are shown where they differ from the modern common name; modern scientific
-  names and German/French common names reflect current usage. A handful of plates are included as
-  Gould described and figured them even though they're not valid species today &mdash; useful examples
-  in Epistemology/ToK/History of Science, in how scientific ideas about species get revised as fresh
-  evidence is gathered.
+  <div class="footer-body-left">
+  Digitised from Internet Archive<br>scans of <em>The Birds<br>of Europe</em> by John<br>Gould, drawn and lithographed<br>almost entirely by Elizabeth<br>Gould from John&rsquo;s field<br>sketches. Gould&rsquo;s original English<br>names are shown where<br>they differ from the<br>modern common name; modern<br>scientific names and German/French<br>common names reflect current<br>usage. A handful of<br>plates are included as<br>Gould described and figured<br>them even though they're<br>not valid species today<br>&mdash; useful examples in<br>Epistemology/ToK/History of Science, in<br>how scientific ideas about<br>species get revised as<br>fresh evidence is gathered.
   <br><br>
-  This gallery &mdash; its code, data and commentary &mdash; is released under the MIT License. The
-  historical plates themselves are in the public domain.
+  This gallery &mdash; its<br>code, data and commentary<br>&mdash; is released under<br>the MIT License. The<br>historical plates themselves are<br>in the public domain.
+  </div>
   <div class="jj-signature">
     <span class="jj-initials">JJ</span>
     <span class="jj-caption"><span class="jj-caption-voices">&ldquo;Voices&rdquo;</span> &mdash; a Summer Study in nineteenth&#8209;century Natural History.<br>The curious intersection of ideas &mdash; History of Science, Art and Romanticism &mdash;<br>as seen through the eyes of Elizabeth Gould (1804&nbsp;&ndash;&nbsp;1841),<br>the hidden illustrator behind John Gould&rsquo;s publishing works in Ornithology.<br>Collection of research notes from a German forest.<br>2026<br><a class="jj-contact-link" href="../contact.html">Contact</a></span>
