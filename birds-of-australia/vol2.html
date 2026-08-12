@@ -46,23 +46,6 @@
   .read-more { margin-top: 10px; align-self: flex-start; background: none; border: none; color: var(--accent); font-family: inherit; font-size: 12px; cursor: pointer; padding: 0; text-decoration: underline dotted; }
   .read-more:hover { color: var(--accent-2); }
     #empty-msg { display: none; text-align: center; padding: 60px; color: var(--accent-2); }
-  .potd {
-    max-width: 640px; margin: 18px auto 0; padding: 14px 20px; background: var(--card-bg);
-    border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 1px 3px rgba(58,47,34,0.08);
-    display: none; flex-direction: column; gap: 10px;
-  }
-  .potd-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
-  .potd-label #potdDate { color: var(--accent-2); font-weight: 500; text-transform: none; letter-spacing: normal; }
-  .potd-body { display: flex; align-items: center; gap: 16px; text-align: left; }
-  .potd-thumb { flex-shrink: 0; width: 72px; height: 72px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); background: #fff; display: flex; align-items: center; justify-content: center; }
-  .potd-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
-  .potd-info { min-width: 0; }
-  .potd-name { font-size: 15px; font-weight: 600; color: var(--fg); line-height: 1.3; }
-  .potd-latin { font-style: italic; color: var(--accent); font-size: 13px; margin-top: 2px; }
-  .potd-link { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 600; color: var(--accent); cursor: pointer; text-decoration: none; }
-  .potd-link:hover { text-decoration: underline; }
-  .card.potd-flash { box-shadow: 0 0 0 3px var(--accent-2), 0 4px 10px rgba(58,47,34,0.2); transition: box-shadow 0.3s ease; }
-  @media (max-width: 480px) { .potd-body { flex-direction: column; align-items: flex-start; } }
   dialog#reader { max-width: 620px; width: 92%; border: 1px solid var(--border); border-radius: 10px; background: var(--card-bg); color: var(--fg); padding: 0; }
   dialog#reader::backdrop { background: rgba(58,47,34,0.5); }
   dialog#reader .dclose { position: absolute; top: 10px; right: 14px; border: none; background: none; font-size: 20px; cursor: pointer; color: var(--accent); }
@@ -70,9 +53,16 @@
   dialog#reader img { max-width: 100%; border-radius: 6px; margin-bottom: 14px; }
   dialog#reader .dtext { font-size: 14px; line-height: 1.65; white-space: pre-wrap; }
   footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); }
+  nav.gk-nav { padding: 10px 24px; text-align: center; font-size: 12px; letter-spacing: 0.03em;
+    background: var(--card-bg); border-bottom: 1px solid var(--border); }
+  nav.gk-nav a { color: var(--accent); text-decoration: none; margin: 0 4px; }
+  nav.gk-nav a:hover { text-decoration: underline; }
+  nav.gk-nav .current { color: var(--fg); font-weight: 600; margin: 0 4px; }
+  nav.gk-nav .sep { color: var(--border); }
 </style>
 </head>
 <body>
+<nav class="gk-nav"><a href="index.html">Synopsis (1837–38)</a><span class="sep">&middot;</span><a href="vol1.html">Vol. I</a><span class="sep">&middot;</span><span class="current">Vol. II</span><span class="sep">&middot;</span><a href="vol3.html">Vol. III</a><span class="sep">&middot;</span><a href="vol4.html">Vol. IV</a><span class="sep">&middot;</span><a href="vol5.html">Vol. V</a><span class="sep">&middot;</span><a href="vol6.html">Vol. VI</a><span class="sep">&middot;</span><a href="vol7.html">Vol. VII</a></nav>
 <header>
   <div class="kicker">GouldianKnot &middot; Birds of Australia</div>
   <h1>The Birds of Australia &mdash; Volume II</h1>
@@ -86,17 +76,7 @@
   investigation.</div>
   <input id="search" type="search" placeholder="Search by name...">
 </header>
-<div class="potd" id="potd" style="display:none;">
-  <div class="potd-label">Plate of the Day &middot; <span id="potdDate"></span></div>
-  <div class="potd-body">
-    <div class="potd-thumb" id="potdThumb"></div>
-    <div class="potd-info">
-      <div class="potd-name" id="potdName"></div>
-      <div class="potd-latin" id="potdLatin"></div>
-      <a class="potd-link" id="potdLink" href="#">View this plate &rarr;</a>
-    </div>
-  </div>
-</div>
+
 <div class="grid" id="grid">
 
   <div class="card" data-search="owlet nightjar " data-index="0">
@@ -2014,32 +1994,6 @@ const searchEl = document.getElementById('search');
 const emptyMsg = document.getElementById('empty-msg');
 const cards = Array.from(document.querySelectorAll('.card'));
 
-// Plate of the Day -- a deterministic pick from today's date (not Math.random(), so every
-// visitor sees the same plate on the same day, changing only at local midnight). No stable
-// per-card id/anchor exists on this page, so "view this plate" scrolls straight to the held
-// DOM reference and flashes it, rather than using a #hash link.
-(function() {
-  if (!cards.length) return;
-  const today = new Date();
-  const dateStr = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-  let h = 0;
-  for (let di = 0; di < dateStr.length; di++) { h = ((h << 5) - h + dateStr.charCodeAt(di)) | 0; }
-  const pick = cards[Math.abs(h) % cards.length];
-  const img = pick.querySelector('.plate-img');
-  const nameEl = pick.querySelector('.plate-no');
-  const latinEl = pick.querySelector('.latin-line');
-  if (img) document.getElementById('potdThumb').innerHTML = '<img src="' + img.getAttribute('src') + '" alt="">';
-  if (nameEl) document.getElementById('potdName').textContent = nameEl.textContent.replace('†', ' †');
-  if (latinEl) document.getElementById('potdLatin').textContent = latinEl.textContent.trim();
-  document.getElementById('potdDate').textContent = today.toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'});
-  document.getElementById('potdLink').addEventListener('click', function(e) {
-    e.preventDefault();
-    pick.scrollIntoView({behavior: 'smooth', block: 'center'});
-    pick.classList.add('potd-flash');
-    setTimeout(function() { pick.classList.remove('potd-flash'); }, 2200);
-  });
-  document.getElementById('potd').style.display = 'flex';
-})();
 
 searchEl.addEventListener('input', () => {
   function normalizeSearch(s) { return s.replace(/-/g, ' ').replace(/\s+/g, ' ').trim(); }
