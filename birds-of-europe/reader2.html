@@ -255,19 +255,33 @@
   .zen-view-link svg{ width:13px; height:13px; flex:none; }
 
   /* ---- fold cards (choose the source) ---- */
-  details.fold{ margin-top:18px; border-top:1px dashed var(--chrome-border); padding-top:14px; }
-  details.fold.gould{ border-top:none; margin-top:0; padding-top:0; }
-  details.fold summary{
-    cursor:pointer; font-variant:small-caps; letter-spacing:0.03em;
-    font-size:1.05em; padding:4px 0; outline:none; list-style:none; color:var(--accent);
+  /* Jan's redesign: with 5+ sources on a species, a stack of one-line
+     "From X..." toggle bars filled the whole screen before you reached
+     any actual text. The chip row below (.fold-chip-row) now does the
+     job those summary bars used to do, so the summary itself is just
+     hidden -- still present and still clicked programmatically (see
+     renderFoldChips()/selectFold() in the script), just not shown. The
+     dashed top border + margin that used to separate each fold from the
+     one above it is gone too -- the chip row's own border now does that
+     job once, instead of every fold repeating it. Closed folds collapse
+     their padding to zero, so an inactive fold takes up exactly no space. */
+  details.fold{ margin-top:0; border-top:none; padding-top:16px; }
+  details.fold:not([open]){ padding:0; }
+  details.fold summary{ display:none; }
+  /* ---- source chips (replaces the old stacked fold-summary toggles) ---- */
+  .fold-chip-row{
+    display:flex; flex-wrap:wrap; gap:7px; align-items:center;
+    padding:10px 20px; border-bottom:1px solid var(--chrome-border); background:var(--chrome);
   }
-  details.fold summary::-webkit-details-marker{ display:none; }
-  details.fold summary::before{
-    content:'\25B8'; display:inline-block; width:0.85em; color:var(--accent); opacity:0.7;
-    transition: transform 0.5s ease-in-out;
+  .fold-chip-row:empty{ display:none; }
+  .fold-chip{
+    font-family:inherit; font-size:12px; letter-spacing:0.03em; font-variant:small-caps;
+    padding:6px 13px; border-radius:999px; border:1px solid var(--chrome-border);
+    background:var(--bg); color:var(--accent); cursor:pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   }
-  details.fold[open] summary::before{ transform: rotate(90deg); }
-  details.fold summary em{ font-style:italic; }
+  .fold-chip:hover{ border-color:var(--accent); }
+  .fold-chip.active{ background:var(--accent); color:var(--chrome); border-color:var(--accent); }
   .fold-body{ padding:14px 6px 4px 22px; margin-top:8px; }
   .fold-body .fold-plate-img{ display:block; max-width:480px; max-height:380px; width:auto; height:auto; margin:0 auto 12px; border:1px solid var(--chrome-border); background:#fff; }
   .fold-body .alt-names{ text-align:center; font-style:italic; color:var(--accent); opacity:0.8; font-size:0.85em; margin-bottom:10px; }
@@ -367,6 +381,7 @@
     </div>
   </div>
   </div>
+  <div class="fold-chip-row" id="foldChipRow"></div>
   <div class="subtitle-row">
     <span class="attribution">from John Gould&rsquo;s <em>Birds of Europe</em>, 1832&ndash;1837</span>
     <div class="subtitle-row-right">
@@ -823,6 +838,51 @@ function toggleAllFolds(){
       if (summary) summary.click();
     }
   });
+  // Reflect the new state in the chip row too: "read everything" lights
+  // every chip up, collapsing back down lights only the first (Gould).
+  const chipRow = document.getElementById('foldChipRow');
+  if (chipRow) {
+    const nowAllOpen = !allOpen;
+    Array.from(chipRow.querySelectorAll('.fold-chip')).forEach((btn, i) => {
+      btn.classList.toggle('active', nowAllOpen ? true : i === 0);
+    });
+  }
+}
+
+// ---- Source chips: replaces the old stacked fold-summary toggle bars.
+// One chip per source present on the current species, rendered in the
+// bar just under the menu bar (#foldChipRow, sits outside #pages so it
+// survives independently of each render()'s innerHTML rebuild). Clicking
+// a chip shows exactly that one source and closes the others -- it just
+// clicks the (now hidden) <summary> for the target/other folds, so all
+// of the existing open/close animation and pagination logic keeps
+// working completely unchanged.
+function renderFoldChips(chips){
+  const chipRow = document.getElementById('foldChipRow');
+  if (!chipRow) return;
+  chipRow.innerHTML = chips.map((c, i) =>
+    `<button type="button" class="fold-chip${i === 0 ? ' active' : ''}" data-fold-kind="${c.kind}">${esc(c.label)}</button>`
+  ).join('');
+  chipRow.querySelectorAll('.fold-chip').forEach(btn => {
+    btn.addEventListener('click', () => selectFold(btn.dataset.foldKind));
+  });
+}
+function selectFold(kind){
+  const folds = Array.from(pagesEl.querySelectorAll(':scope > details.fold'));
+  folds.forEach(f => {
+    const isTarget = f.classList.contains(kind);
+    const shouldBeOpen = isTarget;
+    if (f.open !== shouldBeOpen) {
+      const summary = f.querySelector(':scope > summary');
+      if (summary) summary.click();
+    }
+  });
+  const chipRow = document.getElementById('foldChipRow');
+  if (chipRow) {
+    chipRow.querySelectorAll('.fold-chip').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.foldKind === kind);
+    });
+  }
 }
 
 function initSmoothFolds(root){
@@ -913,37 +973,53 @@ function render(){
        + noteParas.map(p => `<p>${esc(p)}</p>`).join('')
        + '</div>';
   }
+  // Each source used to get its own "From X..." toggle bar, stacked one
+  // after another -- with 5+ sources that stack alone filled the screen.
+  // Now each present source just adds a short {kind, label} pair here;
+  // the actual chip row markup (and the fold content itself, unchanged)
+  // both get built from this same list below.
+  const chips = [];
   h += foldSectionHtml('gould', `From Gould (1832&ndash;1837), <em><a href="Gould.html#${s.plateId}" target="_blank" rel="noopener">The Birds of Europe</a></em>`,
                            { img: gouldImg, heading: s.common, body: paragraphize(s.body) }, true);
+  chips.push({ kind: 'gould', label: 'Gould' });
   if (entry && entry.brehm) {
     h += foldSectionHtml('brehm', 'From Brehm (1861 tr.), <em><a href="../Brehm/Brehm_BirdLife.html#top" target="_blank" rel="noopener">Bird-Life: Being a History of the Habits and Faculties of Birds</a></em>', entry.brehm, false);
+    chips.push({ kind: 'brehm', label: 'Brehm' });
   }
   if (entry && entry.yarrell) {
     h += foldSectionHtml('yarrell', 'From Yarrell (1871&ndash;1885, 4th ed.), <em><a href="../yarrell/Yarrell.html#top" target="_blank" rel="noopener">A History of British Birds</a></em>', entry.yarrell, false);
+    chips.push({ kind: 'yarrell', label: 'Yarrell' });
   }
   if (entry && entry.morris) {
     h += foldSectionHtml('morris', 'From Morris (1880), <em><a href="../morris/Morris.html#top" target="_blank" rel="noopener">A History of British Birds</a></em>', entry.morris, false);
+    chips.push({ kind: 'morris', label: 'Morris' });
   }
   if (entry && entry.gosse) {
     h += foldSectionHtml('gosse', 'From Gosse (1849), <em><a href="../gosse/Gosse.html#pbo" target="_blank" rel="noopener">Popular British Ornithology</a></em>', entry.gosse, false);
+    chips.push({ kind: 'gosse', label: 'Gosse' });
   }
   if (entry && entry.gosseRomance) {
     h += foldSectionHtml('gosse-romance', 'From Gosse (1860), <em><a href="../gosse/Gosse.html#romance" target="_blank" rel="noopener">Romance of Natural History</a></em>', entry.gosseRomance, false);
+    chips.push({ kind: 'gosse-romance', label: 'Gosse (Romance)' });
   }
   if (entry && entry.white) {
     h += foldSectionHtml('white', 'From White (1789), <em><a href="../gilbertwhite/Selborne.html#top" target="_blank" rel="noopener">The Natural History of Selborne</a></em>', entry.white, false);
+    chips.push({ kind: 'white', label: 'White' });
   }
   if (entry && entry.kennedy) {
     h += foldSectionHtml('kennedy', 'From Kennedy (1868), <em><a href="../kennedy/Kennedy.html#top" target="_blank" rel="noopener">The Birds of Berkshire and Buckinghamshire</a></em>', entry.kennedy, false);
+    chips.push({ kind: 'kennedy', label: 'Kennedy' });
   }
   if (entry && entry.cassell) {
     const cassellFile = entry.cassell.volFile || 'Cassell_BookOfBirds_Vol1-2.html';
     h += foldSectionHtml('cassell', `From Cassell's Book of Birds (1869, from the text of Dr. Brehm), <em><a href="../Brehm/${cassellFile}" target="_blank" rel="noopener">read the full volume</a></em>`, entry.cassell, false);
+    chips.push({ kind: 'cassell', label: 'Cassell' });
   }
   pagesEl.innerHTML = h;
   pagesEl.style.transform = 'none';
   pagesEl.style.columnWidth = 'auto';
   initSmoothFolds(pagesEl);
+  renderFoldChips(chips);
   pagesEl.parentElement.scrollTop = 0;
 }
 
