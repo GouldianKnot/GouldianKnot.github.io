@@ -1291,5 +1291,21 @@ document.body.addEventListener('click', function(e){
   render();
 })();
 
+// Optional &source=<fold-kind> (gould/brehm/yarrell/morris/gosse/
+// gosse-romance/white/kennedy/cassell) to land on a specific source's fold
+// already open, instead of the Gould default -- used by the "For your
+// reading" tablets on index.html. Silently ignored if the requested source
+// isn't actually available for this species. Runs last (after every other
+// render() call above, each of which rebuilds the fold/chip markup from
+// scratch and would otherwise stomp this back to the Gould default).
+(function applySourceFromUrl(){
+  const params = new URLSearchParams(location.search);
+  const src = (params.get('source') || '').trim().toLowerCase();
+  if (!src) return;
+  const chipRow = document.getElementById('foldChipRow');
+  const match = chipRow && chipRow.querySelector('.fold-chip[data-fold-kind="' + src + '"]');
+  if (match) selectFold(src);
+})();
+
 </script>
 </body></html>
