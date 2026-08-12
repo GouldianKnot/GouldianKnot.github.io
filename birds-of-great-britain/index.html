@@ -391,13 +391,15 @@
   .lightbox-overlay img { max-width: 100%; max-height: calc(100vh - 120px); object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,0.6); background: #efe6d6; cursor: default; }
   .lightbox-caption { color: #fbf2e2; font-size: 15px; margin-top: 16px; text-align: center; font-style: italic; }
   .lightbox-close { position: absolute; top: 20px; right: 28px; color: #fbf2e2; font-size: 34px; line-height: 1; cursor: pointer; background: none; border: none; padding: 6px 10px; }
-  footer { position: relative; text-align: center; color: #aeb8ca; font-size: 12px; padding: 20px 90px 20px 20px; }
+  footer { position: relative; text-align: center; color: #aeb8ca; font-size: 12px; padding: 20px 90px 20px 24px; }
+  .footer-body-left { text-align: left; max-width: 220px; }
+  .footer-body-left .footer-links { text-align: left; }
   .jj-signature { position: absolute; right: 24px; bottom: 14px; text-align: right; }
   .jj-signature .jj-initials { display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-weight: 700; color: gold; line-height: 1; letter-spacing: 0.02em; font-size: clamp(36px, 5vw, 64px); }
   .jj-signature .jj-caption { display: block; margin-top: 8px; max-width: 460px; font-size: 11px; line-height: 1.7; text-align: right; }
   .jj-signature .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
   .jj-signature .jj-caption-voices { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: clamp(18px, 2.5vw, 32px); color: #e6c34a; }
-  @media (max-width: 720px) { footer { padding: 20px; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
+  @media (max-width: 720px) { footer { padding: 20px; } .footer-body-left { text-align: center; max-width: none; margin: 0 auto; } .footer-body-left .footer-links { text-align: center; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
   .footer-links { margin-top: 10px; }
   .footer-links a { color: #9bb3d9; text-decoration: none; font-size: 12px; }
   .footer-links a:hover { text-decoration: underline; }
@@ -36944,13 +36946,16 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
   <img id="lightboxImg" src="" alt="">
   <div class="lightbox-caption" id="lightboxCaption"></div>
 </div>
-<footer>The Birds of Great Britain &middot; student gallery &middot; complete, Volumes I&ndash;V &middot; sourced from Gould&rsquo;s original 1862&ndash;1873 plates and text
+<footer>
+  <div class="footer-body-left">
+  The Birds of Great<br>Britain &middot; student gallery<br>&middot; complete, Volumes I&ndash;V<br>&middot; sourced from Gould&rsquo;s<br>original 1862&ndash;1873 plates and<br>text
   <div class="footer-links">
     <a href="gb_reclassification_summary.html">What changed, and why &rarr;</a>
     &middot;
     <a href="gb_still_debated.html">Still debated &rarr;</a>
     &middot;
     <a href="gb_print_view.html">Print / reference view &rarr;</a>
+  </div>
   </div>
   <div class="jj-signature">
     <span class="jj-initials">JJ</span>
