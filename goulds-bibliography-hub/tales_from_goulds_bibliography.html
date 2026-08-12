@@ -86,7 +86,13 @@
   .hub-map { margin-top: 10px; }
   .hub-map img { max-width: 100%; border: 1px solid var(--border); border-radius: 6px; }
   #empty-msg { display: none; text-align: center; padding: 60px; color: var(--accent-2); }
-  footer { text-align: center; padding: 30px; font-size: 11px; color: var(--accent-2); border-top: 1px solid var(--border); }
+  footer { position: relative; text-align: center; padding: 30px 100px 30px 30px; font-size: 11px; color: var(--accent-2); border-top: 1px solid var(--border); }
+  .jj-signature { position: absolute; right: 24px; bottom: 18px; text-align: right; }
+  .jj-signature .jj-initials { display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-weight: 700; color: #b8860b; line-height: 1; letter-spacing: 0.02em; font-size: clamp(36px, 5vw, 64px); }
+  .jj-signature .jj-caption { display: block; margin-top: 8px; max-width: 460px; font-size: 11px; line-height: 1.7; text-align: right; }
+  .jj-signature .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
+  .jj-signature .jj-caption-voices { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: clamp(18px, 2.5vw, 32px); color: #b8860b; }
+  @media (max-width: 720px) { footer { padding: 30px; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
 </style>
 </head>
 <body>
@@ -5174,7 +5180,12 @@ Bechstein and his wife had no surviving children of their own, but in 1810 he ad
   </div>
 </div>
 <div id="empty-msg">No entries match your search.</div>
-<footer>Part of the GouldianKnot project family &middot; canonical source for citation research shared across Gould&rsquo;s Birds of Great Britain, Birds of Europe, and future book projects</footer>
+<footer>Part of the GouldianKnot project family &middot; canonical source for citation research shared across Gould&rsquo;s Birds of Great Britain, Birds of Europe, and future book projects
+  <div class="jj-signature">
+    <span class="jj-initials">JJ</span>
+    <span class="jj-caption"><span class="jj-caption-voices">&ldquo;Voices&rdquo;</span> &mdash; a Summer Study in nineteenth&#8209;century Natural History.<br>The curious intersection of ideas &mdash; History of Science, Art and Romanticism &mdash;<br>as seen through the eyes of Elizabeth Gould (1804&nbsp;&ndash;&nbsp;1841),<br>the hidden illustrator behind John Gould&rsquo;s publishing works in Ornithology.<br>Collection of research notes from a German forest.<br>2026<br><a class="jj-contact-link" href="../contact.html">Contact</a></span>
+  </div>
+</footer>
 <script>
 const searchEl = document.getElementById('search');
 const emptyMsg = document.getElementById('empty-msg');
