@@ -37210,7 +37210,8 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
   });
 
   function applyFilter() {
-    var q = search.value.trim().toLowerCase();
+    function normalizeSearch(s) { return s.replace(/-/g, ' ').replace(/\s+/g, ' ').trim(); }
+    var q = normalizeSearch(search.value.trim().toLowerCase());
     var statusVal = statusFilter.value;
     var shown = 0;
     cards.forEach(function(c) {
@@ -37218,8 +37219,8 @@ Thalassidroma pelagica, Vig. Zool. Journ., vol. ii. p. 405.
       // a hit that only turns up inside the narrative account text
       // ("secondary") -- see the comment on search_primary/search_secondary
       // in gb_build.py.
-      var matchesPrimary = !!q && c.getAttribute('data-search-primary').indexOf(q) !== -1;
-      var matchesSecondary = !!q && !matchesPrimary && c.getAttribute('data-search-secondary').indexOf(q) !== -1;
+      var matchesPrimary = !!q && normalizeSearch(c.getAttribute('data-search-primary')).indexOf(q) !== -1;
+      var matchesSecondary = !!q && !matchesPrimary && normalizeSearch(c.getAttribute('data-search-secondary')).indexOf(q) !== -1;
       var matchesSearch = !q || matchesPrimary || matchesSecondary;
       var matchesVolume = !activeVolume || c.getAttribute('data-volume') === activeVolume;
       var matchesStatus = !statusVal || c.getAttribute('data-status') === statusVal;
