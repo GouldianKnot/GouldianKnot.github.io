@@ -45,13 +45,43 @@
 <h1>How to Find a Cited Work Without a Direct Link</h1>
 <div class="subtitle">A working guide to 19th-century citation detective work, written from the actual research trail behind Gould&rsquo;s Library &mdash; including the dead ends.</div>
 
+<img src="citation_example_plate27.png" alt="Gould's original citation list for Circus cineraceus, the Ash-coloured Harrier, as printed in Birds of Great Britain" style="display:block; width:100%; height:auto; margin:14px 0 22px;" loading="lazy">
+
 <div class="intro-box">
-Every entry in Gould&rsquo;s Library now shows a working link to the actual book or journal it cites. But a link is the <em>answer</em>, not the method. If you were handed one of Gould&rsquo;s citations cold &mdash; something like <code>cinerascens, Barb. Rev. Zool. 1838, p. 121.</code> &mdash; with no link at all, how would you actually go about finding it? That's a real, transferable research skill, useful for any old citation in any field, not just birds. This page walks through the method, using real cases from this project where the search took real work &mdash; including two where the first answer we found was confidently wrong.
+Every entry in Gould&rsquo;s Library now shows a working link to the actual book or journal it cites. But a link is the <em>answer</em>, not the method. If you were handed one of Gould&rsquo;s citations cold &mdash; something like:<br><br><code style="display:inline-block; margin: 6px 0;">Falco cinerascens, Barb. Rev. Zool. 1838, p. 121.</code><br><br>&mdash; with no link at all, how would you actually go about finding it? That's a real, transferable research skill, useful for any old citation in any field, not just birds. This page walks through the method, using real cases from this project where the search took real work &mdash; including two where the first answer we found was confidently wrong.
 </div>
 
 <h2>1. Decode the shorthand first</h2>
 <p>Old citations are compressed almost to the point of being a private code. <code>Barb. Rev. Zool. 1838, p. 121</code> breaks down into four separate pieces, and you need all four before you can search intelligently: an <b>author abbreviation</b> (<code>Barb.</code>), a <b>work abbreviation</b> (<code>Rev. Zool.</code>), a <b>year</b> (<code>1838</code>), and a <b>page</b> (<code>p. 121</code>). Do this decoding step deliberately, on paper or in a note, before you search anything. A citation you haven&rsquo;t fully parsed will send you in circles.</p>
 <p>Some abbreviations are guessable from context (<code>Rev. Zool.</code> is almost certainly some "Revue Zoologique"). Others need a specialized reference: 19th-century zoological writing followed fairly standard abbreviation conventions for journal titles, and the Biodiversity Heritage Library's own author and title indexes (see below) are often the fastest way to expand one you don't recognize, since you can search the abbreviation itself and see what full titles BHL already associates with it.</p>
+
+<h3>AI (Gemini) suggests as follows:</h3>
+<p>Before turning to the library search engines below, here's what an AI research assistant (Gemini) proposed when asked to help resolve the <code>Rev. Zool.</code> abbreviation from the Barbieri citation above. As with any AI-sourced lead in this project, treat it as a starting point to verify, not a finished answer &mdash; see the Sclater/Ibis case study further down this page for what happens when that verification step gets skipped.</p>
+
+<h4 style="font-size: 14px; margin-top: 22px; margin-bottom: 8px; color: #6b3d1f;">Primary databases &amp; registries</h4>
+<ul class="tool-list">
+  <li><b><a href="https://www.issn.org/services/online-services/access-to-the-ltwa/" target="_blank">ISSN List of Title Word Abbreviations (LTWA)</a></b> &mdash; the official ISO 4 standard database for scientific abbreviation rules and canonical word stems (<code>Rev.</code> = <em>Revue</em>, <code>Zool.</code> = <em>Zoologique/Zoologie</em>).</li>
+  <li><b><a href="https://www.biodiversitylibrary.org/" target="_blank">Biodiversity Heritage Library (BHL)</a></b> &amp; <b><a href="https://biostor.org/" target="_blank">BioStor</a></b> &mdash; the largest central digital archive for historical taxonomic literature. Searching their serials catalog or article metadata easily disambiguates historical volume and page citations.</li>
+  <li><b><a href="http://zoobank.org/" target="_blank">ZooBank</a></b> &mdash; the official register of the International Commission on Zoological Nomenclature (ICZN). It catalogs original taxonomic descriptions along with full, unabbreviated journal names.</li>
+  <li><b><a href="https://www.marinespecies.org/" target="_blank">World Register of Marine Species (WoRMS)</a></b> &mdash; maintains an extensive, curated bibliography database specifically designed to map legacy citation abbreviations to full source titles.</li>
+  <li><b><a href="https://www.zoonomen.net/" target="_blank">Zoonomen (Nomenclatural Data)</a></b> &mdash; includes an explicit index of historical zoological publication citations and their historical shorthand variants.</li>
+</ul>
+
+<h4 style="font-size: 14px; margin-top: 22px; margin-bottom: 8px; color: #6b3d1f;">Resolving &ldquo;Rev. Zool.&rdquo;</h4>
+<p>Because <b>Rev.</b> (<em>Revue</em>) and <b>Zool.</b> (<em>Zoologique / Zoologie</em>) are standardized ISO abbreviations, <code>Rev. Zool.</code> is ambiguous on its own. Depending on the publication year, region, or taxon involved, it almost always refers to one of the following historical journals:</p>
+
+<div class="checklist">
+<ol>
+<li><b>Revue Zoologique</b> <em>(Paris, 1838&ndash;1848)</em> &mdash; published by the Soci&eacute;t&eacute; Cuvierienne. Very common in 19th-century descriptions (birds, insects, mammals).</li>
+<li><b>Revue et Magasin de Zoologie Pure et Appliqu&eacute;e</b> <em>(Paris, 1849&ndash;1879)</em> &mdash; the direct successor to the <em>Revue Zoologique</em>. Often shortened to <code>Rev. Zool.</code> or <code>Rev. Mag. Zool.</code></li>
+<li><b>Revue de Zoologie Africaine</b> <em>(Tervuren, Belgium, 1911&ndash;1973)</em> &mdash; focuses on African fauna. Later expanded to <em>Revue de Zoologie et de Botanique Africaines</em> (<code>Rev. Zool. Bot. Afr.</code>). Often cited simply as <code>Rev. Zool. Afr.</code> or <code>Rev. Zool.</code></li>
+<li><b>Revue Suisse de Zoologie</b> <em>(Geneva, 1893&ndash;present)</em> &mdash; standard ISO abbreviation is <code>Rev. Suisse Zool.</code>, but older references occasionally truncate it to <code>Rev. Zool.</code> if context was implied.</li>
+</ol>
+</div>
+
+<div class="intro-box">
+<b>Rule of thumb, per Gemini:</b> if the paper is from the mid-1800s, it is almost certainly the French <em>Revue Zoologique</em> (or <em>Revue et Magasin</em>). If it involves African biodiversity from the 20th century, it points to <em>Revue de Zoologie Africaine</em>.
+</div>
 
 <h2>2. Search the actual digitized-library ecosystem, not just Google</h2>
 <p>A generic web search for an old citation often turns up nothing, or worse, a confident-looking wrong answer (see the warning below). The material you actually want almost always lives in one of a handful of large historical-scanning projects, and it's worth learning to search each of them directly rather than relying on a search engine to find them for you.</p>
@@ -65,7 +95,7 @@ Every entry in Gould&rsquo;s Library now shows a working link to the actual book
 <p>On every one of these, search the <em>expanded</em> title in quotation marks, plus the year &mdash; not the abbreviation, and not a loose paraphrase. <code>"Revue Zoologique" 1838</code> finds things; <code>Barb Rev Zool</code> mostly doesn't.</p>
 
 <h3>The full directory: every library Gould's Library actually used</h3>
-<p>The 414 citations resolved on Gould's Library page didn't come from one place &mdash; they're scattered across more than two dozen different digital libraries, each with its own scope, its own strengths, and its own reason for existing. Below is every one of them, so you know what you're actually looking at when a search leads you there. Where a citation you're chasing turns out not to be in any of these, that's often a sign the work is held by a specialist library not listed here yet &mdash; for instance, Jan found a citation in this project herself using the Real Jardín Botánico's own digital library in Madrid (<code>bibdigital.rjb.csic.es</code>), a botanical-garden library not otherwise needed for this bird-focused project but exactly the kind of specialist collection worth knowing exists.</p>
+<p>The 414 citations resolved on Gould's Library page didn't come from one place &mdash; they're scattered across more than two dozen different digital libraries, each with its own scope, its own strengths, and its own reason for existing. Below is every one of them, so you know what you're actually looking at when a search leads you there. Where a citation you're chasing turns out not to be in any of these, that's often a sign the work is held by a specialist library not listed here yet &mdash; for instance, Jan found a citation in this project himself using the Real Jardín Botánico's own digital library in Madrid (<code>bibdigital.rjb.csic.es</code>), a botanical-garden library not otherwise needed for this bird-focused project but exactly the kind of specialist collection worth knowing exists.</p>
 
 <div class="lib-directory">
 
