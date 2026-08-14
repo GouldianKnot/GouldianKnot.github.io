@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citations Database — Birds of Great Britain (Gould)</title>
+<style>
+  :root {
+    --paper: #faf5ea; --paper-dark: #f0e6d2; --ink: #2b241b; --ink-soft: #5a4f3f;
+    --accent: #7a5230; --accent-2: #8a6d3b; --border: #d8c9a8; --card-bg: #fffdf8;
+    --gould-teal: #1f7a6e; --unres: #c0392b;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #0a1b2d; color: #dfe4ec;
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  }
+  header {
+    text-align: center; padding: 44px 20px 30px; background: var(--paper-dark);
+    border-bottom: 1px solid var(--border);
+  }
+  header .eyebrow {
+    letter-spacing: 0.25em; text-transform: uppercase; font-size: 12px; color: var(--accent); margin-bottom: 10px;
+  }
+  header h1 { font-size: clamp(24px, 4vw, 36px); margin: 0 0 8px; font-weight: 400; color: var(--ink); }
+  header p.sub { color: var(--ink-soft); font-size: 14.5px; margin: 0 auto; max-width: 680px; line-height: 1.55; font-style: italic; }
+  .back-link {
+    display: inline-block; margin-top: 14px; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12.5px; font-weight: 600; color: var(--gould-teal); text-decoration: none;
+  }
+  .back-link:hover { text-decoration: underline; }
+  .stats-bar {
+    max-width: 680px; margin: 16px auto 0; padding: 10px 18px; background: var(--card-bg);
+    border: 1px solid var(--border); border-radius: 8px; font-size: 13px; color: var(--ink-soft);
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .stats-bar strong { color: var(--accent); }
+
+  .toolbar {
+    max-width: 1200px; margin: 24px auto 0; padding: 0 24px; display: flex; justify-content: center;
+    gap: 10px; flex-wrap: wrap;
+  }
+  #search {
+    width: 100%; max-width: 460px; padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--card-bg); color: var(--ink); font-size: 15px; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  #search::placeholder { color: var(--ink-soft); }
+  #search:focus { outline: none; border-color: var(--accent-2); }
+  .chip-row { max-width: 1200px; margin: 12px auto 0; padding: 0 24px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+  .chip {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12.5px; font-weight: 600;
+    padding: 6px 14px; border-radius: 20px; border: 1px solid #33465e; background: #12283f; color: #cdd9e6;
+    cursor: pointer; user-select: none; transition: all 0.15s ease;
+  }
+  .chip:hover { border-color: var(--gould-teal); }
+  .chip.active { background: var(--gould-teal); border-color: var(--gould-teal); color: #fff; }
+
+  .result-count {
+    max-width: 1200px; margin: 14px auto 0; padding: 0 24px; font-size: 12.5px; color: #8ba0b8;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; text-align: center;
+  }
+
+  .grid {
+    max-width: 1300px; margin: 20px auto 60px; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
+  }
+  .tile {
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25); display: flex; flex-direction: column;
+  }
+  .tile-head {
+    padding: 12px 16px 8px; border-bottom: 1px solid var(--border);
+  }
+  .tile-head .common { font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+  .tile-head .latin { font-style: italic; color: var(--ink-soft); font-size: 13px; margin-top: 2px; }
+  .tile-head .meta {
+    margin-top: 6px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px;
+    color: var(--accent); letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .tile-img { border-bottom: 1px solid var(--border); line-height: 0; }
+  .tile-img img { width: 100%; display: block; cursor: zoom-in; }
+
+  .lightbox-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(8,14,22,0.92); z-index: 1000;
+    padding: 30px 20px; overflow-y: auto;
+  }
+  .lightbox-overlay.open { display: block; }
+  .lightbox-inner {
+    max-width: 1400px; margin: 0 auto; background: var(--card-bg); border-radius: 10px; overflow: hidden;
+    display: flex; flex-wrap: wrap; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: fixed; top: 18px; right: 26px; z-index: 1001; background: #12283f; color: #eef2f7;
+    border: 1px solid #33465e; border-radius: 8px; font-size: 14px; font-weight: 600; padding: 8px 16px;
+    cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .lightbox-close:hover { background: var(--gould-teal); border-color: var(--gould-teal); }
+  .lightbox-img-pane {
+    flex: 1 1 560px; min-width: 320px; line-height: 0;
+    display: flex; align-items: flex-start; justify-content: center;
+  }
+  .lightbox-img-pane img { width: 100%; height: auto; display: block; }
+  .lightbox-text-pane {
+    flex: 1 1 420px; min-width: 320px; padding: 22px 26px; max-height: 90vh; overflow-y: auto;
+  }
+  .lightbox-text-pane .common { font-size: 20px; font-weight: 600; color: var(--ink); }
+  .lightbox-text-pane .latin { font-style: italic; color: var(--ink-soft); font-size: 14px; margin: 2px 0 14px; }
+  .lightbox-text-pane .section-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin: 18px 0 8px;
+  }
+  .lightbox-text-pane .section-label:first-of-type { margin-top: 0; }
+  .lightbox-raw {
+    font-family: 'SF Mono', Consolas, monospace; font-size: 12.5px; line-height: 1.6; color: var(--ink);
+    background: var(--paper-dark); border: 1px solid var(--border); border-radius: 6px; padding: 12px 14px;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .tile-citations { padding: 12px 16px 16px; flex: 1; }
+  .tile-citations .cit-label {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 6px;
+  }
+  .cit-list { margin: 0; padding: 0; list-style: none; }
+  .cit-list li { font-size: 13px; line-height: 1.5; color: var(--ink); margin-bottom: 5px; padding-left: 0; }
+  .cit-list li a { color: var(--gould-teal); text-decoration: none; }
+  .cit-list li a:hover { text-decoration: underline; }
+  .in-progress-tag {
+    color: var(--unres); font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.03em; margin-right: 4px;
+  }
+  .prose-note {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; color: var(--ink-soft);
+    font-style: italic; margin-top: 6px;
+  }
+  .tile-footer {
+    padding: 8px 16px 12px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11px; color: var(--ink-soft);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .no-results {
+    text-align: center; color: #8ba0b8; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 60px 20px; font-size: 15px;
+  }
+  footer {
+    position: relative; text-align: center; padding: 30px 90px 220px 24px; color: #6f8298; font-size: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .footer-citation { margin-top: 8px; color: #52627a; font-size: 11.5px; }
+  .jj-signature { position: absolute; right: 24px; bottom: 14px; text-align: right; }
+  .jj-signature .jj-initials {
+    display: block; font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-weight: 700; color: gold; line-height: 1; letter-spacing: 0.02em; font-size: clamp(36px, 5vw, 64px); text-align: right;
+  }
+  .jj-signature .jj-caption { display: block; margin: 8px 0 0 auto; max-width: 460px; font-size: 11px; line-height: 1.7; text-align: right; }
+  .jj-signature .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
+  .jj-signature .jj-caption-voices {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    font-size: clamp(18px, 2.5vw, 32px); color: #e6c34a;
+  }
+  @media (max-width: 720px) {
+    footer { padding: 30px 20px 20px; }
+    .jj-signature { position: static; margin-top: 26px; text-align: center; }
+    .jj-signature .jj-initials { text-align: center; }
+    .jj-signature .jj-caption { text-align: center; margin: 8px auto 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">GouldianKnot &middot; Birds of Great Britain</div>
+  <h1>Citations Database</h1>
+  <p class="sub">A focused gallery of John Gould's own printed citation blocks — cropped directly from the original scanned volumes — paired with the resolved bibliographic links and in-progress citations for each species. Built to help track the remaining citation-matching work at a glance.</p>
+  <a class="back-link" href="../index.html">&larr; back to the full archive</a>
+  <div class="stats-bar" id="statsBar"></div>
+</header>
+
+<div class="toolbar">
+  <input id="search" type="text" placeholder="Search by species name (common or Latin) or plate number&hellip;">
+</div>
+<div class="chip-row" id="volChips"></div>
+<div class="result-count" id="resultCount"></div>
+
+<div class="grid" id="grid"></div>
+<div class="no-results" id="noResults" style="display:none;">No species match your search.</div>
+
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose">&times; Close</button>
+  <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
+
+<footer>
+  345 of 364 species with their citation data from Gould.
+  <div class="footer-citation">Gould, J. (1862&ndash;1873). <em>The birds of Great Britain</em> (Vols. 1&ndash;5). Published by the author.</div>
+  <div class="jj-signature">
+    <span class="jj-initials">JJ</span>
+    <span class="jj-caption"><span class="jj-caption-voices">&ldquo;Voices&rdquo;</span> &mdash; a Summer Study in nineteenth&#8209;century Natural History.<br>The curious intersection of ideas &mdash; History of Science, Art and Romanticism &mdash;<br>as seen through the eyes of Elizabeth Gould (1804&nbsp;&ndash;&nbsp;1841),<br>the hidden illustrator behind John Gould&rsquo;s publishing works in Ornithology.<br>Collection of research notes from a German forest.<br>2026<br><a class="jj-contact-link" href="../../contact.html">Contact</a></span>
+  </div>
+</footer>
+
+<script src="citations_data.json.js"></script>
+<script>
+  const DATA = window.CITATIONS_DATA;
+  const grid = document.getElementById('grid');
+  const searchBox = document.getElementById('search');
+  const chipRow = document.getElementById('volChips');
+  const resultCount = document.getElementById('resultCount');
+  const noResults = document.getElementById('noResults');
+  const statsBar = document.getElementById('statsBar');
+
+  if (!Array.isArray(DATA)) {
+    statsBar.textContent = 'Citation data failed to load (citations_data.json.js). Try a hard refresh (Cmd+Shift+R) — if that doesn\'t fix it, the file may not have finished copying.';
+    statsBar.style.color = 'var(--unres)';
+    throw new Error('window.CITATIONS_DATA is missing or not an array — aborting render.');
+  }
+
+  let activeVol = null;
+
+  const totalUnresolved = DATA.reduce((s, r) => s + r.unresolvedCount, 0);
+  const totalCitations = DATA.reduce((s, r) => s + r.totalCount, 0);
+  statsBar.innerHTML = `<strong>${DATA.length}</strong> species &middot; <strong>${totalCitations}</strong> citation lines &middot; <strong>${totalCitations - totalUnresolved}</strong> resolved &middot; <strong>${totalUnresolved}</strong> in progress`;
+
+  const VOLS = ['I','II','III','IV','V'];
+  VOLS.forEach(v => {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    chip.textContent = 'Vol. ' + v;
+    chip.dataset.vol = v;
+    chip.addEventListener('click', () => {
+      activeVol = (activeVol === v) ? null : v;
+      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c.dataset.vol === activeVol));
+      render();
+    });
+    chipRow.appendChild(chip);
+  });
+
+  function citationLineHTML(c) {
+    if (c.resolved && c.href) {
+      return `<li><a href="../${c.href}" target="_blank">${escapeHtml(c.text)}</a></li>`;
+    }
+    return `<li><span class="in-progress-tag">In progress</span>${escapeHtml(c.text)}${c.prose ? '<div class="prose-note">from Gould\'s continuous note, not a discrete citation line</div>' : ''}</li>`;
+  }
+
+  function escapeHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function tileHTML(r) {
+    const citHTML = r.citations.map(citationLineHTML).join('');
+    return `
+    <div class="tile" data-id="${r.id}">
+      <div class="tile-head">
+        <div class="common">${escapeHtml(r.common)}</div>
+        <div class="latin">${escapeHtml(r.latin)}</div>
+        <div class="meta">Vol. ${r.volume} &middot; Plate ${r.plateNum}</div>
+      </div>
+      <div class="tile-img"><img src="${r.img}" alt="Gould's citation block for ${escapeHtml(r.common)}" loading="lazy" data-lightbox-id="${r.id}"></div>
+      <div class="tile-citations">
+        <div class="cit-label">Gould's citations</div>
+        <ul class="cit-list">${citHTML}</ul>
+      </div>
+      <div class="tile-footer">
+        <span>${r.totalCount} citation${r.totalCount === 1 ? '' : 's'}</span>
+        <span>${r.unresolvedCount ? r.unresolvedCount + ' in progress' : 'all resolved'}</span>
+      </div>
+    </div>`;
+  }
+
+  function matches(r, q) {
+    if (!q) return true;
+    q = q.toLowerCase();
+    return r.common.toLowerCase().includes(q) ||
+           r.latin.toLowerCase().includes(q) ||
+           r.plateNum.toLowerCase().includes(q) ||
+           ('plate ' + r.plateNum).toLowerCase().includes(q);
+  }
+
+  function render() {
+    const q = searchBox.value.trim();
+    const filtered = DATA.filter(r => (!activeVol || r.volume === activeVol) && matches(r, q));
+    grid.innerHTML = filtered.map(tileHTML).join('');
+    noResults.style.display = filtered.length ? 'none' : 'block';
+    resultCount.textContent = `Showing ${filtered.length} of ${DATA.length} species`;
+  }
+
+  searchBox.addEventListener('input', render);
+  render();
+
+  // --- Lightbox: click a citation-block image to see it full-size, with the
+  // extracted OCR text alongside for direct comparison against the scan. ---
+  const lightbox = document.getElementById('lightbox');
+  const lightboxInner = document.getElementById('lightboxInner');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function rawTextBlock(r) {
+    return r.citations.map(c => {
+      const tag = c.resolved ? '[resolved]' : '[in progress]';
+      return `${tag} ${c.text}`;
+    }).join('\n');
+  }
+
+  function openLightbox(id) {
+    const r = DATA.find(x => x.id === id);
+    if (!r) return;
+    const citHTML = r.citations.map(citationLineHTML).join('');
+    lightboxInner.innerHTML = `
+      <div class="lightbox-img-pane">
+        <img src="${r.img}" alt="Gould's citation block for ${escapeHtml(r.common)}">
+      </div>
+      <div class="lightbox-text-pane">
+        <div class="common">${escapeHtml(r.common)}</div>
+        <div class="latin">${escapeHtml(r.latin)} &middot; Vol. ${r.volume}, Plate ${r.plateNum}</div>
+
+        <div class="section-label">Rendered citations (as shown on the tile)</div>
+        <ul class="cit-list">${citHTML}</ul>
+
+        <div class="section-label">Raw OCR extraction (plain text, one line per citation)</div>
+        <div class="lightbox-raw">${escapeHtml(rawTextBlock(r))}</div>
+      </div>`;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightboxInner.innerHTML = '';
+    document.body.style.overflow = '';
+  }
+
+  grid.addEventListener('click', (e) => {
+    const img = e.target.closest('img[data-lightbox-id]');
+    if (img) openLightbox(img.dataset.lightboxId);
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+</script>
+
+<!--about-link--><a href="../../about.html" style="position:fixed; bottom:6px; left:8px; font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif; font-size:clamp(18px, 2.5vw, 32px); color:#bbbbbb; text-decoration:none; z-index:9999; opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">About</a><!--/about-link-->
+</body>
+</html>
