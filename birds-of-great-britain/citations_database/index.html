@@ -86,7 +86,7 @@
   }
   .lightbox-overlay.open { display: block; }
   .lightbox-inner {
-    max-width: 1400px; margin: 0 auto; background: var(--card-bg); border-radius: 10px; overflow: hidden;
+    max-width: 1800px; margin: 0 auto; background: var(--card-bg); border-radius: 10px; overflow: hidden;
     display: flex; flex-wrap: wrap; box-shadow: 0 8px 40px rgba(0,0,0,0.5);
   }
   .lightbox-close {
@@ -96,12 +96,33 @@
   }
   .lightbox-close:hover { background: var(--gould-teal); border-color: var(--gould-teal); }
   .lightbox-img-pane {
-    flex: 1 1 560px; min-width: 320px; line-height: 0;
+    flex: 1 1 100%; width: 100%; min-width: 320px; line-height: 0;
     display: flex; align-items: flex-start; justify-content: center;
+    background: var(--paper-dark); position: relative; cursor: zoom-in;
   }
   .lightbox-img-pane img { width: 100%; height: auto; display: block; }
+  .lightbox-img-pane .zoom-hint {
+    position: absolute; bottom: 10px; right: 14px; background: rgba(8,14,22,0.75); color: #eef2f7;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 12px; padding: 5px 10px;
+    border-radius: 6px; pointer-events: none;
+  }
   .lightbox-text-pane {
-    flex: 1 1 420px; min-width: 320px; padding: 22px 26px; max-height: 90vh; overflow-y: auto;
+    flex: 1 1 100%; width: 100%; min-width: 320px; padding: 22px 26px; max-height: 46vh; overflow-y: auto;
+  }
+  .fullsize-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(4,7,11,0.97); z-index: 1100;
+    overflow: auto; padding: 60px 20px 20px;
+  }
+  .fullsize-overlay.open { display: block; }
+  .fullsize-overlay img { display: block; margin: 0 auto; max-width: none; }
+  .fullsize-close {
+    position: fixed; top: 18px; right: 26px; z-index: 1101; background: #12283f; color: #eef2f7;
+    border: 1px solid #33465e; border-radius: 8px; font-size: 14px; font-weight: 600; padding: 8px 16px;
+    cursor: pointer; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  .fullsize-hint {
+    position: fixed; top: 22px; left: 26px; z-index: 1101; color: #b9c4d1;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px;
   }
   .lightbox-text-pane .common { font-size: 20px; font-weight: 600; color: var(--ink); }
   .lightbox-text-pane .latin { font-style: italic; color: var(--ink-soft); font-size: 14px; margin: 2px 0 14px; }
@@ -175,7 +196,7 @@
 </header>
 
 <div class="toolbar">
-  <input id="search" type="text" placeholder="Search by species name (common or Latin) or plate number&hellip;">
+  <input id="search" type="text" placeholder="Search by species name, plate number, or citation text (e.g. an author name)&hellip;">
 </div>
 <div class="chip-row" id="volChips"></div>
 <div class="result-count" id="resultCount"></div>
@@ -186,6 +207,12 @@
 <div class="lightbox-overlay" id="lightbox">
   <button class="lightbox-close" id="lightboxClose">&times; Close</button>
   <div class="lightbox-inner" id="lightboxInner"></div>
+</div>
+
+<div class="fullsize-overlay" id="fullsizeOverlay">
+  <span class="fullsize-hint">Scroll to see the full scan at full size &middot; click anywhere or press Esc to go back</span>
+  <button class="fullsize-close" id="fullsizeClose">&times; Close</button>
+  <img id="fullsizeImg" src="" alt="">
 </div>
 
 <footer>
@@ -273,7 +300,8 @@
     return r.common.toLowerCase().includes(q) ||
            r.latin.toLowerCase().includes(q) ||
            r.plateNum.toLowerCase().includes(q) ||
-           ('plate ' + r.plateNum).toLowerCase().includes(q);
+           ('plate ' + r.plateNum).toLowerCase().includes(q) ||
+           r.citations.some(c => c.text.toLowerCase().includes(q));
   }
 
   function render() {
@@ -305,17 +333,17 @@
     if (!r) return;
     const citHTML = r.citations.map(citationLineHTML).join('');
     lightboxInner.innerHTML = `
-      <div class="lightbox-img-pane">
+      <div class="lightbox-img-pane" data-hires="${r.img}" data-caption="Gould's original citation list for ${escapeHtml(r.common)}">
         <img src="${r.img}" alt="Gould's citation block for ${escapeHtml(r.common)}">
+        <span class="zoom-hint">&#128269; Click to view at full size</span>
       </div>
       <div class="lightbox-text-pane">
         <div class="common">${escapeHtml(r.common)}</div>
         <div class="latin">${escapeHtml(r.latin)} &middot; Vol. ${r.volume}, Plate ${r.plateNum}</div>
 
-        <div class="section-label">Rendered citations (as shown on the tile)</div>
         <ul class="cit-list">${citHTML}</ul>
 
-        <div class="section-label">Raw OCR extraction (plain text, one line per citation)</div>
+        <div class="section-label">OCR Extract</div>
         <div class="lightbox-raw">${escapeHtml(rawTextBlock(r))}</div>
       </div>`;
     lightbox.classList.add('open');
@@ -338,6 +366,35 @@
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+
+  // --- Full-size view: click the scan inside the comparison lightbox to see
+  // it at its true native resolution (scrollable), since these panoramic
+  // citation-list scans are too fine-printed to read shrunk into a pane. ---
+  const fullsizeOverlay = document.getElementById('fullsizeOverlay');
+  const fullsizeImg = document.getElementById('fullsizeImg');
+  const fullsizeClose = document.getElementById('fullsizeClose');
+
+  function openFullsize(src, caption) {
+    fullsizeImg.src = src;
+    fullsizeImg.alt = caption || '';
+    fullsizeOverlay.classList.add('open');
+  }
+  function closeFullsize() {
+    fullsizeOverlay.classList.remove('open');
+    fullsizeImg.src = '';
+  }
+
+  lightboxInner.addEventListener('click', (e) => {
+    const pane = e.target.closest('.lightbox-img-pane');
+    if (pane) openFullsize(pane.dataset.hires, pane.dataset.caption);
+  });
+  fullsizeClose.addEventListener('click', closeFullsize);
+  fullsizeOverlay.addEventListener('click', (e) => {
+    if (e.target === fullsizeOverlay || e.target === fullsizeImg) closeFullsize();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && fullsizeOverlay.classList.contains('open')) closeFullsize();
   });
 </script>
 
