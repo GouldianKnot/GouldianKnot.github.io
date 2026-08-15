@@ -254,7 +254,7 @@
 
   const totalUnresolved = DATA.reduce((s, r) => s + r.unresolvedCount, 0);
   const totalCitations = DATA.reduce((s, r) => s + r.totalCount, 0);
-  statsBar.innerHTML = `<strong>${DATA.length}</strong> species &middot; <strong>${totalCitations}</strong> citation lines &middot; <strong>${totalCitations - totalUnresolved}</strong> resolved &middot; <strong>${totalUnresolved}</strong> in progress`;
+  statsBar.innerHTML = `<strong>${DATA.length}</strong> species &middot; <strong>${totalCitations}</strong> citation lines &middot; <strong>${totalCitations - totalUnresolved}</strong> resolved &middot; <strong>${totalUnresolved}</strong> not verified`;
 
   const VOLS = ['I','II','III','IV','V'];
   VOLS.forEach(v => {
@@ -280,7 +280,7 @@
     if (c.resolved && c.href) {
       return `<li><a href="../${c.href}" target="_blank">${escapeHtml(c.text)}</a>${note}</li>`;
     }
-    return `<li><span class="in-progress-tag">In progress</span>${escapeHtml(c.text)}${c.prose ? '<div class="prose-note">from Gould\'s continuous note, not a discrete citation line</div>' : ''}${note}</li>`;
+    return `<li><span class="in-progress-tag">Not verified</span>${escapeHtml(c.text)}${c.prose ? '<div class="prose-note">from Gould\'s continuous note, not a discrete citation line</div>' : ''}${note}</li>`;
   }
 
   function escapeHtml(s) {
@@ -305,7 +305,7 @@
       </div>
       <div class="tile-footer">
         <span>${r.totalCount} citation${r.totalCount === 1 ? '' : 's'}</span>
-        <span>${r.unresolvedCount ? r.unresolvedCount + ' in progress' : 'all resolved'}</span>
+        <span>${r.unresolvedCount ? r.unresolvedCount + ' not verified' : 'all resolved'}</span>
       </div>
     </div>`;
   }
@@ -339,7 +339,7 @@
 
   function rawTextBlock(r) {
     return r.citations.map(c => {
-      const tag = c.resolved ? '[resolved]' : '[in progress]';
+      const tag = c.resolved ? '[resolved]' : '[not verified]';
       return `${tag} ${c.text}`;
     }).join('\n');
   }
