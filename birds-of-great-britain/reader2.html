@@ -1298,7 +1298,21 @@ window.addEventListener('resize', () => { requestAnimationFrame(measureAndShow);
   });
   lbClose.addEventListener('click', closeCitLightbox);
   lb.addEventListener('click', function(e){ if (e.target === lb) closeCitLightbox(); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && lb.classList.contains('open')) closeCitLightbox(); });
+  // Escape/Backspace mean "go back one level". The global handler above binds
+  // them to exitReader(), and bails out only when focus is in a SELECT/INPUT/
+  // contentEditable -- which this overlay is not, so previously BOTH fired and
+  // dismissing a scan threw the reader out of the book entirely. Capture phase
+  // runs ahead of that handler regardless of registration order, and the event
+  // is swallowed only while the scan is open; closed, exit behaviour is
+  // unchanged. Any future overlay that takes no focus will need the same guard.
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape' || e.key === 'Backspace') {
+      e.preventDefault();
+      e.stopPropagation();
+      closeCitLightbox();
+    }
+  }, true);
 })();
 
 // Globe button -- opens a small panel to jump straight to any Volume's
