@@ -193,6 +193,18 @@
     .jj-signature .jj-initials { text-align: center; }
     .jj-signature .jj-caption { text-align: center; margin: 8px auto 0; }
   }
+
+  /* --- "Did you mean" suggestion, shown only when a search finds nothing --- */
+  .suggest {
+    max-width: 680px; margin: 22px auto 0; padding: 14px 18px; text-align: center;
+    background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; color: var(--ink-soft);
+  }
+  .suggest b { color: var(--ink); font-weight: 600; }
+  .suggest a { color: var(--gould-teal); font-weight: 600; text-decoration: none;
+    border-bottom: 1px solid rgba(31,122,110,0.4); cursor: pointer; }
+  .suggest a:hover { border-bottom-color: var(--gould-teal); }
+  .suggest .sep { color: var(--border); margin: 0 6px; }
 </style>
 </head>
 <body>
@@ -212,6 +224,7 @@
 <div class="result-count" id="resultCount"></div>
 
 <div class="grid" id="grid"></div>
+<div class="suggest" id="suggest" style="display:none;"></div>
 <div class="no-results" id="noResults" style="display:none;">No species match your search.</div>
 
 <div class="lightbox-overlay" id="lightbox">
@@ -242,6 +255,7 @@
   const chipRow = document.getElementById('volChips');
   const resultCount = document.getElementById('resultCount');
   const noResults = document.getElementById('noResults');
+  const suggestBox = document.getElementById('suggest');
   const statsBar = document.getElementById('statsBar');
 
   if (!Array.isArray(DATA)) {
@@ -310,14 +324,146 @@
     </div>`;
   }
 
+
+  // ===========================================================================
+  // Search: normalise, then alias, then — only if nothing was found — suggest.
+  // Three separate ideas, deliberately not blended:
+  //   fold()   makes two spellings of the same thing compare equal (ligatures,
+  //            accents, stray punctuation). Not fuzzy.
+  //   ALIAS    lets a reader type the man's name and find Gould's abbreviation.
+  //            Not fuzzy either — just vocabulary.
+  //   dist()   Damerau-Levenshtein, used ONLY when a search returns nothing,
+  //            to offer "did you mean". Never mixed into results.
+  // ===========================================================================
+  const LIG = { 'æ':'ae','Æ':'ae','œ':'oe','Œ':'oe','ß':'ss' };
+  function fold(t) {
+    return String(t == null ? '' : t).toLowerCase()
+      .replace(/[æÆœŒß]/g, ch => LIG[ch])
+      .normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9. ]+/g, ' ');
+  }
+  const stripTags = h => String(h == null ? '' : h).replace(/<[^>]*>/g, ' ');
+
+  // Authority abbreviations, so typing the man's name finds the lines Gould
+  // printed short. Taken from the abbreviations that occur in this archive;
+  // one line per addition.
+  const ALIAS_PAIRS = [
+    ['linn.','linnaeus'], ['linn.','linne'], ['gmel.','gmelin'], ['bonap.','bonaparte'],
+    ['pall.','pallas'], ['briss.','brisson'], ['temm.','temminck'], ['vieill.','vieillot'],
+    ['bechst.','bechstein'], ['lath.','latham'], ['steph.','stephens'], ['flem.','fleming'],
+    ['macgill.','macgillivray'], ['cuv.','cuvier'], ['swains.','swainson'], ['naum.','naumann'],
+    ['blas.','blasius'], ['schleg.','schlegel'], ['less.','lesson'], ['scop.','scopoli'],
+    ['ill.','illiger'], ['savig.','savigny'], ['nilss.','nilsson'], ['daud.','daudin'],
+    ['hodgs.','hodgson'], ['degl.','degland'], ['cab.','cabanis'], ['mont.','montagu'],
+    ['keys.','keyserling'], ['kram.','kramer'], ['bodd.','boddaert'], ['retz','retzius'],
+    ['willugh.','willughby'], ['raj.','ray'], ['sparr.','sparrman'], ['jerd.','jerdon']
+  ];
+  const ALIAS = (() => {
+    const m = new Map();
+    const put = (k, v) => { const a = m.get(k) || []; if (!a.includes(v)) a.push(v); m.set(k, a); };
+    ALIAS_PAIRS.forEach(pair => { put(pair[0], pair[1]); put(pair[1], pair[0]); });
+    return m;
+  })();
+  function queryVariants(q) {
+    const out = new Set([q]);
+    (ALIAS.get(q) || []).forEach(v => out.add(v));
+    if (q.length >= 4) ALIAS.forEach((vals, key) => {
+      if (key.indexOf(q) === 0) { out.add(key); vals.forEach(v => out.add(v)); }
+    });
+    return Array.from(out);
+  }
+
+  // One folded haystack per species, built once at load: names, plate number,
+  // every citation line, and any research note hanging off one.
+  const HAY = new Map();
+  DATA.forEach(function (r) {
+    const parts = [r.common, r.latin, r.plateNum, 'plate ' + r.plateNum];
+    r.citations.forEach(function (c) {
+      parts.push(c.text);
+      if (c.note) parts.push(stripTags(c.note), c.noteLabel || '');
+    });
+    HAY.set(r.id, fold(parts.join(' · ')).replace(/\s+/g, ' '));
+  });
+
+  // Vocabulary for suggestions: every word of 4+ letters, commonest printed
+  // form kept for display, count kept for ranking ties.
+  const VOCAB = (() => {
+    const m = new Map();
+    const add = function (str) {
+      String(str == null ? '' : str).split(/[\s,;:()\[\]]+/).forEach(function (raw) {
+        const w = raw.replace(/^[^A-Za-zÀ-ɏ]+|[^A-Za-zÀ-ɏ.]+$/g, '');
+        if (w.replace(/\./g, '').length < 4) return;
+        const k = fold(w).trim();
+        if (!k) return;
+        const e = m.get(k) || { n: 0, forms: new Map() };
+        e.n++; e.forms.set(w, (e.forms.get(w) || 0) + 1);
+        m.set(k, e);
+      });
+    };
+    DATA.forEach(function (r) {
+      add(r.common); add(r.latin);
+      r.citations.forEach(function (c) { add(c.text); });
+    });
+    return Array.from(m).map(function (kv) {
+      const forms = Array.from(kv[1].forms).sort(function (a, b) { return b[1] - a[1]; });
+      return { key: kv[0], n: kv[1].n, show: forms[0][0] };
+    });
+  })();
+
+  function dist(a, b, cap) {                    // Damerau-Levenshtein, early exit
+    const al = a.length, bl = b.length;
+    if (Math.abs(al - bl) > cap) return cap + 1;
+    let prev2 = [], prev = [], cur;
+    for (let j = 0; j <= bl; j++) prev[j] = j;
+    for (let i = 1; i <= al; i++) {
+      cur = [i]; let best = i;
+      for (let j = 1; j <= bl; j++) {
+        const c = a.charAt(i-1) === b.charAt(j-1) ? 0 : 1;
+        let v = Math.min(prev[j] + 1, cur[j-1] + 1, prev[j-1] + c);
+        if (i > 1 && j > 1 && a.charAt(i-1) === b.charAt(j-2) && a.charAt(i-2) === b.charAt(j-1)) {
+          v = Math.min(v, prev2[j-2] + 1);
+        }
+        cur[j] = v; if (v < best) best = v;
+      }
+      if (best > cap) return cap + 1;
+      prev2 = prev; prev = cur;
+    }
+    return prev[bl];
+  }
+
+  function suggestFor(q) {
+    const t = fold(q).trim();
+    if (t.length < 4 || /\s/.test(t)) return [];      // too short, or a phrase
+    const cap = t.length <= 5 ? 1 : 2;
+    const hits = [];
+    VOCAB.forEach(function (v) {
+      if (Math.abs(v.key.length - t.length) > cap) return;
+      const d = dist(t, v.key, cap);
+      if (d > 0 && d <= cap) hits.push({ d: d, n: v.n, show: v.show });
+    });
+    hits.sort(function (a, b) { return a.d - b.d || b.n - a.n; });
+    const seen = {}, out = [];
+    hits.forEach(function (h) {
+      const k = h.show.toLowerCase();
+      if (!seen[k]) { seen[k] = 1; if (out.length < 3) out.push(h); }
+    });
+    return out;
+  }
+
+  function renderSuggestions(q) {
+    const list = suggestFor(q);
+    if (!list.length) { suggestBox.style.display = 'none'; return; }
+    suggestBox.innerHTML = 'No match for <b>' + escapeHtml(q) + '</b>. Did you mean ' +
+      list.map(function (h) {
+        return '<a data-q="' + escapeHtml(h.show) + '">' + escapeHtml(h.show) + '</a>';
+      }).join('<span class="sep">or</span>') + '?';
+    suggestBox.style.display = 'block';
+  }
+
   function matches(r, q) {
     if (!q) return true;
-    q = q.toLowerCase();
-    return r.common.toLowerCase().includes(q) ||
-           r.latin.toLowerCase().includes(q) ||
-           r.plateNum.toLowerCase().includes(q) ||
-           ('plate ' + r.plateNum).toLowerCase().includes(q) ||
-           r.citations.some(c => c.text.toLowerCase().includes(q));
+    const hay = HAY.get(r.id) || '';
+    return queryVariants(fold(q).trim()).some(function (v) { return v && hay.indexOf(v) !== -1; });
   }
 
   function render() {
@@ -326,8 +472,13 @@
     grid.innerHTML = filtered.map(tileHTML).join('');
     noResults.style.display = filtered.length ? 'none' : 'block';
     resultCount.textContent = `Showing ${filtered.length} of ${DATA.length} species`;
+    if (filtered.length || !q) suggestBox.style.display = 'none'; else renderSuggestions(q);
   }
 
+  suggestBox.addEventListener('click', function (e) {
+    const a = e.target.closest('a[data-q]'); if (!a) return;
+    searchBox.value = a.dataset.q; render(); searchBox.focus();
+  });
   searchBox.addEventListener('input', render);
   render();
 
