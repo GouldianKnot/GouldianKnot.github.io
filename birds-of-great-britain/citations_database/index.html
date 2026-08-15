@@ -149,6 +149,16 @@
     color: var(--unres); font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.03em; margin-right: 4px;
   }
+  .cit-note {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 11.5px; line-height: 1.55;
+    color: var(--ink-soft); margin: 6px 0 9px; padding: 7px 10px;
+    background: var(--paper-dark); border-left: 3px solid var(--accent-2); border-radius: 0 5px 5px 0;
+  }
+  .cit-note em { font-style: italic; }
+  .cit-note-label {
+    display: block; font-size: 9.5px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.07em; color: var(--accent); margin-bottom: 3px;
+  }
   .prose-note {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 10.5px; color: var(--ink-soft);
     font-style: italic; margin-top: 6px;
@@ -261,10 +271,16 @@
   });
 
   function citationLineHTML(c) {
+    // A research note may hang off any citation line, resolved or not — it records
+    // what was actually looked for and where, so a dead end reads as a finished
+    // piece of work rather than an outstanding one.
+    const note = c.note
+      ? `<div class="cit-note">${c.noteLabel ? `<span class="cit-note-label">${escapeHtml(c.noteLabel)}</span>` : ''}${c.note}</div>`
+      : '';
     if (c.resolved && c.href) {
-      return `<li><a href="../${c.href}" target="_blank">${escapeHtml(c.text)}</a></li>`;
+      return `<li><a href="../${c.href}" target="_blank">${escapeHtml(c.text)}</a>${note}</li>`;
     }
-    return `<li><span class="in-progress-tag">In progress</span>${escapeHtml(c.text)}${c.prose ? '<div class="prose-note">from Gould\'s continuous note, not a discrete citation line</div>' : ''}</li>`;
+    return `<li><span class="in-progress-tag">In progress</span>${escapeHtml(c.text)}${c.prose ? '<div class="prose-note">from Gould\'s continuous note, not a discrete citation line</div>' : ''}${note}</li>`;
   }
 
   function escapeHtml(s) {
