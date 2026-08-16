@@ -408,6 +408,68 @@
   .jj-signature .jj-caption .jj-contact-link { display: inline-block; margin-top: 8px; }
   .jj-signature .jj-caption-voices { font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif; font-size: clamp(18px, 2.5vw, 32px); color: #e6c34a; }
   @media (max-width: 720px) { footer { padding: 20px; } .jj-signature { position: static; margin-top: 20px; text-align: center; } .jj-signature .jj-caption { text-align: center; margin-left: auto; margin-right: auto; } }
+
+  /* --- Quiet corner navigation (see gould_library_gb.html). Light glyph with a
+     soft dark halo, so it stays legible over dark pages and photographic
+     headers alike. Literal colours, not variables: these pages do not share a
+     palette. --- */
+  .qnav { position: fixed; top: 19px; left: 14px; z-index: 60; font-family: Georgia, serif; }
+  .qnav-mark {
+    display: inline-block; font-size: 38px; line-height: 1; color: #efe6d4; opacity: 0.42;
+    cursor: default; user-select: none; transition: opacity 0.35s ease;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6), 0 0 9px rgba(0,0,0,0.4);
+  }
+
+  .qnav-mark svg { display: block; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.65)); }
+  .qnav-mark { font-size: 0; }
+  .qnav:hover .qnav-mark, .qnav:focus-within .qnav-mark { opacity: 0.95; }
+  .qnav-list {
+    max-height: 0; overflow: hidden; opacity: 0; padding-left: 6px; margin-top: 2px;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
+  }
+  .qnav:hover .qnav-list, .qnav:focus-within .qnav-list { max-height: 260px; opacity: 1; }
+  .qnav-list a {
+    display: block; font-size: 13.5px; line-height: 1.9; color: #e4dac4;
+    text-decoration: none; white-space: nowrap;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.75), 0 0 8px rgba(0,0,0,0.5);
+    opacity: 0; transform: translateY(-4px);
+    transition: opacity 0.5s ease, transform 0.5s ease, color 0.2s ease;
+  }
+  .qnav:hover .qnav-list a, .qnav:focus-within .qnav-list a { opacity: 1; transform: none; }
+  .qnav-list a:nth-child(1) { transition-delay: 0.05s; }
+  .qnav-list a:nth-child(2) { transition-delay: 0.12s; }
+  .qnav-list a:nth-child(3) { transition-delay: 0.19s; }
+  .qnav-list a:nth-child(4) { transition-delay: 0.26s; }
+  .qnav-list a:nth-child(5) { transition-delay: 0.33s; }
+  .qnav-list a:nth-child(6) { transition-delay: 0.40s; }
+  .qnav-list a:hover { color: #ffffff; }
+  .qnav-list a[aria-current="page"] { opacity: 0.45; }
+  .qnav:hover .qnav-list a[aria-current="page"],
+  .qnav:focus-within .qnav-list a[aria-current="page"] { opacity: 0.5; }
+  @media (prefers-reduced-motion: reduce) { .qnav-list, .qnav-list a { transition-duration: 0.01s; } }
+
+  /* --- Swift, opaque, with an INVERTED halo: light rather than dark, so the
+     bird separates from cream headers, the navy body, photographic headers and
+     any text it happens to fly over. One treatment for every page. --- */
+  .qnav-mark { opacity: 1; color: #7a5230; text-shadow: none; }
+  .qnav:hover .qnav-mark, .qnav:focus-within .qnav-mark { opacity: 1; color: #5c3c22; }
+  .qnav-mark svg { display: block;
+    filter: drop-shadow(0 0 2px rgba(255,252,245,0.95))
+            drop-shadow(0 1px 2px rgba(255,252,245,0.90)); }
+
+  /* Links match the bird: brown, with the same light halo carrying the contrast
+     so they stay readable over cream, navy and photographic headers alike. */
+  .qnav-list a { color: #7a5230; font-weight: 600;
+    text-shadow: 0 0 3px rgba(255,252,245,0.98), 0 0 6px rgba(255,252,245,0.9),
+                 0 1px 2px rgba(255,252,245,0.95); }
+  .qnav-list a:hover { color: #1f7a6e; }
+  .qnav-list a[aria-current="page"] { color: #8a7a62; opacity: 1; }
+  .qnav:hover .qnav-list a[aria-current="page"],
+  .qnav:focus-within .qnav-list a[aria-current="page"] { opacity: 1; }
+
+  /* Larger, easier to read at a glance. Taller stack, so raise the open height. */
+  .qnav-list a { font-size: 16.5px; line-height: 2.0; }
+  .qnav:hover .qnav-list, .qnav:focus-within .qnav-list { max-height: 340px; }
 </style>
 </head>
 <body>
@@ -5080,5 +5142,37 @@ titicaca, in bolivia." data-region="Patagonia|Falkland Islands" data-genus="Anse
 })();
 </script>
 <!--about-link--><a href="../about.html" style="position:fixed; bottom:6px; left:8px; font-family:-apple-system,BlinkMacSystemFont,sans-serif; font-size:10px; color:#bbbbbb; text-decoration:none; z-index:9999; opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5">About</a><!--/about-link-->
+<nav class="qnav" aria-label="Go to">
+  <span class="qnav-mark" tabindex="0" role="button" aria-label="Show other parts of the project"><svg class="qnav-bird" width="34" height="40" viewBox="0 0 468 548" fill="currentColor" aria-hidden="true"><g transform="translate(0,548) scale(0.1,-0.1)"><path d="M1005 5210 c-12 -19 6 -48 50 -85 25 -20 45 -44 45 -53 0 -10 32 -51
+70 -92 39 -41 79 -93 90 -116 11 -23 42 -62 68 -87 26 -25 62 -72 80 -104 18
+-32 50 -78 72 -102 21 -24 41 -55 45 -69 3 -14 33 -61 66 -104 32 -44 59 -85
+59 -93 0 -17 75 -117 136 -181 27 -28 60 -71 74 -94 14 -24 44 -64 68 -89 24
+-25 52 -63 63 -83 10 -21 40 -61 65 -89 36 -41 45 -57 41 -78 -4 -19 3 -35 28
+-62 l32 -36 -1 -204 c-1 -112 -5 -210 -9 -216 -4 -7 -108 -62 -230 -122 l-222
+-109 -190 -27 c-263 -37 -407 -70 -384 -88 2 -2 48 -25 102 -52 53 -26 97 -52
+97 -59 0 -6 3 -20 6 -32 4 -14 -6 -32 -33 -62 -44 -47 -83 -97 -83 -106 0 -22
+218 9 465 65 152 35 140 35 430 -1 44 -6 136 -11 205 -12 137 -2 148 -6 185
+-78 8 -16 31 -41 50 -56 19 -14 35 -35 35 -44 0 -10 6 -25 13 -32 58 -62 77
+-91 77 -122 0 -24 9 -42 34 -67 33 -33 34 -36 38 -135 3 -73 8 -108 21 -127
+13 -20 17 -49 18 -119 0 -51 4 -115 9 -143 6 -27 15 -90 21 -140 5 -49 19
+-124 29 -165 11 -41 22 -102 26 -135 6 -59 17 -111 34 -150 5 -11 11 -55 14
+-97 3 -42 12 -94 20 -115 16 -43 28 -204 26 -369 -1 -89 1 -113 14 -123 12
+-10 14 -25 9 -70 -7 -68 7 -102 37 -94 14 4 20 0 20 -11 0 -80 117 102 189
+293 126 337 169 631 178 1226 6 401 -1 487 -51 707 -51 220 -71 275 -131 364
+-34 50 -32 58 18 87 52 31 130 98 157 138 26 35 15 37 -32 5 -43 -29 -169 -57
+-176 -38 -2 7 -10 12 -18 12 -23 0 -16 28 9 36 12 3 28 11 35 17 46 37 172 58
+207 34 12 -8 38 -12 68 -9 59 5 61 21 10 71 -21 20 -51 53 -66 74 -55 73 -185
+119 -342 119 -57 1 -108 4 -113 7 -5 3 -11 38 -14 78 -8 151 -196 459 -413
+678 -33 33 -152 154 -265 269 -299 303 -494 469 -761 646 -247 164 -495 267
+-524 220z"/></g></svg></span>
+  <div class="qnav-list">
+    <a href="../birds-of-europe/index.html">Birds of Europe</a>
+    <a href="index.html" aria-current="page">Voyage of the Beagle</a>
+    <a href="../birds-of-great-britain/index.html">Birds of G. Britain</a>
+    <a href="../birds-of-great-britain/gould_library_gb.html">Gould&rsquo;s Library</a>
+    <a href="../birds-of-great-britain/citations_database/index.html">Citations Database</a>
+    <a href="../voices/index.html">Voices</a>
+  </div>
+</nav>
 </body>
 </html>
