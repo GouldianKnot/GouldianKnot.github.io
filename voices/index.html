@@ -41,6 +41,13 @@
   .header-sidenote:hover, .header-sidenote:focus-visible, .header-sidenote.is-near { opacity: 0.95; color: var(--accent); }
   .header-sidenote.sidenote-narrative { color: var(--gould-teal); opacity: 0.6; }
   .header-sidenote.sidenote-narrative:hover, .header-sidenote.sidenote-narrative:focus-visible, .header-sidenote.sidenote-narrative.is-near { opacity: 1; color: #14544c; }
+  /* Floating header links: the decor layer lives OUTSIDE <header> (so it escapes the
+     header's overflow:hidden) and therefore shares a stacking context with the page
+     content. Lift the content blocks above it, so a link can never obscure a tile.
+     Jan, 4 September 2026. */
+  .potd, .about, .toolbar, .cladogram-portal, .vol-row, .filter-row, .active-filter-bar,
+  .grid, .no-results, .lib-search-wrap, .lib-list, .progress, .list, .filters, main,
+  footer { position: relative; z-index: 3; }
   .header-sidenote[data-align="left"] { text-align: left; }
   .header-sidenote[data-align="right"] { text-align: right; }
   @keyframes sidenote-float {

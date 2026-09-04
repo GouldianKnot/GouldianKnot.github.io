@@ -99,6 +99,13 @@
     opacity: 0.95; color: var(--accent);
   }
   .header-sidenote .fleuron { display: block; font-size: 30px; opacity: 0.7; margin-bottom: 2px; }
+  /* Floating header links: the decor layer lives OUTSIDE <header> (so it escapes the
+     header's overflow:hidden) and therefore shares a stacking context with the page
+     content. Lift the content blocks above it, so a link can never obscure a tile.
+     Jan, 4 September 2026. */
+  .potd, .about, .toolbar, .cladogram-portal, .vol-row, .filter-row, .active-filter-bar,
+  .grid, .no-results, .lib-search-wrap, .lib-list, .progress, .list, .filters, main,
+  footer { position: relative; z-index: 3; }
   .header-sidenote[data-align="left"] { text-align: left; }
   .header-sidenote[data-align="right"] { text-align: right; }
   @keyframes sidenote-float {
@@ -34536,6 +34543,8 @@ spilt op namsae aid ‘to anol
 
     function layout() {
       if (window.innerWidth <= 760) return; // mobile: static stacked layout, CSS handles it
+      notes.forEach(function(el) { el.style.fontSize = ''; el.style.display = ''; // reset before measuring
+      }); // (layout() re-runs on resize; otherwise any shrink or hide would compound)
       var toolbarEl = document.querySelector('.toolbar');
       var hRect = headerEl.getBoundingClientRect();
       var tRect = toolbarEl ? toolbarEl.getBoundingClientRect() : hRect;
@@ -34561,14 +34570,28 @@ spilt op namsae aid ‘to anol
         left: topPad,
         right: (cBox ? Math.max(topPad, cBox.y + cBox.h + 20) : topPad)
       };
-      var neededBottom = bottomPad;
+      // HARD CAP (Jan, 4 September 2026): bottomPad must never reach past the toolbar
+      // line worked out above. The old "needed height" sum grew the band whenever the
+      // links did not fit naturally, which pushed them down over the gallery tiles and
+      // obscured the text beneath. Where a column is short of room, shrink the type --
+      // never grow the band. The same cure was applied to Birds of Great Britain.
       ['left', 'right'].forEach(function(side) {
-        var count = sides[side].length;
-        if (!count) return;
-        var needed = sideTops[side] + maxH * count * 1.22;
-        if (needed > neededBottom) { neededBottom = needed; }
+        var items = sides[side] || [];
+        if (!items.length) return;
+        var sideStart = sideTops[side];
+        var available = Math.max(60, bottomPad - sideStart);
+        var naturalH = 0;
+        items.forEach(function(el) { naturalH += (el.offsetHeight || 140); });
+        if (naturalH > available) {
+          var shrink = Math.max(0.7, available / naturalH);
+          items.forEach(function(el) {
+            var baseSize = parseFloat(window.getComputedStyle(el).fontSize) || 22;
+            el.style.fontSize = (baseSize * shrink).toFixed(1) + 'px';
+          });
+        }
       });
-      bottomPad = neededBottom;
+      maxH = 0;
+      notes.forEach(function(el) { maxH = Math.max(maxH, el.offsetHeight || 140); });
 
       ['left', 'right'].forEach(function(side) {
         var items = sides[side];
@@ -34580,6 +34603,10 @@ spilt op namsae aid ‘to anol
           var bandTop = sideTop + i * bandH;
           var slack = Math.max(0, bandH - h);
           var y = bandTop + rand(slack * 0.15, slack * 0.85);
+          // ...and never below the toolbar line, whatever the type size does. A link
+          // that still cannot fit above it is hidden rather than left over the tiles.
+          if (y + h > bottomPad - 14) { y = Math.max(sideTop, bottomPad - h - 14); }
+          if (y + h > bottomPad) { el.style.display = 'none'; }
           var x;
           if (side === 'left') {
             var leftMax = Math.max(left + pad, contentLeft - w - pad);
